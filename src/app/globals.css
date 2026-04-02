@@ -77,6 +77,6 @@
   }
 
   .card-hover {
-    @apply card hover:border-border-hover transition-colors;
+    @apply bg-bg-secondary border border-border-primary rounded-lg hover:border-border-hover transition-colors;
   }
 }
