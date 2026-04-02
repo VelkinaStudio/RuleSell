@@ -71,9 +71,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
+      if (user && user.id) {
         const dbUser = await db.user.findUnique({
-          where: { id: user.id! },
+          where: { id: user.id },
           select: {
             id: true,
             username: true,
@@ -84,8 +84,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (dbUser) {
           token.id = dbUser.id;
           token.username = dbUser.username;
-          token.role = dbUser.role;
-          token.sellerStatus = dbUser.sellerStatus;
+          token.role = dbUser.role ?? "USER";
+          token.sellerStatus = dbUser.sellerStatus ?? "NONE";
         }
       }
       return token;
@@ -94,8 +94,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.id = token.id as string;
         session.user.username = token.username as string;
-        session.user.role = token.role as string;
-        session.user.sellerStatus = token.sellerStatus as string;
+        session.user.role = (token.role as string) ?? "USER";
+        session.user.sellerStatus = (token.sellerStatus as string) ?? "NONE";
       }
       return session;
     },
