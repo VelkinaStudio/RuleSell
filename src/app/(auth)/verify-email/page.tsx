@@ -8,13 +8,11 @@ import { Button } from "@/components/ui/button";
 function VerifyEmailContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
+  const initialStatus = token ? "loading" : "error";
+  const [status, setStatus] = useState<"loading" | "success" | "error">(initialStatus);
 
   useEffect(() => {
-    if (!token) {
-      setStatus("error");
-      return;
-    }
+    if (!token) return;
 
     fetch("/api/auth/verify-email", {
       method: "POST",
