@@ -1,10 +1,11 @@
 export interface PaginationMeta {
   total: number;
-  page: number;
+  page?: number;
   pageSize: number;
   hasNext: boolean;
   hasPrev: boolean;
   nextCursor?: string;
+  prevCursor?: string;
 }
 
 export interface ApiSuccessResponse<T> {

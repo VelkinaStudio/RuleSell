@@ -51,6 +51,9 @@ export function paginationFromOffset(
   page: number,
   pageSize: number,
 ): PaginationMeta {
+  if (page < 1) {
+    throw new Error("page must be >= 1 (1-based pagination)");
+  }
   return {
     total,
     page,
@@ -64,13 +67,14 @@ export function paginationFromCursor(
   total: number,
   pageSize: number,
   nextCursor?: string,
+  prevCursor?: string,
 ): PaginationMeta {
   return {
     total,
-    page: 0,
     pageSize,
     hasNext: !!nextCursor,
-    hasPrev: false,
+    hasPrev: !!prevCursor,
     nextCursor,
+    prevCursor,
   };
 }
