@@ -1,0 +1,539 @@
+// Ruleset Platform — Prisma Schema
+// Prisma v7 — all models for the full platform
+
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["fullTextSearchPostgres"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ──────────────────────────────────────────
+
+enum UserRole {
+  USER
+  PRO
+  ADMIN
+}
+
+enum SellerStatus {
+  NONE
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum RulesetType {
+  RULESET
+  PROMPT
+  WORKFLOW
+  AGENT
+  BUNDLE
+  DATASET
+}
+
+enum Platform {
+  CURSOR
+  VSCODE
+  OBSIDIAN
+  N8N
+  MAKE
+  GEMINI
+  CLAUDE
+  CHATGPT
+  OTHER
+}
+
+enum RulesetStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+  FLAGGED
+}
+
+enum FileBundleFormat {
+  CURSORRULES
+  MARKDOWN
+  JSON
+  YAML
+  TOML
+  ZIP
+  JAVASCRIPT
+  PYTHON
+  TEXT
+}
+
+enum AccessType {
+  LIFETIME
+  SUBSCRIPTION
+}
+
+enum PurchaseStatus {
+  PENDING
+  COMPLETED
+  REFUNDED
+}
+
+enum EventType {
+  VIEW
+  VOTE
+  DOWNLOAD
+  PURCHASE
+}
+
+enum NotificationType {
+  NEW_FOLLOWER
+  NEW_REVIEW
+  REVIEW_REPLY
+  SALE_MADE
+  RULESET_UPDATED
+  DISCUSSION_REPLY
+  PAYOUT_COMPLETE
+  ADMIN_ANNOUNCEMENT
+}
+
+enum ReportReason {
+  SPAM
+  MALWARE
+  COPYRIGHT
+  INAPPROPRIATE
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+  DISMISSED
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+// ─── Auth (NextAuth) ────────────────────────────────
+
+model User {
+  id                     String       @id @default(cuid())
+  email                  String       @unique
+  passwordHash           String?
+  name                   String
+  username               String       @unique
+  avatar                 String?
+  bio                    String?
+  role                   UserRole     @default(USER)
+  sellerStatus           SellerStatus @default(NONE)
+  lemonsqueezyCustomerId String?
+  totalEarnings          Float        @default(0)
+  reputation             Int          @default(0)
+  emailVerified          DateTime?
+  emailVerifyToken       String?
+  resetPasswordToken     String?
+  resetPasswordExpires   DateTime?
+  createdAt              DateTime     @default(now())
+  updatedAt              DateTime     @updatedAt
+
+  accounts            Account[]
+  sessions            Session[]
+  rulesets             Ruleset[]
+  votes                Vote[]
+  reviews              Review[]
+  purchases            Purchase[]
+  collections          Collection[]
+  savedItems           SavedItem[]
+  discussions          Discussion[]
+  discussionReplies    DiscussionReply[]
+  notifications        Notification[]
+  notificationPrefs    NotificationPreference[]
+  reports              Report[]
+  payouts              Payout[]
+  rulesetBundles       RulesetBundle[]
+  followers            Follow[]     @relation("following")
+  following            Follow[]     @relation("follower")
+
+  @@index([username])
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─── Rulesets ───────────────────────────────────────
+
+model Ruleset {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  description    String        @db.Text
+  previewContent String        @db.Text
+  type           RulesetType
+  platform       Platform
+  category       String
+  price          Float         @default(0)
+  currency       String        @default("USD")
+  authorId       String
+  downloadCount  Int           @default(0)
+  viewCount      Int           @default(0)
+  purchaseCount  Int           @default(0)
+  avgRating      Float         @default(0)
+  ratingCount    Int           @default(0)
+  trendingScore  Float         @default(0)
+  status         RulesetStatus @default(DRAFT)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  author          User              @relation(fields: [authorId], references: [id])
+  versions        RulesetVersion[]
+  tags            RulesetTag[]
+  votes           Vote[]
+  reviews         Review[]
+  purchases       Purchase[]
+  events          RulesetEvent[]
+  collectionItems CollectionItem[]
+  savedBy         SavedItem[]
+  bundleItems     BundleItem[]
+  discussions     Discussion[]
+  reports         Report[]
+
+  @@index([slug])
+  @@index([authorId])
+  @@index([status])
+  @@index([trendingScore(sort: Desc)])
+  @@index([createdAt(sort: Desc)])
+  @@index([platform])
+  @@index([type])
+  @@index([category])
+}
+
+model RulesetVersion {
+  id          String   @id @default(cuid())
+  rulesetId   String
+  version     String
+  fullContent String   @db.Text
+  changelog   String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  ruleset     Ruleset      @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+  fileBundles FileBundle[]
+
+  @@index([rulesetId])
+}
+
+model FileBundle {
+  id                  String           @id @default(cuid())
+  rulesetVersionId    String
+  storageKey          String
+  filename            String
+  sizeBytes           Int
+  mimeType            String
+  format              FileBundleFormat
+  installInstructions String?          @db.Text
+
+  rulesetVersion RulesetVersion @relation(fields: [rulesetVersionId], references: [id], onDelete: Cascade)
+
+  @@index([rulesetVersionId])
+}
+
+// ─── Tags ───────────────────────────────────────────
+
+model Tag {
+  id         String       @id @default(cuid())
+  name       String       @unique
+  usageCount Int          @default(0)
+  rulesets   RulesetTag[]
+
+  @@index([name])
+  @@index([usageCount(sort: Desc)])
+}
+
+model RulesetTag {
+  rulesetId String
+  tagId     String
+
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([rulesetId, tagId])
+}
+
+// ─── Engagement ─────────────────────────────────────
+
+model Vote {
+  userId    String
+  rulesetId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@id([userId, rulesetId])
+}
+
+model Review {
+  id                 String   @id @default(cuid())
+  userId             String
+  rulesetId          String
+  rating             Int
+  comment            String   @db.Text
+  isVerifiedPurchase Boolean  @default(false)
+  refunded           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@index([rulesetId])
+  @@index([userId])
+}
+
+model Follow {
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, followingId])
+}
+
+// ─── Purchases & Payments ───────────────────────────
+
+model Purchase {
+  id                  String         @id @default(cuid())
+  buyerId             String
+  rulesetId           String
+  amount              Float
+  platformFee         Float
+  lemonsqueezyOrderId String
+  accessType          AccessType
+  accessExpiresAt     DateTime?
+  status              PurchaseStatus @default(PENDING)
+  refundedAt          DateTime?
+  createdAt           DateTime       @default(now())
+
+  buyer   User    @relation(fields: [buyerId], references: [id])
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id])
+
+  @@index([buyerId])
+  @@index([rulesetId])
+  @@index([lemonsqueezyOrderId])
+}
+
+model Payout {
+  id                   String       @id @default(cuid())
+  userId               String
+  amount               Float
+  status               PayoutStatus @default(PENDING)
+  lemonsqueezyPayoutId String?
+  createdAt            DateTime     @default(now())
+  completedAt          DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+// ─── Collections & Saved ────────────────────────────
+
+model Collection {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  slug        String
+  description String?  @db.Text
+  isPublic    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items CollectionItem[]
+
+  @@index([userId])
+}
+
+model CollectionItem {
+  collectionId String
+  rulesetId    String
+  position     Int
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  ruleset    Ruleset    @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@id([collectionId, rulesetId])
+}
+
+model SavedItem {
+  userId    String
+  rulesetId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@id([userId, rulesetId])
+}
+
+// ─── Bundles ────────────────────────────────────────
+
+model RulesetBundle {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  authorId    String
+  price       Float
+  createdAt   DateTime @default(now())
+
+  author User         @relation(fields: [authorId], references: [id])
+  items  BundleItem[]
+
+  @@index([authorId])
+}
+
+model BundleItem {
+  bundleId  String
+  rulesetId String
+
+  bundle  RulesetBundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  ruleset Ruleset       @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@id([bundleId, rulesetId])
+}
+
+// ─── Discussions ────────────────────────────────────
+
+model Discussion {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String
+  body      String   @db.Text
+  authorId  String
+  rulesetId String?
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author  User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  ruleset Ruleset?          @relation(fields: [rulesetId], references: [id])
+  replies DiscussionReply[]
+
+  @@index([category])
+  @@index([authorId])
+}
+
+model DiscussionReply {
+  id            String   @id @default(cuid())
+  discussionId  String
+  parentReplyId String?
+  authorId      String
+  body          String   @db.Text
+  createdAt     DateTime @default(now())
+
+  discussion   Discussion        @relation(fields: [discussionId], references: [id], onDelete: Cascade)
+  parentReply  DiscussionReply?  @relation("ReplyToReply", fields: [parentReplyId], references: [id])
+  childReplies DiscussionReply[] @relation("ReplyToReply")
+  author       User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([discussionId])
+  @@index([parentReplyId])
+}
+
+// ─── Notifications ──────────────────────────────────
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  data      Json
+  read      Boolean          @default(false)
+  emailSent Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+  @@index([createdAt(sort: Desc)])
+}
+
+model NotificationPreference {
+  userId       String
+  type         NotificationType
+  emailEnabled Boolean @default(true)
+  inAppEnabled Boolean @default(true)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, type])
+}
+
+// ─── Events & Reports ───────────────────────────────
+
+model RulesetEvent {
+  id        String    @id @default(cuid())
+  rulesetId String
+  type      EventType
+  createdAt DateTime  @default(now())
+
+  ruleset Ruleset @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
+
+  @@index([rulesetId, createdAt])
+  @@index([createdAt])
+}
+
+model Report {
+  id         String       @id @default(cuid())
+  reporterId String
+  rulesetId  String
+  reason     ReportReason
+  details    String?      @db.Text
+  status     ReportStatus @default(PENDING)
+  resolvedBy String?
+  createdAt  DateTime     @default(now())
+  resolvedAt DateTime?
+
+  reporter User    @relation(fields: [reporterId], references: [id])
+  ruleset  Ruleset @relation(fields: [rulesetId], references: [id])
+
+  @@index([status])
+  @@index([rulesetId])
+}
