@@ -31,3 +31,6 @@ CREATE TRIGGER ruleset_search_vector_trigger
   ON "Ruleset"
   FOR EACH ROW
   EXECUTE FUNCTION update_ruleset_search_vector();
+
+-- Backfill existing rows
+UPDATE "Ruleset" SET "title" = "title" WHERE "searchVector" IS NULL;

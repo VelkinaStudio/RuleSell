@@ -151,7 +151,8 @@ model User {
   discussionReplies    DiscussionReply[]
   notifications        Notification[]
   notificationPrefs    NotificationPreference[]
-  reports              Report[]
+  reports              Report[]  @relation("SubmittedReports")
+  resolvedReports      Report[]  @relation("ResolvedReports")
   payouts              Payout[]
   rulesetBundles       RulesetBundle[]
   followers            Follow[]     @relation("following")
@@ -242,6 +243,9 @@ model Ruleset {
   @@index([platform])
   @@index([type])
   @@index([category])
+  @@index([status, trendingScore(sort: Desc)])
+  @@index([status, createdAt(sort: Desc)])
+  @@index([authorId, status])
 }
 
 model RulesetVersion {
@@ -255,6 +259,7 @@ model RulesetVersion {
   ruleset     Ruleset      @relation(fields: [rulesetId], references: [id], onDelete: Cascade)
   fileBundles FileBundle[]
 
+  @@unique([rulesetId, version])
   @@index([rulesetId])
 }
 
@@ -358,6 +363,7 @@ model Purchase {
   @@index([buyerId])
   @@index([rulesetId])
   @@index([lemonsqueezyOrderId])
+  @@index([status])
 }
 
 model Payout {
@@ -388,7 +394,9 @@ model Collection {
   user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   items CollectionItem[]
 
+  @@unique([userId, slug])
   @@index([userId])
+  @@index([userId, isPublic])
 }
 
 model CollectionItem {
@@ -457,8 +465,10 @@ model Discussion {
   ruleset Ruleset?          @relation(fields: [rulesetId], references: [id])
   replies DiscussionReply[]
 
+  @@unique([category, slug])
   @@index([category])
   @@index([authorId])
+  @@index([rulesetId])
 }
 
 model DiscussionReply {
@@ -518,6 +528,7 @@ model RulesetEvent {
 
   @@index([rulesetId, createdAt])
   @@index([createdAt])
+  @@index([type, createdAt])
 }
 
 model Report {
@@ -527,12 +538,13 @@ model Report {
   reason     ReportReason
   details    String?      @db.Text
   status     ReportStatus @default(PENDING)
-  resolvedBy String?
-  createdAt  DateTime     @default(now())
-  resolvedAt DateTime?
+  resolvedById String?
+  createdAt    DateTime     @default(now())
+  resolvedAt   DateTime?
 
-  reporter User    @relation(fields: [reporterId], references: [id])
-  ruleset  Ruleset @relation(fields: [rulesetId], references: [id])
+  reporter       User    @relation("SubmittedReports", fields: [reporterId], references: [id])
+  resolvedByUser User?   @relation("ResolvedReports", fields: [resolvedById], references: [id])
+  ruleset        Ruleset @relation(fields: [rulesetId], references: [id])
 
   @@index([status])
   @@index([rulesetId])
