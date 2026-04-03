@@ -56,7 +56,7 @@ export default async function CreatorProfilePage({
   }
 
   return (
-    <div className="p-6 max-w-4xl">
+    <div className="container-page pt-12 pb-24">
       {/* Profile header */}
       <div className="flex items-start gap-4 mb-8">
         <div className="w-16 h-16 rounded-full bg-accent-purple flex items-center justify-center text-2xl font-bold text-white flex-shrink-0">
@@ -68,13 +68,13 @@ export default async function CreatorProfilePage({
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-semibold text-text-primary">{user.name}</h1>
+            <h1 className="text-2xl font-semibold text-text-primary">{user.name}</h1>
             {!isOwnProfile && (
               <FollowButton userId={user.id} initialFollowing={isFollowing} />
             )}
           </div>
           <p className="text-sm text-text-tertiary">@{user.username}</p>
-          {user.bio && <p className="text-sm text-text-secondary mt-2">{user.bio}</p>}
+          {user.bio && <p className="text-sm leading-relaxed text-text-secondary mt-2">{user.bio}</p>}
           <div className="flex items-center gap-4 text-sm text-text-tertiary mt-2">
             <span>{user._count.rulesets} rulesets</span>
             <span>{user._count.followers} followers</span>
@@ -86,7 +86,7 @@ export default async function CreatorProfilePage({
       {/* Rulesets */}
       <h2 className="text-lg font-semibold text-text-primary mb-4">Published Rulesets</h2>
       {rulesets.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {rulesets.map((r) => (
             <RulesetCard key={r.id} ruleset={r} />
           ))}

@@ -29,46 +29,48 @@ export default async function SearchPage({
   );
 
   return (
-    <div className="flex">
-      {/* Sidebar filters */}
-      <aside className="hidden lg:block w-56 border-r border-border-primary p-4">
-        <Suspense>
-          <SearchFilters />
-        </Suspense>
-      </aside>
+    <div className="container-page">
+      <div className="flex pt-12 pb-24">
+        {/* Sidebar filters */}
+        <aside className="hidden lg:block w-56 pr-8">
+          <Suspense>
+            <SearchFilters />
+          </Suspense>
+        </aside>
 
-      {/* Results */}
-      <div className="flex-1 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl font-semibold text-text-primary">
-            {q ? `Results for "${q}"` : "Browse Rulesets"}
-          </h1>
-          <span className="text-sm text-text-tertiary">{total} results</span>
+        {/* Results */}
+        <div className="flex-1">
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-2xl font-semibold text-text-primary">
+              {q ? `Results for "${q}"` : "Browse Rulesets"}
+            </h1>
+            <span className="text-sm text-text-tertiary">{total} results</span>
+          </div>
+
+          {rulesets.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {rulesets.map((r) => (
+                <RulesetCard key={r.id} ruleset={r} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 text-text-tertiary">
+              <p className="text-lg mb-2">No results found</p>
+              <p className="text-sm leading-relaxed">Try adjusting your filters or search terms</p>
+            </div>
+          )}
+
+          {nextCursor && (
+            <div className="flex justify-center py-6">
+              <a
+                href={`?${new URLSearchParams({ ...Object.fromEntries(Object.entries(sp).filter(([, v]) => typeof v === "string") as [string, string][]), cursor: nextCursor }).toString()}`}
+                className="px-6 py-2 text-sm font-medium text-text-secondary border border-border-secondary rounded-md hover:border-border-hover hover:text-text-primary transition-colors"
+              >
+                Load more
+              </a>
+            </div>
+          )}
         </div>
-
-        {rulesets.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {rulesets.map((r) => (
-              <RulesetCard key={r.id} ruleset={r} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 text-text-tertiary">
-            <p className="text-lg mb-2">No results found</p>
-            <p className="text-sm">Try adjusting your filters or search terms</p>
-          </div>
-        )}
-
-        {nextCursor && (
-          <div className="flex justify-center py-6">
-            <a
-              href={`?${new URLSearchParams({ ...Object.fromEntries(Object.entries(sp).filter(([, v]) => typeof v === "string") as [string, string][]), cursor: nextCursor }).toString()}`}
-              className="px-6 py-2 text-sm font-medium text-text-secondary border border-border-secondary rounded-md hover:border-border-hover hover:text-text-primary transition-colors"
-            >
-              Load more
-            </a>
-          </div>
-        )}
       </div>
     </div>
   );

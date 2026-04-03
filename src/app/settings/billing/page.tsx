@@ -14,7 +14,7 @@ export default async function BillingPage() {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-text-primary mb-4">Billing & Subscription</h2>
+      <h2 className="text-lg font-semibold text-text-primary mb-6">Billing & Subscription</h2>
 
       <div className="card p-6">
         <div className="flex items-center gap-3 mb-4">

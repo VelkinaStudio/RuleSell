@@ -17,9 +17,9 @@ export default async function AdminUsersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">User Management</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">User Management</h1>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         {users.map((u) => (
           <div key={u.id} className="card p-4 flex items-center justify-between">
             <div>

@@ -33,12 +33,12 @@ export default async function TagPage({
   );
 
   return (
-    <div className="p-6">
+    <div className="container-page pt-12 pb-24">
       <h1 className="text-2xl font-semibold text-text-primary mb-1">#{decoded}</h1>
-      <p className="text-text-tertiary text-sm mb-6">{tagRecord.usageCount} rulesets</p>
+      <p className="text-text-tertiary text-sm leading-relaxed mb-8">{tagRecord.usageCount} rulesets</p>
 
       {rulesets.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {rulesets.map((r) => (
             <RulesetCard key={r.id} ruleset={r} />
           ))}

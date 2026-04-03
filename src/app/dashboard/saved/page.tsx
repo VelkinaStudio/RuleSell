@@ -28,16 +28,16 @@ export default async function DashboardSavedPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Saved Rulesets</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Saved Rulesets</h1>
 
       {savedItems.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {savedItems.map((item) => (
             <RulesetCard key={item.rulesetId} ruleset={formatCardData(item.ruleset, session.user!.id)} />
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p className="mb-4">No saved rulesets yet</p>
           <Link href="/search" className="text-accent-green hover:underline">
             Browse the marketplace

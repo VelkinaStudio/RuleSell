@@ -19,13 +19,13 @@ export default async function DashboardCollectionsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-semibold text-text-primary">My Collections</h1>
         <Button size="sm">New Collection</Button>
       </div>
 
       {collections.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {collections.map((c) => (
             <div key={c.id} className="card p-4 flex items-center justify-between">
               <div>
@@ -41,7 +41,7 @@ export default async function DashboardCollectionsPage() {
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p>No collections yet</p>
         </div>
       )}

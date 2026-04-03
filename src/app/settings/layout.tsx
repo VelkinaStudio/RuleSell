@@ -14,7 +14,7 @@ export default async function SettingsLayout({ children }: { children: React.Rea
   return (
     <div className="min-h-screen bg-bg-primary">
       <div className="max-w-4xl mx-auto px-6 py-8">
-        <h1 className="text-2xl font-semibold text-text-primary mb-6">Settings</h1>
+        <h1 className="text-2xl font-semibold text-text-primary mb-8">Settings</h1>
         <div className="flex gap-6">
           <nav className="w-48 space-y-1">
             {settingsNav.map((item) => (

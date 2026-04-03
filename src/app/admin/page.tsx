@@ -14,9 +14,9 @@ export default async function AdminOverviewPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Platform Overview</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Platform Overview</h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
         <div className="card p-4">
           <p className="text-xs text-text-tertiary uppercase tracking-wider mb-1">Users</p>
           <p className="text-2xl font-bold text-text-primary">{userCount}</p>

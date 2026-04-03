@@ -10,10 +10,10 @@ export default function DashboardOverviewPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Dashboard</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Dashboard</h1>
 
       {/* Stats grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         {stats.map((stat) => (
           <div key={stat.label} className="card p-4">
             <p className="text-sm text-text-tertiary mb-1">{stat.label}</p>

@@ -18,10 +18,10 @@ export default async function AdminReportsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Reports</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Reports</h1>
 
       {reports.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {reports.map((r) => (
             <div key={r.id} className="card p-4">
               <div className="flex items-center justify-between mb-2">
@@ -52,7 +52,7 @@ export default async function AdminReportsPage() {
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p>No reports</p>
         </div>
       )}

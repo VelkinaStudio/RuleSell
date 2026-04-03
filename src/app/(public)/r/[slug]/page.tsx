@@ -71,11 +71,11 @@ export default async function RulesetDetailPage({
   const latestVersion = ruleset.versions[0];
 
   return (
-    <div className="p-6 max-w-4xl">
+    <div className="container-page pt-12 pb-24 max-w-4xl">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-6">
+      <div className="flex items-start justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary mb-2">{ruleset.title}</h1>
+          <h1 className="text-2xl font-semibold text-text-primary mb-2">{ruleset.title}</h1>
           <div className="flex items-center gap-2 text-sm text-text-secondary">
             <Link href={`/u/${ruleset.author.username}`} className="hover:text-accent-green">
               {ruleset.author.name}
@@ -105,7 +105,7 @@ export default async function RulesetDetailPage({
       </div>
 
       {/* Metadata */}
-      <div className="flex items-center gap-2 flex-wrap mb-6">
+      <div className="flex items-center gap-2 flex-wrap mb-8">
         <Badge variant="green">{ruleset.platform}</Badge>
         <Badge variant="default">{ruleset.type}</Badge>
         <Badge variant="default">{ruleset.category}</Badge>
@@ -120,7 +120,7 @@ export default async function RulesetDetailPage({
       </div>
 
       {/* Stats */}
-      <div className="flex items-center gap-6 text-sm text-text-tertiary mb-6 pb-6 border-b border-border-primary">
+      <div className="flex items-center gap-8 text-sm text-text-tertiary mb-8 pb-8 border-b border-border-primary">
         <span>{ruleset.downloadCount} downloads</span>
         <span>{ruleset.viewCount} views</span>
         <span>{ruleset._count.reviews} reviews</span>
@@ -128,17 +128,17 @@ export default async function RulesetDetailPage({
       </div>
 
       {/* Description */}
-      <div className="mb-6">
+      <div className="mb-8">
         <h2 className="text-lg font-semibold text-text-primary mb-2">About</h2>
-        <p className="text-text-secondary whitespace-pre-wrap">{ruleset.description}</p>
+        <p className="text-sm leading-relaxed text-text-secondary whitespace-pre-wrap">{ruleset.description}</p>
       </div>
 
       {/* Content */}
-      <div className="mb-6">
+      <div className="mb-8">
         <h2 className="text-lg font-semibold text-text-primary mb-2">
           {showFull ? "Content" : "Preview"}
         </h2>
-        <div className="bg-bg-tertiary border border-border-primary rounded-lg p-4 font-mono text-sm text-text-secondary overflow-x-auto whitespace-pre-wrap">
+        <div className="bg-bg-tertiary border border-border-primary rounded-2xl p-4 font-mono text-sm text-text-secondary overflow-x-auto whitespace-pre-wrap">
           {showFull && latestVersion
             ? latestVersion.fullContent
             : ruleset.previewContent}
@@ -167,7 +167,7 @@ export default async function RulesetDetailPage({
 
       {/* Version history (author only) */}
       {accessState === "AUTHOR" && ruleset.versions.length > 0 && (
-        <div className="mb-6">
+        <div className="mb-8">
           <h2 className="text-lg font-semibold text-text-primary mb-2">Versions</h2>
           <div className="space-y-2">
             {ruleset.versions.map((v) => (

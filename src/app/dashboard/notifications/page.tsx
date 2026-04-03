@@ -34,10 +34,10 @@ export default async function DashboardNotificationsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Notifications</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Notifications</h1>
 
       {notifications.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {notifications.map((n) => {
             const data = n.data as Record<string, string>;
             return (
@@ -66,7 +66,7 @@ export default async function DashboardNotificationsPage() {
           })}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p>No notifications yet</p>
         </div>
       )}

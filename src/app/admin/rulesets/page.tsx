@@ -18,9 +18,9 @@ export default async function AdminRulesetsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Content Moderation</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Content Moderation</h1>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         {rulesets.map((r) => (
           <div key={r.id} className="card p-4 flex items-center justify-between">
             <div>

@@ -31,10 +31,10 @@ export default async function DashboardAnalyticsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Analytics</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Analytics</h1>
 
       {/* Overview cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
         <div className="card p-4">
           <p className="text-xs text-text-tertiary uppercase tracking-wider mb-1">Earnings</p>
           <p className="text-2xl font-bold text-accent-green">${(user?.totalEarnings || 0).toFixed(2)}</p>
@@ -56,7 +56,7 @@ export default async function DashboardAnalyticsPage() {
       {/* Top rulesets */}
       <h2 className="text-lg font-semibold text-text-primary mb-4">Top Rulesets</h2>
       {rulesets.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {rulesets.map((r) => (
             <div key={r.id} className="card p-4 flex items-center justify-between">
               <div>
@@ -75,7 +75,7 @@ export default async function DashboardAnalyticsPage() {
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p>No rulesets yet. Publish one to see analytics!</p>
         </div>
       )}

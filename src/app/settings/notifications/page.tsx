@@ -26,8 +26,8 @@ export default async function NotificationPreferencesPage() {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-text-primary mb-4">Notification Preferences</h2>
-      <p className="text-sm text-text-tertiary mb-6">Choose which notifications you want to receive.</p>
+      <h2 className="text-lg font-semibold text-text-primary mb-6">Notification Preferences</h2>
+      <p className="text-sm text-text-tertiary mb-8">Choose which notifications you want to receive.</p>
 
       <div className="space-y-4">
         {NOTIFICATION_TYPES.map((nt) => {

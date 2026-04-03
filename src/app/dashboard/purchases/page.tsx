@@ -15,10 +15,10 @@ export default async function DashboardPurchasesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">My Purchases</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">My Purchases</h1>
 
       {purchases.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {purchases.map((p) => (
             <div key={p.id} className="card p-4 flex items-center justify-between">
               <div>
@@ -46,7 +46,7 @@ export default async function DashboardPurchasesPage() {
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p className="mb-4">You haven&apos;t purchased any rulesets yet</p>
           <Link href="/search" className="text-accent-green hover:underline">
             Browse the marketplace

@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "New Ruleset — Ruleset" };
 export default function NewRulesetPage() {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Publish New Ruleset</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Publish New Ruleset</h1>
       <RulesetForm />
     </div>
   );

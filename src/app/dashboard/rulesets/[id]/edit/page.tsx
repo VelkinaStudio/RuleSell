@@ -25,7 +25,7 @@ export default async function EditRulesetPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-6">Edit Ruleset</h1>
+      <h1 className="text-2xl font-semibold text-text-primary mb-8">Edit Ruleset</h1>
       <RulesetForm
         initial={{
           id: ruleset.id,

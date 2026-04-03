@@ -30,7 +30,7 @@ export default async function DashboardRulesetsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-semibold text-text-primary">My Rulesets</h1>
         <Link href="/dashboard/rulesets/new">
           <Button size="sm">New Ruleset</Button>
@@ -38,7 +38,7 @@ export default async function DashboardRulesetsPage() {
       </div>
 
       {rulesets.length > 0 ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {rulesets.map((r) => (
             <div key={r.id} className="card p-4 flex items-center justify-between">
               <div>
@@ -62,7 +62,7 @@ export default async function DashboardRulesetsPage() {
           ))}
         </div>
       ) : (
-        <div className="card p-8 text-center text-text-tertiary">
+        <div className="card py-16 text-center text-text-tertiary">
           <p className="mb-4">You haven&apos;t published any rulesets yet</p>
           <Link href="/dashboard/rulesets/new">
             <Button>Create your first ruleset</Button>
