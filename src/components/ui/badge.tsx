@@ -16,16 +16,11 @@ const variantStyles: Record<BadgeVariant, string> = {
 };
 
 export function Badge({ children, variant = "default", className = "" }: BadgeProps) {
-  return (
-    <span
-      className={`
-        inline-flex items-center px-2 py-0.5 text-[10px] font-medium
-        rounded-md border uppercase tracking-[0.08em]
-        ${variantStyles[variant]}
-        ${className}
-      `}
-    >
-      {children}
-    </span>
-  );
+  const classes = [
+    "inline-flex items-center px-2 py-0.5 text-[10px] font-medium rounded-md border uppercase tracking-[0.08em]",
+    variantStyles[variant],
+    className,
+  ].filter(Boolean).join(" ");
+
+  return <span className={classes}>{children}</span>;
 }

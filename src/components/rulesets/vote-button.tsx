@@ -56,14 +56,12 @@ export function VoteButton({ rulesetId, initialVoted, initialCount }: VoteButton
   return (
     <button
       onClick={handleVote}
-      className={`
-        inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium
-        border transition-colors
-        ${voted
+      className={[
+        "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium border transition-colors",
+        voted
           ? "border-accent-green/30 bg-accent-green-subtle text-accent-green"
-          : "border-border-secondary text-text-secondary hover:border-border-hover hover:text-text-primary"
-        }
-      `}
+          : "border-border-secondary text-text-secondary hover:border-border-hover hover:text-text-primary",
+      ].join(" ")}
     >
       <svg className="w-4 h-4" fill={voted ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />

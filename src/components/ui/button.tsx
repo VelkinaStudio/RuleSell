@@ -27,20 +27,17 @@ const sizeStyles: Record<ButtonSize, string> = {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", size = "md", className = "", disabled, ...props }, ref) => {
+    const classes = [
+      "inline-flex items-center justify-center rounded-lg",
+      "transition-all duration-200 cursor-pointer tracking-wide",
+      "disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none",
+      variantStyles[variant],
+      sizeStyles[size],
+      className,
+    ].filter(Boolean).join(" ");
+
     return (
-      <button
-        ref={ref}
-        disabled={disabled}
-        className={`
-          inline-flex items-center justify-center rounded-lg
-          transition-all duration-200 cursor-pointer tracking-wide
-          disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none
-          ${variantStyles[variant]}
-          ${sizeStyles[size]}
-          ${className}
-        `}
-        {...props}
-      />
+      <button ref={ref} disabled={disabled} className={classes} {...props} />
     );
   },
 );

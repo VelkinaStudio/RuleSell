@@ -19,16 +19,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           id={inputId}
-          className={`
-            w-full px-3 py-2 rounded-md text-sm
-            bg-bg-tertiary border border-border-primary
-            text-text-primary placeholder-text-tertiary
-            focus:outline-none focus:border-accent-green focus:ring-1 focus:ring-accent-green/30
-            disabled:opacity-50 disabled:cursor-not-allowed
-            transition-colors
-            ${error ? "border-status-error focus:border-status-error focus:ring-status-error/30" : ""}
-            ${className}
-          `}
+          className={[
+            "w-full px-3 py-2 rounded-md text-sm bg-bg-tertiary border border-border-primary text-text-primary placeholder-text-tertiary",
+            "focus:outline-none focus:border-accent-green focus:ring-1 focus:ring-accent-green/30",
+            "disabled:opacity-50 disabled:cursor-not-allowed transition-colors",
+            error ? "border-status-error focus:border-status-error focus:ring-status-error/30" : "",
+            className,
+          ].filter(Boolean).join(" ")}
           {...props}
         />
         {error && <p className="text-sm text-status-error">{error}</p>}
