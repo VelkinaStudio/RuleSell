@@ -3,6 +3,8 @@ import { db } from "@/lib/db";
 import { getRulesetBySlug } from "@/lib/rulesets/queries";
 import { resolveAccessState, canViewFullContent } from "@/lib/rulesets/access";
 import { VoteButton } from "@/components/rulesets/vote-button";
+import { BuyButton } from "@/components/rulesets/buy-button";
+import { DownloadButton } from "@/components/rulesets/download-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -128,15 +130,22 @@ export default async function RulesetDetailPage({
         </div>
         {!showFull && (
           <div className="mt-4 text-center">
-            {accessState === "PUBLIC" ? (
+            {accessState === "PUBLIC" && !session?.user ? (
               <Link href="/login">
                 <Button>{ruleset.price > 0 ? "Sign in to buy" : "Sign in to download"}</Button>
               </Link>
-            ) : accessState === "FREE_DOWNLOAD" ? (
-              <Button>Get (Free)</Button>
             ) : (
-              <Button>Buy ${ruleset.price.toFixed(2)}</Button>
+              <BuyButton rulesetId={ruleset.id} price={ruleset.price} accessState={accessState} />
             )}
+          </div>
+        )}
+        {showFull && latestVersion && latestVersion.fileBundles && latestVersion.fileBundles.length > 0 && (
+          <div className="mt-4">
+            <DownloadButton
+              rulesetId={ruleset.id}
+              versionId={latestVersion.id}
+              hasFiles={latestVersion.fileBundles.length > 0}
+            />
           </div>
         )}
       </div>

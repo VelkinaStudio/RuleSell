@@ -137,7 +137,7 @@ export async function getRulesetBySlug(slug: string) {
     include: {
       author: { select: { id: true, username: true, name: true, avatar: true, bio: true } },
       tags: { select: { tag: { select: { id: true, name: true } } } },
-      versions: { orderBy: { createdAt: "desc" }, take: 5 },
+      versions: { orderBy: { createdAt: "desc" }, take: 5, include: { fileBundles: true } },
       _count: { select: { votes: true, reviews: true } },
     },
   });
