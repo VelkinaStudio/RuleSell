@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { listRulesets } from "@/lib/rulesets/queries";
 import { RulesetCard } from "@/components/rulesets/ruleset-card";
+import { FollowButton } from "@/components/social/follow-button";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -45,6 +46,15 @@ export default async function CreatorProfilePage({
     session?.user?.id,
   );
 
+  let isFollowing = false;
+  const isOwnProfile = session?.user?.id === user.id;
+  if (session?.user && !isOwnProfile) {
+    const follow = await db.follow.findUnique({
+      where: { followerId_followingId: { followerId: session.user.id, followingId: user.id } },
+    });
+    isFollowing = !!follow;
+  }
+
   return (
     <div className="p-6 max-w-4xl">
       {/* Profile header */}
@@ -56,8 +66,13 @@ export default async function CreatorProfilePage({
             user.name[0]?.toUpperCase() || "U"
           )}
         </div>
-        <div>
-          <h1 className="text-xl font-semibold text-text-primary">{user.name}</h1>
+        <div className="flex-1">
+          <div className="flex items-center gap-3">
+            <h1 className="text-xl font-semibold text-text-primary">{user.name}</h1>
+            {!isOwnProfile && (
+              <FollowButton userId={user.id} initialFollowing={isFollowing} />
+            )}
+          </div>
           <p className="text-sm text-text-tertiary">@{user.username}</p>
           {user.bio && <p className="text-sm text-text-secondary mt-2">{user.bio}</p>}
           <div className="flex items-center gap-4 text-sm text-text-tertiary mt-2">

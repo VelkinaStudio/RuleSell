@@ -5,6 +5,9 @@ import { resolveAccessState, canViewFullContent } from "@/lib/rulesets/access";
 import { VoteButton } from "@/components/rulesets/vote-button";
 import { BuyButton } from "@/components/rulesets/buy-button";
 import { DownloadButton } from "@/components/rulesets/download-button";
+import { ReviewList } from "@/components/reviews/review-list";
+import { ReviewForm } from "@/components/reviews/review-form";
+import { getReviewsForRuleset } from "@/lib/reviews/queries";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -152,7 +155,7 @@ export default async function RulesetDetailPage({
 
       {/* Version history (author only) */}
       {accessState === "AUTHOR" && ruleset.versions.length > 0 && (
-        <div>
+        <div className="mb-6">
           <h2 className="text-lg font-semibold text-text-primary mb-2">Versions</h2>
           <div className="space-y-2">
             {ruleset.versions.map((v) => (
@@ -171,6 +174,26 @@ export default async function RulesetDetailPage({
           </div>
         </div>
       )}
+
+      {/* Reviews */}
+      <ReviewsSection rulesetId={ruleset.id} accessState={accessState} userId={session?.user?.id} />
+    </div>
+  );
+}
+
+async function ReviewsSection({ rulesetId, accessState, userId }: { rulesetId: string; accessState: string; userId?: string }) {
+  const { reviews } = await getReviewsForRuleset(rulesetId);
+  const canReview = userId && accessState !== "AUTHOR";
+
+  return (
+    <div>
+      <h2 className="text-lg font-semibold text-text-primary mb-4">Reviews</h2>
+      {canReview && (
+        <div className="mb-6">
+          <ReviewForm rulesetId={rulesetId} />
+        </div>
+      )}
+      <ReviewList reviews={reviews.map((r) => ({ ...r, createdAt: r.createdAt.toISOString() }))} />
     </div>
   );
 }
