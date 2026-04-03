@@ -21,10 +21,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const ruleset = await getRulesetBySlug(slug);
-  if (!ruleset) return { title: "Not Found — Ruleset" };
+  if (!ruleset) return { title: "Not Found" };
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://ruleset.ai";
   return {
-    title: `${ruleset.title} — Ruleset`,
+    title: ruleset.title,
     description: ruleset.description,
+    openGraph: {
+      title: ruleset.title,
+      description: ruleset.description,
+      images: [`${appUrl}/api/og/${slug}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ruleset.title,
+      description: ruleset.description,
+      images: [`${appUrl}/api/og/${slug}`],
+    },
   };
 }
 

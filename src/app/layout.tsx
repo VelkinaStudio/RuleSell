@@ -14,9 +14,26 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ruleset — AI Configuration Marketplace",
+  title: {
+    default: "Ruleset — AI Configuration Marketplace",
+    template: "%s — Ruleset",
+  },
   description:
     "Buy, sell, and share system prompts, Cursor rules, n8n workflows, and agent blueprints. The stack behind the best AI builders.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://ruleset.ai"),
+  openGraph: {
+    type: "website",
+    siteName: "Ruleset",
+    title: "Ruleset — AI Configuration Marketplace",
+    description: "Buy, sell, and share system prompts, Cursor rules, n8n workflows, and agent blueprints.",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
