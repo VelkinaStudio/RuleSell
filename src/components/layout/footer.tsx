@@ -9,8 +9,8 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-primary py-6 px-4">
-      <div className="flex flex-col items-center gap-3">
+    <footer className="border-t border-border-primary py-8 px-6 md:px-8">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
         <nav className="flex items-center gap-6">
           {footerLinks.map((link) => (
             <Link

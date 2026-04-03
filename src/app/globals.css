@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Background — deeper, richer blacks */
-  --color-bg-primary: #050505;
-  --color-bg-secondary: #0c0c0c;
-  --color-bg-tertiary: #151515;
-  --color-bg-elevated: #1c1c1c;
+  /* Background — layered depth */
+  --color-bg-primary: #060606;
+  --color-bg-secondary: #0e0e0e;
+  --color-bg-tertiary: #161616;
+  --color-bg-elevated: #1e1e1e;
 
-  /* Borders — slightly warmer */
-  --color-border-primary: #1e1e1e;
-  --color-border-secondary: #2a2a2a;
-  --color-border-hover: #3a3a3a;
+  /* Borders */
+  --color-border-primary: #1a1a1a;
+  --color-border-secondary: #262626;
+  --color-border-hover: #383838;
 
-  /* Text — crisper hierarchy */
-  --color-text-primary: #ebebeb;
-  --color-text-secondary: #8a8a8a;
-  --color-text-tertiary: #555555;
-  --color-text-inverse: #050505;
+  /* Text — 4-tier hierarchy with clear contrast steps */
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #8c8c8c;
+  --color-text-tertiary: #525252;
+  --color-text-inverse: #060606;
 
-  /* Accent — Mint/Emerald (richer than flat green) */
+  /* Accent — Mint */
   --color-accent-green: #34d399;
   --color-accent-green-hover: #2cc48a;
-  --color-accent-green-subtle: rgba(52, 211, 153, 0.08);
+  --color-accent-green-subtle: rgba(52, 211, 153, 0.07);
 
-  /* Accent — Violet (deeper) */
+  /* Accent — Violet */
   --color-accent-purple: #a78bfa;
   --color-accent-purple-hover: #8b5cf6;
-  --color-accent-purple-subtle: rgba(167, 139, 250, 0.08);
+  --color-accent-purple-subtle: rgba(167, 139, 250, 0.07);
 
-  /* Accent — Amber (warm tertiary) */
+  /* Accent — Amber */
   --color-accent-amber: #fbbf24;
-  --color-accent-amber-subtle: rgba(251, 191, 36, 0.08);
+  --color-accent-amber-subtle: rgba(251, 191, 36, 0.07);
 
   /* Status */
   --color-status-success: #34d399;
@@ -38,142 +38,90 @@
   --color-status-error: #f87171;
   --color-status-info: #60a5fa;
 
-  /* Fonts — Geist family */
+  /* Fonts */
   --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), "SF Mono", monospace;
 }
 
+/* ── Base ──────────────────────────────────────────── */
+
 @layer base {
   html {
     color-scheme: dark;
+    font-size: 16px;
   }
 
   body {
     @apply bg-bg-primary text-text-primary antialiased;
-    background-image:
-      radial-gradient(rgba(52, 211, 153, 0.03) 1px, transparent 1px);
-    background-size: 24px 24px;
+    letter-spacing: -0.011em;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
+  ::-webkit-scrollbar { @apply w-1.5; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border-secondary rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-border-hover; }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-border-secondary rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-border-hover;
-  }
-
-  /* Selection */
   ::selection {
     background: rgba(52, 211, 153, 0.15);
     color: #fff;
   }
 }
 
+/* ── Components ────────────────────────────────────── */
+
 @layer components {
+
+  /* Content container — enforces max line-length for readability */
+  .container-page {
+    @apply max-w-6xl mx-auto px-6 md:px-8;
+  }
+
+  /* Cards — 8pt internal padding, clear visual boundary */
   .card {
-    @apply bg-bg-secondary/80 border border-border-primary rounded-xl backdrop-blur-sm;
+    @apply bg-bg-secondary border border-border-primary rounded-2xl;
   }
 
   .card-hover {
-    @apply bg-bg-secondary/80 border border-border-primary rounded-xl backdrop-blur-sm
-           transition-all duration-300 ease-out
-           hover:border-accent-green/20 hover:shadow-[0_0_20px_rgba(52,211,153,0.04)]
-           hover:-translate-y-0.5;
+    @apply bg-bg-secondary border border-border-primary rounded-2xl
+           transition-all duration-250 ease-out
+           hover:border-border-hover hover:bg-bg-tertiary/40;
   }
 
-  /* Gradient text utility */
-  .text-gradient {
-    background: linear-gradient(135deg, #34d399 0%, #a78bfa 50%, #fbbf24 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Section spacer — consistent vertical rhythm (64px between sections) */
+  .section-gap {
+    @apply py-16;
   }
 
-  .text-gradient-green {
-    background: linear-gradient(135deg, #34d399 0%, #6ee7b7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Divider */
+  .divider {
+    @apply h-px bg-border-primary;
   }
 
-  /* Glow effects */
-  .glow-green {
-    box-shadow: 0 0 30px rgba(52, 211, 153, 0.1), 0 0 60px rgba(52, 211, 153, 0.05);
-  }
-
-  .glow-green-sm {
-    box-shadow: 0 0 15px rgba(52, 211, 153, 0.08);
-  }
-
-  /* Staggered animation */
-  .stagger-in {
-    animation: staggerFadeIn 0.5s ease-out both;
-  }
-
-  @keyframes staggerFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Noise texture overlay for sections */
-  .noise-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    pointer-events: none;
-    border-radius: inherit;
-  }
-
-  /* Divider with fade */
   .divider-fade {
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(52, 211, 153, 0.15), transparent);
+    background: linear-gradient(to right, transparent, var(--color-border-secondary), transparent);
   }
 
-  /* Shimmer loading */
-  .shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(52, 211, 153, 0.03) 50%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s ease-in-out infinite;
+  /* Staggered entrance */
+  .stagger-in {
+    animation: fadeUp 0.45s ease-out both;
   }
 
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
+/* ── Utilities ─────────────────────────────────────── */
+
 @layer utilities {
-  /* Stagger delay utilities for child animation */
-  .delay-1 { animation-delay: 0.05s; }
-  .delay-2 { animation-delay: 0.1s; }
-  .delay-3 { animation-delay: 0.15s; }
-  .delay-4 { animation-delay: 0.2s; }
-  .delay-5 { animation-delay: 0.25s; }
-  .delay-6 { animation-delay: 0.3s; }
-  .delay-7 { animation-delay: 0.35s; }
-  .delay-8 { animation-delay: 0.4s; }
+  .delay-1 { animation-delay: 0.06s; }
+  .delay-2 { animation-delay: 0.12s; }
+  .delay-3 { animation-delay: 0.18s; }
+  .delay-4 { animation-delay: 0.24s; }
+  .delay-5 { animation-delay: 0.30s; }
+  .delay-6 { animation-delay: 0.36s; }
+
+  .text-balance { text-wrap: balance; }
 }

@@ -16,8 +16,8 @@ export function Header() {
   const { data: session } = useSession();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border-primary/60 bg-bg-primary/70 backdrop-blur-xl">
-      <div className="flex items-center justify-between h-14 px-5">
+    <header className="sticky top-0 z-40 border-b border-border-primary bg-bg-primary/80 backdrop-blur-xl">
+      <div className="max-w-6xl mx-auto flex items-center justify-between h-16 px-6 md:px-8">
         {/* Logo + Nav */}
         <div className="flex items-center gap-7">
           <MobileNav />
