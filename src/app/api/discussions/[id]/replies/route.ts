@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { createNotification } from "@/lib/notifications";
+import { createReplySchema } from "@/lib/validations/discussions";
 
 export async function POST(
   req: NextRequest,
@@ -14,9 +15,14 @@ export async function POST(
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { bodyText, parentReplyId } = body;
 
-    if (!bodyText) return errors.validation("Body is required");
+    const parsed = createReplySchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { bodyText, parentReplyId } = parsed.data;
 
     const discussion = await db.discussion.findUnique({
       where: { id: discussionId },

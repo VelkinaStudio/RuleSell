@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { slugify } from "@/lib/slugify";
+import { createDiscussionSchema } from "@/lib/validations/discussions";
 
 export async function GET(req: NextRequest) {
   try {
@@ -42,11 +43,14 @@ export async function POST(req: NextRequest) {
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { title, bodyText, category, rulesetId } = body;
 
-    if (!title || !bodyText || !category) {
-      return errors.validation("title, body, and category are required");
+    const parsed = createDiscussionSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
     }
+    const { title, bodyText, category, rulesetId } = parsed.data;
 
     let slug = slugify(title);
     const existing = await db.discussion.findUnique({
@@ -61,7 +65,7 @@ export async function POST(req: NextRequest) {
         body: bodyText,
         category,
         authorId: session.user.id,
-        rulesetId: rulesetId || null,
+        rulesetId: rulesetId ?? null,
       },
       include: {
         author: { select: { id: true, username: true, name: true, avatar: true } },

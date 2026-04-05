@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { getRulesetById } from "@/lib/rulesets/queries";
 import { resolveAccessState, canViewFullContent } from "@/lib/rulesets/access";
+import { updateRulesetSchema } from "@/lib/validations/rulesets";
 
 export async function GET(
   _req: NextRequest,
@@ -51,7 +52,14 @@ export async function PATCH(
     if (ruleset.authorId !== session.user.id) return errors.forbidden("Only the author can edit");
 
     const body = await req.json();
-    const { title, description, previewContent, type, platform, category, price, status } = body;
+
+    const parsed = updateRulesetSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { title, description, previewContent, type, platform, category, price, status } = parsed.data;
 
     const updated = await db.ruleset.update({
       where: { id },

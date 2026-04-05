@@ -3,31 +3,19 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { sendVerificationEmail } from "@/lib/email";
+import { registerSchema } from "@/lib/validations/auth";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password, name, username } = body;
 
-    if (!email || !password || !name || !username) {
-      return errors.validation("All fields are required", {
-        fields: ["email", "password", "name", "username"],
+    const parsed = registerSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
       });
     }
-
-    if (password.length < 8) {
-      return errors.validation("Password must be at least 8 characters");
-    }
-
-    if (!/^[a-zA-Z0-9_-]+$/.test(username)) {
-      return errors.validation(
-        "Username can only contain letters, numbers, hyphens, and underscores",
-      );
-    }
-
-    if (username.length < 3 || username.length > 30) {
-      return errors.validation("Username must be between 3 and 30 characters");
-    }
+    const { email, password, name, username } = parsed.data;
 
     const existingEmail = await db.user.findUnique({ where: { email } });
     if (existingEmail) {

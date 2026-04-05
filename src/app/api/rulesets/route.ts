@@ -5,6 +5,7 @@ import { success, list, errors } from "@/lib/api/response";
 import { paginationFromCursor } from "@/lib/api/response";
 import { listRulesets } from "@/lib/rulesets/queries";
 import { slugify } from "@/lib/slugify";
+import { createRulesetSchema } from "@/lib/validations/rulesets";
 
 export async function GET(req: NextRequest) {
   try {
@@ -39,11 +40,14 @@ export async function POST(req: NextRequest) {
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { title, description, previewContent, type, platform, category, price, content, tags } = body;
 
-    if (!title || !description || !previewContent || !type || !platform || !category) {
-      return errors.validation("Missing required fields");
+    const parsed = createRulesetSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
     }
+    const { title, description, previewContent, type, platform, category, price, content, tags } = parsed.data;
 
     let slug = slugify(title);
     const existing = await db.ruleset.findUnique({ where: { slug } });
@@ -60,7 +64,7 @@ export async function POST(req: NextRequest) {
         type,
         platform,
         category,
-        price: price || 0,
+        price: price ?? 0,
         authorId: session.user.id,
         status: "DRAFT",
         versions: content

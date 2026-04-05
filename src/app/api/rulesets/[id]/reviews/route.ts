@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { getReviewsForRuleset, recalculateAvgRating } from "@/lib/reviews/queries";
 import { createNotification } from "@/lib/notifications";
+import { reviewSchema } from "@/lib/validations/engagement";
 
 export async function GET(
   req: NextRequest,
@@ -30,10 +31,14 @@ export async function POST(
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { rating, comment } = body;
 
-    if (!rating || rating < 1 || rating > 5) return errors.validation("Rating must be 1-5");
-    if (!comment || comment.trim().length < 1) return errors.validation("Comment is required");
+    const parsed = reviewSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { rating, comment } = parsed.data;
 
     const existing = await db.review.findFirst({
       where: { userId: session.user.id, rulesetId },

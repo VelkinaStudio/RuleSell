@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
+import { updateCollectionSchema } from "@/lib/validations/collections";
 
 export async function PATCH(
   req: NextRequest,
@@ -17,7 +18,14 @@ export async function PATCH(
     if (collection.userId !== session.user.id) return errors.forbidden("Not your collection");
 
     const body = await req.json();
-    const { name, description, isPublic } = body;
+
+    const parsed = updateCollectionSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { name, description, isPublic } = parsed.data;
 
     const updated = await db.collection.update({
       where: { id },

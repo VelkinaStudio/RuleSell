@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, list, errors, paginationFromCursor } from "@/lib/api/response";
+import { saveSchema } from "@/lib/validations/engagement";
 
 export async function GET(req: NextRequest) {
   try {
@@ -45,9 +46,14 @@ export async function POST(req: NextRequest) {
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { rulesetId } = body;
 
-    if (!rulesetId) return errors.validation("rulesetId is required");
+    const parsed = saveSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { rulesetId } = parsed.data;
 
     const ruleset = await db.ruleset.findUnique({ where: { id: rulesetId }, select: { id: true } });
     if (!ruleset) return errors.notFound("Ruleset not found");

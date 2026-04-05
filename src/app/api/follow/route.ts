@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { createNotification } from "@/lib/notifications";
+import { followSchema } from "@/lib/validations/engagement";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,9 +11,15 @@ export async function POST(req: NextRequest) {
     if (!session?.user) return errors.unauthorized();
 
     const body = await req.json();
-    const { userId } = body;
 
-    if (!userId) return errors.validation("userId is required");
+    const parsed = followSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { userId } = parsed.data;
+
     if (userId === session.user.id) return errors.validation("Cannot follow yourself");
 
     const targetUser = await db.user.findUnique({ where: { id: userId }, select: { id: true } });
