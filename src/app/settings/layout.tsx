@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 const settingsNav = [
+  { href: "/settings/profile", label: "Profile" },
   { href: "/settings/notifications", label: "Notifications" },
   { href: "/settings/billing", label: "Billing" },
 ];
