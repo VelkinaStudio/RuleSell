@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
+import { rateLimit } from "@/lib/rate-limit";
 import { slugify } from "@/lib/slugify";
 import { createDiscussionSchema } from "@/lib/validations/discussions";
 
@@ -41,6 +42,9 @@ export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = rateLimit(`discussions:${session.user.id}`, 5, 60 * 1000); // 5 per minute
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
 

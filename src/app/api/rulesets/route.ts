@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, list, errors } from "@/lib/api/response";
 import { paginationFromCursor } from "@/lib/api/response";
+import { rateLimit } from "@/lib/rate-limit";
 import { listRulesets } from "@/lib/rulesets/queries";
 import { slugify } from "@/lib/slugify";
 import { createRulesetSchema } from "@/lib/validations/rulesets";
@@ -38,6 +39,9 @@ export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = rateLimit(`rulesets:create:${session.user.id}`, 10, 60 * 60 * 1000); // 10 per hour
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
 
