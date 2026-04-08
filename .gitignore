@@ -12,6 +12,11 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
+
+# local demo credentials (ephemeral tunnel accounts)
+/TEST_ACCOUNTS.md
 
 # next.js
 /.next/
