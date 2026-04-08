@@ -1,27 +1,38 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/mobile-nav";
 
 const navLinks = [
-  { href: "/", label: "Marketplace" },
+  { href: "/search", label: "Browse" },
   { href: "/trending", label: "Trending" },
-  { href: "/docs", label: "Docs" },
-  { href: "/discussions", label: "Community" },
+  { href: "/creators", label: "Creators" },
 ];
 
 export function Header() {
   const { data: session } = useSession();
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      setQuery("");
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-border-primary bg-bg-primary/80 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto flex items-center justify-between h-16 px-6 md:px-8">
         {/* Logo + Nav */}
-        <div className="flex items-center gap-7">
+        <div className="flex items-center gap-6">
           <MobileNav />
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight shrink-0">
             <span className="text-text-primary">Ruleset</span>
             <span className="w-2 h-2 rounded-full bg-accent-green shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
           </Link>
@@ -38,14 +49,30 @@ export function Header() {
           </nav>
         </div>
 
+        {/* Search — prominent, inline */}
+        <form onSubmit={handleSearch} className="hidden md:block flex-1 max-w-sm mx-6">
+          <div className="relative">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search prompts, rules, workflows..."
+              className="w-full h-9 pl-9 pr-4 bg-bg-tertiary/60 border border-border-primary rounded-lg text-sm text-text-primary placeholder:text-text-tertiary focus:border-accent-green/40 focus:outline-none focus:bg-bg-tertiary transition-colors"
+            />
+          </div>
+        </form>
+
         {/* Right side */}
-        <div className="flex items-center gap-2">
-          {/* Search */}
-          <button className="p-2 text-text-tertiary hover:text-text-primary rounded-lg hover:bg-bg-tertiary/60 transition-all">
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Mobile search link */}
+          <Link href="/search" className="md:hidden p-2 text-text-tertiary hover:text-text-primary rounded-lg hover:bg-bg-tertiary/60 transition-all">
             <svg className="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-          </button>
+          </Link>
 
           {session ? (
             <>
@@ -58,7 +85,7 @@ export function Header() {
 
               {/* Publish */}
               <Link href="/dashboard/rulesets/new">
-                <Button variant="outline" size="sm">
+                <Button variant="primary" size="sm">
                   Publish
                 </Button>
               </Link>
@@ -77,7 +104,7 @@ export function Header() {
               </Link>
               <Link href="/signup">
                 <Button variant="primary" size="sm">
-                  Get Started
+                  Start Selling
                 </Button>
               </Link>
             </>

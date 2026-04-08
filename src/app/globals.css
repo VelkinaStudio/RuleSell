@@ -111,6 +111,54 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Hero ambient glow */
+  .hero-glow {
+    position: absolute;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(52, 211, 153, 0.06) 0%,
+      rgba(167, 139, 250, 0.03) 30%,
+      transparent 60%
+    );
+    pointer-events: none;
+    filter: blur(80px);
+  }
+
+  /* Floating animation for proof panel */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Gradient border card (for CTA sections) */
+  .gradient-border {
+    position: relative;
+    border-radius: 1.5rem;
+    background: var(--color-bg-secondary);
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      rgba(52, 211, 153, 0.25) 0%,
+      rgba(167, 139, 250, 0.15) 50%,
+      rgba(251, 191, 36, 0.1) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
 /* ── Utilities ─────────────────────────────────────── */

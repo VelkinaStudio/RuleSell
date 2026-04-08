@@ -79,9 +79,6 @@ export function Sidebar() {
           <Link href="/settings" className="flex items-center gap-2 px-3 py-2 text-sm text-text-tertiary hover:text-text-secondary transition-colors">
             Settings
           </Link>
-          <Link href="/docs" className="flex items-center gap-2 px-3 py-2 text-sm text-text-tertiary hover:text-text-secondary transition-colors">
-            Support
-          </Link>
         </nav>
       </div>
     </aside>
