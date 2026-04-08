@@ -1,5 +1,8 @@
 "use client";
 
+// Placeholder kept for layout compatibility during the frontend rewrite.
+// Still enforces authentication via next-auth so gated routes work.
+
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -11,13 +14,6 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     },
   });
 
-  if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-6 h-6 border-2 border-accent-green border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
+  if (status === "loading") return null;
   return <>{children}</>;
 }

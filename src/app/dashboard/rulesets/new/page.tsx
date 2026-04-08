@@ -1,13 +1,13 @@
-import { RulesetForm } from "@/components/rulesets/ruleset-form";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "New Ruleset — Ruleset" };
+export const metadata: Metadata = {
+  title: "New ruleset",
+};
 
-export default function NewRulesetPage() {
+export default function Page() {
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-text-primary mb-8">Publish New Ruleset</h1>
-      <RulesetForm />
+    <div className="p-8 text-text-secondary">
+      Page: /dashboard/rulesets/new — replacement pending
     </div>
   );
 }
