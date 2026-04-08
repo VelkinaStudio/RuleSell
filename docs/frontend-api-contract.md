@@ -75,6 +75,7 @@ is below so the new api-client can cover them.
 - `/api/analytics/overview`
 - `/api/analytics/audience`
 - `/api/analytics/rulesets/:id`
+- `/api/users/:username` — public profile (see section below)
 - `/api/admin/stats`
 - `/api/admin/users` and `/api/admin/users/:id`
 - `/api/admin/rulesets` and `/api/admin/rulesets/:id`
@@ -101,6 +102,50 @@ is below so the new api-client can cover them.
 ### Webhooks
 
 - `/api/webhooks/lemonsqueezy` — server-to-server only, never called from the frontend.
+
+## `GET /api/users/:username` — public profile
+
+Returns the public profile for a user along with aggregate stats and a
+`isFollowing` flag scoped to the current viewer. Never exposes `email`,
+`passwordHash`, email-verification/reset tokens, `sellerStatus`,
+`lemonsqueezyCustomerId`, or `totalEarnings`.
+
+**Auth:** optional. Unauthenticated requests receive the same profile
+shape with `isFollowing: false`. Requests from the profile owner also
+receive `isFollowing: false` (self-follow is never true).
+
+**Response:**
+
+```ts
+{
+  data: {
+    id:         string;
+    username:   string;
+    name:       string;
+    avatar:     string | null;
+    bio:        string | null;
+    reputation: number;
+    role:       "USER" | "PRO" | "ADMIN";
+    createdAt:  string;           // ISO-8601
+    stats: {
+      rulesetCount:   number;     // count of PUBLISHED rulesets authored
+      totalDownloads: number;     // sum of downloadCount across published rulesets
+      totalSales:     number;     // count of COMPLETED purchases across the author's rulesets
+      followerCount:  number;     // users following this profile
+      followingCount: number;     // users this profile follows
+      avgRating:      number;     // avg of all reviews on the author's rulesets (0 if none)
+    };
+    isFollowing: boolean;         // false for self / unauthenticated / no follow record
+  }
+}
+```
+
+**Errors:**
+
+- `404 NOT_FOUND` when the username does not exist.
+
+**Consumed by:** `users.getProfile(username)` in `src/lib/api-client.ts`,
+wrapped by the `useProfile(username)` hook in `src/hooks/use-profile.ts`.
 
 ## Response envelope
 

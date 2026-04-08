@@ -1,11 +1,11 @@
 "use client";
 
 import useSWR from "swr";
-import { users, ApiError } from "@/lib/api-client";
+import { users, ApiError, type PublicProfile } from "@/lib/api-client";
 import { keys } from "@/lib/query-keys";
 
 export interface UseProfileResult {
-  data: unknown | null;
+  data: PublicProfile | null;
   isLoading: boolean;
   error: ApiError | null;
   mutate: () => Promise<unknown>;

@@ -265,6 +265,26 @@ export interface ReviewCreateInput {
   comment: string;
 }
 
+export interface PublicProfile {
+  id: string;
+  username: string;
+  name: string;
+  avatar: string | null;
+  bio: string | null;
+  reputation: number;
+  role: "USER" | "PRO" | "ADMIN";
+  createdAt: string;
+  stats: {
+    rulesetCount: number;
+    totalDownloads: number;
+    totalSales: number;
+    followerCount: number;
+    followingCount: number;
+    avgRating: number;
+  };
+  isFollowing: boolean;
+}
+
 export const reviews = {
   list(rulesetId: string, params: { page?: number; pageSize?: number } = {}) {
     return apiClientList<unknown>(
@@ -287,16 +307,15 @@ export const reviews = {
 
 export const users = {
   /**
-   * Public profile lookup by username.
-   *
-   * NOTE: the API does not currently expose `GET /api/users/:username`.
-   * The existing frontend fetches this via a server component reading
-   * Prisma directly (`src/app/(public)/u/[username]/page.tsx`). This
-   * helper is defined so the new client-side frontend has a
-   * forward-compatible shape — the API-side will need to add the route.
+   * Public profile lookup by username. Returns a typed profile payload
+   * with aggregate stats and a viewer-scoped `isFollowing` flag.
+   * Never exposes email or any private field.
+   * See `docs/frontend-api-contract.md` → "GET /api/users/:username".
    */
   getProfile(username: string) {
-    return apiClient<unknown>(`/api/users/${encodeURIComponent(username)}`);
+    return apiClient<PublicProfile>(
+      `/api/users/${encodeURIComponent(username)}`,
+    );
   },
   /** Current user's editable profile (server reads session internally). */
   getOwnProfile() {
