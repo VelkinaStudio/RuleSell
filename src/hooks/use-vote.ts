@@ -1,57 +1,29 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { votes, ApiError } from "@/lib/api-client";
-
-export interface VoteState {
-  voted: boolean;
-  voteCount: number;
-}
-
-export interface UseVoteResult {
-  data: VoteState | null;
-  isLoading: boolean;
-  error: ApiError | null;
-  /** Toggle the current user's vote with an optimistic update + rollback. */
-  mutate: () => Promise<void>;
-}
+import { votes } from "@/lib/api-client";
 
 /**
- * Optimistic vote toggle hook. Takes the initial voted state from the
- * parent render (usually provided on the ruleset card payload) and keeps
- * local state from there — no refetch round trip.
+ * Optimistic vote toggle. Flips currentUserVoted immediately, reverts on error.
  */
-export function useVote(
-  rulesetId: string,
-  initial: VoteState = { voted: false, voteCount: 0 },
-): UseVoteResult {
-  const [state, setState] = useState<VoteState>(initial);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<ApiError | null>(null);
+export function useVote(rulesetId: string, initialVoted: boolean) {
+  const [voted, setVoted] = useState(initialVoted);
+  const [isToggling, setIsToggling] = useState(false);
 
-  const mutate = useCallback(async () => {
-    const previous = state;
-    // Optimistic update
-    setState({
-      voted: !previous.voted,
-      voteCount: previous.voteCount + (previous.voted ? -1 : 1),
-    });
-    setIsLoading(true);
-    setError(null);
-
+  const toggle = useCallback(async () => {
+    if (isToggling) return;
+    setIsToggling(true);
+    const prev = voted;
+    setVoted(!prev); // optimistic
     try {
-      const next = await votes.toggle(rulesetId);
-      setState(next);
-    } catch (e) {
-      // Rollback
-      setState(previous);
-      if (e instanceof ApiError && !e.isUnauthorized) {
-        setError(e);
-      }
+      const res = await votes.toggle(rulesetId);
+      setVoted(res.voted);
+    } catch {
+      setVoted(prev); // revert
     } finally {
-      setIsLoading(false);
+      setIsToggling(false);
     }
-  }, [rulesetId, state]);
+  }, [rulesetId, voted, isToggling]);
 
-  return { data: state, isLoading, error, mutate };
+  return { voted, toggle, isToggling };
 }

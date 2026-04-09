@@ -1,0 +1,1116 @@
+{
+  "brand": {
+    "name": "RuleSell",
+    "tagline": "Doğrulanmış yapay zeka geliştirme varlıkları"
+  },
+  "nav": {
+    "browse": "Keşfet",
+    "collections": "Koleksiyonlar",
+    "leaderboard": "Lider Tablosu",
+    "sell": "Sat",
+    "search": "Ara",
+    "searchPlaceholder": "Doğrulanmış varlıkları ara...",
+    "signIn": "Giriş yap",
+    "signUp": "Kayıt ol",
+    "dashboard": "Panel",
+    "profile": "Profil",
+    "saved": "Kaydedilenler",
+    "settings": "Ayarlar",
+    "signOut": "Çıkış yap",
+    "browseAll": "Tümü",
+    "trending": "Trendler",
+    "new": "Yeni",
+    "top": "En İyi",
+    "free": "Ücretsiz",
+    "paid": "Ücretli",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "openSearch": "Aramayı aç"
+  },
+  "footer": {
+    "product": "Ürün",
+    "creators": "Üreticiler",
+    "company": "Şirket",
+    "legal": "Yasal",
+    "browse": "Keşfet",
+    "collections": "Koleksiyonlar",
+    "leaderboard": "Lider Tablosu",
+    "mcpServers": "MCP Sunucuları",
+    "rules": "Kurallar",
+    "skills": "Beceriler",
+    "sell": "Sat",
+    "creatorAgreement": "Üretici Sözleşmesi",
+    "qualityGuidelines": "Kalite Kuralları",
+    "docs": "Dokümanlar",
+    "about": "Hakkında",
+    "blog": "Blog",
+    "changelog": "Değişiklikler",
+    "contact": "İletişim",
+    "terms": "Şartlar",
+    "privacy": "Gizlilik",
+    "cookies": "Çerezler",
+    "acceptableUse": "Kabul Edilebilir Kullanım",
+    "dmca": "DMCA",
+    "accessibility": "Erişilebilirlik",
+    "transparency": "Şeffaflık",
+    "copyright": "© {year} RuleSell. Tüm hakları saklıdır.",
+    "gpcStatement": "Global Privacy Control (GPC) sinyalini dikkate alıyoruz.",
+    "sanctionStatement": "ABD/AB/İngiltere yasaları gereği yaptırım uygulanan bölgelerde sınırlıdır."
+  },
+  "cookie": {
+    "title": "Çerezler ve verileriniz",
+    "body": "Temel işlevler için çerez kullanıyoruz. İsteğe bağlı analiz, reklam ve kişiselleştirme çerezleri varsayılan olarak kapalıdır. Hangilerine izin vereceğinizi siz seçin.",
+    "acceptAll": "Tümünü kabul et",
+    "rejectAll": "Tümünü reddet",
+    "customize": "Özelleştir",
+    "save": "Tercihleri kaydet",
+    "essentialLabel": "Temel",
+    "essentialDescription": "Sitenin çalışması için gereklidir. Her zaman açıktır.",
+    "analyticsLabel": "Analitik",
+    "analyticsDescription": "Hangi sayfaların yararlı olduğunu anlamamıza yardımcı olur.",
+    "adsLabel": "Reklam",
+    "adsDescription": "Ücretli yerleşimleri ölçmek için kullanılır.",
+    "personalizationLabel": "Kişiselleştirme",
+    "personalizationDescription": "Önerileri kullandığınız araçlara göre uyarlar."
+  },
+  "ageGate": {
+    "title": "18 yaşında veya daha büyük olduğunuzu onaylayın",
+    "body": "RuleSell tüm kullanıcıların 18+ olmasını gerektirir. Vergi ve yaptırım uyumluluğu için ikamet ülkenizi de bilmemiz gerekir.",
+    "dateOfBirth": "Doğum tarihi",
+    "country": "İkamet ülkesi",
+    "submit": "Devam",
+    "underageError": "RuleSell'i kullanmak için en az 18 yaşında olmanız gerekir.",
+    "sanctionedError": "RuleSell şu anda bölgenizde kullanılamıyor."
+  },
+  "common": {
+    "appName": "RuleSet AI",
+    "tagline": "AI Yapılandırmaları Pazaryeri",
+    "search": "Ara",
+    "searchPlaceholder": "Kural setleri, yetenekler, MCP'ler, iş akışları ara...",
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol",
+    "signOut": "Çıkış Yap",
+    "getStarted": "Başla",
+    "learnMore": "Daha Fazla",
+    "viewAll": "Tümünü Gör",
+    "loading": "Yükleniyor...",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "submit": "Gönder",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "close": "Kapat",
+    "or": "veya",
+    "free": "Ücretsiz",
+    "popular": "Popüler",
+    "new": "Yeni",
+    "featured": "Öne Çıkan",
+    "verified": "Doğrulanmış",
+    "addToCart": "Sepete Ekle",
+    "buyNow": "Hemen Al",
+    "download": "İndir",
+    "preview": "Önizle",
+    "share": "Paylaş",
+    "report": "Bildir",
+    "language": "Dil",
+    "theme": "Tema",
+    "dark": "Koyu",
+    "light": "Açık",
+    "system": "Sistem"
+  },
+  "auth": {
+    "welcomeBack": "Tekrar Hoş Geldiniz",
+    "createAccount": "Hesabınızı Oluşturun",
+    "signInDesc": "Panelinize ve satın alımlarınıza erişmek için giriş yapın",
+    "signUpDesc": "AI yapılandırma pazaryerine katılın",
+    "email": "E-posta",
+    "password": "Şifre",
+    "confirmPassword": "Şifre Tekrar",
+    "name": "Ad Soyad",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "resetPassword": "Şifre Sıfırla",
+    "resetPasswordDesc": "E-postanızı girin, size sıfırlama bağlantısı gönderelim",
+    "sendResetLink": "Sıfırlama Bağlantısı Gönder",
+    "backToSignIn": "Giriş Sayfasına Dön",
+    "noAccount": "Hesabınız yok mu?",
+    "hasAccount": "Zaten hesabınız var mı?",
+    "continueWith": "ile devam et",
+    "google": "Google",
+    "github": "GitHub",
+    "agreeToTerms": "Kayıt olarak şunları kabul edersiniz:",
+    "termsOfService": "Kullanım Koşulları",
+    "and": "ve",
+    "privacyPolicy": "Gizlilik Politikası"
+  },
+  "dashboard": {
+    "nav": {
+      "sectionLabel": "Çalışma alanı",
+      "overview": "Genel bakış",
+      "rulesets": "Kural setleri",
+      "earnings": "Kazançlar",
+      "affiliates": "Ortaklık",
+      "purchases": "Satın alımlar",
+      "saved": "Kaydedilenler",
+      "following": "Takip edilenler",
+      "reviews": "Yorumlar",
+      "team": "Takım",
+      "settings": "Ayarlar",
+      "personaSeller": "Doğrulanmış Satıcı",
+      "personaBuilder": "Geliştirici",
+      "personaUser": "Üye",
+      "ariaLabel": "Panel gezintisi"
+    },
+    "crumbs": {
+      "dashboard": "Panel",
+      "overview": "Genel bakış",
+      "rulesets": "Kural setleri",
+      "earnings": "Kazançlar",
+      "affiliates": "Ortaklık",
+      "purchases": "Satın alımlar",
+      "saved": "Kaydedilenler",
+      "following": "Takip edilenler",
+      "reviews": "Yorumlar",
+      "team": "Takım",
+      "settings": "Ayarlar",
+      "seller": "Satıcı",
+      "privacy": "Gizlilik",
+      "billing": "Faturalandırma",
+      "new": "Yeni",
+      "edit": "Düzenle",
+      "analytics": "Analitik",
+      "ariaLabel": "İçerik haritası"
+    },
+    "gate": {
+      "title": "Panele erişmek için giriş yapın",
+      "description": "Panel kimliği doğrulanmış kullanıcılar içindir. v1'de istediğiniz personayı önizleyebilirsiniz.",
+      "signIn": "Giriş yap",
+      "switchPersona": "Personayı değiştir"
+    },
+    "overview": {
+      "title": "Genel bakış",
+      "subtitle": "Son 30 gün, tek bakışta.",
+      "installs30d": "Kurulumlar (30g)",
+      "revenue30d": "Gelir (30g)",
+      "avgRating": "Ortalama puan",
+      "publishedCount": "Yayınlanan",
+      "totalRulesets": "Yayınlanan kural setleri",
+      "totalInstalls": "Toplam kurulum",
+      "totalRevenue": "Toplam gelir",
+      "deltaPositive": "Son 30 güne göre %{value}",
+      "deltaNegative": "Son 30 güne göre %{value}",
+      "activityTitle": "Son etkinlikler",
+      "activityEmpty": "İnsanlar çalışmanızı kurdukça, yorumladıkça ve satın aldıkça etkinlik burada görünecek.",
+      "activityViewAll": "Tüm etkinlikleri görüntüle",
+      "kindInstall": "{target} için {count} yeni kurulum",
+      "kindReview": "{target} için yeni yorum",
+      "kindPurchase": "{target} satın alındı",
+      "kindFollow": "{actor} sizi takip etmeye başladı",
+      "quickActions": "Hızlı eylemler",
+      "quickActionPublish": "Kural seti yayınla",
+      "quickActionEditProfile": "Profili düzenle",
+      "quickActionViewMarket": "Pazarı görüntüle"
+    },
+    "rulesets": {
+      "title": "Kural setleriniz",
+      "subtitle": "Yayınladığınız veya hâlâ taslakta olan her şey.",
+      "newButton": "Yeni kural seti",
+      "tabs": {
+        "all": "Tümü",
+        "published": "Yayında",
+        "draft": "Taslak",
+        "pending": "İncelemede",
+        "unpublished": "Yayından kaldırılmış"
+      },
+      "columns": {
+        "title": "Başlık",
+        "status": "Durum",
+        "quality": "Kalite",
+        "installs": "Kurulumlar",
+        "revenue": "Gelir",
+        "updated": "Güncellendi",
+        "actions": "Eylemler"
+      },
+      "status": {
+        "DRAFT": "Taslak",
+        "PENDING_REVIEW": "İncelemede",
+        "PUBLISHED": "Yayında",
+        "UNPUBLISHED": "Kaldırılmış",
+        "REMOVED": "Silinmiş"
+      },
+      "actionsLabel": "Eylem menüsünü aç",
+      "actionView": "Genel sayfayı gör",
+      "actionEdit": "Düzenle",
+      "actionAnalytics": "Analitik",
+      "actionUnpublish": "Yayından kaldır",
+      "actionDelete": "Sil",
+      "bulk": {
+        "selectedCount": "{count} seçildi",
+        "publish": "Yayınla",
+        "unpublish": "Kaldır",
+        "delete": "Sil",
+        "clear": "Temizle",
+        "selectAllRows": "Tüm satırları seç"
+      },
+      "empty": {
+        "title": "Henüz kural seti yok",
+        "description": "Geliştiriciler ücretsiz öğeler yayınlar. Satıcılar 50 doğrulanmış kurulumdan sonra ücretli öğelerin kilidini açar.",
+        "cta": "İlk kural setinizi yayınlayın"
+      },
+      "emptyFiltered": {
+        "title": "Bu görünümde kural seti yok",
+        "description": "Farklı bir durum sekmesi deneyin veya yeni bir öğe yayınlayın."
+      },
+      "submittedToast": "İncelemeye gönderildi. Ekibimiz 72 saat içinde bakacak."
+    },
+    "earnings": {
+      "title": "Kazançlar",
+      "subtitle": "Gelir, kurulumlar ve ödemeler tek bakışta.",
+      "lifetime": "Toplam gelir",
+      "pending": "Bekleyen ödeme",
+      "next": "Sonraki ödeme tarihi",
+      "minPayout": "Sonraki ödeme: {min} alt sınırından {current}",
+      "chartTitle": "Gelir (son 90 gün)",
+      "chartLegendRevenue": "Gelir",
+      "chartLegendInstalls": "Kurulumlar",
+      "chartEmpty": "Kazançlar ilk satıştan sonra burada görünecek.",
+      "payoutsTitle": "Ödeme geçmişi",
+      "payoutPeriod": "Dönem",
+      "payoutAmount": "Tutar",
+      "payoutStatus": "Durum",
+      "payoutPaidAt": "Ödendi",
+      "payoutEmpty": "Henüz ödeme yok.",
+      "statusPending": "Beklemede",
+      "statusPaid": "Ödendi",
+      "statusFailed": "Başarısız",
+      "lockedTitle": "Kazançların kilidini açmak için Satıcı olun",
+      "lockedDescription": "Kazançlar 50 doğrulanmış kurulum ve Tüccar KYC doğrulamasından sonra açılır. Ücretsiz Geliştiriciler KYC'yi tamamen atlar.",
+      "lockedCta": "KYC'yi başlat"
+    },
+    "purchases": {
+      "title": "Satın alımlar",
+      "subtitle": "Satın aldığınız her şey, kuruluma hazır.",
+      "openInstall": "Kurulumu aç",
+      "purchasedOn": "{date} tarihinde satın alındı",
+      "empty": {
+        "title": "Henüz bir şey yok",
+        "description": "Ödemeye değer araçlar bulmak için ücretli öğelere göz atın.",
+        "cta": "Ücretlileri keşfet"
+      }
+    },
+    "saved": {
+      "title": "Kaydedilenler",
+      "subtitle": "Pazardaki yer imleriniz.",
+      "remove": "Kaldır",
+      "empty": {
+        "title": "Gezinirken öğeleri yer imlerine ekleyin",
+        "description": "Pazarda yer imine eklediğiniz her şey burada birikecek.",
+        "cta": "Pazara göz at"
+      }
+    },
+    "following": {
+      "title": "Takip edilenler",
+      "subtitle": "Yeni yayınları akışınıza düşen üreticiler.",
+      "unfollow": "Takipten çıkar",
+      "latest": "En son:",
+      "noLatest": "Henüz herkese açık öğe yok",
+      "empty": {
+        "title": "Yeni yayınlar için üreticileri takip edin",
+        "description": "Üreticiler yeni kural seti, MCP veya beceri yayınladıklarında burada ilk siz görürsünüz.",
+        "cta": "Üreticileri keşfet"
+      }
+    },
+    "reviews": {
+      "title": "Yorumlar",
+      "subtitle": "Yazdığınız doğrulanmış kurulum yorumları.",
+      "edit": "Düzenle",
+      "delete": "Sil",
+      "verifiedOn": "{env} üzerinde doğrulanmış kurulum",
+      "empty": {
+        "title": "Henüz yorum yok",
+        "description": "Yalnızca Sertifikalı Geliştiriciler doğrulanmış kurulum yorumları yazabilir. 200 itibara ulaşın, üç sertifikalı geliştirici tarafından önerilin veya personel onayı alın.",
+        "cta": "Kural setlerine göz at"
+      }
+    },
+    "team": {
+      "title": "Takım",
+      "subtitle": "Paylaşılan satıcı çalışma alanınızı yönetin.",
+      "membersTitle": "Üyeler",
+      "rulesetsTitle": "Takım kural setleri",
+      "memberRole": "{role}",
+      "owner": "Sahip",
+      "admin": "Yönetici",
+      "member": "Üye",
+      "noTeamTitle": "Henüz bir takıma dahil değilsiniz",
+      "noTeamDescription": "Takımlar, paylaşılan kazançlar ve birleşik bir profil ile çok koltuklu yayıncılardır. Takım oluşturma v2'de geliyor.",
+      "noTeamCta": "Bize ulaşın"
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "subtitle": "Profilinizi, satıcı durumunuzu, gizliliğinizi ve faturalandırmanızı yönetin.",
+      "tabs": {
+        "profile": "Profil",
+        "seller": "Satıcı",
+        "privacy": "Gizlilik",
+        "billing": "Faturalandırma",
+        "ariaLabel": "Ayar bölümleri"
+      },
+      "profile": {
+        "title": "Profil",
+        "displayName": "Görünen ad",
+        "username": "Kullanıcı adı",
+        "usernameHint": "Bir kez ayarlandıktan sonra değiştirilemez.",
+        "bio": "Hakkında",
+        "bioHint": "240 karaktere kadar.",
+        "avatar": "Profil resmi",
+        "avatarUpload": "Resmi değiştir",
+        "preferredEnvironments": "Tercih edilen ortamlar",
+        "preferredEnvironmentsHint": "Aktif olarak kullandığınız araçlar — önerileri yönlendirir.",
+        "notifications": "Bildirimler",
+        "emailDigest": "Yeni yayınların haftalık özeti",
+        "emailMentions": "Bahsetmeler ve yanıtlar",
+        "emailUpdates": "RuleSell'den ürün güncellemeleri",
+        "save": "Değişiklikleri kaydet",
+        "saved": "Profil kaydedildi."
+      },
+      "seller": {
+        "title": "Satıcı durumu",
+        "stage1Title": "Kilitli — ücretsiz öğeler yayınlamaya devam edin",
+        "stage1Description": "Satıcılar ücretli öğelerden gelir elde eder. Geliştiriciler 50 doğrulanmış kurulumdan sonra satıcı seviyesinin kilidini açar.",
+        "stage1Progress": "{count} / 50 doğrulanmış kurulum",
+        "stage2Title": "Tüccar KYC gerekli",
+        "stage2Description": "AB tüketicilerine satış yapan tüccarlar için DSA Madde 30 tarafından gereklidir. Detaylarınız düzenlenmiş bir doğrulama sağlayıcısına gönderilir.",
+        "stage2Cta": "Doğrulamayı başlat",
+        "stage3Title": "Doğrulama devam ediyor",
+        "stage3Description": "Genellikle 1-2 iş günü. Tamamlandığında size e-posta göndereceğiz.",
+        "stage4Title": "Doğrulanmış bir Satıcısınız",
+        "stage4Description": "Ücretli öğeler yayınlayabilir ve ödeme alabilirsiniz.",
+        "stripeStatus": "Stripe Connect durumu",
+        "stripeStatusVerified": "Doğrulandı",
+        "stripeStatusPending": "Beklemede",
+        "stripeStatusNone": "Bağlı değil",
+        "stripeDisconnect": "Stripe'ı bağlantısını kes",
+        "kycLegalName": "Yasal ad",
+        "kycCountry": "Ülke",
+        "kycLine1": "Adres satırı 1",
+        "kycCity": "Şehir",
+        "kycPostal": "Posta kodu",
+        "kycBank": "Banka hesabı (IBAN veya routing+account)",
+        "kycReg": "İşletme kayıt numarası",
+        "kycSubmit": "Doğrulama için gönder",
+        "kycSubmitted": "Gönderildi. Sizinle iletişime geçeceğiz."
+      },
+      "privacy": {
+        "title": "Gizlilik",
+        "cookieTitle": "Çerez tercihleri",
+        "cookieDescription": "İsteğe bağlı kategoriler varsayılan olarak kapalıdır.",
+        "cookieEssential": "Gerekli",
+        "cookieAnalytics": "Analitik",
+        "cookieAds": "Reklam",
+        "cookiePersonalization": "Kişiselleştirme",
+        "dsrTitle": "Veri haklarınız",
+        "dsrDescription": "GDPR, CCPA ve benzeri yasalar kapsamında verilerinizi istediğiniz zaman dışa aktarabilir, silebilir veya düzeltebilirsiniz.",
+        "exportData": "Verilerimi dışa aktar",
+        "deleteAccount": "Hesabımı sil",
+        "correctData": "Verilerimi düzelt",
+        "gpcTitle": "Global Privacy Control",
+        "gpcHonored": "Algılandı ve uygulandı",
+        "gpcNotDetected": "Algılanmadı — otomatik devre dışı bırakmak için tarayıcınızda etkinleştirin",
+        "savedToast": "Gizlilik tercihleri kaydedildi."
+      },
+      "billing": {
+        "title": "Faturalandırma",
+        "proTitle": "RuleSell Pro",
+        "proPrice": "$8/ay",
+        "proDescription": "Özel koleksiyonlar, kurulum geçmişi, gelişmiş filtreler ve yeni yayınlara erken erişim.",
+        "proFeatures": {
+          "private": "Özel koleksiyonlar",
+          "history": "Tam kurulum geçmişi",
+          "filters": "Gelişmiş filtreler",
+          "early": "Erken erişim"
+        },
+        "proCta": "Lansmanda haber ver",
+        "proSubscribed": "Pro açıldığında size e-posta göndereceğiz.",
+        "comingSoon": "Yakında — lansmanda ana pazara odaklanıyoruz."
+      }
+    }
+  },
+  "publishWizard": {
+    "title": "Bir kural seti yayınlayın",
+    "subtitle": "Beş adım. İlerlerken otomatik kaydeder.",
+    "draftSaved": "Taslak kaydedildi",
+    "back": "Geri",
+    "next": "İleri",
+    "submitForReview": "İncelemeye gönder",
+    "stepLabel": "{total} adımdan {current}.",
+    "steps": {
+      "type": "Tür ve Kategori",
+      "content": "İçerik",
+      "variants": "Varyantlar",
+      "license": "Uyumluluk ve Lisans",
+      "pricing": "Fiyatlandırma"
+    },
+    "type": {
+      "title": "Ne yayınlıyorsunuz?",
+      "description": "Türü, birincil kategoriyi ve hedef platformu seçin.",
+      "typeLabel": "Tür",
+      "categoryLabel": "Birincil kategori",
+      "secondaryLabel": "İkincil kategoriler",
+      "secondaryHint": "İsteğe bağlı. En fazla 2.",
+      "platformLabel": "Birincil platform",
+      "validationRequired": "Devam etmek için tür, kategori ve platform gereklidir."
+    },
+    "content": {
+      "title": "İnsanlara ne yaptığını anlatın",
+      "description": "Başlık, kısa açıklama, önizleme parçası ve daha uzun bir yazı.",
+      "titleLabel": "Başlık",
+      "titlePlaceholder": "ör. Postgres Schema MCP",
+      "shortDescription": "Kısa açıklama",
+      "shortDescriptionHint": "Kartlarda gösterilir. 400 karaktere kadar.",
+      "previewLabel": "Önizleme parçası",
+      "previewHint": "Detay sayfasında gösterilir. 500 karaktere kadar kod veya markdown.",
+      "tagsLabel": "Etiketler",
+      "tagsHint": "Eklemek için Enter'a basın. 8 etikete kadar.",
+      "tagsPlaceholder": "Etiket ekleyin ve Enter'a basın",
+      "longDescription": "Tam açıklama",
+      "longDescriptionHint": "Markdown desteklenir.",
+      "screenshotsLabel": "Ekran görüntüleri",
+      "screenshotsHint": "3 görüntüye kadar. Yeniden sıralamak için sürükle-bırak.",
+      "validationRequired": "Başlık ve kısa açıklama gereklidir."
+    },
+    "variants": {
+      "title": "Her ortam için varyantlar",
+      "description": "Bir varyant birden fazla ortamı kapsayabilir. Birini birincil olarak işaretleyin.",
+      "addVariant": "Varyant ekle",
+      "labelLabel": "Etiket",
+      "labelPlaceholder": "Claude Code · Cursor · Windsurf",
+      "envLabel": "Ortamlar",
+      "kindLabel": "Tür",
+      "methodLabel": "Kurulum yöntemi",
+      "contentLabel": "İçerik",
+      "contentPlaceholder": "Dosya, JSON veya komutu buraya yapıştırın",
+      "targetPathLabel": "Hedef yol",
+      "targetPathPlaceholder": "~/.cursor/mcp.json",
+      "instructionsLabel": "Talimatlar",
+      "requirementsLabel": "Gereksinimler",
+      "addRequirement": "Gereksinim ekle",
+      "primary": "Birincil varyant",
+      "remove": "Varyantı kaldır",
+      "validationOne": "En az bir varyant ekleyin.",
+      "validationPrimary": "Bir varyantı birincil olarak işaretleyin.",
+      "validationFields": "Her varyant bir etiket, ortam ve içerik gerektirir."
+    },
+    "license": {
+      "title": "Uyumluluk ve lisans",
+      "description": "Bir SPDX lisansı seçin ve uyumluluk matrisini onaylayın.",
+      "licenseLabel": "Lisans",
+      "compatTitle": "Uyumluluk matrisi",
+      "compatHint": "Varyantlarınızın desteklediği ortamları onaylayın.",
+      "compatConfirm": "Bu listenin varyantlarımla eşleştiğini onaylıyorum.",
+      "requirementsLabel": "Gereksinimler",
+      "addRequirement": "Gereksinim ekle",
+      "warningNonCommercial": "Ticari olmayan lisanslar ücretli olarak satılamaz. 5. adımda lisansı değiştirin veya fiyatı Ücretsiz olarak ayarlayın.",
+      "warningCopyleft": "Copyleft lisansı — türevler açık kaynak olmalıdır.",
+      "spdxLabel": "SPDX tanımlayıcısı",
+      "commercial": "Ticari kullanım",
+      "nonCommercial": "Ticari değil",
+      "shareAlike": "Paylaş-aynı şekilde",
+      "attribution": "Atıf gerekli"
+    },
+    "pricing": {
+      "title": "Nasıl fiyatlandırılacak?",
+      "description": "Ücretsiz öğeler incelemeden geçer geçmez yayına alınır. Ücretli öğeler Satıcı statüsü gerektirir.",
+      "freeLabel": "Ücretsiz",
+      "paidLabel": "Ücretli",
+      "priceLabel": "Fiyat",
+      "priceHint": "USD cinsinden fiyat. İçeride sent olarak saklanır.",
+      "currencyLabel": "Para birimi",
+      "subscriptionLabel": "Abonelik",
+      "subscriptionHint": "Tek seferlik yerine aylık veya yıllık ücretlendir.",
+      "monthlyLabel": "Aylık",
+      "yearlyLabel": "Yıllık",
+      "teamPricingLabel": "Takım fiyatlandırması",
+      "teamPricingHint": "Takımlar için isteğe bağlı toplu fiyatlandırma.",
+      "team10x": "10 koltuk",
+      "teamUnlimited": "Sınırsız koltuk",
+      "lockedSellerTitle": "Ücretli öğeler yayınlamak için Satıcı olun",
+      "lockedSellerDescription": "Şu anda sınırsız ücretsiz öğe yayınlayabilirsiniz. 50 doğrulanmış kuruluma ulaştığınızda Satıcı doğrulama akışını başlatabilirsiniz.",
+      "platformCutLabel": "RuleSell payı",
+      "platformCutFirst6": "%5 (ilk 6 ay)",
+      "platformCutAfter": "Sonra %15",
+      "youNetLabel": "Net kazancınız",
+      "submitNow": "İncelemeye gönder"
+    }
+  },
+  "seller": {
+    "dashboard": "Satıcı Paneli",
+    "totalRevenue": "Toplam Gelir",
+    "totalSales": "Toplam Satış",
+    "activeProducts": "Aktif Ürünler",
+    "avgRating": "Ort. Puan",
+    "uploadProduct": "Ürün Yükle",
+    "manageProducts": "Ürünleri Yönet",
+    "earnings": "Kazançlar",
+    "payouts": "Ödemeler",
+    "analytics": "Analitik",
+    "becomeSellerTitle": "RuleSet AI'da Satışa Başlayın",
+    "becomeSellerDesc": "AI uzmanlığınızı paylaşın ve yapılandırmalarınızdan kazanın",
+    "apply": "Şimdi Başvur",
+    "verificationPending": "Doğrulama Bekliyor",
+    "verificationApproved": "Doğrulanmış Satıcı"
+  },
+  "errors": {
+    "notFound": "Sayfa Bulunamadı",
+    "notFoundDesc": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "serverError": "Bir şeyler ters gitti",
+    "serverErrorDesc": "Üzerinde çalışıyoruz. Lütfen daha sonra tekrar deneyin.",
+    "goHome": "Ana Sayfaya Dön"
+  },
+  "marketplace": {
+    "toolPicker": {
+      "label": "Hangi araçları kullanıyorsun?",
+      "hint": "Araçlarını seç — sana uyumlu olanları gösterelim",
+      "seeAll": "Tümünü gör",
+      "add": "Ekle",
+      "remove": "Kaldır"
+    },
+    "card": {
+      "by": "yazan",
+      "free": "Ücretsiz",
+      "installs": "{count, plural, one {# kurulum} other {# kurulum}}",
+      "worksWithTools": "Senin araçlarınla uyumlu",
+      "qualityScore": "Kalite {score}",
+      "openItem": "{title} aç"
+    },
+    "shelf": {
+      "seeAll": "Tümünü gör"
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Doğrulanmış pazaryeri",
+      "title": "Kuralları sıfırdan yazmayı bırak.",
+      "subtitle": "MCP sunucuları, beceriler ve kurallar. Kalite ölçülür, güvenlik için taranır.",
+      "searchPlaceholder": "Doğrulanmış varlıkları ara…",
+      "searchSubmit": "Ara"
+    },
+    "shelves": {
+      "topForYou": "Senin için en iyiler",
+      "topForYouDesc": "En yüksek ölçülmüş Kalite Puanı",
+      "editorsPicks": "Editör seçimleri",
+      "editorsPicksDesc": "RuleSell ekibinin elle seçtikleri",
+      "newThisWeek": "Bu hafta yeni",
+      "newThisWeekDesc": "Son 14 gündeki yeni eklemeler",
+      "collections": "Seçili koleksiyonlar",
+      "collectionsDesc": "Çalışma şekline uygun temalı paketler"
+    },
+    "errors": {
+      "title": "Pazaryerini yüklerken bir sorun yaşadık.",
+      "retry": "Tekrar dene"
+    }
+  },
+  "browse": {
+    "title": "Pazaryerini keşfet",
+    "subtitle": "{total} doğrulanmış varlık arasında filtre, sıralama ve arama yap.",
+    "filters": {
+      "title": "Filtreler",
+      "clear": "Tümünü temizle",
+      "platform": "Platform",
+      "type": "Tür",
+      "category": "Kategori",
+      "environment": "Ortam",
+      "price": "Fiyat",
+      "license": "Lisans",
+      "minQuality": "Minimum kalite",
+      "anyPrice": "Tüm fiyatlar",
+      "free": "Ücretsiz",
+      "paid": "Ücretli",
+      "open": "Filtreler",
+      "close": "Filtreleri kapat",
+      "apply": "Uygula"
+    },
+    "tabs": {
+      "all": "Tümü",
+      "trending": "Trendler",
+      "new": "Yeni",
+      "top": "En İyi",
+      "editors": "Editör seçimleri"
+    },
+    "tabBar": {
+      "label": "Pazaryeri sekmeleri"
+    },
+    "sort": {
+      "label": "Sırala",
+      "quality": "Kalite Puanı",
+      "popular": "En popüler",
+      "recent": "En yeni",
+      "priceAsc": "Fiyat · düşükten yükseğe",
+      "priceDesc": "Fiyat · yüksekten düşüğe"
+    },
+    "empty": {
+      "title": "Bu filtre setine uygun bir şey yok.",
+      "description": "Bir-iki filtreyi temizlemeyi dene — pazaryerinde dahası var.",
+      "clear": "Filtreleri temizle"
+    },
+    "pagination": {
+      "label": "Sayfalama",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "page": "Sayfa {page} / {total}"
+    },
+    "results": "{count, plural, one {# sonuç} other {# sonuç}}"
+  },
+  "category": {
+    "title": "{name}",
+    "browseAll": "Tüm kategorileri keşfet"
+  },
+  "environment": {
+    "title": "{name} varlıkları",
+    "subtitle": "{name} varyantı içeren her şey.",
+    "browseAll": "Tüm ortamları keşfet"
+  },
+  "search": {
+    "title": "Arama sonuçları",
+    "placeholder": "Doğrulanmış varlık ara…",
+    "empty": {
+      "title": "\"{query}\" için eşleşme yok",
+      "description": "Daha geniş bir terim dene veya kategoriye göre keşfet.",
+      "browse": "Tümünü keşfet"
+    },
+    "results": "\"{query}\" için {count, plural, one {# sonuç} other {# sonuç}}"
+  },
+  "collections": {
+    "title": "Seçili koleksiyonlar",
+    "subtitle": "RuleSell ekibi ve güvenilir yaratıcılar tarafından özenle seçilmiş temalı paketler.",
+    "by": "Hazırlayan",
+    "items": "{count, plural, one {# öğe} other {# öğe}}",
+    "followers": "{count, plural, one {# takipçi} other {# takipçi}}",
+    "follow": "Koleksiyonu takip et",
+    "unfollow": "Takip ediliyor",
+    "empty": {
+      "title": "Henüz koleksiyon yok.",
+      "description": "Küratörler hâlâ derliyor. Yakında tekrar uğra."
+    }
+  },
+  "leaderboard": {
+    "title": "Kalite Puanına göre ilk 100",
+    "subtitle": "Kalite Puanı oylanmaz — ölçülür.",
+    "learnMore": "Yüksek puan almayı öğren",
+    "filters": {
+      "all": "Tüm kategoriler"
+    },
+    "rank": "Sıra",
+    "asset": "Varlık",
+    "author": "Yaratıcı",
+    "score": "Kalite",
+    "downloads": "İndirme"
+  },
+  "ruleset": {
+    "breadcrumb": {
+      "label": "Sayfa yolu",
+      "browse": "Keşfet"
+    },
+    "by": "yazan",
+    "stats": {
+      "rating": "{rating} · {count, plural, one {# inceleme} other {# inceleme}}",
+      "downloads": "{count} indirme",
+      "qualityScore": "Kalite {score}",
+      "freshness": "{days} gün önce güncellendi",
+      "freshnessRecent": "Bugün güncellendi",
+      "license": "Lisans: {license}"
+    },
+    "actions": {
+      "save": "Kaydet",
+      "saved": "Kaydedildi",
+      "follow": "Takip et",
+      "following": "Takip ediliyor",
+      "fork": "Çatalla",
+      "report": "Şikayet et"
+    },
+    "price": {
+      "free": "Ücretsiz",
+      "paid": "{price}",
+      "perInstall": "kurulum başına"
+    },
+    "cta": {
+      "install": "Kur",
+      "purchase": "Satın al",
+      "comingSoon": "Ödeme yakında"
+    },
+    "install": {
+      "title": "Kurulum",
+      "subtitle": "Ortamını seç, kopyala, yapıştır, gönder.",
+      "target": "Hedef",
+      "copy": "Kopyala",
+      "download": "İndir",
+      "openInCli": "CLI'da aç",
+      "openInCliHint": "RuleSell CLI gerekir",
+      "instructions": "Talimatlar",
+      "requirements": "Gereksinimler"
+    },
+    "about": {
+      "title": "Hakkında",
+      "qualityBreakdown": "Kalite kırılımı",
+      "tokenEfficiency": "Token verimliliği",
+      "installSuccess": "Kurulum başarısı",
+      "schemaClean": "Şema temizliği",
+      "freshness": "Güncellik",
+      "reviewScore": "İnceleme puanı",
+      "securityPass": "Güvenlik taraması",
+      "securityPassed": "Geçti",
+      "securityFailed": "Kaldı",
+      "notApplicable": "Bu tür için geçerli değil",
+      "license": "Lisans",
+      "commercial": "Ticari kullanıma uygun",
+      "nonCommercial": "Yalnızca ticari olmayan",
+      "attribution": "Atıf gerekli",
+      "viewLicense": "Lisansı görüntüle"
+    },
+    "reviews": {
+      "title": "İncelemeler",
+      "subtitle": "Yalnızca doğrulanmış kurulum — her inceleme gerçekten kullanmış birinden.",
+      "empty": "Henüz doğrulanmış inceleme yok. Yalnızca Sertifikalı Geliştiriciler kurulum sonrası inceleme yazabilir.",
+      "write": "İnceleme yaz",
+      "verifiedInstall": "Doğrulanmış kurulum",
+      "testedOn": "{env} üzerinde test edildi",
+      "helpful": "Faydalı",
+      "helpfulCount": "{count} kişi faydalı buldu",
+      "ratingOf5": "Puan: {rating} / 5",
+      "reportReview": "Bu incelemeyi bildir",
+      "form": {
+        "title": "Doğrulanmış inceleme yaz",
+        "rating": "Puan",
+        "headline": "Başlık",
+        "body": "Ne işe yaradı, ne yaramadı",
+        "environment": "Test edilen ortam",
+        "submit": "İncelemeyi yayınla",
+        "ineligible": "İncelemeler doğrulanmış kullanıcılar ve Sertifikalı Geliştiricilerle sınırlıdır. Sertifikasyon hakkında daha fazla bilgi edinin."
+      }
+    },
+    "related": {
+      "title": "Senin araçlarınla uyumlu",
+      "fallback": "Benzerleri"
+    },
+    "notFound": {
+      "title": "Bu kuralı bulamadık.",
+      "description": "Yayından kaldırılmış, yeniden adlandırılmış veya hiç var olmamış olabilir.",
+      "browse": "Pazaryerini keşfet"
+    }
+  },
+  "profile": {
+    "joined": "{date} tarihinde katıldı",
+    "stats": {
+      "published": "Yayınlanan",
+      "downloads": "İndirme",
+      "avgRating": "Ortalama puan",
+      "totalEarnings": "Toplam kazanç"
+    },
+    "actions": {
+      "follow": "Takip et",
+      "following": "Takip ediliyor",
+      "message": "Mesaj",
+      "messageDisabled": "Doğrudan mesajlar yakında",
+      "report": "Şikayet et"
+    },
+    "publishedItems": "{count, plural, one {# yayınlanan öğe} other {# yayınlanan öğe}}",
+    "empty": {
+      "title": "Henüz yayınlanan öğe yok.",
+      "description": "Bu yaratıcı bir şey gönderdiğinde burada görünecek."
+    },
+    "notFound": "Bu profili bulamadık.",
+    "reputation": {
+      "level": "Seviye",
+      "next": "Sonraki: {level}",
+      "max": "En yüksek seviye"
+    }
+  },
+  "team": {
+    "by": "Takım",
+    "verified": "Doğrulanmış takım",
+    "members": "{count, plural, one {# üye} other {# üye}}",
+    "stats": {
+      "rulesets": "Kural setleri",
+      "downloads": "İndirme",
+      "earnings": "Kazanç"
+    },
+    "actions": {
+      "follow": "Takımı takip et",
+      "following": "Takip ediliyor"
+    },
+    "membersTitle": "Üyeler",
+    "empty": {
+      "title": "Bu takım henüz hiçbir şey yayınlamadı.",
+      "description": "Takımlar genellikle kurulduktan sonra ilk ay içinde ilk eklemelerini yapar."
+    },
+    "notFound": "Bu takımı bulamadık."
+  },
+  "legal": {
+    "lastUpdated": "Son güncelleme {date}",
+    "backToTop": "Yukarı dön",
+    "navTitle": "Yasal",
+    "disclaimer": "Bu, ürün incelemesi için hazırlanmış bir yer tutucu şablondur. Nihai metin halka açılmadan önce yetkili bir hukuk müşaviri tarafından gözden geçirilmelidir. Hukuki tavsiye niteliği taşımaz.",
+    "noticeLabel": "Uyarı",
+    "summaryLabel": "Sade dil özeti",
+    "citationsLabel": "Mevzuat referansları",
+    "tableOfContents": "Bu sayfada",
+    "nav": {
+      "terms": "Kullanım Şartları",
+      "privacy": "Gizlilik Politikası",
+      "cookies": "Çerez Politikası",
+      "acceptableUse": "Kabul Edilebilir Kullanım",
+      "dmca": "DMCA ve Fikri Mülkiyet",
+      "creatorAgreement": "Yaratıcı Sözleşmesi",
+      "accessibility": "Erişilebilirlik",
+      "transparency": "Şeffaflık Raporu"
+    },
+    "terms": {
+      "title": "Kullanım Şartları",
+      "lastUpdated": "2026-04-08",
+      "intro": "Bu Kullanım Şartları (\"Şartlar\"), yapay zekâ geliştirme varlıkları için bir pazar yeri olan RuleSell'e erişiminizi ve kullanımınızı düzenler. Bir hesap oluşturarak veya hizmeti kullanarak bu Şartlara bağlı kalmayı kabul etmiş olursunuz."
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "lastUpdated": "2026-04-08",
+      "intro": "Bu Gizlilik Politikası, RuleSell'in hangi kişisel verileri topladığını, neden topladığını, kimlerle paylaştığını ve sahip olduğunuz hakları açıklar. Tüm RuleSell web sitelerini, uygulamalarını ve API'lerini kapsar."
+    },
+    "cookies": {
+      "title": "Çerez Politikası",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell, pazar yerini işletmek, tercihlerinizi hatırlamak ve (onayınızla) hizmetin nasıl kullanıldığını ölçmek için çerezler ve benzeri teknolojiler kullanır."
+    },
+    "acceptableUse": {
+      "title": "Kabul Edilebilir Kullanım Politikası",
+      "lastUpdated": "2026-04-08",
+      "intro": "Bu politika, RuleSell'de izin verilmeyen içerik ve davranış kategorilerini listeler. Her hesap için geçerlidir ve Kullanım Şartlarımızı tamamlar."
+    },
+    "dmca": {
+      "title": "DMCA ve Fikri Mülkiyet Politikası",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell fikri mülkiyete saygı duyar ve Amerika Birleşik Devletleri Dijital Binyıl Telif Hakkı Yasası'nın (DMCA) bildirim ve kaldırma prosedürüne uyar."
+    },
+    "creatorAgreement": {
+      "title": "Yaratıcı Sözleşmesi",
+      "lastUpdated": "2026-04-08",
+      "intro": "Bu Yaratıcı Sözleşmesi, RuleSell'de öğe yayınladığınızda Kullanım Şartlarımıza ek olarak geçerlidir. Ücretler, ödemeler, iadeler, bize verdiğiniz lisans ve fesih durumunda olacakları kapsar."
+    },
+    "accessibility": {
+      "title": "Erişilebilirlik Beyanı",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell, engel veya yardımcı teknoloji ne olursa olsun herkes tarafından kullanılabilir olmaya kararlıdır. Hedefimiz Web İçeriği Erişilebilirlik Yönergeleri (WCAG) 2.2 Düzey AA'ya uygunluktur."
+    },
+    "transparency": {
+      "title": "Şeffaflık Raporu",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell, Dijital Hizmetler Yasası ile uyumlu olarak operasyonel şeffaflık bilgileri yayınlar. Bu sayfa aylık olarak güncellenir.",
+      "mauTitle": "Aylık aktif alıcılar (AB)",
+      "mauValue": "8.420",
+      "mauNote": "AB'de bulunan tekil ziyaretçilerin oturum düzeyinde analizden hesaplanan 6 aylık hareketli ortalaması. VLOP belirlemesi için 45 milyon eşiğinin altında ancak DSA Madde 24(2) gereği yine de yayınlanır.",
+      "mauPeriod": "Ekim 2025 — Mart 2026",
+      "moderationTitle": "İçerik moderasyon kararları (son 30 gün)",
+      "moderationRemoved": "Kaldırıldı",
+      "moderationDemoted": "Düşürüldü",
+      "moderationWarned": "Uyarıldı",
+      "moderationRestored": "İtirazda geri yüklendi",
+      "noticesTitle": "Alınan bildirimler (son 30 gün)",
+      "noticesIp": "Fikri mülkiyet ihlali",
+      "noticesMalware": "Kötü amaçlı yazılım / güvensiz kod",
+      "noticesIllegal": "Yasa dışı içerik",
+      "noticesHate": "Nefret söylemi",
+      "noticesPrivacy": "Gizlilik ihlali",
+      "noticesOther": "Diğer",
+      "decisionsTitle": "Karar kaynakları",
+      "decisionsAutomated": "Otomatik",
+      "decisionsHuman": "İnsan incelemesi",
+      "ordersTitle": "Hükümet ve mahkeme emirleri",
+      "ordersValue": "0",
+      "ordersNote": "Raporlama döneminde içerik kaldırma veya kullanıcı bilgisi açıklama konusunda hiçbir bağlayıcı emir almadık.",
+      "appealsTitle": "Çözülen itirazlar",
+      "appealsUpheld": "Onaylandı",
+      "appealsOverturned": "Reddedildi",
+      "annualLabel": "Yıllık anlatım raporu",
+      "annualLink": "2025 yıllık şeffaflık raporunu indir (PDF taslak)",
+      "methodology": "Yöntem",
+      "methodologyBody": "Sayımlar içerik kimliğine göre tekilleştirilir. \"Alınan bildirimler\" hem Güvenilir Bayrak raporlarını hem de sıradan kullanıcı raporlarını içerir."
+    }
+  },
+  "compliance": {
+    "report": {
+      "label": "Bildir",
+      "iconLabel": "Bu içeriği bildir",
+      "title": "İçeriği bildir",
+      "subtitle": "RuleSell'i güvenli ve yasal tutmaya yardımcı ol. Bildirimler moderasyon ekibimize ulaşır ve gereksiz gecikme olmadan değerlendirilir (DSA Madde 16).",
+      "categoryLabel": "Sorun nedir?",
+      "category": {
+        "illegal": "Yasa dışı içerik",
+        "ip": "Fikri mülkiyet ihlali",
+        "malware": "Kötü amaçlı yazılım veya güvensiz kod",
+        "hate": "Nefret söylemi veya taciz",
+        "sexual": "Cinsel içerik",
+        "harassment": "Taciz veya kişisel bilgi ifşası",
+        "privacy": "Gizlilik ihlali",
+        "fraud": "Dolandırıcılık veya sahte yorum",
+        "other": "Başka bir şey"
+      },
+      "descriptionLabel": "İçeriğin sorunu nedir?",
+      "descriptionPlaceholder": "Ne gördüğünü ve nerede gördüğünü anlat. Ne kadar açık olursan o kadar hızlı hareket edebiliriz.",
+      "descriptionHelp": "En az 20 karakter.",
+      "emailLabel": "E-postan (isteğe bağlı)",
+      "emailPlaceholder": "sen@ornek.com",
+      "emailHelp": "Sadece bildirimini takip etmek için kullanırız.",
+      "declarationLabel": "Bu bildirimde verilen bilgilerin doğru olduğunu ve iyi niyetle hareket ettiğimi beyan ederim. Bilerek yanlış bildirimlerin DSA Madde 23 kapsamında işlem görebileceğini anlıyorum.",
+      "submit": "Bildirimi gönder",
+      "cancel": "Vazgeç",
+      "successTitle": "Bildirim gönderildi",
+      "successBody": "Referans {ref}. Moderasyon ekibimiz gereksiz gecikme olmadan inceleyecek (DSA Madde 16).",
+      "errorTitle": "Bildirim gönderilemedi",
+      "errorBody": "Lütfen tekrar dene. Sorun devam ederse moderation@rulesell.example adresine yaz.",
+      "deepLinkTitle": "Bu {targetType} için bildir",
+      "deepLinkSubtitle": "Öğe kimliği: {targetId}"
+    },
+    "licenseWarning": {
+      "spdxLabel": "SPDX",
+      "viewLicense": "Lisansı görüntüle",
+      "nonCommercialPaid": "Ticari olmayan lisanslar ücretli olarak satılamaz. Ücretli dağıtımı etkinleştirmek için ticari uyumlu bir lisans seç.",
+      "gplPurchase": "GPL lisansı — türev çalışmalar aynı lisans altında açık kaynak kalmalıdır.",
+      "agplPurchase": "AGPL lisansı — ağ kullanımı barındırılan türevler için kaynak açıklama yükümlülüklerini tetikler.",
+      "cc0Public": "Kamu malı (CC0) — kullanım, değiştirme veya yeniden dağıtım üzerinde kısıtlama yoktur.",
+      "commercialOk": "{license} lisansı altında ticari kullanıma izin verilir.",
+      "attributionRequired": "{license} — atıf gereklidir.",
+      "neutral": "{license} ile lisanslıdır."
+    }
+  },
+  "dsrExport": {
+    "trigger": "Verilerimi dışa aktar",
+    "title": "Kişisel verilerini dışa aktar",
+    "subtitle": "Hakkında sakladığımız verileri tek bir JSON dosyasında bir araya getirip indirilebilir hale getireceğiz. KVKK'nın benzeri olan GDPR Madde 20 (taşınabilirlik) ve CCPA § 1798.100 (bilme hakkı) gereği zorunludur.",
+    "categoriesLabel": "Şunları dahil et:",
+    "categories": {
+      "profile": "Profil (ad, e-posta, ülke, tercihler)",
+      "rulesets": "Yayınlanan ruleset'ler ve taslaklar",
+      "reviews": "Yazdığın yorumlar",
+      "purchases": "Satın almalar ve hak edişler",
+      "activity": "Son etkinlik (kaydetmeler, takipler, oylar)",
+      "consent": "Çerez onayı geçmişi"
+    },
+    "selectAll": "Tümünü seç",
+    "request": "Dışa aktarımımı oluştur",
+    "preparing": "Dışa aktarım hazırlanıyor…",
+    "ready": "Dışa aktarımın hazır",
+    "download": "user-data-export.json indir",
+    "audit": "Bu isteği DSR denetim kayıtlarımıza işledik.",
+    "cancel": "Kapat"
+  },
+  "dsrDelete": {
+    "trigger": "Hesabımı sil",
+    "title": "Hesabını sil",
+    "warning": "Bu işlem geri alınamaz.",
+    "consequences": "Yayınladığın ruleset'ler KALDIRILDI olarak işaretlenecek. Yazdığın yorumlar saklanacak ancak anonimleştirilecek. Bekleyen ödemeler dondurulacak ve Yaratıcı Sözleşmesi'ne göre işlenecek. Silme işlemi 30 günlük bekleme süresinden sonra geçerli olacak (GDPR Madde 17).",
+    "confirmLabel": "Onaylamak için kullanıcı adını yaz",
+    "confirmPlaceholder": "{username}",
+    "submit": "Silme talebinde bulun",
+    "cancel": "Vazgeç",
+    "scheduledTitle": "Silme planlandı",
+    "scheduledBody": "Hesabın {date} tarihinde silinecek. Daha önce her zaman giriş yapıp privacy@rulesell.example ile iletişime geçerek iptal edebilirsin.",
+    "mismatchError": "Kullanıcı adı eşleşmiyor."
+  },
+  "dsrCorrection": {
+    "trigger": "Verilerimi düzelt",
+    "title": "Kişisel verilerini düzelt",
+    "subtitle": "Hakkında tuttuğumuz alanları güncelle. GDPR Madde 16 (düzeltme) ve CCPA § 1798.106 (düzeltme hakkı) gereği zorunludur.",
+    "fields": {
+      "name": "Görünen ad",
+      "email": "E-posta",
+      "country": "İkamet ülkesi"
+    },
+    "submit": "Değişiklikleri kaydet",
+    "cancel": "Vazgeç",
+    "savedTitle": "Kaydedildi",
+    "savedBody": "Bilgilerin güncellendi."
+  },
+  "report": {
+    "pageTitle": "İçerik bildir",
+    "metaDescription": "RuleSell'de barındırılan içerik için DSA Madde 16 kapsamında bildirim gönder.",
+    "back": "Geri",
+    "context": {
+      "ruleset": "Ruleset",
+      "review": "Yorum",
+      "user": "Kullanıcı",
+      "team": "Takım",
+      "comment": "Yorum",
+      "copyright": "Telif hakkı şikayeti"
+    },
+    "intro": "Bu formu yasa dışı, fikri mülkiyeti ihlal eden, güvensiz veya Kabul Edilebilir Kullanım Politikamızı ihlal eden içeriği bize bildirmek için kullan. Alındığını onaylar ve gereksiz gecikme olmadan harekete geçeriz (DSA Madde 16).",
+    "anchorReport": "Bildirim göndermek",
+    "anchorAfter": "Sırada ne var",
+    "anchorAfterBody": "(1) Bir referans numarasıyla aldığımızı onaylarız. (2) Moderasyon ekibimiz Kabul Edilebilir Kullanım Politikamıza ve geçerli yasalara karşı inceler. (3) İçeriğe karşı işlem yaparsak, etkilenen kullanıcı DSA Madde 17 kapsamında bir Gerekçe Bildirimi alır. (4) Her iki taraf da uygulama içi itiraz akışıyla itirazda bulunabilir."
+  },
+  "devUsers": {
+    "title": "Persona Değiştirici",
+    "subtitle": "Yalnızca geliştirme ortamı. Diğer geliştiricilerin kullandığı geçit kontrollerini doğrulamak için rol fixture'ları arasında geçiş yap. Sıfırlanana kadar localStorage'da saklanır.",
+    "active": "Aktif",
+    "reset": "Visitor'a sıfırla",
+    "personas": {
+      "visitor": {
+        "label": "Ziyaretçi",
+        "description": "Kimlik doğrulama yok. Sadece gezinme. Pazarlama tarzı landing'i ve funnel şerit istemini görür."
+      },
+      "user": {
+        "label": "Kullanıcı (Ücretsiz)",
+        "description": "Doğrulanmış 18+ ücretsiz katmanda hesap. Kaydedebilir, takip edebilir, oy verebilir, yorum yapabilir, satın alabilir. Yayın hakkı yok."
+      },
+      "pro": {
+        "label": "Pro",
+        "description": "Aktif Pro aboneliği olan kullanıcı. Pro halkasını, gelişmiş filtreleri, özel koleksiyonları ve yükleme geçmişini görür."
+      },
+      "builder": {
+        "label": "Builder (henüz ücretli yok)",
+        "description": "E-postası doğrulanmış Builder. Yalnızca ÜCRETSİZ öğeleri yayınlayabilir — ücretli satışların kilidi açılmamış."
+      },
+      "builderEligible": {
+        "label": "Builder (yükseltmeye uygun)",
+        "description": "Ücretsiz öğelerde 50+ doğrulanmış kurulum bulunan Builder. \"Seller'a Yükselt\" CTA'sını ve trader KYC giriş noktasını görür."
+      },
+      "seller": {
+        "label": "Seller (Trader)",
+        "description": "Trader KYC tamam + Stripe Connect doğrulanmış. ÜCRETLİ öğeleri yayınlayabilir ve ödeme alır."
+      },
+      "certified": {
+        "label": "Sertifikalı Geliştirici",
+        "description": "200+ itibarlı yorumcu. Doğrulanmış kurulum yorumları yazabilir, rozetli öğelerde %2-3 yorumcu payı kazanır."
+      },
+      "teamOwner": {
+        "label": "Takım Sahibi",
+        "description": "Çok koltuklu bir takıma sahiptir. Takım panosunu, paylaşılan kazanç bölünmesini ve üye yönetimini görür."
+      },
+      "maintainer": {
+        "label": "Maintainer",
+        "description": "Doğrulanmış GitHub OAuth + repo sahipliği. Doğrulanmış OSS repo'larına bağlı listeleri talep edebilir."
+      },
+      "admin": {
+        "label": "Admin",
+        "description": "Platform personeli. Moderasyon kuyruğunu, şeffaflık sayaçlarını ve geçersiz kılma kontrollerini görür."
+      }
+    },
+    "table": {
+      "currentUser": "Mevcut kullanıcı",
+      "username": "Kullanıcı adı",
+      "role": "Rol",
+      "creatorMarks": "Yaratıcı işaretleri",
+      "noUser": "Doğrulanmış kullanıcı yok (ziyaretçi modu)"
+    },
+    "warningProd": "/dev/users üretim derlemelerinde gizlidir.",
+    "checks": {
+      "title": "Geçit kontrolünü doğrula",
+      "subtitle": "Geçiş yaptıktan sonra, persona'nın doğru gated UI'yi gösterdiğini onaylamak için bu kontrollere tıkla.",
+      "items": {
+        "dashboard": "/dashboard/overview'i aç",
+        "earnings": "/dashboard/earnings'i aç",
+        "seller": "/dashboard/settings/seller'ı aç",
+        "publish": "/dashboard/rulesets/new'i aç",
+        "browse": "/browse'u aç"
+      }
+    }
+  }
+}

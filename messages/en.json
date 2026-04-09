@@ -1,0 +1,1369 @@
+{
+  "brand": {
+    "name": "RuleSell",
+    "tagline": "Verified AI development assets"
+  },
+  "nav": {
+    "browse": "Browse",
+    "collections": "Collections",
+    "leaderboard": "Leaderboard",
+    "sell": "Sell",
+    "search": "Search",
+    "searchPlaceholder": "Search verified assets...",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "saved": "Saved",
+    "settings": "Settings",
+    "signOut": "Sign out",
+    "browseAll": "All",
+    "trending": "Trending",
+    "new": "New",
+    "top": "Top",
+    "free": "Free",
+    "paid": "Paid",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openSearch": "Open search"
+  },
+  "footer": {
+    "product": "Product",
+    "creators": "Creators",
+    "company": "Company",
+    "legal": "Legal",
+    "browse": "Browse",
+    "collections": "Collections",
+    "leaderboard": "Leaderboard",
+    "mcpServers": "MCP Servers",
+    "rules": "Rules",
+    "skills": "Skills",
+    "sell": "Sell",
+    "creatorAgreement": "Creator Agreement",
+    "qualityGuidelines": "Quality Guidelines",
+    "docs": "Docs",
+    "about": "About",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "contact": "Contact",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "acceptableUse": "Acceptable Use",
+    "dmca": "DMCA",
+    "accessibility": "Accessibility",
+    "transparency": "Transparency",
+    "copyright": "© {year} RuleSell. All rights reserved.",
+    "gpcStatement": "We honor the Global Privacy Control (GPC) signal.",
+    "sanctionStatement": "Restricted in sanctioned jurisdictions per US/EU/UK law."
+  },
+  "cookie": {
+    "title": "Cookies and your data",
+    "body": "We use cookies for essential functionality. Optional analytics, advertising, and personalization cookies are off by default. Choose what you allow.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "customize": "Customize",
+    "save": "Save preferences",
+    "essentialLabel": "Essential",
+    "essentialDescription": "Required for the site to work. Always on.",
+    "analyticsLabel": "Analytics",
+    "analyticsDescription": "Helps us understand which pages are useful.",
+    "adsLabel": "Advertising",
+    "adsDescription": "Used to measure paid placements.",
+    "personalizationLabel": "Personalization",
+    "personalizationDescription": "Tailors recommendations to your tools."
+  },
+  "ageGate": {
+    "title": "Confirm you're 18 or older",
+    "body": "RuleSell requires all users to be 18+. We also need your country of residence for tax and sanctions compliance.",
+    "dateOfBirth": "Date of birth",
+    "country": "Country of residence",
+    "submit": "Continue",
+    "underageError": "You must be at least 18 years old to use RuleSell.",
+    "sanctionedError": "RuleSell is currently unavailable in your jurisdiction."
+  },
+  "common": {
+    "appName": "RuleSet AI",
+    "tagline": "The Marketplace for AI Configurations",
+    "search": "Search",
+    "searchPlaceholder": "Search rule sets, skills, MCPs, workflows...",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "or": "or",
+    "free": "Free",
+    "popular": "Popular",
+    "new": "New",
+    "featured": "Featured",
+    "verified": "Verified",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "download": "Download",
+    "preview": "Preview",
+    "share": "Share",
+    "report": "Report",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "createAccount": "Create Your Account",
+    "signInDesc": "Sign in to access your dashboard and purchases",
+    "signUpDesc": "Join the AI configuration marketplace",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Full Name",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "resetPasswordDesc": "Enter your email and we'll send you a reset link",
+    "sendResetLink": "Send Reset Link",
+    "backToSignIn": "Back to Sign In",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "continueWith": "Continue with",
+    "google": "Google",
+    "github": "GitHub",
+    "agreeToTerms": "By signing up, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "dashboard": {
+    "nav": {
+      "sectionLabel": "Workspace",
+      "overview": "Overview",
+      "rulesets": "Rulesets",
+      "earnings": "Earnings",
+      "affiliates": "Affiliates",
+      "purchases": "Purchases",
+      "saved": "Saved",
+      "following": "Following",
+      "reviews": "Reviews",
+      "team": "Team",
+      "settings": "Settings",
+      "personaSeller": "Verified Seller",
+      "personaBuilder": "Builder",
+      "personaUser": "Member",
+      "ariaLabel": "Dashboard navigation"
+    },
+    "crumbs": {
+      "dashboard": "Dashboard",
+      "overview": "Overview",
+      "rulesets": "Rulesets",
+      "earnings": "Earnings",
+      "affiliates": "Affiliates",
+      "purchases": "Purchases",
+      "saved": "Saved",
+      "following": "Following",
+      "reviews": "Reviews",
+      "team": "Team",
+      "settings": "Settings",
+      "seller": "Seller",
+      "privacy": "Privacy",
+      "billing": "Billing",
+      "new": "New",
+      "edit": "Edit",
+      "analytics": "Analytics",
+      "ariaLabel": "Breadcrumb"
+    },
+    "gate": {
+      "title": "Sign in to access your dashboard",
+      "description": "The dashboard is for authenticated users. In v1 you can preview as any persona — buyer, builder, seller, or admin.",
+      "signIn": "Sign in",
+      "switchPersona": "Switch persona"
+    },
+    "overview": {
+      "title": "Overview",
+      "subtitle": "Last 30 days at a glance.",
+      "installs30d": "Installs (30d)",
+      "revenue30d": "Revenue (30d)",
+      "avgRating": "Average rating",
+      "publishedCount": "Published",
+      "totalRulesets": "Published rulesets",
+      "totalInstalls": "Lifetime installs",
+      "totalRevenue": "Lifetime revenue",
+      "deltaPositive": "{value}% vs last 30d",
+      "deltaNegative": "{value}% vs last 30d",
+      "activityTitle": "Recent activity",
+      "activityEmpty": "Activity will show up as people install, review, and purchase your work.",
+      "activityViewAll": "View all activity",
+      "kindInstall": "{count} new installs on {target}",
+      "kindReview": "New review on {target}",
+      "kindPurchase": "Purchase of {target}",
+      "kindFollow": "{actor} started following you",
+      "quickActions": "Quick actions",
+      "quickActionPublish": "Publish a ruleset",
+      "quickActionEditProfile": "Edit profile",
+      "quickActionViewMarket": "View marketplace"
+    },
+    "rulesets": {
+      "title": "Your rulesets",
+      "subtitle": "Everything you have published or are still drafting.",
+      "newButton": "New ruleset",
+      "tabs": {
+        "all": "All",
+        "published": "Published",
+        "draft": "Draft",
+        "pending": "Pending review",
+        "unpublished": "Unpublished"
+      },
+      "columns": {
+        "title": "Title",
+        "status": "Status",
+        "quality": "Quality",
+        "installs": "Installs",
+        "revenue": "Revenue",
+        "updated": "Updated",
+        "actions": "Actions"
+      },
+      "status": {
+        "DRAFT": "Draft",
+        "PENDING_REVIEW": "Pending",
+        "PUBLISHED": "Published",
+        "UNPUBLISHED": "Unpublished",
+        "REMOVED": "Removed"
+      },
+      "actionsLabel": "Open actions menu",
+      "actionView": "View public page",
+      "actionEdit": "Edit",
+      "actionAnalytics": "Analytics",
+      "actionUnpublish": "Unpublish",
+      "actionDelete": "Delete",
+      "bulk": {
+        "selectedCount": "{count} selected",
+        "publish": "Publish",
+        "unpublish": "Unpublish",
+        "delete": "Delete",
+        "clear": "Clear",
+        "selectAllRows": "Select all rows"
+      },
+      "empty": {
+        "title": "No rulesets yet",
+        "description": "Builders publish free items. Sellers unlock paid items after 50 verified installs.",
+        "cta": "Publish your first ruleset"
+      },
+      "emptyFiltered": {
+        "title": "No rulesets in this view",
+        "description": "Try a different status tab or publish a new item."
+      },
+      "submittedToast": "Submitted for review. Our team will look at it within 72 hours."
+    },
+    "earnings": {
+      "title": "Earnings",
+      "subtitle": "Revenue, installs, and payouts at a glance.",
+      "lifetime": "Lifetime revenue",
+      "pending": "Pending payout",
+      "next": "Next payout date",
+      "minPayout": "Next payout: {current} of {min} minimum",
+      "chartTitle": "Revenue (last 90 days)",
+      "chartLegendRevenue": "Revenue",
+      "chartLegendInstalls": "Installs",
+      "chartEmpty": "Earnings will appear here after your first sale.",
+      "payoutsTitle": "Payout history",
+      "payoutPeriod": "Period",
+      "payoutAmount": "Amount",
+      "payoutStatus": "Status",
+      "payoutPaidAt": "Paid",
+      "payoutEmpty": "No payouts yet.",
+      "statusPending": "Pending",
+      "statusPaid": "Paid",
+      "statusFailed": "Failed",
+      "lockedTitle": "Become a Seller to unlock earnings",
+      "lockedDescription": "Earnings open up after 50 verified installs and Trader KYC verification. Free Builders skip KYC entirely and can keep publishing free items.",
+      "lockedCta": "Start KYC"
+    },
+    "purchases": {
+      "title": "Purchases",
+      "subtitle": "Everything you have bought, ready to install.",
+      "openInstall": "Open install",
+      "purchasedOn": "Purchased {date}",
+      "empty": {
+        "title": "Nothing here yet",
+        "description": "Browse paid items to find tools worth paying for.",
+        "cta": "Browse paid"
+      }
+    },
+    "saved": {
+      "title": "Saved",
+      "subtitle": "Bookmarks across the marketplace.",
+      "remove": "Remove",
+      "empty": {
+        "title": "Bookmark items as you browse",
+        "description": "Anything you bookmark on the marketplace will land here so you can come back to it later.",
+        "cta": "Browse marketplace"
+      }
+    },
+    "following": {
+      "title": "Following",
+      "subtitle": "Creators whose new releases land in your feed.",
+      "unfollow": "Unfollow",
+      "latest": "Latest:",
+      "noLatest": "No public items yet",
+      "empty": {
+        "title": "Follow creators to see their releases",
+        "description": "When creators ship new rulesets, MCPs, or skills, you'll see them here first.",
+        "cta": "Find creators"
+      }
+    },
+    "reviews": {
+      "title": "Reviews",
+      "subtitle": "Verified-install reviews you have written.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "verifiedOn": "Verified install on {env}",
+      "empty": {
+        "title": "No reviews yet",
+        "description": "Only Certified Devs can write verified-install reviews. Become certified by reaching 200 reputation, getting peer-vouched, or applying for staff approval.",
+        "cta": "Browse rulesets"
+      }
+    },
+    "team": {
+      "title": "Team",
+      "subtitle": "Manage your shared seller workspace.",
+      "membersTitle": "Members",
+      "rulesetsTitle": "Team rulesets",
+      "memberRole": "{role}",
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member",
+      "noTeamTitle": "You are not part of a team yet",
+      "noTeamDescription": "Teams are multi-seat publishers with shared earnings and a unified profile. Team creation lands in v2.",
+      "noTeamCta": "Contact us"
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Manage your profile, seller status, privacy, and billing.",
+      "tabs": {
+        "profile": "Profile",
+        "seller": "Seller",
+        "privacy": "Privacy",
+        "billing": "Billing",
+        "ariaLabel": "Settings sections"
+      },
+      "profile": {
+        "title": "Profile",
+        "displayName": "Display name",
+        "username": "Username",
+        "usernameHint": "Cannot be changed once set.",
+        "bio": "Bio",
+        "bioHint": "Up to 240 characters.",
+        "avatar": "Avatar",
+        "avatarUpload": "Change avatar",
+        "preferredEnvironments": "Preferred environments",
+        "preferredEnvironmentsHint": "Tools you actively use — drives recommendations.",
+        "notifications": "Notifications",
+        "emailDigest": "Weekly digest of new releases",
+        "emailMentions": "Mentions and replies",
+        "emailUpdates": "Product updates from RuleSell",
+        "save": "Save changes",
+        "saved": "Profile saved."
+      },
+      "seller": {
+        "title": "Seller status",
+        "stage1Title": "Locked — keep publishing free items",
+        "stage1Description": "Sellers earn revenue from paid items. Builders unlock the seller tier after 50 verified installs.",
+        "stage1Progress": "{count} / 50 verified installs",
+        "stage2Title": "Trader KYC required",
+        "stage2Description": "Required by DSA Art. 30 for any trader selling to EU consumers. Your details are submitted to a regulated verification provider, never stored on RuleSell.",
+        "stage2Cta": "Start verification",
+        "stage3Title": "Verification in progress",
+        "stage3Description": "Usually 1–2 business days. We'll email you when it's complete.",
+        "stage4Title": "You are a verified Seller",
+        "stage4Description": "You can publish paid items and receive payouts.",
+        "stripeStatus": "Stripe Connect status",
+        "stripeStatusVerified": "Verified",
+        "stripeStatusPending": "Pending",
+        "stripeStatusNone": "Not connected",
+        "stripeDisconnect": "Disconnect Stripe",
+        "kycLegalName": "Legal name",
+        "kycCountry": "Country",
+        "kycLine1": "Address line 1",
+        "kycCity": "City",
+        "kycPostal": "Postal code",
+        "kycBank": "Bank account (IBAN or routing+account)",
+        "kycReg": "Business registration number",
+        "kycSubmit": "Submit for verification",
+        "kycSubmitted": "Submitted. We'll be in touch."
+      },
+      "privacy": {
+        "title": "Privacy",
+        "cookieTitle": "Cookie preferences",
+        "cookieDescription": "Optional categories are off by default. Use the toggles to opt in.",
+        "cookieEssential": "Essential",
+        "cookieAnalytics": "Analytics",
+        "cookieAds": "Advertising",
+        "cookiePersonalization": "Personalization",
+        "dsrTitle": "Your data rights",
+        "dsrDescription": "Under GDPR, CCPA, and similar laws, you can export, delete, or correct your data at any time.",
+        "exportData": "Export my data",
+        "deleteAccount": "Delete my account",
+        "correctData": "Correct my data",
+        "gpcTitle": "Global Privacy Control",
+        "gpcHonored": "Detected and honored",
+        "gpcNotDetected": "Not detected — enable in your browser to opt out automatically",
+        "savedToast": "Privacy preferences saved."
+      },
+      "billing": {
+        "title": "Billing",
+        "proTitle": "RuleSell Pro",
+        "proPrice": "$8/mo",
+        "proDescription": "Private collections, install history, advanced filters, and early access to new releases.",
+        "proFeatures": {
+          "private": "Private collections",
+          "history": "Full install history",
+          "filters": "Advanced filters",
+          "early": "Early access drops"
+        },
+        "proCta": "Notify me at launch",
+        "proSubscribed": "We'll email you when Pro opens up.",
+        "comingSoon": "Coming soon — we're focused on the core marketplace at launch."
+      }
+    }
+  },
+  "publishWizard": {
+    "title": "Publish a ruleset",
+    "subtitle": "Five steps. Auto-saves as you go.",
+    "draftSaved": "Draft saved",
+    "back": "Back",
+    "next": "Next",
+    "submitForReview": "Submit for review",
+    "stepLabel": "Step {current} of {total}",
+    "steps": {
+      "type": "Type & Category",
+      "content": "Content",
+      "variants": "Variants",
+      "license": "Compatibility & License",
+      "pricing": "Pricing"
+    },
+    "type": {
+      "title": "What are you publishing?",
+      "description": "Pick the type, primary category, and target platform.",
+      "typeLabel": "Type",
+      "categoryLabel": "Primary category",
+      "secondaryLabel": "Secondary categories",
+      "secondaryHint": "Optional. Up to 2.",
+      "platformLabel": "Primary platform",
+      "validationRequired": "Type, category, and platform are required to continue."
+    },
+    "content": {
+      "title": "Tell people what it does",
+      "description": "Title, short description, preview snippet, and a longer write-up.",
+      "titleLabel": "Title",
+      "titlePlaceholder": "e.g. Postgres Schema MCP",
+      "shortDescription": "Short description",
+      "shortDescriptionHint": "Shown on cards. Up to 400 characters.",
+      "previewLabel": "Preview snippet",
+      "previewHint": "Shown on the detail page. Up to 500 characters of code or markdown.",
+      "tagsLabel": "Tags",
+      "tagsHint": "Press Enter to add. Up to 8 tags.",
+      "tagsPlaceholder": "Add a tag and press Enter",
+      "longDescription": "Full description",
+      "longDescriptionHint": "Markdown supported.",
+      "screenshotsLabel": "Screenshots",
+      "screenshotsHint": "Up to 3 images. Drag-drop to reorder.",
+      "validationRequired": "Title and short description are required."
+    },
+    "variants": {
+      "title": "Variants for each environment",
+      "description": "One variant can cover multiple environments. Mark one as primary.",
+      "addVariant": "Add variant",
+      "labelLabel": "Label",
+      "labelPlaceholder": "Claude Code · Cursor · Windsurf",
+      "envLabel": "Environments",
+      "kindLabel": "Kind",
+      "methodLabel": "Install method",
+      "contentLabel": "Content",
+      "contentPlaceholder": "Paste the file, JSON, or command here",
+      "targetPathLabel": "Target path",
+      "targetPathPlaceholder": "~/.cursor/mcp.json",
+      "instructionsLabel": "Instructions",
+      "requirementsLabel": "Requirements",
+      "addRequirement": "Add requirement",
+      "primary": "Primary variant",
+      "remove": "Remove variant",
+      "validationOne": "Add at least one variant.",
+      "validationPrimary": "Mark one variant as primary.",
+      "validationFields": "Each variant needs a label, environment, and content."
+    },
+    "license": {
+      "title": "Compatibility & license",
+      "description": "Choose an SPDX license and confirm the compatibility matrix.",
+      "licenseLabel": "License",
+      "compatTitle": "Compatibility matrix",
+      "compatHint": "Confirm the environments your variants support.",
+      "compatConfirm": "I confirm this list matches my variants.",
+      "requirementsLabel": "Requirements",
+      "addRequirement": "Add requirement",
+      "warningNonCommercial": "Non-commercial licenses cannot be sold paid. Change the license or set price to Free in step 5.",
+      "warningCopyleft": "Copyleft license — derivatives must be open source.",
+      "spdxLabel": "SPDX identifier",
+      "commercial": "Commercial use",
+      "nonCommercial": "Non-commercial",
+      "shareAlike": "Share-alike",
+      "attribution": "Attribution required"
+    },
+    "pricing": {
+      "title": "How will it be priced?",
+      "description": "Free items go live as soon as they pass review. Paid items require Seller status.",
+      "freeLabel": "Free",
+      "paidLabel": "Paid",
+      "priceLabel": "Price",
+      "priceHint": "Price in USD. Stored as cents internally.",
+      "currencyLabel": "Currency",
+      "subscriptionLabel": "Subscription",
+      "subscriptionHint": "Charge monthly or yearly instead of one-time.",
+      "monthlyLabel": "Monthly",
+      "yearlyLabel": "Yearly",
+      "teamPricingLabel": "Team pricing",
+      "teamPricingHint": "Optional bulk pricing for teams.",
+      "team10x": "10 seats",
+      "teamUnlimited": "Unlimited seats",
+      "lockedSellerTitle": "Become a Seller to publish paid items",
+      "lockedSellerDescription": "You can publish unlimited free items right now. Once you have 50 verified installs you can start the Seller verification flow.",
+      "platformCutLabel": "RuleSell takes",
+      "platformCutFirst6": "5% (first 6 months)",
+      "platformCutAfter": "15% after",
+      "youNetLabel": "You net",
+      "submitNow": "Submit for review"
+    }
+  },
+  "seller": {
+    "dashboard": "Seller Dashboard",
+    "totalRevenue": "Total Revenue",
+    "totalSales": "Total Sales",
+    "activeProducts": "Active Products",
+    "avgRating": "Avg Rating",
+    "uploadProduct": "Upload Product",
+    "manageProducts": "Manage Products",
+    "earnings": "Earnings",
+    "payouts": "Payouts",
+    "analytics": "Analytics",
+    "becomeSellerTitle": "Start Selling on RuleSet AI",
+    "becomeSellerDesc": "Share your AI expertise and earn from your configurations",
+    "apply": "Apply Now",
+    "verificationPending": "Verification Pending",
+    "verificationApproved": "Verified Seller"
+  },
+  "errors": {
+    "notFound": "Page Not Found",
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "serverError": "Something went wrong",
+    "serverErrorDesc": "We're working on it. Please try again later.",
+    "goHome": "Go Home"
+  },
+  "legal": {
+    "lastUpdated": "Last updated {date}",
+    "backToTop": "Back to top",
+    "navTitle": "Legal",
+    "disclaimer": "This is a placeholder template prepared for product review. Final legal text must be reviewed by qualified counsel before public launch. It does not constitute legal advice.",
+    "noticeLabel": "Notice",
+    "summaryLabel": "Plain-language summary",
+    "citationsLabel": "Regulatory references",
+    "tableOfContents": "On this page",
+    "nav": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "acceptableUse": "Acceptable Use",
+      "dmca": "DMCA & IP Policy",
+      "creatorAgreement": "Creator Agreement",
+      "accessibility": "Accessibility",
+      "transparency": "Transparency Report"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "2026-04-08",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of RuleSell, a marketplace for AI development assets. By creating an account or using the service you agree to be bound by these Terms.",
+      "sections": {
+        "acceptance": {
+          "title": "1. Acceptance of these Terms",
+          "body": "By accessing RuleSell you confirm that you have read, understood, and agreed to these Terms. If you do not agree, do not use the service. We may update these Terms from time to time; material changes will be announced at least 30 days before they take effect (DSA Art. 14)."
+        },
+        "eligibility": {
+          "title": "2. Eligibility and the 18+ requirement",
+          "body": "RuleSell is open to natural persons aged 18 or older and to legal entities lawfully able to enter contracts. We do not knowingly process the personal data of children under 18. By signing up you confirm your date of birth and country of residence. Misrepresentation of age is a material breach (16 CFR 312, COPPA update effective 22 April 2026)."
+        },
+        "geographicRestrictions": {
+          "title": "3. Geographic restrictions",
+          "body": "RuleSell is unavailable to residents of comprehensively sanctioned jurisdictions, including Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, and Luhansk regions of Ukraine. Additional sector-specific restrictions may apply to Belarus and the Russian Federation. We use both signup-time geo-blocking and transaction-time screening through our payment processors (US OFAC, EU Council Regulations, UK OFSI)."
+        },
+        "account": {
+          "title": "4. Account registration and security",
+          "body": "You must provide accurate information and keep your credentials confidential. You are responsible for activity carried out under your account. Notify us immediately of any unauthorised access. We may suspend or terminate accounts that compromise the security of the service or its users."
+        },
+        "content": {
+          "title": "5. Your content and our license",
+          "body": "You retain all rights in the rulesets, prompts, agents, datasets, and other items you publish. By publishing on RuleSell you grant us a worldwide, non-exclusive, royalty-free licence to host, distribute, display, and transmit your content for the purpose of operating the marketplace. Paid items are also covered by the separate Creator Agreement."
+        },
+        "prohibited": {
+          "title": "6. Prohibited content and conduct",
+          "body": "You must not publish or share content that is illegal, infringes intellectual property, contains malware, harvests credentials, depicts the sexual exploitation of minors, incites violence or hatred, or otherwise breaches our Acceptable Use Policy. Violations may result in removal, account suspension, and referral to authorities (DSA Art. 16, Acceptable Use Policy)."
+        },
+        "moderation": {
+          "title": "7. How we moderate content",
+          "body": "We operate a notice-and-action system. Anyone may report content via the Report button on every listing, review, and profile. We confirm receipt and act without undue delay. Where we remove or demote content, the affected user receives a Statement of Reasons explaining the legal basis, the facts relied on, and the available redress (DSA Art. 16-17)."
+        },
+        "thirdParty": {
+          "title": "8. Third-party content disclaimer",
+          "body": "RuleSell hosts third-party content created by our users. We do not endorse and are not responsible for the accuracy, security, legality, or fitness for purpose of any third-party item. To the extent permitted by law, we act as an intermediary service provider and rely on the conditional liability exemptions of EU and US law (DSA Art. 6-8; 47 U.S.C. § 230(c)(1))."
+        },
+        "termination": {
+          "title": "9. Termination",
+          "body": "You may close your account at any time from /dashboard/settings/privacy. We may suspend or terminate accounts that breach these Terms, the Acceptable Use Policy, or applicable law. On termination your published items are unpublished, your reviews are kept but anonymised, and pending payouts are processed in line with the Creator Agreement."
+        },
+        "disclaimers": {
+          "title": "10. Disclaimers and limitation of liability",
+          "body": "RuleSell is provided \"as is\" without warranties of any kind. To the maximum extent permitted by law, our aggregate liability for any claim arising out of or related to the service is limited to the greater of (a) the fees you paid us in the twelve months preceding the claim or (b) one hundred euros. Nothing in these Terms limits liability that cannot lawfully be limited."
+        },
+        "law": {
+          "title": "11. Governing law and disputes",
+          "body": "These Terms are governed by the laws of the jurisdiction where the contracting RuleSell entity is established. EU consumers retain the protections of the mandatory laws of their country of residence. Where required, disputes may be referred to the European Commission's online dispute resolution platform."
+        },
+        "changes": {
+          "title": "12. Changes to these Terms",
+          "body": "We will notify registered users of material changes by email or in-product banner at least 30 days before the change takes effect. Continued use after the effective date constitutes acceptance. Earlier versions are kept in our changelog."
+        },
+        "contact": {
+          "title": "13. Contact",
+          "body": "Questions about these Terms can be sent to legal@rulesell.example. Our EU legal representative will be named here once appointed (DSA Art. 13)."
+        }
+      },
+      "citations": "DSA Art. 13, 14, 16, 17 (Regulation 2022/2065); GDPR Art. 6 (Regulation 2016/679); 47 U.S.C. § 230(c)(1); 16 CFR Part 312 (COPPA, 22 April 2026 update); US OFAC SDN List."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "2026-04-08",
+      "intro": "This Privacy Policy explains what personal data RuleSell collects, why we collect it, who we share it with, and the rights you have over it. It covers all RuleSell websites, applications, and APIs.",
+      "sections": {
+        "scope": {
+          "title": "Who this applies to",
+          "body": "This policy applies to anyone who visits RuleSell or uses an account, regardless of where they live. The GDPR (Regulation 2016/679, Art. 3) applies to all processing of personal data of users in the European Union or European Economic Area. The CCPA and CPRA (Cal. Civ. Code § 1798.100 et seq.) apply to residents of California. We voluntarily extend these protections to all users."
+        },
+        "controller": {
+          "title": "Who is the data controller",
+          "body": "RuleSell is the controller for the personal data we process for our own purposes. Our EU legal representative will be appointed before public launch under DSA Art. 13 and named here. The compliance contact is privacy@rulesell.example."
+        },
+        "categories": {
+          "title": "What we collect",
+          "body": "We collect: account data (name, username, email, password hash); profile data (bio, avatar, preferred environments); content data (rulesets, reviews, comments); commerce data (purchase records, payout details handled by Stripe); technical data (IP address, device, browser, language, referer); and consent data (cookie choices, GPC signal, age and country self-declaration). We do not deliberately collect special categories of personal data."
+        },
+        "purposes": {
+          "title": "Why we use it and on what legal basis",
+          "body": "Account creation, marketplace operation, payments, fraud prevention, security, and legal compliance are processed on the basis of contract performance (GDPR Art. 6(1)(b)) or legal obligation (Art. 6(1)(c)). Optional analytics, advertising measurement, and personalisation are processed on the basis of your consent (Art. 6(1)(a)). Legitimate interest (Art. 6(1)(f)) is used for service improvement, debugging, and security telemetry."
+        },
+        "retention": {
+          "title": "How long we keep it",
+          "body": "Account data is kept for the lifetime of your account. After deletion, anonymised review data may be retained. Tax and accounting records are kept for the period required by applicable law (typically 7-10 years). Security logs are kept for 90 days. Consent records are kept for 24 months."
+        },
+        "sharing": {
+          "title": "Who we share it with",
+          "body": "We share data only with vetted processors under signed Data Processing Agreements (GDPR Art. 28): hosting (Vercel), database (Neon Postgres), payments (Stripe Connect), email (Resend), error monitoring (Sentry). A current vendor list is maintained internally and available on request. We do not sell or share personal data for cross-context behavioural advertising; this is reflected in the \"Do Not Sell or Share\" footer link (CCPA § 1798.120, CPRA add)."
+        },
+        "transfers": {
+          "title": "International data transfers",
+          "body": "Some processors are established in the United States. Transfers from the EEA to the US rely on the EU-US Data Privacy Framework where the processor is certified, or on the European Commission's Standard Contractual Clauses (SCCs) supplemented by a transfer impact assessment (post-Schrems II)."
+        },
+        "rights": {
+          "title": "Your rights",
+          "body": "You can exercise the following rights at any time from /dashboard/settings/privacy: access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction (Art. 18), portability (Art. 20), and objection (Art. 21). California residents have parallel rights to know, delete, correct, and limit the use of their personal information (CCPA § 1798.100). We respond within 30 days (GDPR Art. 12(3)) or 45 days (CCPA), and free of charge."
+        },
+        "gpc": {
+          "title": "Honoring the Global Privacy Control",
+          "body": "RuleSell honors the Sec-GPC: 1 browser signal as a valid opt-out of sale and sharing of personal information under CCPA/CPRA. When detected, we set the gpc_honored cookie and apply the opt-out automatically."
+        },
+        "children": {
+          "title": "Children",
+          "body": "RuleSell is not directed to anyone under 18. We do not knowingly collect personal data from children under 18. The 18+ age gate at signup is an active block, and we will delete any account that turns out to belong to a minor (COPPA, 16 CFR Part 312, updated 22 April 2026 to cover biometric data)."
+        },
+        "security": {
+          "title": "Security and breach notification",
+          "body": "We use industry-standard technical and organisational measures to protect personal data: TLS in transit, AES-256 at rest, role-based access control, audited dependency baseline, and two-factor authentication for staff. If we become aware of a personal data breach that poses a risk to rights and freedoms, we will notify the supervisory authority within 72 hours (GDPR Art. 33) and affected users without undue delay where required by Art. 34."
+        },
+        "automated": {
+          "title": "Automated decisions",
+          "body": "We do not use solely automated decisions that produce legal or similarly significant effects on you. Quality scores and ranking signals influence display order, not access. A detailed Automated Decision-Making assessment (CPRA § 1798.121) will be published before we cross 1,000 monthly active users."
+        },
+        "changes": {
+          "title": "Changes to this policy",
+          "body": "Material changes are announced at least 30 days in advance. The current version is always reachable from this URL with the \"Last updated\" date in the header."
+        },
+        "contact": {
+          "title": "How to contact us",
+          "body": "Privacy questions: privacy@rulesell.example. EU representative: to be appointed before public launch (DSA Art. 13). Data Protection Officer: not appointed at launch — RuleSell does not meet the GDPR Art. 37 mandatory thresholds at this scale; an external DPO will be engaged before crossing 1,000 monthly active users."
+        }
+      },
+      "citations": "GDPR Art. 3, 6, 12-22, 28, 33, 37 (Regulation 2016/679); CCPA § 1798.100, § 1798.120, § 1798.121 (CPRA add); 16 CFR Part 312 (COPPA, 22 April 2026); DSA Art. 13 (Regulation 2022/2065)."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell uses cookies and similar technologies to operate the marketplace, remember your preferences, and (with your consent) measure how the service is used. This policy explains what each category does and how you can control them.",
+      "sections": {
+        "what": {
+          "title": "What is a cookie",
+          "body": "A cookie is a small text file stored on your device by your browser when you visit a website. It can hold a session token, a preference, or an identifier. Similar technologies include localStorage, sessionStorage, and small first-party requests; this policy covers all of them collectively as \"cookies\"."
+        },
+        "consent": {
+          "title": "How we ask for consent",
+          "body": "On your first visit you see a cookie banner with three equally weighted choices: Accept all, Reject all, and Customize. You can change your choice at any time from /dashboard/settings/privacy. We treat the absence of consent as a refusal. Consent records are stored locally as a tamper-evident audit trail (DSA Art. 25, GDPR Art. 5(3))."
+        },
+        "categories": {
+          "title": "Cookie categories",
+          "body": "Strictly Necessary cookies are required for the site to function and cannot be turned off. They include session cookies, CSRF tokens, locale preference, and the consent record itself. Functional cookies remember non-essential preferences such as theme. Analytics cookies help us understand which pages are useful in aggregate. Advertising cookies measure paid placements; we do not use them for cross-context behavioural advertising at launch."
+        },
+        "list": {
+          "title": "Cookies we set",
+          "body": "rulesell:consent — purpose: store consent choices; duration: 12 months; provider: RuleSell; category: Strictly Necessary. NEXT_LOCALE — purpose: language preference; duration: 12 months; provider: RuleSell; category: Strictly Necessary. gpc_honored — purpose: record that the Sec-GPC signal was honored; duration: session; provider: RuleSell; category: Strictly Necessary. dev:persona — purpose: development persona switcher (non-production only); duration: 30 days; provider: RuleSell; category: Strictly Necessary."
+        },
+        "gpc": {
+          "title": "Global Privacy Control",
+          "body": "If your browser sends the Sec-GPC: 1 header, RuleSell treats it as a valid opt-out of the sale and sharing of personal information under CCPA/CPRA. The opt-out applies regardless of your cookie banner choices and persists across sessions."
+        },
+        "control": {
+          "title": "How to control cookies",
+          "body": "You can change your consent at any time from /dashboard/settings/privacy. You can also clear or block cookies through your browser settings. Blocking strictly necessary cookies will break parts of RuleSell, including signing in."
+        }
+      },
+      "citations": "GDPR Art. 5(3), 7 (Regulation 2016/679); ePrivacy Directive 2002/58/EC; DSA Art. 25 (no dark patterns); CCPA § 1798.120, CPRA § 1798.135."
+    },
+    "acceptableUse": {
+      "title": "Acceptable Use Policy",
+      "lastUpdated": "2026-04-08",
+      "intro": "This policy lists the categories of content and behaviour that are not allowed on RuleSell. It applies to every account and supplements our Terms of Service. We update it regularly and keep an audit trail of changes.",
+      "sections": {
+        "prohibited": {
+          "title": "Prohibited content",
+          "body": "You may not publish, link to, or distribute through RuleSell: malware, ransomware, droppers, keyloggers, or remote-access trojans; content that infringes third-party copyright, trademarks, or patents; sexual content involving minors (CSAM); content that incites violence, terrorism, or genocide; content that targets people based on protected characteristics with hatred or harassment; spam, scraped data, or content that exists primarily to manipulate search rankings; live credentials, API keys, tokens, or cryptographic secrets; instructions for the construction of weapons capable of mass harm; content that violates the law of the user's jurisdiction or our own."
+        },
+        "behaviour": {
+          "title": "Prohibited behaviour",
+          "body": "You may not: probe, scan, or test the vulnerability of RuleSell or any connected system without prior written permission; use automated systems to exceed published rate limits; impersonate another person, team, or organisation; sell, transfer, or rent your account; circumvent geographic, age, or content restrictions; misrepresent the licence, authorship, or quality of an item; submit fake reviews or coordinate review brigading."
+        },
+        "consequences": {
+          "title": "Consequences",
+          "body": "Where we identify a breach we may, depending on severity, issue a warning, demote a listing, unpublish an item, suspend or terminate an account, withhold pending payouts, refer the matter to law enforcement, and/or seek injunctive relief. Where we act we provide a Statement of Reasons (DSA Art. 17) explaining the legal basis, the facts relied on, and the available appeal route."
+        },
+        "report": {
+          "title": "How to report a breach",
+          "body": "Use the Report button on the offending listing, review, or profile, or visit /report. We confirm receipt and act without undue delay (DSA Art. 16). Reporters acting in good faith are protected from retaliation."
+        }
+      },
+      "citations": "DSA Art. 14, 16, 17 (Regulation 2022/2065); 18 U.S.C. § 2258A (CSAM reporting); applicable export-control and dual-use regulations."
+    },
+    "dmca": {
+      "title": "DMCA & Intellectual Property Policy",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell respects intellectual property and complies with the notice-and-takedown procedure of the United States Digital Millennium Copyright Act (DMCA). This page explains how to file a copyright notice, how counter-notices work, and our repeat-infringer policy.",
+      "sections": {
+        "agent": {
+          "title": "Designated DMCA agent",
+          "body": "Our designated agent for receiving notifications of claimed infringement is registered with the United States Copyright Office under § 512(c)(2). Until appointment is finalised, notices may be sent to dmca@rulesell.example. We will publish the registered agent's name, address, and registration number on this page before public launch."
+        },
+        "notice": {
+          "title": "How to file a takedown notice",
+          "body": "A valid DMCA notice must include: (1) a physical or electronic signature of the rights holder or authorised agent; (2) identification of the copyrighted work claimed to be infringed; (3) the URL or sufficient detail to locate the allegedly infringing material on RuleSell; (4) your contact information; (5) a statement that you have a good-faith belief the use is not authorised; (6) a statement under penalty of perjury that the information is accurate and that you are authorised to act on behalf of the rights holder."
+        },
+        "process": {
+          "title": "What we do with a notice",
+          "body": "When we receive a complete notice we promptly disable access to the material or item in question and notify the user who posted it. We forward the notice to the user with a Statement of Reasons (DSA Art. 17). The original poster may submit a counter-notice."
+        },
+        "counterNotice": {
+          "title": "Counter-notice procedure",
+          "body": "A valid counter-notice must include: (1) your physical or electronic signature; (2) identification of the material removed; (3) a statement under penalty of perjury that you have a good-faith belief the material was removed by mistake or misidentification; (4) your name, address, and telephone number; (5) consent to the jurisdiction of the federal court for the district where you live (or for non-US users, the district where RuleSell may be found). On receipt of a valid counter-notice we will restore the material within 10-14 business days unless the original complainant files a court action."
+        },
+        "repeat": {
+          "title": "Repeat-infringer policy",
+          "body": "We terminate, in appropriate circumstances, the accounts of users who are repeat infringers, in accordance with § 512(i)(1)(A). \"Repeat\" is assessed against the totality of the conduct, not a fixed strike count, and gives weight to bad-faith notices on both sides."
+        },
+        "license": {
+          "title": "License compliance for sellers",
+          "body": "Every published item must declare a valid SPDX license identifier. Items with non-commercial licenses (e.g. CC BY-NC, CC BY-NC-SA) cannot be sold paid. The publishing wizard enforces this and the License Warning component shows incompatibilities at purchase time."
+        },
+        "abuse": {
+          "title": "Abuse of the DMCA process",
+          "body": "Knowingly false notices are punishable under § 512(f). RuleSell may publish redacted information about abusive notices in our annual transparency report (DSA Art. 15)."
+        }
+      },
+      "citations": "17 U.S.C. § 512(b)-(g) (DMCA); § 512(c)(2) (designated agent registration with the US Copyright Office); SPDX License List."
+    },
+    "creatorAgreement": {
+      "title": "Creator Agreement",
+      "lastUpdated": "2026-04-08",
+      "intro": "This Creator Agreement applies in addition to our Terms of Service when you publish items on RuleSell. It covers fees, payouts, refunds, the licence you grant us, and what happens on termination.",
+      "sections": {
+        "eligibility": {
+          "title": "Becoming a Builder or Seller",
+          "body": "Builders publish free items. To become a Builder you must hold a verified account and accept this Agreement. Sellers also publish paid items and receive payouts. To become a Seller you must (a) accumulate at least 50 verified installs on a published free item, (b) complete trader KYC under DSA Art. 30 through Stripe Connect Express, and (c) verify your tax residence."
+        },
+        "fees": {
+          "title": "Fees and revenue split",
+          "body": "RuleSell takes a 15% platform fee on every paid sale. For the first six months after a Seller's first paid sale, the platform fee is reduced to 10% as an early-creator incentive. Payment processing fees are absorbed by RuleSell. Reviewer cuts (2-3%) for Certified Devs, where applicable, are paid out of the platform fee, not the creator share."
+        },
+        "payouts": {
+          "title": "Payouts",
+          "body": "Earnings clear to your Stripe Connect balance after a 30-day hold to cover refunds and chargebacks. The minimum payout amount is the equivalent of $50 in your settlement currency. Payouts are processed monthly. Failed payouts roll forward to the next cycle."
+        },
+        "refunds": {
+          "title": "Refunds",
+          "body": "Buyers may request a refund within 14 days of purchase if they have not actively used the item. Refunds are processed against your earnings balance. Chargebacks issued by a buyer's card scheme are also debited from your balance."
+        },
+        "license": {
+          "title": "License you grant to RuleSell",
+          "body": "You retain ownership of your items. By publishing on RuleSell you grant us a worldwide, non-exclusive, royalty-free, sublicensable licence to host, distribute, display, perform, and transmit the items for the purpose of operating the marketplace and fulfilling buyer entitlements. The licence terminates with the item (subject to entitlements already granted to buyers)."
+        },
+        "warranties": {
+          "title": "Your warranties",
+          "body": "You warrant that you own or have permission to publish each item, that the item does not infringe third-party rights, that it is safe to install, that the declared SPDX licence is accurate, and that you will indemnify RuleSell against claims arising out of a breach of these warranties."
+        },
+        "trader": {
+          "title": "Trader status",
+          "body": "By selling paid items you confirm you are acting in your business or professional capacity. You will provide the trader information required by DSA Art. 30 through Stripe Connect Express, including legal name, registered address, contact details, registration number, and bank account. We may suspend paid sales if this information is missing or inaccurate."
+        },
+        "termination": {
+          "title": "Termination",
+          "body": "Either party may terminate this Agreement at any time. On termination your items are unpublished. Pending payouts continue to be processed for 90 days to allow for refunds and chargebacks; afterwards the residual balance is paid out subject to the minimum threshold."
+        }
+      },
+      "citations": "DSA Art. 30-31 (Trader KYC, Regulation 2022/2065); GDPR Art. 6(1)(b) (contract performance basis); EU Consumer Rights Directive 2011/83/EU (14-day withdrawal period)."
+    },
+    "accessibility": {
+      "title": "Accessibility Statement",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell is committed to being usable by everyone, regardless of disability or assistive technology. Our target is conformance with the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA, and with the European harmonised standard EN 301 549 where applicable.",
+      "sections": {
+        "target": {
+          "title": "Conformance target",
+          "body": "WCAG 2.2 Level AA across all public pages, the dashboard, the publishing wizard, and all dialogs. Our colour contrast tokens meet the 4.5:1 ratio for body text and 3:1 for non-text UI. Every interactive element has a visible focus state, an accessible name, and works without a mouse."
+        },
+        "testing": {
+          "title": "How we test",
+          "body": "We run automated accessibility audits with Lighthouse and axe-core in CI. We carry out manual keyboard sweeps before every release. Every dialog and form is verified with screen readers (NVDA on Windows, VoiceOver on macOS). New pages must meet the same gates before merging."
+        },
+        "issues": {
+          "title": "Known issues",
+          "body": "We are honest about gaps. Current items: (1) the Quality bar animation does not yet announce intermediate values to screen readers; we play the final value only. (2) Some long-form legal pages do not yet have a localised reading-time indicator. (3) The publishing wizard's variant editor is keyboard navigable but the drag-to-reorder affordance is mouse-only; a keyboard equivalent is in progress."
+        },
+        "report": {
+          "title": "How to report a barrier",
+          "body": "If something on RuleSell is hard or impossible to use with your assistive technology, please email accessibility@rulesell.example or use the Report button on the affected page. We aim to acknowledge within 5 business days and to resolve substantive issues within 30 days. Where a fix takes longer we offer an alternative way of accessing the same information."
+        },
+        "alternatives": {
+          "title": "Alternative formats",
+          "body": "Plain-text versions of every legal page are available on request. The marketplace catalog is available at /llms.txt and /llms-full.txt for agent-readable consumption."
+        },
+        "exemption": {
+          "title": "Microenterprise exemption",
+          "body": "RuleSell currently meets the European Accessibility Act microenterprise threshold (Directive 2019/882, Art. 4(5)). The exemption applies to certain service-provision obligations but not to the underlying accessibility expectations. We commit to WCAG 2.2 AA voluntarily and will update this section if our headcount or turnover crosses the threshold."
+        }
+      },
+      "citations": "WCAG 2.2 Level AA (W3C Recommendation, 5 October 2023); EN 301 549 v3.2.1; Directive (EU) 2019/882 (European Accessibility Act); Art. 21 of the Charter of Fundamental Rights of the EU."
+    },
+    "transparency": {
+      "title": "Transparency Report",
+      "lastUpdated": "2026-04-08",
+      "intro": "RuleSell publishes operational transparency information in line with the Digital Services Act. This page is updated monthly. Annual narrative reports are linked at the bottom.",
+      "mauTitle": "Monthly active recipients (EU)",
+      "mauValue": "8,420",
+      "mauNote": "Rolling 6-month average of unique visitors located in the European Union, calculated from session-level analytics. Below the 45-million threshold for VLOP designation, but published anyway under DSA Art. 24(2).",
+      "mauPeriod": "October 2025 — March 2026",
+      "moderationTitle": "Content moderation actions (last 30 days)",
+      "moderationRemoved": "Removed",
+      "moderationDemoted": "Demoted",
+      "moderationWarned": "Warned",
+      "moderationRestored": "Restored on appeal",
+      "noticesTitle": "Notices received (last 30 days)",
+      "noticesIp": "IP infringement",
+      "noticesMalware": "Malware / unsafe code",
+      "noticesIllegal": "Illegal content",
+      "noticesHate": "Hate speech",
+      "noticesPrivacy": "Privacy violation",
+      "noticesOther": "Other",
+      "decisionsTitle": "Decision sources",
+      "decisionsAutomated": "Automated",
+      "decisionsHuman": "Human review",
+      "ordersTitle": "Government and court orders",
+      "ordersValue": "0",
+      "ordersNote": "We received zero binding orders to remove content or disclose user information in the reporting period.",
+      "appealsTitle": "Appeals resolved",
+      "appealsUpheld": "Upheld",
+      "appealsOverturned": "Overturned",
+      "annualLabel": "Annual narrative report",
+      "annualLink": "Download the 2025 annual transparency report (PDF stub)",
+      "methodology": "Methodology",
+      "methodologyBody": "Counts are deduplicated by content ID. \"Notices received\" includes both Trusted Flagger reports and ordinary user reports. \"Appeals\" count cases that completed the full Statement-of-Reasons → in-product appeal cycle."
+    }
+  },
+  "marketplace": {
+    "toolPicker": {
+      "label": "What do you use?",
+      "hint": "Pick your tools — we'll show you what works",
+      "seeAll": "See all",
+      "add": "Add",
+      "remove": "Remove"
+    },
+    "card": {
+      "by": "by",
+      "free": "Free",
+      "installs": "{count, plural, one {# install} other {# installs}}",
+      "worksWithTools": "Works with your tools",
+      "qualityScore": "Quality {score}",
+      "openItem": "Open {title}"
+    },
+    "shelf": {
+      "seeAll": "See all"
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "The verified marketplace",
+      "title": "Stop writing rulesets from scratch.",
+      "subtitle": "MCP servers, skills, and rulesets. Measured for quality, scanned for safety.",
+      "searchPlaceholder": "Search verified assets…",
+      "searchSubmit": "Search"
+    },
+    "shelves": {
+      "topForYou": "Top for you",
+      "topForYouDesc": "Highest measured Quality Score",
+      "editorsPicks": "Editor's picks",
+      "editorsPicksDesc": "Hand-curated by the RuleSell team",
+      "newThisWeek": "New this week",
+      "newThisWeekDesc": "Fresh drops in the last 14 days",
+      "collections": "Curated collections",
+      "collectionsDesc": "Themed bundles for the way you build"
+    },
+    "errors": {
+      "title": "We hit a snag loading the marketplace.",
+      "retry": "Try again"
+    }
+  },
+  "browse": {
+    "title": "Browse the marketplace",
+    "subtitle": "Filter, sort, and search across {total} verified assets.",
+    "filters": {
+      "title": "Filters",
+      "clear": "Clear all",
+      "platform": "Platform",
+      "type": "Type",
+      "category": "Category",
+      "environment": "Environment",
+      "price": "Price",
+      "license": "License",
+      "minQuality": "Minimum quality",
+      "anyPrice": "Any price",
+      "free": "Free",
+      "paid": "Paid",
+      "open": "Filters",
+      "close": "Close filters",
+      "apply": "Apply"
+    },
+    "tabs": {
+      "all": "All",
+      "trending": "Trending",
+      "new": "New",
+      "top": "Top",
+      "editors": "Editor's picks"
+    },
+    "tabBar": {
+      "label": "Marketplace tabs"
+    },
+    "sort": {
+      "label": "Sort",
+      "quality": "Quality Score",
+      "popular": "Most popular",
+      "recent": "Most recent",
+      "priceAsc": "Price · low to high",
+      "priceDesc": "Price · high to low"
+    },
+    "empty": {
+      "title": "Nothing matches that filter set.",
+      "description": "Try clearing a filter or two — the marketplace has plenty more.",
+      "clear": "Clear filters"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {page} of {total}"
+    },
+    "results": "{count, plural, one {# result} other {# results}}"
+  },
+  "category": {
+    "title": "{name}",
+    "browseAll": "Browse all categories"
+  },
+  "environment": {
+    "title": "{name} assets",
+    "subtitle": "Everything that ships a {name} variant.",
+    "browseAll": "Browse all environments"
+  },
+  "search": {
+    "title": "Search results",
+    "placeholder": "Search verified assets…",
+    "empty": {
+      "title": "No matches for \"{query}\"",
+      "description": "Try a broader term, or browse by category.",
+      "browse": "Browse all"
+    },
+    "results": "{count, plural, one {# result} other {# results}} for \"{query}\""
+  },
+  "collections": {
+    "title": "Curated collections",
+    "subtitle": "Themed bundles handpicked by the RuleSell team and trusted creators.",
+    "by": "Curated by",
+    "items": "{count, plural, one {# item} other {# items}}",
+    "followers": "{count, plural, one {# follower} other {# followers}}",
+    "follow": "Follow collection",
+    "unfollow": "Following",
+    "empty": {
+      "title": "No collections yet.",
+      "description": "Curators are still assembling. Check back soon."
+    }
+  },
+  "leaderboard": {
+    "title": "Top 100 by Quality Score",
+    "subtitle": "Quality Score is measured — not voted.",
+    "learnMore": "Learn how to score high",
+    "filters": {
+      "all": "All categories"
+    },
+    "rank": "Rank",
+    "asset": "Asset",
+    "author": "Author",
+    "score": "Quality",
+    "downloads": "Downloads"
+  },
+  "ruleset": {
+    "breadcrumb": {
+      "label": "Breadcrumb",
+      "browse": "Browse"
+    },
+    "by": "by",
+    "stats": {
+      "rating": "{rating} · {count, plural, one {# review} other {# reviews}}",
+      "downloads": "{count} downloads",
+      "qualityScore": "Quality {score}",
+      "freshness": "Updated {days} days ago",
+      "freshnessRecent": "Updated today",
+      "license": "License: {license}"
+    },
+    "actions": {
+      "save": "Save",
+      "saved": "Saved",
+      "follow": "Follow",
+      "following": "Following",
+      "fork": "Fork",
+      "report": "Report"
+    },
+    "price": {
+      "free": "Free",
+      "paid": "{price}",
+      "perInstall": "per install"
+    },
+    "cta": {
+      "install": "Install",
+      "purchase": "Purchase",
+      "comingSoon": "Checkout coming soon"
+    },
+    "install": {
+      "title": "Install",
+      "subtitle": "Pick your environment, copy, paste, ship.",
+      "target": "Target",
+      "copy": "Copy",
+      "download": "Download",
+      "openInCli": "Open in CLI",
+      "openInCliHint": "Requires the RuleSell CLI",
+      "instructions": "Instructions",
+      "requirements": "Requirements"
+    },
+    "about": {
+      "title": "About",
+      "qualityBreakdown": "Quality breakdown",
+      "tokenEfficiency": "Token efficiency",
+      "installSuccess": "Install success",
+      "schemaClean": "Schema cleanliness",
+      "freshness": "Freshness",
+      "reviewScore": "Review score",
+      "securityPass": "Security scan",
+      "securityPassed": "Passed",
+      "securityFailed": "Failed",
+      "notApplicable": "Not applicable for this type",
+      "license": "License",
+      "commercial": "Commercial use allowed",
+      "nonCommercial": "Non-commercial only",
+      "attribution": "Attribution required",
+      "viewLicense": "View license"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "subtitle": "Verified-install only — every review is from someone who actually shipped this.",
+      "empty": "No verified reviews yet. Only Certified Devs can write reviews after installing.",
+      "write": "Write a review",
+      "verifiedInstall": "Verified install",
+      "testedOn": "Tested on {env}",
+      "helpful": "Helpful",
+      "helpfulCount": "{count} found this helpful",
+      "ratingOf5": "Rating: {rating} of 5",
+      "reportReview": "Report this review",
+      "form": {
+        "title": "Write a verified review",
+        "rating": "Rating",
+        "headline": "Headline",
+        "body": "What worked, what didn't",
+        "environment": "Tested on",
+        "submit": "Publish review",
+        "ineligible": "Reviews are restricted to verified installers and Certified Devs. Learn more about certification."
+      }
+    },
+    "related": {
+      "title": "Compatible with your tools",
+      "fallback": "More like this"
+    },
+    "notFound": {
+      "title": "We couldn't find that ruleset.",
+      "description": "It may have been unpublished, renamed, or never existed.",
+      "browse": "Browse marketplace"
+    }
+  },
+  "profile": {
+    "joined": "Joined {date}",
+    "stats": {
+      "published": "Published",
+      "downloads": "Downloads",
+      "avgRating": "Avg rating",
+      "totalEarnings": "Total earnings"
+    },
+    "actions": {
+      "follow": "Follow",
+      "following": "Following",
+      "message": "Message",
+      "messageDisabled": "Direct messages coming soon",
+      "report": "Report"
+    },
+    "publishedItems": "{count, plural, one {# published item} other {# published items}}",
+    "empty": {
+      "title": "No published items yet.",
+      "description": "When this creator ships something, it'll show up here."
+    },
+    "notFound": "We couldn't find that profile.",
+    "reputation": {
+      "level": "Level",
+      "next": "Next: {level}",
+      "max": "Maxed out"
+    }
+  },
+  "team": {
+    "by": "Team",
+    "verified": "Verified team",
+    "members": "{count, plural, one {# member} other {# members}}",
+    "stats": {
+      "rulesets": "Rulesets",
+      "downloads": "Downloads",
+      "earnings": "Earnings"
+    },
+    "actions": {
+      "follow": "Follow team",
+      "following": "Following"
+    },
+    "membersTitle": "Members",
+    "empty": {
+      "title": "This team has not published anything yet.",
+      "description": "Teams typically launch with their first drop within a month of forming."
+    },
+    "notFound": "We couldn't find that team."
+  },
+  "compliance": {
+    "report": {
+      "label": "Report",
+      "iconLabel": "Report this content",
+      "title": "Report content",
+      "subtitle": "Help us keep RuleSell safe and lawful. Reports go to our moderation team and are acted on without undue delay (DSA Art. 16).",
+      "categoryLabel": "What's the issue?",
+      "category": {
+        "illegal": "Illegal content",
+        "ip": "Intellectual property infringement",
+        "malware": "Malware or unsafe code",
+        "hate": "Hate speech or harassment",
+        "sexual": "Sexual content",
+        "harassment": "Harassment or doxxing",
+        "privacy": "Privacy violation",
+        "fraud": "Fraud, scam, or fake reviews",
+        "other": "Something else"
+      },
+      "descriptionLabel": "What's wrong with it?",
+      "descriptionPlaceholder": "Tell us what you saw and where. The more specific you are, the faster we can act.",
+      "descriptionHelp": "At least 20 characters.",
+      "emailLabel": "Your email (optional)",
+      "emailPlaceholder": "you@example.com",
+      "emailHelp": "We use it only to follow up on your report.",
+      "declarationLabel": "I declare that the information in this report is accurate and that I am acting in good faith. I understand that knowingly false reports may be acted upon under DSA Art. 23.",
+      "submit": "Submit report",
+      "cancel": "Cancel",
+      "successTitle": "Report submitted",
+      "successBody": "Reference {ref}. Our moderation team will review without undue delay (DSA Art. 16).",
+      "errorTitle": "Could not submit report",
+      "errorBody": "Please try again. If the problem persists, email moderation@rulesell.example.",
+      "deepLinkTitle": "Report this {targetType}",
+      "deepLinkSubtitle": "Item ID: {targetId}"
+    },
+    "licenseWarning": {
+      "spdxLabel": "SPDX",
+      "viewLicense": "View license",
+      "nonCommercialPaid": "Non-commercial licenses cannot be sold paid. Choose a commercial-compatible license to enable paid distribution.",
+      "gplPurchase": "GPL license — derivative works must remain open source under the same license.",
+      "agplPurchase": "AGPL license — network use triggers source-disclosure obligations for hosted derivatives.",
+      "cc0Public": "Public domain (CC0) — no restrictions on use, modification, or redistribution.",
+      "commercialOk": "Commercial use is allowed under {license}.",
+      "attributionRequired": "{license} — attribution required.",
+      "neutral": "Licensed under {license}."
+    }
+  },
+  "dsrExport": {
+    "trigger": "Export my data",
+    "title": "Export your personal data",
+    "subtitle": "We'll bundle the data we hold on you into a single JSON file you can download. Required by GDPR Art. 20 (data portability) and CCPA § 1798.100 (right to know).",
+    "categoriesLabel": "Include the following:",
+    "categories": {
+      "profile": "Profile (name, email, country, preferences)",
+      "rulesets": "Published rulesets and drafts",
+      "reviews": "Reviews you wrote",
+      "purchases": "Purchases and entitlements",
+      "activity": "Recent activity (saves, follows, votes)",
+      "consent": "Cookie consent history"
+    },
+    "selectAll": "Select all",
+    "request": "Build my export",
+    "preparing": "Preparing your export…",
+    "ready": "Your export is ready",
+    "download": "Download user-data-export.json",
+    "audit": "We logged this request to our DSR audit trail.",
+    "cancel": "Close"
+  },
+  "dsrDelete": {
+    "trigger": "Delete my account",
+    "title": "Delete your account",
+    "warning": "This action is irreversible.",
+    "consequences": "Your published rulesets will be marked REMOVED. Reviews you wrote will be kept but anonymised. Pending payouts will be frozen and processed in line with the Creator Agreement. The deletion takes effect after a 30-day cooling-off period (GDPR Art. 17).",
+    "confirmLabel": "Type your username to confirm",
+    "confirmPlaceholder": "{username}",
+    "submit": "Request deletion",
+    "cancel": "Cancel",
+    "scheduledTitle": "Deletion scheduled",
+    "scheduledBody": "Your account will be deleted on {date}. You can cancel any time before then by signing in and contacting privacy@rulesell.example.",
+    "mismatchError": "Username does not match."
+  },
+  "dsrCorrection": {
+    "trigger": "Correct my data",
+    "title": "Correct your personal data",
+    "subtitle": "Update fields we hold about you. Required by GDPR Art. 16 (rectification) and CCPA § 1798.106 (right to correct).",
+    "fields": {
+      "name": "Display name",
+      "email": "Email",
+      "country": "Country of residence"
+    },
+    "submit": "Save changes",
+    "cancel": "Cancel",
+    "savedTitle": "Saved",
+    "savedBody": "Your details have been updated."
+  },
+  "report": {
+    "pageTitle": "Report content",
+    "metaDescription": "Submit a notice under DSA Article 16 for content hosted on RuleSell.",
+    "back": "Back",
+    "context": {
+      "ruleset": "Ruleset",
+      "review": "Review",
+      "user": "User",
+      "team": "Team",
+      "comment": "Comment",
+      "copyright": "Copyright complaint"
+    },
+    "intro": "Use this form to notify us of content you believe is illegal, infringes intellectual property, is unsafe, or otherwise violates our Acceptable Use Policy. We confirm receipt and act without undue delay (DSA Art. 16).",
+    "anchorReport": "Filing a report",
+    "anchorAfter": "What happens next",
+    "anchorAfterBody": "(1) We confirm receipt with a reference number. (2) Our moderation team reviews against our Acceptable Use Policy and applicable law. (3) If we act on the content, the affected user receives a Statement of Reasons under DSA Art. 17. (4) Both parties may appeal through the in-product appeal flow."
+  },
+  "devUsers": {
+    "title": "Persona Switcher",
+    "subtitle": "Development-only. Switch between role fixtures to verify the gating used by other builders. Persists in localStorage until reset.",
+    "active": "Active",
+    "reset": "Reset to visitor",
+    "personas": {
+      "visitor": {
+        "label": "Visitor",
+        "description": "No auth. Browse only. Sees the marketing-style landing and the funnel strip prompt."
+      },
+      "user": {
+        "label": "User (Free)",
+        "description": "Verified 18+ account on the free tier. Can save, follow, vote, comment, purchase. No publishing rights."
+      },
+      "pro": {
+        "label": "Pro",
+        "description": "User with active Pro subscription. Sees the Pro ring, advanced filters, private collections, install history."
+      },
+      "builder": {
+        "label": "Builder (no paid yet)",
+        "description": "Builder with verified email. Can publish FREE items only — paywall to unlock paid sales is dormant."
+      },
+      "builderEligible": {
+        "label": "Builder (eligible to upgrade)",
+        "description": "Builder with 50+ verified installs across free items. Sees the \"Upgrade to Seller\" CTA and trader KYC entry point."
+      },
+      "seller": {
+        "label": "Seller (Trader)",
+        "description": "Trader KYC complete + Stripe Connect verified. Can publish PAID items and receives payouts."
+      },
+      "certified": {
+        "label": "Certified Dev",
+        "description": "200+ reputation reviewer. Can write verified-install reviews, earns 2-3% reviewer cut on badged items."
+      },
+      "teamOwner": {
+        "label": "Team Owner",
+        "description": "Owns a multi-seat team. Sees team dashboard, shared earnings split, member management."
+      },
+      "maintainer": {
+        "label": "Maintainer",
+        "description": "Verified GitHub OAuth + repo ownership. Can claim listings tied to verified OSS repos."
+      },
+      "admin": {
+        "label": "Admin",
+        "description": "Platform staff. Sees moderation queue, transparency counters, and override controls."
+      }
+    },
+    "table": {
+      "currentUser": "Current user",
+      "username": "Username",
+      "role": "Role",
+      "creatorMarks": "Creator marks",
+      "noUser": "No authenticated user (visitor mode)"
+    },
+    "warningProd": "/dev/users is hidden in production builds.",
+    "checks": {
+      "title": "Verify gating",
+      "subtitle": "After switching, click these checks to confirm the persona shows the right gated UI elsewhere.",
+      "items": {
+        "dashboard": "Open /dashboard/overview",
+        "earnings": "Open /dashboard/earnings",
+        "seller": "Open /dashboard/settings/seller",
+        "publish": "Open /dashboard/rulesets/new",
+        "browse": "Open /browse"
+      }
+    }
+  }
+}

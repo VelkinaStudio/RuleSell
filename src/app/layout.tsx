@@ -1,51 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Providers } from "@/app/providers";
 import "./globals.css";
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
-
 export const metadata: Metadata = {
-  title: {
-    default: "Ruleset — AI Configuration Marketplace",
-    template: "%s — Ruleset",
-  },
+  title: "RuleSet AI — The Marketplace for AI Configurations",
   description:
-    "Buy, sell, and share system prompts, Cursor rules, n8n workflows, and agent blueprints. The stack behind the best AI builders.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://ruleset.ai"),
-  openGraph: {
-    type: "website",
-    siteName: "Ruleset",
-    title: "Ruleset — AI Configuration Marketplace",
-    description: "Buy, sell, and share system prompts, Cursor rules, n8n workflows, and agent blueprints.",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+    "Discover, share, and monetize AI rule sets, skills, MCPs, N8N workflows, and agent configs. Built by the community, for the community.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
-      <body className="font-sans min-h-screen bg-bg-primary">
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+}>) {
+  return children;
 }

@@ -1,72 +1,58 @@
-import type { HTMLAttributes } from "react";
+import { Star } from "lucide-react";
 
-export interface StarRatingProps extends HTMLAttributes<HTMLDivElement> {
-  /** Average rating in the 0–5 range. */
-  avgRating: number;
-  /** Number of ratings, used to render a "(N)" annotation. */
-  ratingCount?: number;
-  /** Hide the numeric count suffix. */
-  hideCount?: boolean;
-  /** Icon size in pixels. Defaults to 16. */
-  size?: number;
+import { cn } from "@/lib/utils";
+
+interface StarRatingProps {
+  rating: number;
+  max?: number;
+  size?: "sm" | "md";
+  showValue?: boolean;
+  className?: string;
 }
 
 /**
- * Display-only star rating. Does not accept input — use a dedicated
- * input component if you need to collect a rating.
+ * Display-only star rating. Renders filled/half/empty stars based on the
+ * numeric rating value. Not an input — for review forms use a separate
+ * interactive component.
  */
 export function StarRating({
-  avgRating,
-  ratingCount,
-  hideCount = false,
-  size = 16,
-  className = "",
-  ...props
+  rating,
+  max = 5,
+  size = "sm",
+  showValue = true,
+  className,
 }: StarRatingProps) {
-  const clamped = Math.max(0, Math.min(5, avgRating));
-  const filled = Math.round(clamped * 2) / 2; // nearest half
+  const iconSize = size === "sm" ? "h-3 w-3" : "h-4 w-4";
 
   return (
-    <div
-      className={["inline-flex items-center gap-1.5", className]
-        .filter(Boolean)
-        .join(" ")}
-      aria-label={`${clamped.toFixed(1)} out of 5`}
-      {...props}
+    <span
+      className={cn("inline-flex items-center gap-1", className)}
+      aria-label={`${rating.toFixed(1)} out of ${max}`}
     >
-      <div className="flex items-center">
-        {[1, 2, 3, 4, 5].map((i) => {
-          const full = i <= filled;
-          const half = !full && i - 0.5 === filled;
-          return (
-            <svg
-              key={i}
-              width={size}
-              height={size}
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <linearGradient id={`half-${i}`}>
-                  <stop offset="50%" stopColor="#fbbf24" />
-                  <stop offset="50%" stopColor="#334155" stopOpacity="0.4" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M12 2l2.9 6.9 7.4.6-5.6 4.9 1.7 7.3L12 17.8 5.6 21.7l1.7-7.3L1.7 9.5l7.4-.6L12 2z"
-                fill={full ? "#fbbf24" : half ? `url(#half-${i})` : "#334155"}
-                fillOpacity={full ? 1 : half ? 1 : 0.4}
-              />
-            </svg>
-          );
-        })}
-      </div>
-      {!hideCount && ratingCount !== undefined ? (
-        <span className="text-xs text-text-secondary">
-          {clamped.toFixed(1)} ({ratingCount})
+      {Array.from({ length: max }, (_, i) => {
+        const filled = rating >= i + 1;
+        const half = !filled && rating >= i + 0.5;
+
+        return (
+          <Star
+            key={i}
+            className={cn(
+              iconSize,
+              filled
+                ? "fill-amber-400 text-amber-400"
+                : half
+                  ? "fill-amber-400/50 text-amber-400"
+                  : "text-fg-muted/30",
+            )}
+            aria-hidden
+          />
+        );
+      })}
+      {showValue && (
+        <span className="ml-0.5 font-mono text-xs tabular-nums text-fg-subtle">
+          {rating.toFixed(1)}
         </span>
-      ) : null}
-    </div>
+      )}
+    </span>
   );
 }

@@ -1,64 +1,35 @@
-import type { HTMLAttributes } from "react";
+import { cn, formatPrice } from "@/lib/utils";
 
-export interface PriceTagProps extends HTMLAttributes<HTMLSpanElement> {
-  /** Price in minor units (cents). `0` renders as "Free". */
-  amount: number;
-  /** ISO-4217 currency code. Defaults to "USD". */
+interface PriceTagProps {
+  cents: number;
   currency?: string;
-  /** Render a compact badge instead of inline text. */
-  variant?: "text" | "badge";
+  locale?: string;
+  className?: string;
 }
 
-function format(amount: number, currency: string): string {
-  const formatter = new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency,
-    minimumFractionDigits: amount % 100 === 0 ? 0 : 2,
-    maximumFractionDigits: 2,
-  });
-  return formatter.format(amount / 100);
-}
-
+/**
+ * Formatted price display. Shows "Free" for 0, otherwise renders the
+ * price using the shared formatPrice utility. Styled with monospace
+ * tabular numerals for alignment in lists.
+ */
 export function PriceTag({
-  amount,
+  cents,
   currency = "USD",
-  variant = "text",
-  className = "",
-  ...props
+  locale = "en-US",
+  className,
 }: PriceTagProps) {
-  const isFree = amount <= 0;
-
-  if (variant === "badge") {
-    return (
-      <span
-        className={[
-          "inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold",
-          isFree
-            ? "bg-accent-green/10 text-accent-green border border-accent-green/20"
-            : "bg-accent-purple/10 text-accent-purple border border-accent-purple/20",
-          className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        {...props}
-      >
-        {isFree ? "Free" : format(amount, currency)}
-      </span>
-    );
-  }
+  const label = formatPrice(cents, currency, locale);
+  const isFree = cents === 0;
 
   return (
     <span
-      className={[
-        "font-semibold",
-        isFree ? "text-accent-green" : "text-text-primary",
+      className={cn(
+        "font-mono text-xs tabular-nums",
+        isFree ? "text-fg-muted" : "text-fg",
         className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      {...props}
+      )}
     >
-      {isFree ? "Free" : format(amount, currency)}
+      {label}
     </span>
   );
 }

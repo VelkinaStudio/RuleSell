@@ -1,68 +1,28 @@
 "use client";
 
 import { useCallback } from "react";
-import useSWR from "swr";
-import {
-  notifications as notificationsApi,
-  ApiError,
-  type NotificationItem,
-} from "@/lib/api-client";
-import { keys } from "@/lib/query-keys";
+import type { Notification } from "@/types";
 
-export interface UseNotificationsResult {
-  data: {
-    notifications: NotificationItem[];
-    unreadCount: number;
-  } | null;
-  isLoading: boolean;
-  error: ApiError | null;
-  mutate: () => Promise<unknown>;
-  /** Mark specific notifications as read. Omit `ids` to mark all as read. */
-  markRead: (ids?: string[]) => Promise<void>;
-}
+// In v1 mock mode, return mock notifications from constants
+import { MOCK_NOTIFICATIONS } from "@/constants/mock-notifications";
 
-/**
- * Fetch the current user's notifications and unread count, with a
- * convenience mark-read mutator that revalidates the list.
- */
-export function useNotifications(): UseNotificationsResult {
-  const { data, error, isLoading, mutate } = useSWR(
-    keys.notifications.list,
-    () => notificationsApi.list(),
-    { refreshInterval: 30_000 },
-  );
+export function useNotifications() {
+  // TODO: Replace mock with real API when backend ships
+  // const { data, error, isLoading, mutate } = useSWR(keys.notifications.all, () => notificationsApi.list());
+  const data = MOCK_NOTIFICATIONS as Notification[];
+  const isLoading = false;
+  const error = null;
 
-  const isAuthError = error instanceof ApiError && error.isUnauthorized;
+  const unreadCount = data?.filter((n) => !n.read).length ?? 0;
 
-  const markRead = useCallback(
-    async (ids?: string[]) => {
-      // Optimistic: locally zero the unread count for the target ids.
-      if (data) {
-        const targetIds = ids ?? data.notifications.filter((n) => !n.read).map((n) => n.id);
-        const next = {
-          notifications: data.notifications.map((n) =>
-            targetIds.includes(n.id) ? { ...n, read: true } : n,
-          ),
-          unreadCount: Math.max(0, data.unreadCount - targetIds.length),
-        };
-        await mutate(notificationsApi.markRead(ids).then(() => next), {
-          optimisticData: next,
-          rollbackOnError: true,
-          revalidate: true,
-        });
-      } else {
-        await notificationsApi.markRead(ids);
-        await mutate();
-      }
-    },
-    [data, mutate],
-  );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const markRead = useCallback(async (id: string) => {
+    // TODO: await notificationsApi.markRead(id); mutate();
+  }, []);
 
-  return {
-    data: isAuthError ? null : data ?? null,
-    isLoading,
-    error: error instanceof ApiError && !isAuthError ? error : null,
-    mutate,
-    markRead,
-  };
+  const markAllRead = useCallback(async () => {
+    // TODO: await notificationsApi.markAllRead(); mutate();
+  }, []);
+
+  return { notifications: data ?? [], unreadCount, markRead, markAllRead, isLoading, error };
 }

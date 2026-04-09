@@ -1,0 +1,1356 @@
+{
+  "brand": {
+    "name": "",
+    "tagline": ""
+  },
+  "nav": {
+    "browse": "",
+    "collections": "",
+    "leaderboard": "",
+    "sell": "",
+    "search": "",
+    "searchPlaceholder": "",
+    "signIn": "",
+    "signUp": "",
+    "dashboard": "",
+    "profile": "",
+    "saved": "",
+    "settings": "",
+    "signOut": "",
+    "browseAll": "",
+    "trending": "",
+    "new": "",
+    "top": "",
+    "free": "",
+    "paid": "",
+    "openMenu": "",
+    "closeMenu": "",
+    "openSearch": ""
+  },
+  "footer": {
+    "product": "",
+    "creators": "",
+    "company": "",
+    "legal": "",
+    "browse": "",
+    "collections": "",
+    "leaderboard": "",
+    "mcpServers": "",
+    "rules": "",
+    "skills": "",
+    "sell": "",
+    "creatorAgreement": "",
+    "qualityGuidelines": "",
+    "docs": "",
+    "about": "",
+    "blog": "",
+    "changelog": "",
+    "contact": "",
+    "terms": "",
+    "privacy": "",
+    "cookies": "",
+    "acceptableUse": "",
+    "dmca": "",
+    "accessibility": "",
+    "transparency": "",
+    "copyright": "",
+    "gpcStatement": "",
+    "sanctionStatement": ""
+  },
+  "cookie": {
+    "title": "",
+    "body": "",
+    "acceptAll": "",
+    "rejectAll": "",
+    "customize": "",
+    "save": "",
+    "essentialLabel": "",
+    "essentialDescription": "",
+    "analyticsLabel": "",
+    "analyticsDescription": "",
+    "adsLabel": "",
+    "adsDescription": "",
+    "personalizationLabel": "",
+    "personalizationDescription": ""
+  },
+  "ageGate": {
+    "title": "",
+    "body": "",
+    "dateOfBirth": "",
+    "country": "",
+    "submit": "",
+    "underageError": "",
+    "sanctionedError": ""
+  },
+  "common": {
+    "appName": "",
+    "tagline": "",
+    "search": "",
+    "searchPlaceholder": "",
+    "signIn": "",
+    "signUp": "",
+    "signOut": "",
+    "getStarted": "",
+    "learnMore": "",
+    "viewAll": "",
+    "loading": "",
+    "save": "",
+    "cancel": "",
+    "delete": "",
+    "edit": "",
+    "submit": "",
+    "back": "",
+    "next": "",
+    "previous": "",
+    "close": "",
+    "or": "",
+    "free": "",
+    "popular": "",
+    "new": "",
+    "featured": "",
+    "verified": "",
+    "addToCart": "",
+    "buyNow": "",
+    "download": "",
+    "preview": "",
+    "share": "",
+    "report": "",
+    "language": "",
+    "theme": "",
+    "dark": "",
+    "light": "",
+    "system": ""
+  },
+  "auth": {
+    "welcomeBack": "",
+    "createAccount": "",
+    "signInDesc": "",
+    "signUpDesc": "",
+    "email": "",
+    "password": "",
+    "confirmPassword": "",
+    "name": "",
+    "forgotPassword": "",
+    "resetPassword": "",
+    "resetPasswordDesc": "",
+    "sendResetLink": "",
+    "backToSignIn": "",
+    "noAccount": "",
+    "hasAccount": "",
+    "continueWith": "",
+    "google": "",
+    "github": "",
+    "agreeToTerms": "",
+    "termsOfService": "",
+    "and": "",
+    "privacyPolicy": ""
+  },
+  "dashboard": {
+    "nav": {
+      "sectionLabel": "",
+      "overview": "",
+      "rulesets": "",
+      "earnings": "",
+      "purchases": "",
+      "saved": "",
+      "following": "",
+      "reviews": "",
+      "team": "",
+      "settings": "",
+      "personaSeller": "",
+      "personaBuilder": "",
+      "personaUser": ""
+    },
+    "crumbs": {
+      "dashboard": "",
+      "overview": "",
+      "rulesets": "",
+      "earnings": "",
+      "purchases": "",
+      "saved": "",
+      "following": "",
+      "reviews": "",
+      "team": "",
+      "settings": "",
+      "seller": "",
+      "privacy": "",
+      "billing": "",
+      "new": "",
+      "edit": "",
+      "analytics": ""
+    },
+    "gate": {
+      "title": "",
+      "description": "",
+      "signIn": "",
+      "switchPersona": ""
+    },
+    "overview": {
+      "title": "",
+      "subtitle": "",
+      "installs30d": "",
+      "revenue30d": "",
+      "avgRating": "",
+      "publishedCount": "",
+      "totalRulesets": "",
+      "totalInstalls": "",
+      "totalRevenue": "",
+      "deltaPositive": "",
+      "deltaNegative": "",
+      "activityTitle": "",
+      "activityEmpty": "",
+      "activityViewAll": "",
+      "kindInstall": "",
+      "kindReview": "",
+      "kindPurchase": "",
+      "kindFollow": "",
+      "quickActions": "",
+      "quickActionPublish": "",
+      "quickActionEditProfile": "",
+      "quickActionViewMarket": ""
+    },
+    "rulesets": {
+      "title": "",
+      "subtitle": "",
+      "newButton": "",
+      "tabs": {
+        "all": "",
+        "published": "",
+        "draft": "",
+        "pending": "",
+        "unpublished": ""
+      },
+      "columns": {
+        "title": "",
+        "status": "",
+        "quality": "",
+        "installs": "",
+        "revenue": "",
+        "updated": "",
+        "actions": ""
+      },
+      "status": {
+        "DRAFT": "",
+        "PENDING_REVIEW": "",
+        "PUBLISHED": "",
+        "UNPUBLISHED": "",
+        "REMOVED": ""
+      },
+      "actionsLabel": "",
+      "actionView": "",
+      "actionEdit": "",
+      "actionAnalytics": "",
+      "actionUnpublish": "",
+      "actionDelete": "",
+      "bulk": {
+        "selectedCount": "",
+        "publish": "",
+        "unpublish": "",
+        "delete": "",
+        "clear": ""
+      },
+      "empty": {
+        "title": "",
+        "description": "",
+        "cta": ""
+      },
+      "emptyFiltered": {
+        "title": "",
+        "description": ""
+      },
+      "submittedToast": ""
+    },
+    "earnings": {
+      "title": "",
+      "subtitle": "",
+      "lifetime": "",
+      "pending": "",
+      "next": "",
+      "minPayout": "",
+      "chartTitle": "",
+      "chartLegendRevenue": "",
+      "chartLegendInstalls": "",
+      "chartEmpty": "",
+      "payoutsTitle": "",
+      "payoutPeriod": "",
+      "payoutAmount": "",
+      "payoutStatus": "",
+      "payoutPaidAt": "",
+      "payoutEmpty": "",
+      "statusPending": "",
+      "statusPaid": "",
+      "statusFailed": "",
+      "lockedTitle": "",
+      "lockedDescription": "",
+      "lockedCta": ""
+    },
+    "purchases": {
+      "title": "",
+      "subtitle": "",
+      "openInstall": "",
+      "purchasedOn": "",
+      "empty": {
+        "title": "",
+        "description": "",
+        "cta": ""
+      }
+    },
+    "saved": {
+      "title": "",
+      "subtitle": "",
+      "remove": "",
+      "empty": {
+        "title": "",
+        "description": "",
+        "cta": ""
+      }
+    },
+    "following": {
+      "title": "",
+      "subtitle": "",
+      "unfollow": "",
+      "latest": "",
+      "noLatest": "",
+      "empty": {
+        "title": "",
+        "description": "",
+        "cta": ""
+      }
+    },
+    "reviews": {
+      "title": "",
+      "subtitle": "",
+      "edit": "",
+      "delete": "",
+      "verifiedOn": "",
+      "empty": {
+        "title": "",
+        "description": "",
+        "cta": ""
+      }
+    },
+    "team": {
+      "title": "",
+      "subtitle": "",
+      "membersTitle": "",
+      "rulesetsTitle": "",
+      "memberRole": "",
+      "owner": "",
+      "admin": "",
+      "member": "",
+      "noTeamTitle": "",
+      "noTeamDescription": "",
+      "noTeamCta": ""
+    },
+    "settings": {
+      "title": "",
+      "subtitle": "",
+      "tabs": {
+        "profile": "",
+        "seller": "",
+        "privacy": "",
+        "billing": ""
+      },
+      "profile": {
+        "title": "",
+        "displayName": "",
+        "username": "",
+        "usernameHint": "",
+        "bio": "",
+        "bioHint": "",
+        "avatar": "",
+        "avatarUpload": "",
+        "preferredEnvironments": "",
+        "preferredEnvironmentsHint": "",
+        "notifications": "",
+        "emailDigest": "",
+        "emailMentions": "",
+        "emailUpdates": "",
+        "save": "",
+        "saved": ""
+      },
+      "seller": {
+        "title": "",
+        "stage1Title": "",
+        "stage1Description": "",
+        "stage1Progress": "",
+        "stage2Title": "",
+        "stage2Description": "",
+        "stage2Cta": "",
+        "stage3Title": "",
+        "stage3Description": "",
+        "stage4Title": "",
+        "stage4Description": "",
+        "stripeStatus": "",
+        "stripeStatusVerified": "",
+        "stripeStatusPending": "",
+        "stripeStatusNone": "",
+        "stripeDisconnect": "",
+        "kycLegalName": "",
+        "kycCountry": "",
+        "kycLine1": "",
+        "kycCity": "",
+        "kycPostal": "",
+        "kycBank": "",
+        "kycReg": "",
+        "kycSubmit": "",
+        "kycSubmitted": ""
+      },
+      "privacy": {
+        "title": "",
+        "cookieTitle": "",
+        "cookieDescription": "",
+        "cookieEssential": "",
+        "cookieAnalytics": "",
+        "cookieAds": "",
+        "cookiePersonalization": "",
+        "dsrTitle": "",
+        "dsrDescription": "",
+        "exportData": "",
+        "deleteAccount": "",
+        "correctData": "",
+        "gpcTitle": "",
+        "gpcHonored": "",
+        "gpcNotDetected": "",
+        "savedToast": ""
+      },
+      "billing": {
+        "title": "",
+        "proTitle": "",
+        "proPrice": "",
+        "proDescription": "",
+        "proFeatures": {
+          "private": "",
+          "history": "",
+          "filters": "",
+          "early": ""
+        },
+        "proCta": "",
+        "proSubscribed": "",
+        "comingSoon": ""
+      }
+    }
+  },
+  "publishWizard": {
+    "title": "",
+    "subtitle": "",
+    "draftSaved": "",
+    "back": "",
+    "next": "",
+    "submitForReview": "",
+    "stepLabel": "",
+    "steps": {
+      "type": "",
+      "content": "",
+      "variants": "",
+      "license": "",
+      "pricing": ""
+    },
+    "type": {
+      "title": "",
+      "description": "",
+      "typeLabel": "",
+      "categoryLabel": "",
+      "secondaryLabel": "",
+      "secondaryHint": "",
+      "platformLabel": "",
+      "validationRequired": ""
+    },
+    "content": {
+      "title": "",
+      "description": "",
+      "titleLabel": "",
+      "titlePlaceholder": "",
+      "shortDescription": "",
+      "shortDescriptionHint": "",
+      "previewLabel": "",
+      "previewHint": "",
+      "tagsLabel": "",
+      "tagsHint": "",
+      "tagsPlaceholder": "",
+      "longDescription": "",
+      "longDescriptionHint": "",
+      "screenshotsLabel": "",
+      "screenshotsHint": "",
+      "validationRequired": ""
+    },
+    "variants": {
+      "title": "",
+      "description": "",
+      "addVariant": "",
+      "labelLabel": "",
+      "labelPlaceholder": "",
+      "envLabel": "",
+      "kindLabel": "",
+      "methodLabel": "",
+      "contentLabel": "",
+      "contentPlaceholder": "",
+      "targetPathLabel": "",
+      "targetPathPlaceholder": "",
+      "instructionsLabel": "",
+      "requirementsLabel": "",
+      "addRequirement": "",
+      "primary": "",
+      "remove": "",
+      "validationOne": "",
+      "validationPrimary": "",
+      "validationFields": ""
+    },
+    "license": {
+      "title": "",
+      "description": "",
+      "licenseLabel": "",
+      "compatTitle": "",
+      "compatHint": "",
+      "compatConfirm": "",
+      "requirementsLabel": "",
+      "addRequirement": "",
+      "warningNonCommercial": "",
+      "warningCopyleft": "",
+      "spdxLabel": "",
+      "commercial": "",
+      "nonCommercial": "",
+      "shareAlike": "",
+      "attribution": ""
+    },
+    "pricing": {
+      "title": "",
+      "description": "",
+      "freeLabel": "",
+      "paidLabel": "",
+      "priceLabel": "",
+      "priceHint": "",
+      "currencyLabel": "",
+      "subscriptionLabel": "",
+      "subscriptionHint": "",
+      "monthlyLabel": "",
+      "yearlyLabel": "",
+      "teamPricingLabel": "",
+      "teamPricingHint": "",
+      "team10x": "",
+      "teamUnlimited": "",
+      "lockedSellerTitle": "",
+      "lockedSellerDescription": "",
+      "platformCutLabel": "",
+      "platformCutFirst6": "",
+      "platformCutAfter": "",
+      "youNetLabel": "",
+      "submitNow": ""
+    }
+  },
+  "seller": {
+    "dashboard": "",
+    "totalRevenue": "",
+    "totalSales": "",
+    "activeProducts": "",
+    "avgRating": "",
+    "uploadProduct": "",
+    "manageProducts": "",
+    "earnings": "",
+    "payouts": "",
+    "analytics": "",
+    "becomeSellerTitle": "",
+    "becomeSellerDesc": "",
+    "apply": "",
+    "verificationPending": "",
+    "verificationApproved": ""
+  },
+  "errors": {
+    "notFound": "",
+    "notFoundDesc": "",
+    "serverError": "",
+    "serverErrorDesc": "",
+    "goHome": ""
+  },
+  "legal": {
+    "lastUpdated": "",
+    "backToTop": "",
+    "navTitle": "",
+    "disclaimer": "",
+    "noticeLabel": "",
+    "summaryLabel": "",
+    "citationsLabel": "",
+    "tableOfContents": "",
+    "nav": {
+      "terms": "",
+      "privacy": "",
+      "cookies": "",
+      "acceptableUse": "",
+      "dmca": "",
+      "creatorAgreement": "",
+      "accessibility": "",
+      "transparency": ""
+    },
+    "terms": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "acceptance": {
+          "title": "",
+          "body": ""
+        },
+        "eligibility": {
+          "title": "",
+          "body": ""
+        },
+        "geographicRestrictions": {
+          "title": "",
+          "body": ""
+        },
+        "account": {
+          "title": "",
+          "body": ""
+        },
+        "content": {
+          "title": "",
+          "body": ""
+        },
+        "prohibited": {
+          "title": "",
+          "body": ""
+        },
+        "moderation": {
+          "title": "",
+          "body": ""
+        },
+        "thirdParty": {
+          "title": "",
+          "body": ""
+        },
+        "termination": {
+          "title": "",
+          "body": ""
+        },
+        "disclaimers": {
+          "title": "",
+          "body": ""
+        },
+        "law": {
+          "title": "",
+          "body": ""
+        },
+        "changes": {
+          "title": "",
+          "body": ""
+        },
+        "contact": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "privacy": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "scope": {
+          "title": "",
+          "body": ""
+        },
+        "controller": {
+          "title": "",
+          "body": ""
+        },
+        "categories": {
+          "title": "",
+          "body": ""
+        },
+        "purposes": {
+          "title": "",
+          "body": ""
+        },
+        "retention": {
+          "title": "",
+          "body": ""
+        },
+        "sharing": {
+          "title": "",
+          "body": ""
+        },
+        "transfers": {
+          "title": "",
+          "body": ""
+        },
+        "rights": {
+          "title": "",
+          "body": ""
+        },
+        "gpc": {
+          "title": "",
+          "body": ""
+        },
+        "children": {
+          "title": "",
+          "body": ""
+        },
+        "security": {
+          "title": "",
+          "body": ""
+        },
+        "automated": {
+          "title": "",
+          "body": ""
+        },
+        "changes": {
+          "title": "",
+          "body": ""
+        },
+        "contact": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "cookies": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "what": {
+          "title": "",
+          "body": ""
+        },
+        "consent": {
+          "title": "",
+          "body": ""
+        },
+        "categories": {
+          "title": "",
+          "body": ""
+        },
+        "list": {
+          "title": "",
+          "body": ""
+        },
+        "gpc": {
+          "title": "",
+          "body": ""
+        },
+        "control": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "acceptableUse": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "prohibited": {
+          "title": "",
+          "body": ""
+        },
+        "behaviour": {
+          "title": "",
+          "body": ""
+        },
+        "consequences": {
+          "title": "",
+          "body": ""
+        },
+        "report": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "dmca": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "agent": {
+          "title": "",
+          "body": ""
+        },
+        "notice": {
+          "title": "",
+          "body": ""
+        },
+        "process": {
+          "title": "",
+          "body": ""
+        },
+        "counterNotice": {
+          "title": "",
+          "body": ""
+        },
+        "repeat": {
+          "title": "",
+          "body": ""
+        },
+        "license": {
+          "title": "",
+          "body": ""
+        },
+        "abuse": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "creatorAgreement": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "eligibility": {
+          "title": "",
+          "body": ""
+        },
+        "fees": {
+          "title": "",
+          "body": ""
+        },
+        "payouts": {
+          "title": "",
+          "body": ""
+        },
+        "refunds": {
+          "title": "",
+          "body": ""
+        },
+        "license": {
+          "title": "",
+          "body": ""
+        },
+        "warranties": {
+          "title": "",
+          "body": ""
+        },
+        "trader": {
+          "title": "",
+          "body": ""
+        },
+        "termination": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "accessibility": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "sections": {
+        "target": {
+          "title": "",
+          "body": ""
+        },
+        "testing": {
+          "title": "",
+          "body": ""
+        },
+        "issues": {
+          "title": "",
+          "body": ""
+        },
+        "report": {
+          "title": "",
+          "body": ""
+        },
+        "alternatives": {
+          "title": "",
+          "body": ""
+        },
+        "exemption": {
+          "title": "",
+          "body": ""
+        }
+      },
+      "citations": ""
+    },
+    "transparency": {
+      "title": "",
+      "lastUpdated": "",
+      "intro": "",
+      "mauTitle": "",
+      "mauValue": "",
+      "mauNote": "",
+      "mauPeriod": "",
+      "moderationTitle": "",
+      "moderationRemoved": "",
+      "moderationDemoted": "",
+      "moderationWarned": "",
+      "moderationRestored": "",
+      "noticesTitle": "",
+      "noticesIp": "",
+      "noticesMalware": "",
+      "noticesIllegal": "",
+      "noticesHate": "",
+      "noticesPrivacy": "",
+      "noticesOther": "",
+      "decisionsTitle": "",
+      "decisionsAutomated": "",
+      "decisionsHuman": "",
+      "ordersTitle": "",
+      "ordersValue": "",
+      "ordersNote": "",
+      "appealsTitle": "",
+      "appealsUpheld": "",
+      "appealsOverturned": "",
+      "annualLabel": "",
+      "annualLink": "",
+      "methodology": "",
+      "methodologyBody": ""
+    }
+  },
+  "marketplace": {
+    "toolPicker": {
+      "label": "",
+      "hint": "",
+      "seeAll": "",
+      "add": "",
+      "remove": ""
+    },
+    "card": {
+      "by": "",
+      "free": "",
+      "installs": "",
+      "worksWithTools": "",
+      "qualityScore": "",
+      "openItem": ""
+    },
+    "shelf": {
+      "seeAll": ""
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "",
+      "title": "",
+      "subtitle": "",
+      "searchPlaceholder": "",
+      "searchSubmit": ""
+    },
+    "shelves": {
+      "topForYou": "",
+      "topForYouDesc": "",
+      "editorsPicks": "",
+      "editorsPicksDesc": "",
+      "newThisWeek": "",
+      "newThisWeekDesc": "",
+      "collections": "",
+      "collectionsDesc": ""
+    },
+    "errors": {
+      "title": "",
+      "retry": ""
+    }
+  },
+  "browse": {
+    "title": "",
+    "subtitle": "",
+    "filters": {
+      "title": "",
+      "clear": "",
+      "platform": "",
+      "type": "",
+      "category": "",
+      "environment": "",
+      "price": "",
+      "license": "",
+      "minQuality": "",
+      "anyPrice": "",
+      "free": "",
+      "paid": "",
+      "open": "",
+      "close": "",
+      "apply": ""
+    },
+    "tabs": {
+      "all": "",
+      "trending": "",
+      "new": "",
+      "top": "",
+      "editors": ""
+    },
+    "sort": {
+      "label": "",
+      "quality": "",
+      "popular": "",
+      "recent": "",
+      "priceAsc": "",
+      "priceDesc": ""
+    },
+    "empty": {
+      "title": "",
+      "description": "",
+      "clear": ""
+    },
+    "pagination": {
+      "previous": "",
+      "next": "",
+      "page": ""
+    },
+    "results": ""
+  },
+  "category": {
+    "title": "",
+    "browseAll": ""
+  },
+  "environment": {
+    "title": "",
+    "subtitle": "",
+    "browseAll": ""
+  },
+  "search": {
+    "title": "",
+    "placeholder": "",
+    "empty": {
+      "title": "",
+      "description": "",
+      "browse": ""
+    },
+    "results": ""
+  },
+  "collections": {
+    "title": "",
+    "subtitle": "",
+    "by": "",
+    "items": "",
+    "followers": "",
+    "follow": "",
+    "unfollow": "",
+    "empty": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "leaderboard": {
+    "title": "",
+    "subtitle": "",
+    "learnMore": "",
+    "filters": {
+      "all": ""
+    },
+    "rank": "",
+    "asset": "",
+    "author": "",
+    "score": "",
+    "downloads": ""
+  },
+  "ruleset": {
+    "breadcrumb": {
+      "browse": ""
+    },
+    "by": "",
+    "stats": {
+      "rating": "",
+      "downloads": "",
+      "qualityScore": "",
+      "freshness": "",
+      "freshnessRecent": "",
+      "license": ""
+    },
+    "actions": {
+      "save": "",
+      "saved": "",
+      "follow": "",
+      "following": "",
+      "fork": "",
+      "report": ""
+    },
+    "price": {
+      "free": "",
+      "paid": "",
+      "perInstall": ""
+    },
+    "cta": {
+      "install": "",
+      "purchase": "",
+      "comingSoon": ""
+    },
+    "install": {
+      "title": "",
+      "subtitle": "",
+      "target": "",
+      "copy": "",
+      "download": "",
+      "openInCli": "",
+      "openInCliHint": "",
+      "instructions": "",
+      "requirements": ""
+    },
+    "about": {
+      "title": "",
+      "qualityBreakdown": "",
+      "tokenEfficiency": "",
+      "installSuccess": "",
+      "schemaClean": "",
+      "freshness": "",
+      "reviewScore": "",
+      "securityPass": "",
+      "securityPassed": "",
+      "securityFailed": "",
+      "notApplicable": "",
+      "license": "",
+      "commercial": "",
+      "nonCommercial": "",
+      "attribution": "",
+      "viewLicense": ""
+    },
+    "reviews": {
+      "title": "",
+      "subtitle": "",
+      "empty": "",
+      "write": "",
+      "verifiedInstall": "",
+      "testedOn": "",
+      "helpful": "",
+      "helpfulCount": "",
+      "form": {
+        "title": "",
+        "rating": "",
+        "headline": "",
+        "body": "",
+        "environment": "",
+        "submit": "",
+        "ineligible": ""
+      }
+    },
+    "related": {
+      "title": "",
+      "fallback": ""
+    },
+    "notFound": {
+      "title": "",
+      "description": "",
+      "browse": ""
+    }
+  },
+  "profile": {
+    "joined": "",
+    "stats": {
+      "published": "",
+      "downloads": "",
+      "avgRating": "",
+      "totalEarnings": ""
+    },
+    "actions": {
+      "follow": "",
+      "following": "",
+      "message": "",
+      "messageDisabled": "",
+      "report": ""
+    },
+    "publishedItems": "",
+    "empty": {
+      "title": "",
+      "description": ""
+    },
+    "notFound": "",
+    "reputation": {
+      "level": "",
+      "next": "",
+      "max": ""
+    }
+  },
+  "team": {
+    "by": "",
+    "verified": "",
+    "members": "",
+    "stats": {
+      "rulesets": "",
+      "downloads": "",
+      "earnings": ""
+    },
+    "actions": {
+      "follow": "",
+      "following": ""
+    },
+    "membersTitle": "",
+    "empty": {
+      "title": "",
+      "description": ""
+    },
+    "notFound": ""
+  },
+  "compliance": {
+    "report": {
+      "label": "",
+      "iconLabel": "",
+      "title": "",
+      "subtitle": "",
+      "categoryLabel": "",
+      "category": {
+        "illegal": "",
+        "ip": "",
+        "malware": "",
+        "hate": "",
+        "sexual": "",
+        "harassment": "",
+        "privacy": "",
+        "fraud": "",
+        "other": ""
+      },
+      "descriptionLabel": "",
+      "descriptionPlaceholder": "",
+      "descriptionHelp": "",
+      "emailLabel": "",
+      "emailPlaceholder": "",
+      "emailHelp": "",
+      "declarationLabel": "",
+      "submit": "",
+      "cancel": "",
+      "successTitle": "",
+      "successBody": "",
+      "errorTitle": "",
+      "errorBody": "",
+      "deepLinkTitle": "",
+      "deepLinkSubtitle": ""
+    },
+    "licenseWarning": {
+      "spdxLabel": "",
+      "viewLicense": "",
+      "nonCommercialPaid": "",
+      "gplPurchase": "",
+      "agplPurchase": "",
+      "cc0Public": "",
+      "commercialOk": "",
+      "attributionRequired": "",
+      "neutral": ""
+    }
+  },
+  "dsrExport": {
+    "trigger": "",
+    "title": "",
+    "subtitle": "",
+    "categoriesLabel": "",
+    "categories": {
+      "profile": "",
+      "rulesets": "",
+      "reviews": "",
+      "purchases": "",
+      "activity": "",
+      "consent": ""
+    },
+    "selectAll": "",
+    "request": "",
+    "preparing": "",
+    "ready": "",
+    "download": "",
+    "audit": "",
+    "cancel": ""
+  },
+  "dsrDelete": {
+    "trigger": "",
+    "title": "",
+    "warning": "",
+    "consequences": "",
+    "confirmLabel": "",
+    "confirmPlaceholder": "",
+    "submit": "",
+    "cancel": "",
+    "scheduledTitle": "",
+    "scheduledBody": "",
+    "mismatchError": ""
+  },
+  "dsrCorrection": {
+    "trigger": "",
+    "title": "",
+    "subtitle": "",
+    "fields": {
+      "name": "",
+      "email": "",
+      "country": ""
+    },
+    "submit": "",
+    "cancel": "",
+    "savedTitle": "",
+    "savedBody": ""
+  },
+  "report": {
+    "pageTitle": "",
+    "metaDescription": "",
+    "back": "",
+    "context": {
+      "ruleset": "",
+      "review": "",
+      "user": "",
+      "team": "",
+      "comment": "",
+      "copyright": ""
+    },
+    "intro": "",
+    "anchorReport": "",
+    "anchorAfter": "",
+    "anchorAfterBody": ""
+  },
+  "devUsers": {
+    "title": "",
+    "subtitle": "",
+    "active": "",
+    "reset": "",
+    "personas": {
+      "visitor": {
+        "label": "",
+        "description": ""
+      },
+      "user": {
+        "label": "",
+        "description": ""
+      },
+      "pro": {
+        "label": "",
+        "description": ""
+      },
+      "builder": {
+        "label": "",
+        "description": ""
+      },
+      "builderEligible": {
+        "label": "",
+        "description": ""
+      },
+      "seller": {
+        "label": "",
+        "description": ""
+      },
+      "certified": {
+        "label": "",
+        "description": ""
+      },
+      "teamOwner": {
+        "label": "",
+        "description": ""
+      },
+      "maintainer": {
+        "label": "",
+        "description": ""
+      },
+      "admin": {
+        "label": "",
+        "description": ""
+      }
+    },
+    "table": {
+      "currentUser": "",
+      "username": "",
+      "role": "",
+      "creatorMarks": "",
+      "noUser": ""
+    },
+    "warningProd": "",
+    "checks": {
+      "title": "",
+      "subtitle": "",
+      "items": {
+        "dashboard": "",
+        "earnings": "",
+        "seller": "",
+        "publish": "",
+        "browse": ""
+      }
+    }
+  }
+}

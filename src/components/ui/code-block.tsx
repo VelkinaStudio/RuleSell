@@ -1,120 +1,84 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { codeToHtml } from "shiki";
+import { useCallback, useState } from "react";
+import { Check, Copy, Lock } from "lucide-react";
 
-export interface CodeBlockProps {
+import { cn } from "@/lib/utils";
+
+interface CodeBlockProps {
   code: string;
   language?: string;
-  /** Show 1-indexed line numbers in a gutter column. Defaults to true. */
-  showLineNumbers?: boolean;
-  /** Render a copy-to-clipboard button in the header. Defaults to true. */
-  showCopyButton?: boolean;
-  /**
-   * Overlay a blur + CTA on top of the rendered code. Used to preview
-   * gated/paid content without revealing it.
-   */
   locked?: boolean;
-  /** Message shown in the blur overlay when `locked` is true. */
-  lockedMessage?: string;
   className?: string;
 }
 
 /**
- * Syntax-highlighted code block with line numbers, copy button, and
- * optional blur overlay for locked content.
+ * Code display block with copy button and optional blur overlay for
+ * locked/paid content. Uses plain `<pre>` with syntax-appropriate styling.
  *
- * Uses shiki's `codeToHtml` at render time. For SSR/RSC callers, consider
- * importing from a server component that pre-renders the HTML — this
- * client variant hydrates into an async effect.
+ * NOTE: Shiki highlighting is not yet integrated (shiki is not installed).
+ * When shiki is added, replace the inner <code> with shiki-highlighted HTML.
+ * The component API will stay the same.
  */
 export function CodeBlock({
   code,
-  language = "typescript",
-  showLineNumbers = true,
-  showCopyButton = true,
+  language = "text",
   locked = false,
-  lockedMessage = "Purchase to view the full content",
-  className = "",
+  className,
 }: CodeBlockProps) {
-  const [html, setHtml] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
-    codeToHtml(code, {
-      lang: language,
-      theme: "github-dark-dimmed",
-    })
-      .then((out) => {
-        if (!cancelled) setHtml(out);
-      })
-      .catch(() => {
-        if (!cancelled) setHtml(null);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [code, language]);
-
-  async function copy() {
+  const handleCopy = useCallback(async () => {
+    if (locked) return;
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
-      /* noop */
+      // clipboard API not available
     }
-  }
+  }, [code, locked]);
 
   return (
-    <div
-      className={[
-        "relative rounded-xl overflow-hidden border border-border-primary bg-bg-secondary",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-    >
-      <div className="flex items-center justify-between gap-3 border-b border-border-primary bg-bg-tertiary/60 px-4 py-2">
-        <span className="text-xs font-mono text-text-secondary uppercase tracking-wider">
+    <div className={cn("group relative rounded-lg border border-border bg-surface-1", className)}>
+      {/* Header bar */}
+      <div className="flex items-center justify-between border-b border-border px-4 py-2">
+        <span className="text-[11px] font-medium uppercase tracking-wider text-fg-muted">
           {language}
         </span>
-        {showCopyButton ? (
+        {!locked && (
           <button
             type="button"
-            onClick={copy}
-            className="text-xs text-text-secondary hover:text-text-primary transition-colors"
+            onClick={handleCopy}
+            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-fg-subtle transition-colors hover:bg-surface-2 hover:text-fg"
+            aria-label={copied ? "Copied" : "Copy code"}
           >
+            {copied ? (
+              <Check className="h-3.5 w-3.5 text-green-500" aria-hidden />
+            ) : (
+              <Copy className="h-3.5 w-3.5" aria-hidden />
+            )}
             {copied ? "Copied" : "Copy"}
           </button>
-        ) : null}
-      </div>
-
-      <div
-        className={[
-          "relative overflow-x-auto text-sm",
-          showLineNumbers ? "shiki-lines" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        {html ? (
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-        ) : (
-          <pre className="p-4 font-mono text-text-primary whitespace-pre">
-            {code}
-          </pre>
         )}
       </div>
 
-      {locked ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-bg-primary/70 backdrop-blur-md">
-          <p className="text-sm font-medium text-text-primary">
-            {lockedMessage}
-          </p>
-        </div>
-      ) : null}
+      {/* Code area */}
+      <div className="relative overflow-x-auto">
+        <pre className="p-4 text-sm leading-relaxed">
+          <code className="font-mono text-fg">{code}</code>
+        </pre>
+
+        {/* Blur overlay for locked content */}
+        {locked && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-b-lg bg-surface/80 backdrop-blur-sm">
+            <Lock className="h-5 w-5 text-fg-muted" aria-hidden />
+            <span className="text-sm font-medium text-fg-muted">
+              Purchase to view full content
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

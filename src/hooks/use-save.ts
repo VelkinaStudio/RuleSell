@@ -1,49 +1,32 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { saved as savedApi, ApiError } from "@/lib/api-client";
 
-export interface SaveState {
-  saved: boolean;
-}
-
-export interface UseSaveResult {
-  data: SaveState | null;
-  isLoading: boolean;
-  error: ApiError | null;
-  /** Toggle the current user's save state with optimistic update + rollback. */
-  mutate: () => Promise<void>;
-}
+import { saved as saves } from "@/lib/api-client";
 
 /**
- * Optimistic save/unsave toggle hook.
+ * Optimistic save/bookmark toggle for a ruleset. Flips the local state
+ * immediately and reverts on server error. In v1 (mock-only), the toggle
+ * just flips client state with no network call.
  */
-export function useSave(
-  rulesetId: string,
-  initial: SaveState = { saved: false },
-): UseSaveResult {
-  const [state, setState] = useState<SaveState>(initial);
+export function useSave(rulesetId: string, initialSaved = false) {
+  const [saved, setSaved] = useState(initialSaved);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<ApiError | null>(null);
 
-  const mutate = useCallback(async () => {
-    const previous = state;
-    setState({ saved: !previous.saved });
+  const toggle = useCallback(async () => {
+    const prev = saved;
+    setSaved(!prev); // optimistic
     setIsLoading(true);
-    setError(null);
 
     try {
-      const next = await savedApi.toggle(rulesetId);
-      setState(next);
-    } catch (e) {
-      setState(previous);
-      if (e instanceof ApiError && !e.isUnauthorized) {
-        setError(e);
-      }
+      const res = await saves.toggle(rulesetId);
+      setSaved(res.saved);
+    } catch {
+      setSaved(prev); // revert
     } finally {
       setIsLoading(false);
     }
-  }, [rulesetId, state]);
+  }, [rulesetId, saved]);
 
-  return { data: state, isLoading, error, mutate };
+  return { saved, toggle, isLoading };
 }

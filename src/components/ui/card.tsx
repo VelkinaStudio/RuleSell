@@ -1,72 +1,92 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import * as React from "react"
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  /** Emit hover treatment (border + shadow lift). Defaults to true. */
-  hover?: boolean;
-  children?: ReactNode;
-}
+import { cn } from "@/lib/utils"
 
-export function Card({
-  hover = true,
-  className = "",
-  children,
-  ...props
-}: CardProps) {
+function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={[
-        "rounded-xl border border-border-primary bg-bg-secondary",
-        "transition-all duration-200",
-        hover
-          ? "hover:border-border-secondary hover:bg-bg-secondary/80 hover:shadow-lg"
-          : "",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
-
-export function CardHeader({
-  className = "",
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={["p-5 border-b border-border-primary", className]
-        .filter(Boolean)
-        .join(" ")}
+      data-slot="card"
+      className={cn(
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        className
+      )}
       {...props}
     />
-  );
+  )
 }
 
-export function CardBody({
-  className = "",
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={["p-5", className].filter(Boolean).join(" ")}
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className
+      )}
       {...props}
     />
-  );
+  )
 }
 
-export function CardFooter({
-  className = "",
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={["p-5 border-t border-border-primary", className]
-        .filter(Boolean)
-        .join(" ")}
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
       {...props}
     />
-  );
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
 }

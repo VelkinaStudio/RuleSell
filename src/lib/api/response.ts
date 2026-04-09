@@ -71,6 +71,7 @@ export function paginationFromCursor(
 ): PaginationMeta {
   return {
     total,
+    page: 1,
     pageSize,
     hasNext: !!nextCursor,
     hasPrev: !!prevCursor,

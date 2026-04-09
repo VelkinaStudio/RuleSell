@@ -1,34 +1,16 @@
 "use client";
 
 import useSWR from "swr";
-import { rulesets, ApiError } from "@/lib/api-client";
-import { keys } from "@/lib/query-keys";
-import type { RulesetCardData } from "@/types";
 
-export interface UseRulesetResult {
-  data: (RulesetCardData & { content?: string }) | null;
-  isLoading: boolean;
-  error: ApiError | null;
-  mutate: () => Promise<unknown>;
+import type { Ruleset } from "@/types";
+import { fetcher, type SWRKey } from "@/lib/api/fetcher";
+
+export function useRuleset(slug: string | null) {
+  const key: SWRKey | null = slug ? (["ruleset-by-slug", slug] as const) : null;
+  return useSWR<Ruleset>(key, fetcher);
 }
 
-/**
- * Fetch a single ruleset by its slug. `data` will be `null` when the
- * user is unauthenticated for a gated resource; detail-level errors
- * (404, 403) surface via the `error` field.
- */
-export function useRuleset(slug: string | null | undefined): UseRulesetResult {
-  const { data, error, isLoading, mutate } = useSWR(
-    slug ? keys.rulesets.detail(slug) : null,
-    slug ? () => rulesets.get(slug) : null,
-  );
-
-  const isAuthError = error instanceof ApiError && error.isUnauthorized;
-
-  return {
-    data: isAuthError ? null : data ?? null,
-    isLoading: slug ? isLoading : false,
-    error: error instanceof ApiError && !isAuthError ? error : null,
-    mutate,
-  };
+export function useRulesetById(id: string | null) {
+  const key: SWRKey | null = id ? (["ruleset-by-id", id] as const) : null;
+  return useSWR<Ruleset>(key, fetcher);
 }

@@ -1,0 +1,15 @@
+{
+  "name": "rulesell",
+  "version": "0.1.0",
+  "description": "CLI for installing AI configurations from RuleSet AI",
+  "bin": {
+    "rulesell": "./bin/rulesell.mjs"
+  },
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VelkinaStudio/RuleSell"
+  },
+  "keywords": ["ai", "cursor", "claude-code", "mcp", "windsurf", "rules", "config"]
+}
