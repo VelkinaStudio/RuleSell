@@ -67,7 +67,7 @@ export interface ListRulesetsOptions {
   maxPrice?: number;
   minRating?: number;
   tagNames?: string[];
-  sort?: "newest" | "trending" | "most_voted" | "most_downloaded";
+  sort?: string;
   cursor?: string;
   pageSize?: number;
 }
@@ -95,10 +95,15 @@ export async function listRulesets(opts: ListRulesetsOptions, userId?: string) {
     where.tags = { some: { tag: { name: { in: opts.tagNames } } } };
   }
 
+  const sort = opts.sort;
   const orderBy: Prisma.RulesetOrderByWithRelationInput =
-    opts.sort === "trending" ? { trendingScore: "desc" }
-    : opts.sort === "most_voted" ? { votes: { _count: "desc" } }
-    : opts.sort === "most_downloaded" ? { downloadCount: "desc" }
+    sort === "trending" ? { trendingScore: "desc" }
+    : sort === "quality" || sort === "top" ? { avgRating: "desc" }
+    : sort === "most_voted" ? { votes: { _count: "desc" } }
+    : sort === "most_downloaded" || sort === "popular" ? { downloadCount: "desc" }
+    : sort === "new" || sort === "newest" || sort === "recent" ? { createdAt: "desc" }
+    : sort === "price_asc" ? { price: "asc" }
+    : sort === "price_desc" ? { price: "desc" }
     : { createdAt: "desc" };
 
   const [rows, total] = await Promise.all([
