@@ -2,7 +2,7 @@
 
 import { ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,8 +24,19 @@ export function CookieBanner() {
   const [ads, setAds] = useState(false);
   const [personalization, setPersonalization] = useState(false);
   const gpcHonored = useGpcHonored();
+  const [show, setShow] = useState(false);
 
-  if (consent) return null;
+  useEffect(() => {
+    const timer = setTimeout(() => setShow(true), 2500);
+    const onScroll = () => setShow(true);
+    window.addEventListener("scroll", onScroll, { once: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  if (consent || !show) return null;
 
   return (
     <>

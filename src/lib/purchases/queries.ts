@@ -44,6 +44,6 @@ export async function getUserPurchases(userId: string) {
 export function calculatePlatformFee(amount: number, isPro: boolean): number {
   const rate = isPro
     ? parseFloat(process.env.PRO_COMMISSION_RATE || "0.10")
-    : parseFloat(process.env.STANDARD_COMMISSION_RATE || "0.20");
+    : parseFloat(process.env.STANDARD_COMMISSION_RATE || "0.15");
   return Math.round(amount * rate * 100) / 100;
 }

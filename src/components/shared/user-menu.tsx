@@ -2,7 +2,7 @@
 
 import { LogIn, LogOut, Settings, User as UserIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ export function UserMenu() {
         size="sm"
         className="bg-brand text-brand-fg hover:bg-brand/90 focus-visible:ring-brand"
       >
-        <Link href="/signin">
+        <Link href="/login">
           <LogIn className="mr-1.5 h-3.5 w-3.5" />
           {t("signIn")}
         </Link>

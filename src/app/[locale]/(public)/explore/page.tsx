@@ -79,14 +79,19 @@ function FeedTab() {
         href: `/r/${MOCK_RULESETS.find((r) => r.id === d.rulesetId)?.slug ?? d.rulesetId}`,
         createdAt: d.createdAt,
       })),
-      ...MOCK_SHOWCASES.map((s) => ({
-        id: `feed-show-${s.id}`,
-        kind: "showcase" as const,
-        title: s.title,
-        body: `New showcase by @${s.author.username}`,
-        href: "/explore",
-        createdAt: s.createdAt,
-      })),
+      ...MOCK_SHOWCASES.map((s) => {
+        const firstRuleset = s.rulesetIds.length > 0
+          ? MOCK_RULESETS.find((r) => r.id === s.rulesetIds[0])
+          : null;
+        return {
+          id: `feed-show-${s.id}`,
+          kind: "showcase" as const,
+          title: s.title,
+          body: `New showcase by @${s.author.username}`,
+          href: firstRuleset ? `/r/${firstRuleset.slug}` : null,
+          createdAt: s.createdAt,
+        };
+      }),
     ];
     return feed.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }, []);
@@ -100,24 +105,38 @@ function FeedTab() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
       <div className="space-y-1 divide-y divide-border-soft">
-        {items.map((item) => (
-          <Link
-            key={item.id}
-            href={item.href}
-            className="group flex items-start gap-3 py-3 transition hover:bg-bg-surface/50"
-          >
-            {item.kind === "discussion" ? (
-              <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-fg-dim" />
-            ) : (
-              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-fg-dim" />
-            )}
-            <div className="min-w-0 flex-1">
-              <p className="line-clamp-1 text-sm text-fg group-hover:text-fg">{item.title}</p>
-              <p className="mt-0.5 text-xs text-fg-dim">{item.body}</p>
+        {items.map((item) => {
+          const inner = (
+            <>
+              {item.kind === "discussion" ? (
+                <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-fg-dim" />
+              ) : (
+                <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-fg-dim" />
+              )}
+              <div className="min-w-0 flex-1">
+                <p className="line-clamp-1 text-sm text-fg group-hover:text-fg">{item.title}</p>
+                <p className="mt-0.5 text-xs text-fg-dim">{item.body}</p>
+              </div>
+              <span className="shrink-0 text-[10px] text-fg-dim">{formatRelative(item.createdAt)}</span>
+            </>
+          );
+          return item.href ? (
+            <Link
+              key={item.id}
+              href={item.href}
+              className="group flex items-start gap-3 py-3 transition hover:bg-bg-surface/50"
+            >
+              {inner}
+            </Link>
+          ) : (
+            <div
+              key={item.id}
+              className="flex items-start gap-3 py-3"
+            >
+              {inner}
             </div>
-            <span className="shrink-0 text-[10px] text-fg-dim">{formatRelative(item.createdAt)}</span>
-          </Link>
-        ))}
+          );
+        })}
       </div>
       <aside className="hidden lg:block">
         <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">Trending this week</h3>

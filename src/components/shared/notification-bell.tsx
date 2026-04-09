@@ -14,6 +14,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { formatRelative } from "@/lib/utils";
+import { useSession } from "@/hooks/use-session";
 
 const KIND_ICON: Record<NotificationKind, typeof Bell> = {
   reply: MessageCircle,
@@ -24,8 +25,12 @@ const KIND_ICON: Record<NotificationKind, typeof Bell> = {
 };
 
 export function NotificationBell() {
+  const { data } = useSession();
   const [notifications, setNotifications] = useState(MOCK_NOTIFICATIONS);
   const unread = notifications.filter((n) => !n.read).length;
+
+  // Hide entirely for unauthenticated users
+  if (!data.user) return null;
 
   const markAllRead = () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));

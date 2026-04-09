@@ -41,7 +41,7 @@ export function DashboardAuthGate({ children }: { children: React.ReactNode }) {
           action={
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Button asChild className="bg-brand text-brand-fg hover:bg-brand/90">
-                <Link href="/signin">{t("signIn")}</Link>
+                <Link href="/login">{t("signIn")}</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href="/dev/users">{t("switchPersona")}</Link>

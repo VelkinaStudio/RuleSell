@@ -35,7 +35,7 @@ export default function AboutPage() {
           <p>We are fixing both.</p>
         </Section>
 
-        <Section title="How we are different">
+        <Section id="quality-score" title="How we are different">
           <ul className="list-inside list-disc space-y-1.5">
             <li>
               <strong>Creators keep 85%</strong> of every sale. The platform
@@ -105,14 +105,16 @@ export default function AboutPage() {
 }
 
 function Section({
+  id,
   title,
   children,
 }: {
+  id?: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="space-y-3">
+    <section id={id} className="space-y-3">
       <h2 className="text-lg font-semibold text-fg">{title}</h2>
       <div className="space-y-2 text-sm leading-relaxed text-fg-muted">
         {children}

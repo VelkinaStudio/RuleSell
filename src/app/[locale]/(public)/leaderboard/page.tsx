@@ -37,7 +37,7 @@ export default function LeaderboardPage() {
         <p className="mx-auto max-w-2xl text-base text-fg-muted">
           {t("subtitle")}{" "}
           <a
-            href="#"
+            href="/about#quality-score"
             className="font-medium text-brand hover:text-brand-soft"
           >
             {t("learnMore")}
