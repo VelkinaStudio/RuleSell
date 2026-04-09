@@ -14,8 +14,13 @@ export async function GET(
     const session = await auth();
     const ruleset = await getRulesetBySlug(slug);
 
-    if (!ruleset || ruleset.status === "ARCHIVED") {
-      return errors.notFound("Ruleset not found");
+    if (!ruleset) return errors.notFound("Ruleset not found");
+
+    // Only author can see non-published rulesets
+    if (ruleset.status !== "PUBLISHED") {
+      if (!session?.user || session.user.id !== ruleset.authorId) {
+        return errors.notFound("Ruleset not found");
+      }
     }
 
     const accessState = await resolveAccessState(

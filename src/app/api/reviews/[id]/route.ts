@@ -1,8 +1,14 @@
 import type { NextRequest } from "next/server";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { recalculateAvgRating } from "@/lib/reviews/queries";
+
+const updateReviewSchema = z.object({
+  rating: z.number().int().min(1).max(5).optional(),
+  comment: z.string().min(1).max(5000).optional(),
+});
 
 export async function PATCH(
   req: NextRequest,
@@ -18,7 +24,13 @@ export async function PATCH(
     if (review.userId !== session.user.id) return errors.forbidden("Only the review author can edit");
 
     const body = await req.json();
-    const { rating, comment } = body;
+    const parsed = updateReviewSchema.safeParse(body);
+    if (!parsed.success) {
+      return errors.validation("Validation failed", {
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      });
+    }
+    const { rating, comment } = parsed.data;
 
     const updated = await db.review.update({
       where: { id },

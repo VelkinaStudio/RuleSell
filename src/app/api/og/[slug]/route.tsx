@@ -11,12 +11,12 @@ export async function GET(
     where: { slug },
     select: {
       title: true, description: true, platform: true, type: true,
-      price: true, avgRating: true, downloadCount: true,
+      price: true, avgRating: true, downloadCount: true, status: true,
       author: { select: { name: true } },
     },
   });
 
-  if (!ruleset) {
+  if (!ruleset || ruleset.status !== "PUBLISHED") {
     return new ImageResponse(
       (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%", background: "#0a0a0a", color: "#e5e5e5", fontFamily: "monospace", fontSize: 48 }}>

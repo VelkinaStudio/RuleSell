@@ -46,10 +46,25 @@ export default function proxy(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Admin routes → redirect to login (role check in admin/layout.tsx)
-  const isAdmin = adminPrefixes.some((p) => pathWithoutLocale.startsWith(p));
-  if (isAdmin && !isAuthenticated) {
-    return NextResponse.redirect(new URL("/login", req.url));
+  // Admin routes → redirect to login, and check role claim in JWT
+  const isAdminRoute = adminPrefixes.some((p) => pathWithoutLocale.startsWith(p));
+  if (isAdminRoute) {
+    if (!isAuthenticated) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+    // Decode JWT payload to check role (avoids DB call in Edge middleware)
+    const token = sessionToken;
+    try {
+      const [, payloadB64] = (token ?? "").split(".");
+      if (payloadB64) {
+        const payload = JSON.parse(Buffer.from(payloadB64, "base64url").toString());
+        if (payload.role !== "ADMIN") {
+          return NextResponse.redirect(new URL("/", req.url));
+        }
+      }
+    } catch {
+      // JWT decode failed — let the page-level check handle it
+    }
   }
 
   // Auth pages → redirect to dashboard if already logged in

@@ -17,6 +17,13 @@ export async function GET(
 
     if (!ruleset) return errors.notFound("Ruleset not found");
 
+    // Only author can see non-published rulesets
+    if (ruleset.status !== "PUBLISHED") {
+      if (!session?.user || session.user.id !== ruleset.authorId) {
+        return errors.notFound("Ruleset not found");
+      }
+    }
+
     const accessState = await resolveAccessState(
       ruleset.id,
       ruleset.authorId,

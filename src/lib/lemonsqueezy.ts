@@ -45,8 +45,15 @@ export async function getLemonSqueezyOrder(orderId: string) {
 }
 
 export function verifyWebhookSignature(rawBody: string, signature: string): boolean {
-  const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET!;
-  const hmac = crypto.createHmac("sha256", secret);
-  const digest = hmac.update(rawBody).digest("hex");
-  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
+  try {
+    const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET!;
+    const hmac = crypto.createHmac("sha256", secret);
+    const digest = hmac.update(rawBody).digest("hex");
+    const sigBuf = Buffer.from(signature, "hex");
+    const macBuf = Buffer.from(digest, "hex");
+    if (sigBuf.length !== macBuf.length) return false;
+    return crypto.timingSafeEqual(sigBuf, macBuf);
+  } catch {
+    return false;
+  }
 }

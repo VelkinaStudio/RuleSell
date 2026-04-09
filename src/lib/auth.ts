@@ -5,6 +5,7 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -30,12 +31,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const email = credentials.email as string;
         const password = credentials.password as string;
 
+        // Rate limit: 5 attempts per 15 minutes per email
+        const rl = rateLimit(`auth:login:${email.toLowerCase()}`, 5, 15 * 60 * 1000);
+        if (!rl.ok) {
+          throw new Error("Too many login attempts. Try again in 15 minutes.");
+        }
+
         const user = await db.user.findUnique({
           where: { email },
         });
 
         if (!user || !user.passwordHash) {
           return null;
+        }
+
+        // Block unverified email login (OAuth users skip this — they use provider callbacks)
+        if (!user.emailVerified) {
+          throw new Error("Please verify your email before signing in.");
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
