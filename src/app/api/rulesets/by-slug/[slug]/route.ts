@@ -44,6 +44,11 @@ export async function GET(
       reviewCount: ruleset._count.reviews,
       versions: showFull ? ruleset.versions : [],
       tags: ruleset.tags.map((t) => t.tag),
+      variants: [],
+      avgRating: ruleset.avgRating ?? 0,
+      ratingCount: ruleset.ratingCount ?? 0,
+      downloadCount: ruleset.downloadCount ?? 0,
+      purchaseCount: ruleset.purchaseCount ?? 0,
       createdAt: ruleset.createdAt.toISOString(),
       updatedAt: ruleset.updatedAt.toISOString(),
     });

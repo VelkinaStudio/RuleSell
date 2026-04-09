@@ -29,6 +29,9 @@ function requiresAttribution(license: string): boolean {
 
 export function LicenseCallout({ ruleset }: LicenseCalloutProps) {
   const t = useTranslations("ruleset.about");
+
+  if (!ruleset.license) return null;
+
   const commercial = isCommercialFriendly(ruleset.license);
   const attribution = requiresAttribution(ruleset.license);
   const isWarning = !commercial && ruleset.price > 0;

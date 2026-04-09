@@ -77,7 +77,7 @@ export function DetailHero({ ruleset }: DetailHeroProps) {
             ? t("stats.freshnessRecent")
             : t("stats.freshness", { days: updatedDays })}
         </span>
-        <span className="font-mono">{ruleset.license}</span>
+        {ruleset.license && <span className="font-mono">{ruleset.license}</span>}
       </div>
 
       {/* Actions */}

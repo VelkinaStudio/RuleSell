@@ -27,7 +27,7 @@ export function ReviewList({ ruleset }: ReviewListProps) {
   const sortedReviews = useMemo(() => {
     if (!data) return [];
     return [...data.data].sort((a, b) => {
-      if (b.helpfulCount !== a.helpfulCount) return b.helpfulCount - a.helpfulCount;
+      if ((b.helpfulCount ?? 0) !== (a.helpfulCount ?? 0)) return (b.helpfulCount ?? 0) - (a.helpfulCount ?? 0);
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
   }, [data]);
