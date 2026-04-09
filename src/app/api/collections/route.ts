@@ -8,10 +8,11 @@ import { createCollectionSchema } from "@/lib/validations/collections";
 export async function GET() {
   try {
     const session = await auth();
-    if (!session?.user) return errors.unauthorized();
 
     const collections = await db.collection.findMany({
-      where: { userId: session.user.id },
+      where: session?.user
+        ? { OR: [{ userId: session.user.id }, { isPublic: true }] }
+        : { isPublic: true },
       orderBy: { createdAt: "desc" },
       include: { _count: { select: { items: true } } },
     });
