@@ -17,7 +17,7 @@ interface DetailHeroProps {
 
 export function DetailHero({ ruleset }: DetailHeroProps) {
   const t = useTranslations("ruleset");
-  const meta = CATEGORY_META[ruleset.category];
+  const meta = CATEGORY_META[ruleset.category] ?? { label: ruleset.category ?? "Other", slug: ruleset.category ?? "other", color: "#6b7280", accent: "gray", icon: "Package", description: "" };
   const updatedDays = daysSince(ruleset.updatedAt);
 
   return (

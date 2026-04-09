@@ -20,7 +20,7 @@ export function CategoryChip({
   className,
   size = "md",
 }: CategoryChipProps) {
-  const meta = CATEGORY_META[category];
+  const meta = CATEGORY_META[category] ?? { label: category ?? "Other", slug: category ?? "other", color: "#6b7280", accent: "gray", icon: "Package", description: "" };
   const baseStyle = active
     ? {
         borderColor: meta.color,

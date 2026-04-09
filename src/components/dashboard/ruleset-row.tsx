@@ -35,7 +35,7 @@ const STATUS_STYLES: Record<Status, string> = {
 
 export function RulesetRow({ ruleset, selected, onToggle }: RulesetRowProps) {
   const t = useTranslations("dashboard.rulesets");
-  const meta = CATEGORY_META[ruleset.category];
+  const meta = CATEGORY_META[ruleset.category] ?? { label: ruleset.category ?? "Other", slug: ruleset.category ?? "other", color: "#6b7280", accent: "gray", icon: "Package", description: "" };
 
   return (
     <tr

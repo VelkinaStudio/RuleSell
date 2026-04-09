@@ -24,7 +24,14 @@ const RANK_STYLE: Record<number, string> = {
 };
 
 export function LeaderboardRow({ rank, ruleset }: LeaderboardRowProps) {
-  const meta = CATEGORY_META[ruleset.category];
+  const meta = CATEGORY_META[ruleset.category] ?? {
+    label: ruleset.category ?? "Other",
+    slug: ruleset.category ?? "other",
+    color: "#6b7280",
+    accent: "gray",
+    icon: "Package",
+    description: "",
+  };
   const rankClass = RANK_STYLE[rank] ?? "text-fg-subtle";
 
   return (
@@ -65,7 +72,7 @@ export function LeaderboardRow({ rank, ruleset }: LeaderboardRowProps) {
 
       {/* Author */}
       <div className="flex min-w-0 items-center gap-2">
-        <CreatorMarks marks={ruleset.author.creatorMarks}>
+        <CreatorMarks marks={ruleset.author.creatorMarks ?? []}>
           <Avatar size="sm">
             {ruleset.author.avatar && (
               <AvatarImage
@@ -85,9 +92,9 @@ export function LeaderboardRow({ rank, ruleset }: LeaderboardRowProps) {
 
       {/* Quality */}
       <div className="flex items-center gap-2">
-        <QualityBar score={ruleset.qualityScore} compact className="flex-1" />
+        <QualityBar score={ruleset.qualityScore ?? 0} compact className="flex-1" />
         <span className="font-mono text-xs tabular-nums text-fg">
-          {ruleset.qualityScore}
+          {ruleset.qualityScore ?? "—"}
         </span>
       </div>
 
@@ -95,7 +102,7 @@ export function LeaderboardRow({ rank, ruleset }: LeaderboardRowProps) {
       <span className="inline-flex items-center justify-end gap-1 text-xs text-fg-muted">
         <Download className="h-3 w-3" />
         <span className="font-mono tabular-nums">
-          {formatCount(ruleset.downloadCount + ruleset.purchaseCount)}
+          {formatCount((ruleset.downloadCount ?? 0) + (ruleset.purchaseCount ?? 0))}
         </span>
       </span>
     </Link>

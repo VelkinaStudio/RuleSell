@@ -22,7 +22,14 @@ interface RulesetCardProps {
 export function RulesetCard({ ruleset, className, compact }: RulesetCardProps) {
   const t = useTranslations("marketplace.card");
   const { envs: preferred } = usePreferredEnvironments();
-  const meta = CATEGORY_META[ruleset.category];
+  const meta = CATEGORY_META[ruleset.category] ?? {
+    label: ruleset.category ?? "Other",
+    slug: ruleset.category ?? "other",
+    color: "#6b7280",
+    accent: "gray",
+    icon: "Package",
+    description: "",
+  };
 
   const matchesUserTools = useMemo(() => {
     if (preferred.length === 0 || !ruleset.variants) return false;
@@ -81,14 +88,14 @@ export function RulesetCard({ ruleset, className, compact }: RulesetCardProps) {
       <div className="mt-auto flex items-center gap-3 pt-0.5 text-[11px] text-fg-subtle">
         <span className="inline-flex items-center gap-1">
           <Star className="h-3 w-3" aria-hidden />
-          <span className="font-mono tabular-nums">{ruleset.avgRating.toFixed(1)}</span>
+          <span className="font-mono tabular-nums">{(ruleset.avgRating ?? 0).toFixed(1)}</span>
         </span>
         <span className="inline-flex items-center gap-1">
           <Download className="h-3 w-3" aria-hidden />
           <span className="font-mono tabular-nums">{formatCount(installs)}</span>
         </span>
         <span className="font-mono tabular-nums" title="Quality Score (estimated)">
-          QS {ruleset.qualityScore}
+          QS {ruleset.qualityScore ?? "—"}
           <span className="ml-0.5 text-[9px] text-fg-dim">(est.)</span>
         </span>
         {matchesUserTools && (
