@@ -13,6 +13,25 @@ import { formatRelative } from "@/lib/utils";
 
 type Tab = "feed" | "discussions" | "showcases";
 
+/** Map mock rulesetIds to real production slugs so explore links resolve. */
+const MOCK_TO_REAL_SLUG: Record<string, string> = {
+  "rs-1": "senior-engineer-cursor-rules",
+  "rs-2": "refactoring-patterns-cursor",
+  "rs-3": "react-component-architecture",
+  "rs-4": "typescript-strict-mode-prompt",
+  "rs-5": "api-design-best-practices",
+  "rs-6": "security-audit-agent",
+  "rs-7": "database-optimization-checklist",
+  "rs-8": "api-design-best-practices",
+  "rs-9": "react-component-architecture",
+  "rs-10": "n8n-lead-scoring-workflow",
+  "rs-11": "typescript-strict-mode-prompt",
+  "rs-13": "python-code-review-prompt",
+  "rs-15": "python-code-review-prompt",
+  "rs-20": "security-audit-agent",
+  "rs-25": "senior-engineer-cursor-rules",
+};
+
 export default function ExplorePage() {
   const [tab, setTab] = useState<Tab>("feed");
 
@@ -72,26 +91,26 @@ function FeedTab() {
   const items = useMemo(() => {
     const feed = [
       ...MOCK_DISCUSSIONS.slice(0, 8).map((d) => {
+        const realSlug = MOCK_TO_REAL_SLUG[d.rulesetId];
         const ruleset = MOCK_RULESETS.find((r) => r.id === d.rulesetId);
         return {
           id: `feed-disc-${d.id}`,
           kind: "discussion" as const,
           title: d.title,
           body: `New discussion on ${ruleset?.title ?? "an item"}`,
-          href: ruleset ? `/r/${ruleset.slug}` : null,
+          href: realSlug ? `/r/${realSlug}` : null,
           createdAt: d.createdAt,
         };
       }),
       ...MOCK_SHOWCASES.map((s) => {
-        const firstRuleset = s.rulesetIds.length > 0
-          ? MOCK_RULESETS.find((r) => r.id === s.rulesetIds[0])
-          : null;
+        const firstId = s.rulesetIds[0];
+        const realSlug = firstId ? MOCK_TO_REAL_SLUG[firstId] : null;
         return {
           id: `feed-show-${s.id}`,
           kind: "showcase" as const,
           title: s.title,
           body: `New showcase by @${s.author.username}`,
-          href: firstRuleset ? `/r/${firstRuleset.slug}` : null,
+          href: realSlug ? `/r/${realSlug}` : null,
           createdAt: s.createdAt,
         };
       }),
@@ -99,9 +118,13 @@ function FeedTab() {
     return feed.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }, []);
 
-  // Trending sidebar items
+  // Trending sidebar items — use real production slugs
   const trending = useMemo(
-    () => [...MOCK_RULESETS].sort((a, b) => b.downloadCount - a.downloadCount).slice(0, 5),
+    () => [...MOCK_RULESETS]
+      .filter((r) => MOCK_TO_REAL_SLUG[r.id])
+      .sort((a, b) => b.downloadCount - a.downloadCount)
+      .slice(0, 5)
+      .map((r) => ({ ...r, slug: MOCK_TO_REAL_SLUG[r.id] ?? r.slug })),
     [],
   );
 
