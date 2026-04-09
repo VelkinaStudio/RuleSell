@@ -113,9 +113,10 @@ describe("/api/saved", () => {
   });
 
   it("GET returns saved items", async () => {
-    const { status, body } = await alice.getJSON<{ data: unknown[] }>("/api/saved");
+    const { status, body } = await alice.getJSON<{ data: { items: unknown[]; total: number } }>("/api/saved");
     expect(status).toBe(200);
-    expect(body.data).toBeInstanceOf(Array);
+    expect(body.data.items).toBeInstanceOf(Array);
+    expect(typeof body.data.total).toBe("number");
   });
 
   it("POST toggles save", async () => {

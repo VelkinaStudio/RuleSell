@@ -7,9 +7,15 @@ beforeAll(async () => {
   alice = await login(ACCOUNTS.alice.email, ACCOUNTS.alice.password);
 });
 
+/*
+ * Settings moved from /settings/* to /dashboard/settings/* during the
+ * frontend merge. /settings/notifications was removed entirely.
+ */
 const settingsPages = [
-  "/settings/billing",
-  "/settings/notifications",
+  "/dashboard/settings",
+  "/dashboard/settings/billing",
+  "/dashboard/settings/privacy",
+  "/dashboard/settings/seller",
 ];
 
 describe("Settings pages (authenticated)", () => {
@@ -19,4 +25,11 @@ describe("Settings pages (authenticated)", () => {
       expect(status).toBe(200);
     });
   }
+});
+
+describe("Settings pages (unauthenticated)", () => {
+  it("redirects to login", async () => {
+    const { status } = await fetchPage("/dashboard/settings");
+    expect([302, 307]).toContain(status);
+  });
 });

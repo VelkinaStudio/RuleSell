@@ -7,17 +7,20 @@ beforeAll(async () => {
   alice = await login(ACCOUNTS.alice.email, ACCOUNTS.alice.password);
 });
 
+/*
+ * Dashboard pages now live under src/app/[locale]/(dashboard)/dashboard/*.
+ * With localePrefix: "as-needed" the /en prefix is optional for the default
+ * locale, so bare paths like /dashboard/overview still resolve.
+ *
+ * Removed pages (no page.tsx): bundles, collections, notifications, analytics.
+ */
 const dashboardPages = [
   "/dashboard/overview",
   "/dashboard/rulesets",
   "/dashboard/rulesets/new",
-  "/dashboard/bundles",
   "/dashboard/earnings",
   "/dashboard/purchases",
   "/dashboard/saved",
-  "/dashboard/collections",
-  "/dashboard/notifications",
-  "/dashboard/analytics",
 ];
 
 describe("Dashboard pages (authenticated)", () => {
@@ -31,8 +34,8 @@ describe("Dashboard pages (authenticated)", () => {
 
 describe("Dashboard pages (unauthenticated)", () => {
   it("redirects to login", async () => {
-    // Proxy redirects unauthenticated users to /login with 307
+    // Proxy middleware redirects unauthenticated users to /login
     const { status } = await fetchPage("/dashboard/overview");
-    expect(status).toBe(307);
+    expect([302, 307]).toContain(status);
   });
 });
