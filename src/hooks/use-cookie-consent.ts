@@ -84,12 +84,18 @@ export function resetCookieConsent() {
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
+let _cachedRaw: string | null = null;
+let _cachedConsent: CookieConsent | null = null;
+
 function readConsent(): CookieConsent | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw) as CookieConsent;
+    if (!raw) { _cachedRaw = null; _cachedConsent = null; return null; }
+    if (raw === _cachedRaw) return _cachedConsent;
+    _cachedRaw = raw;
+    _cachedConsent = JSON.parse(raw) as CookieConsent;
+    return _cachedConsent;
   } catch {
     return null;
   }
