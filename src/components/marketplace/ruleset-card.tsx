@@ -25,14 +25,14 @@ export function RulesetCard({ ruleset, className, compact }: RulesetCardProps) {
   const meta = CATEGORY_META[ruleset.category];
 
   const matchesUserTools = useMemo(() => {
-    if (preferred.length === 0) return false;
+    if (preferred.length === 0 || !ruleset.variants) return false;
     return ruleset.variants.some((v) =>
       v.environments.some((e) => preferred.includes(e)),
     );
   }, [preferred, ruleset.variants]);
 
   const priceLabel = ruleset.price === 0 ? t("free") : formatPrice(ruleset.price, ruleset.currency);
-  const installs = ruleset.downloadCount + ruleset.purchaseCount;
+  const installs = (ruleset.downloadCount ?? 0) + (ruleset.purchaseCount ?? 0);
 
   return (
     <Link
