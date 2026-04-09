@@ -62,25 +62,26 @@ export function InstallBlock({ ruleset }: InstallBlockProps) {
   const { envs: preferred } = usePreferredEnvironments();
   const headingId = useId();
 
+  const variants: Variant[] = ruleset.variants ?? [];
   const [activeId, setActiveId] = useState<string>(() =>
-    pickInitialVariant(ruleset.variants, ruleset.defaultVariantId, preferred),
+    pickInitialVariant(variants, ruleset.defaultVariantId, preferred),
   );
 
   // Sync active variant to the URL hash so deep-links work both ways.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const variant = ruleset.variants.find((v) => v.id === activeId);
+    const variant = variants.find((v) => v.id === activeId);
     if (!variant) return;
     const env = variant.environments[0] ?? variant.id;
     const next = `#variant=${env}`;
     if (window.location.hash !== next) {
       window.history.replaceState(null, "", next);
     }
-  }, [activeId, ruleset.variants]);
+  }, [activeId, variants]);
 
   const active = useMemo(
-    () => ruleset.variants.find((v) => v.id === activeId) ?? ruleset.variants[0],
-    [activeId, ruleset.variants],
+    () => variants.find((v) => v.id === activeId) ?? variants[0],
+    [activeId, variants],
   );
 
   if (!active) return null;
@@ -109,7 +110,7 @@ export function InstallBlock({ ruleset }: InstallBlockProps) {
         aria-label={t("title")}
         className="flex flex-wrap gap-1.5 border-b border-border-soft pb-px"
       >
-        {ruleset.variants.map((variant) => {
+        {variants.map((variant) => {
           const primaryEnv = variant.environments[0];
           const meta = primaryEnv ? ENVIRONMENT_META[primaryEnv] : null;
           const isActive = variant.id === activeId;

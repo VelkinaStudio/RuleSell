@@ -71,14 +71,17 @@ function FeedTab() {
   // Mock feed from discussions + showcases
   const items = useMemo(() => {
     const feed = [
-      ...MOCK_DISCUSSIONS.slice(0, 8).map((d) => ({
-        id: `feed-disc-${d.id}`,
-        kind: "discussion" as const,
-        title: d.title,
-        body: `New discussion on ${MOCK_RULESETS.find((r) => r.id === d.rulesetId)?.title ?? "an item"}`,
-        href: `/r/${MOCK_RULESETS.find((r) => r.id === d.rulesetId)?.slug ?? d.rulesetId}`,
-        createdAt: d.createdAt,
-      })),
+      ...MOCK_DISCUSSIONS.slice(0, 8).map((d) => {
+        const ruleset = MOCK_RULESETS.find((r) => r.id === d.rulesetId);
+        return {
+          id: `feed-disc-${d.id}`,
+          kind: "discussion" as const,
+          title: d.title,
+          body: `New discussion on ${ruleset?.title ?? "an item"}`,
+          href: ruleset ? `/r/${ruleset.slug}` : null,
+          createdAt: d.createdAt,
+        };
+      }),
       ...MOCK_SHOWCASES.map((s) => {
         const firstRuleset = s.rulesetIds.length > 0
           ? MOCK_RULESETS.find((r) => r.id === s.rulesetIds[0])

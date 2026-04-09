@@ -65,13 +65,13 @@ export function DetailHero({ ruleset }: DetailHeroProps) {
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-fg-subtle">
         <span className="inline-flex items-center gap-1">
           <Star className="h-3 w-3" />
-          <span className="font-mono tabular-nums">{ruleset.avgRating.toFixed(1)}</span>
-          <span>({formatCount(ruleset.ratingCount)})</span>
+          <span className="font-mono tabular-nums">{(ruleset.avgRating ?? 0).toFixed(1)}</span>
+          <span>({formatCount(ruleset.ratingCount ?? 0)})</span>
         </span>
         <span className="font-mono tabular-nums">
-          {formatCount(ruleset.downloadCount + ruleset.purchaseCount)} downloads
+          {formatCount((ruleset.downloadCount ?? 0) + (ruleset.purchaseCount ?? 0))} downloads
         </span>
-        <span className="font-mono tabular-nums" title="Quality Score (estimated from automated signals)">QS {ruleset.qualityScore} <span className="text-[9px] text-fg-dim">(est.)</span></span>
+        <span className="font-mono tabular-nums" title="Quality Score (estimated from automated signals)">QS {ruleset.qualityScore ?? "—"} <span className="text-[9px] text-fg-dim">(est.)</span></span>
         <span>
           {updatedDays === 0
             ? t("stats.freshnessRecent")

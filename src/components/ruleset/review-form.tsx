@@ -31,7 +31,7 @@ interface ReviewFormProps {
 export function ReviewForm({ ruleset, onSubmit }: ReviewFormProps) {
   const t = useTranslations("ruleset.reviews.form");
   const envOptions = Array.from(
-    new Set(ruleset.variants.flatMap((v) => v.environments)),
+    new Set((ruleset.variants ?? []).flatMap((v) => v.environments)),
   );
 
   const [rating, setRating] = useState(5);

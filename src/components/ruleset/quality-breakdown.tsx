@@ -14,6 +14,8 @@ interface QualityBreakdownProps {
 export function QualityBreakdown({ breakdown, total }: QualityBreakdownProps) {
   const t = useTranslations("ruleset.about");
 
+  if (!breakdown) return null;
+
   const rows: Array<{ key: string; label: string; value: number | null }> = [
     { key: "tokenEfficiency", label: t("tokenEfficiency"), value: breakdown.tokenEfficiency },
     { key: "installSuccess", label: t("installSuccess"), value: breakdown.installSuccess },
