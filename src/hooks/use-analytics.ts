@@ -2,14 +2,14 @@
 
 import useSWR from "swr";
 import { keys } from "@/lib/query-keys";
-import { analytics } from "@/lib/api-client";
+import { analytics, apiClient } from "@/lib/api-client";
+import type { EarningsData } from "@/hooks/use-earnings";
 
 export function useAnalytics(period?: string) {
   const overview = useSWR(keys.analytics.overview, () => analytics.overview());
-  // TODO: endpoint not yet built — earnings API pending
   const earnings = useSWR(
-    ["analytics", "earnings", period] as const,
-    () => Promise.resolve(undefined),
+    ["analytics", "earnings", period ?? "30d"] as const,
+    () => apiClient<EarningsData>(`/api/analytics/earnings?period=${period ?? "30d"}`),
   );
 
   return {

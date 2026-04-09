@@ -1,53 +1,32 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
-
+import { useCallback } from "react";
+import useSWR from "swr";
 import type { Ruleset } from "@/types";
-import { MOCK_RULESETS } from "@/constants/mock-data";
+import { apiClient, saved as savedApi } from "@/lib/api-client";
 import { useSession } from "@/hooks/use-session";
 
-/**
- * Mock list of items the current user has bookmarked. Like usePurchases,
- * derived from a deterministic seed on the persona id. State is held locally
- * so the "Remove" action can update the UI without a backend call.
- */
 export function useSaved() {
   const { data: session } = useSession();
-  const user = session?.user ?? null;
+  const userId = session?.user?.id ?? null;
 
-  const initial = useMemo(() => {
-    if (!user) return [] as Ruleset[];
-    const seed = user.id.charCodeAt(user.id.length - 1) % MOCK_RULESETS.length;
-    return [
-      MOCK_RULESETS[seed % MOCK_RULESETS.length],
-      MOCK_RULESETS[(seed + 5) % MOCK_RULESETS.length],
-      MOCK_RULESETS[(seed + 9) % MOCK_RULESETS.length],
-      MOCK_RULESETS[(seed + 13) % MOCK_RULESETS.length],
-      MOCK_RULESETS[(seed + 17) % MOCK_RULESETS.length],
-    ]
-      .filter(Boolean)
-      .map((r) => ({ ...r, currentUserSaved: true }));
-  }, [user]);
+  const { data, error, isLoading, mutate } = useSWR(
+    userId ? ["saved"] : null,
+    () => apiClient<{ items: Ruleset[]; total: number }>("/api/saved"),
+  );
 
-  const [removed, setRemoved] = useState<Set<string>>(new Set());
-
-  const remove = useCallback((id: string) => {
-    setRemoved((prev) => {
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, []);
-
-  const data = useMemo(
-    () => initial.filter((r) => !removed.has(r.id)),
-    [initial, removed],
+  const remove = useCallback(
+    async (rulesetId: string) => {
+      await savedApi.toggle(rulesetId);
+      mutate();
+    },
+    [mutate],
   );
 
   return {
-    saved: user ? data : undefined,
+    saved: data?.items,
     remove,
-    isLoading: false,
-    error: null as Error | null,
+    isLoading,
+    error: error as Error | null,
   };
 }

@@ -76,7 +76,7 @@ export default function FollowingPage() {
                       {user.name}
                     </Link>
                     <ReputationBadge
-                      level={user.level}
+                      level={"NEWCOMER"}
                       points={user.reputation}
                     />
                   </div>
@@ -100,7 +100,7 @@ export default function FollowingPage() {
                 <Button
                   size="xs"
                   variant="outline"
-                  onClick={() => unfollow(user.username)}
+                  onClick={() => unfollow(user.id)}
                 >
                   {t("unfollow")}
                 </Button>

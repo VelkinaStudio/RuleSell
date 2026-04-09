@@ -1,28 +1,49 @@
 "use client";
 
 import { useCallback } from "react";
+import useSWR from "swr";
 import type { Notification } from "@/types";
-
-// In v1 mock mode, return mock notifications from constants
-import { MOCK_NOTIFICATIONS } from "@/constants/mock-notifications";
+import { notifications as notificationsApi } from "@/lib/api-client";
+import { useSession } from "@/hooks/use-session";
 
 export function useNotifications() {
-  // TODO: Replace mock with real API when backend ships
-  // const { data, error, isLoading, mutate } = useSWR(keys.notifications.all, () => notificationsApi.list());
-  const data = MOCK_NOTIFICATIONS as Notification[];
-  const isLoading = false;
-  const error = null;
+  const { data: session } = useSession();
+  const userId = session?.user?.id ?? null;
 
-  const unreadCount = data?.filter((n) => !n.read).length ?? 0;
+  const { data, error, isLoading, mutate } = useSWR(
+    userId ? ["notifications"] : null,
+    () => notificationsApi.list(),
+  );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const markRead = useCallback(async (id: string) => {
-    // TODO: await notificationsApi.markRead(id); mutate();
-  }, []);
+  const markRead = useCallback(
+    async (id: string) => {
+      await notificationsApi.markRead([id]);
+      mutate();
+    },
+    [mutate],
+  );
 
   const markAllRead = useCallback(async () => {
-    // TODO: await notificationsApi.markAllRead(); mutate();
-  }, []);
+    await notificationsApi.markRead();
+    mutate();
+  }, [mutate]);
 
-  return { notifications: data ?? [], unreadCount, markRead, markAllRead, isLoading, error };
+  const notifications: Notification[] = (data?.notifications ?? []).map((n) => ({
+    id: n.id,
+    kind: n.type as Notification["kind"],
+    title: n.title,
+    body: n.body,
+    href: "",
+    read: n.read,
+    createdAt: n.createdAt,
+  }));
+
+  return {
+    notifications,
+    unreadCount: data?.unreadCount ?? 0,
+    markRead,
+    markAllRead,
+    isLoading,
+    error: error as Error | null,
+  };
 }

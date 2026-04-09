@@ -1,27 +1,22 @@
 "use client";
 
-import { useMemo } from "react";
-
+import useSWR from "swr";
 import type { Review } from "@/types";
-import { MOCK_REVIEWS } from "@/constants/mock-reviews";
+import { apiClient } from "@/lib/api-client";
 import { useSession } from "@/hooks/use-session";
 
-/**
- * Mock list of reviews authored by the current user. Filters MOCK_REVIEWS by
- * author username. Real /api/reviews?authorId=me ships in v2.
- */
 export function useMyReviews() {
   const { data: session } = useSession();
-  const user = session?.user ?? null;
+  const userId = session?.user?.id ?? null;
 
-  const reviews: Review[] | undefined = useMemo(() => {
-    if (!user) return undefined;
-    return MOCK_REVIEWS.filter((r) => r.author.username === user.username);
-  }, [user]);
+  const { data, error, isLoading } = useSWR(
+    userId ? ["my-reviews"] : null,
+    () => apiClient<{ reviews: Review[]; total: number }>("/api/reviews/mine"),
+  );
 
   return {
-    reviews,
-    isLoading: !reviews && !!user,
-    error: null as Error | null,
+    reviews: data?.reviews,
+    isLoading,
+    error: error as Error | null,
   };
 }

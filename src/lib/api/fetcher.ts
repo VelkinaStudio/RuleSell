@@ -3,15 +3,12 @@ import {
   reviews,
   users,
   collections,
-  tags,
-  analytics,
-  apiClientList,
+  apiClient,
 } from "@/lib/api-client";
 
-// Mock fallbacks for endpoints not yet built
+// Teams: deferred — requires Team model in Prisma schema
+// See: docs/deferred-features.md
 import {
-  getAnalyticsOverview,
-  getLeaderboard,
   getTeamBySlug,
   isApiError,
 } from "./mock-server";
@@ -65,7 +62,8 @@ export async function fetcher<T>(key: SWRKey): Promise<T> {
     case "user":
       return users.getProfile(key[1]) as unknown as Promise<T>;
     case "team":
-      // TODO: endpoint not yet built — using mock
+      // Teams: deferred — requires Team model in Prisma schema
+      // See: docs/deferred-features.md
       return mockDelay(unwrapMock(getTeamBySlug(key[1])) as unknown as T);
     case "reviews": {
       const { rulesetId, page, pageSize } = key[1];
@@ -76,12 +74,15 @@ export async function fetcher<T>(key: SWRKey): Promise<T> {
       return collections.list() as unknown as Promise<T>;
     case "collection":
       return collections.get(key[1]) as unknown as Promise<T>;
-    case "leaderboard":
-      // TODO: endpoint not yet built — using mock
-      return mockDelay(getLeaderboard(key[1]) as unknown as T);
-    case "analytics-overview":
-      // TODO: endpoint not yet built — using mock (ours doesn't take userId param)
-      return mockDelay(getAnalyticsOverview(key[1]) as unknown as T);
+    case "leaderboard": {
+      const limit = key[1] ?? 10;
+      return apiClient<unknown>(`/api/leaderboard?limit=${limit}`) as unknown as Promise<T>;
+    }
+    case "analytics-overview": {
+      const userId = key[1];
+      const qs = userId ? `?userId=${encodeURIComponent(userId)}` : "";
+      return apiClient<unknown>(`/api/analytics/overview${qs}`) as unknown as Promise<T>;
+    }
     default: {
       const exhaustive: never = key;
       throw new Error(`Unhandled SWR key: ${JSON.stringify(exhaustive)}`);

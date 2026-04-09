@@ -13,16 +13,18 @@ export async function GET(req: NextRequest) {
     const pageSize = 20;
 
     const items = await db.savedItem.findMany({
-      where: { userId: session.user.id },
+      where: {
+        userId: session.user.id,
+        ruleset: { status: "PUBLISHED" },
+      },
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
       ...(cursor ? { cursor: { userId_rulesetId: { userId: session.user.id, rulesetId: cursor } }, skip: 1 } : {}),
       include: {
         ruleset: {
-          select: {
-            id: true, title: true, slug: true, description: true,
-            price: true, platform: true, type: true, avgRating: true,
-            author: { select: { name: true, username: true } },
+          include: {
+            author: { select: { id: true, name: true, username: true, avatar: true } },
+            tags: { include: { tag: { select: { name: true } } } },
             _count: { select: { votes: true } },
           },
         },
@@ -32,9 +34,28 @@ export async function GET(req: NextRequest) {
     const hasNext = items.length > pageSize;
     if (hasNext) items.pop();
     const nextCursor = hasNext && items.length > 0 ? items[items.length - 1].rulesetId : undefined;
-    const total = await db.savedItem.count({ where: { userId: session.user.id } });
+    const total = await db.savedItem.count({
+      where: { userId: session.user.id, ruleset: { status: "PUBLISHED" } },
+    });
 
-    return list(items, paginationFromCursor(total, pageSize, nextCursor));
+    // Check which rulesets the user has voted on
+    const rulesetIds = items.map((i) => i.rulesetId);
+    const userVotes = rulesetIds.length > 0
+      ? await db.vote.findMany({
+          where: { userId: session.user.id, rulesetId: { in: rulesetIds } },
+          select: { rulesetId: true },
+        })
+      : [];
+    const votedSet = new Set(userVotes.map((v) => v.rulesetId));
+
+    const rulesets = items.map((item) => ({
+      ...item.ruleset,
+      tags: item.ruleset.tags.map((t) => t.tag.name),
+      currentUserSaved: true,
+      currentUserVoted: votedSet.has(item.rulesetId),
+    }));
+
+    return success({ items: rulesets, total });
   } catch {
     return errors.internal();
   }
