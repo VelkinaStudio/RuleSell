@@ -131,7 +131,7 @@ function Stat({ label, value }: { label: string; value: string }) {
       <dt className="text-xs font-medium uppercase tracking-wider text-fg-subtle">
         {label}
       </dt>
-      <dd className="mt-1 text-2xl font-semibold tabular-nums text-fg">{value}</dd>
+      <dd className="font-display mt-1 text-2xl font-semibold tabular-nums text-fg">{value}</dd>
     </div>
   );
 }

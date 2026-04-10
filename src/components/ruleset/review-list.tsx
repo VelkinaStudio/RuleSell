@@ -8,6 +8,7 @@ import { ReviewCard } from "./review-card";
 import { ReviewForm } from "./review-form";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
+import { RatingDistribution } from "@/components/product/rating-distribution";
 import { useReviews } from "@/hooks/use-reviews";
 import { useSession } from "@/hooks/use-session";
 
@@ -30,6 +31,16 @@ export function ReviewList({ ruleset }: ReviewListProps) {
       if ((b.helpfulCount ?? 0) !== (a.helpfulCount ?? 0)) return (b.helpfulCount ?? 0) - (a.helpfulCount ?? 0);
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
+  }, [data]);
+
+  const ratingBuckets = useMemo(() => {
+    if (!data) return [];
+    const counts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    for (const review of data.data) {
+      const star = Math.round(review.rating);
+      if (star >= 1 && star <= 5) counts[star]++;
+    }
+    return [5, 4, 3, 2, 1].map((star) => ({ star, count: counts[star] }));
   }, [data]);
 
   const isCertified =
@@ -58,11 +69,16 @@ export function ReviewList({ ruleset }: ReviewListProps) {
       id="reviews"
       className="space-y-5 rounded-2xl border border-border-soft bg-bg-surface p-6"
     >
-      <header className="space-y-1">
-        <h2 className="text-xl font-semibold uppercase tracking-wider text-fg">
-          {t("title")}
-        </h2>
-        <p className="text-sm text-fg-muted">{t("subtitle")}</p>
+      <header className="space-y-3">
+        <div className="space-y-1">
+          <h2 className="text-xl font-semibold uppercase tracking-wider text-fg">
+            {t("title")}
+          </h2>
+          <p className="text-sm text-fg-muted">{t("subtitle")}</p>
+        </div>
+        {ratingBuckets.length > 0 && ratingBuckets.some((b) => b.count > 0) && (
+          <RatingDistribution ratings={ratingBuckets} className="max-w-xs" />
+        )}
       </header>
 
       {canWrite ? (

@@ -60,16 +60,18 @@ export function FollowButton({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       variant={following ? "outline" : "default"}
-      size="sm"
+      size="default"
       className={cn(
-        "gap-1.5 transition-all",
-        following && !showUnfollowHover && "border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/10",
+        "gap-2 font-semibold transition-all",
+        following && !showUnfollowHover &&
+          "border-emerald-500/50 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/15",
         showUnfollowHover && "border-rose-500/40 bg-rose-500/10 text-rose-300",
-        !following && "bg-brand text-brand-fg hover:brightness-110",
+        !following &&
+          "border border-brand bg-brand text-brand-fg shadow-sm shadow-brand/20 hover:brightness-110",
         className,
       )}
     >
-      {following ? <Check className="h-3.5 w-3.5" /> : <UserPlus className="h-3.5 w-3.5" />}
+      {following ? <Check className="h-4 w-4" /> : <UserPlus className="h-4 w-4" />}
       <span>{following ? t("following") : t("follow")}</span>
     </Button>
   );

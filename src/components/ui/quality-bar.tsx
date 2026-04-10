@@ -10,6 +10,8 @@ interface QualityBarProps {
   label?: string;
   compact?: boolean;
   className?: string;
+  /** Override the default score-based color with a specific hex/CSS color. */
+  accentColor?: string;
 }
 
 function colorForScore(score: number): string {
@@ -19,10 +21,10 @@ function colorForScore(score: number): string {
   return "var(--danger)";
 }
 
-export function QualityBar({ score, label, compact, className }: QualityBarProps) {
+export function QualityBar({ score, label, compact, className, accentColor }: QualityBarProps) {
   const reduce = useReducedMotion();
   const clamped = Math.max(0, Math.min(100, score));
-  const color = colorForScore(clamped);
+  const color = accentColor ?? colorForScore(clamped);
   const widthPct = `${clamped}%`;
 
   return (

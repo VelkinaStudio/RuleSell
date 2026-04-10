@@ -59,7 +59,7 @@ export function CreatorMarks({
 
   // Chip row variant
   return (
-    <div className={cn("flex flex-wrap gap-1.5", className)}>
+    <div className={cn("flex flex-wrap gap-2", className)}>
       {marks.map((mark) => {
         const meta = CREATOR_MARK_META[mark];
         const accent = ACCENT_BG[meta.accent] ?? ACCENT_BG.sky;
@@ -68,12 +68,17 @@ export function CreatorMarks({
             key={mark}
             title={meta.tooltip}
             className={cn(
-              "inline-flex items-center gap-1 rounded-full border font-medium",
+              "inline-flex items-center gap-1.5 rounded-full border font-semibold",
               accent,
-              size === "sm" ? "px-1.5 py-0.5 text-[10px]" : "px-2 py-0.5 text-xs",
+              size === "sm"
+                ? "px-2 py-0.5 text-[10px]"
+                : "px-3 py-1 text-xs",
             )}
           >
-            <IconByName name={meta.icon} className={size === "sm" ? "h-3 w-3" : "h-3.5 w-3.5"} />
+            <IconByName
+              name={meta.icon}
+              className={size === "sm" ? "h-3 w-3" : "h-4 w-4"}
+            />
             <span>{meta.label}</span>
           </span>
         );

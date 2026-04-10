@@ -1,9 +1,9 @@
 "use client";
 
-import { Check, Heart, Pin } from "lucide-react";
+import { Check, Heart, MessageSquare, Pin } from "lucide-react";
 
 import type { Discussion } from "@/types";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ReputationBadge } from "@/components/ui/reputation-badge";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -18,21 +18,39 @@ export function DiscussionThread({ discussion: d }: DiscussionThreadProps) {
     <div className="space-y-4 rounded-lg border border-border-soft bg-bg-surface p-4">
       {/* OP */}
       <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          {d.isPinned && <Pin className="h-3 w-3 text-fg-muted" />}
-          <h3 className="text-sm font-semibold text-fg">{d.title}</h3>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-fg-subtle">
-          <Link href={`/u/${d.author.username}`} className="hover:text-fg-muted">
-            @{d.author.username}
+        <div className="flex items-start gap-3">
+          {/* Author avatar */}
+          <Link href={`/u/${d.author.username}`} className="shrink-0">
+            <Avatar size="sm">
+              {d.author.avatar && (
+                <AvatarImage src={d.author.avatar} alt={d.author.username} />
+              )}
+              <AvatarFallback className="text-[9px]">
+                {d.author.username.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
           </Link>
-          <ReputationBadge level={d.author.level} points={d.author.reputation} />
-          <span className="text-fg-dim">{formatRelative(d.createdAt)}</span>
+          <div className="min-w-0 flex-1 space-y-1">
+            <div className="flex items-center gap-2">
+              {d.isPinned && <Pin className="h-3 w-3 text-fg-muted" />}
+              <h3 className="text-sm font-semibold text-fg">{d.title}</h3>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-fg-subtle">
+              <Link href={`/u/${d.author.username}`} className="hover:text-fg-muted">
+                @{d.author.username}
+              </Link>
+              <ReputationBadge level={d.author.level} points={d.author.reputation} />
+              <span className="text-fg-dim">{formatRelative(d.createdAt)}</span>
+            </div>
+          </div>
         </div>
         <p className="text-sm leading-relaxed text-fg-muted">{d.body}</p>
         <div className="flex items-center gap-3 text-xs text-fg-dim">
           <span className="inline-flex items-center gap-1">
             <Heart className="h-3 w-3" /> {d.reactionCount}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <MessageSquare className="h-3 w-3" /> {d.replyCount}
           </span>
         </div>
       </div>

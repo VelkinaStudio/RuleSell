@@ -1133,7 +1133,9 @@
       "qualityScore": "Quality {score}",
       "freshness": "Updated {days} days ago",
       "freshnessRecent": "Updated today",
-      "license": "License: {license}"
+      "license": "License: {license}",
+      "trending": "Trending",
+      "downloadsUnit": "downloads"
     },
     "actions": {
       "save": "Save",
@@ -1193,6 +1195,7 @@
       "helpfulCount": "{count} found this helpful",
       "ratingOf5": "Rating: {rating} of 5",
       "reportReview": "Report this review",
+      "distributionLabel": "Rating distribution",
       "form": {
         "title": "Write a verified review",
         "rating": "Rating",
@@ -1247,7 +1250,8 @@
     "stats": {
       "rulesets": "Rulesets",
       "downloads": "Downloads",
-      "earnings": "Earnings"
+      "earnings": "Earnings",
+      "avgQuality": "Avg quality"
     },
     "actions": {
       "follow": "Follow team",

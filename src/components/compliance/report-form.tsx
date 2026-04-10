@@ -82,24 +82,29 @@ export function ReportForm({
         role="status"
         aria-live="polite"
         className={cn(
-          "rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-5",
-          compact ? "" : "p-6",
+          "rounded-xl border border-emerald-500/30 bg-emerald-500/8 p-6",
+          compact && "p-5",
           className,
         )}
       >
-        <div className="flex items-start gap-3">
-          <CheckCircle2 className="mt-0.5 size-5 text-emerald-300" aria-hidden="true" />
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-emerald-100">
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-left">
+          <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/15">
+            <CheckCircle2 className="size-6 text-emerald-400" aria-hidden="true" />
+          </div>
+          <div className="flex-1 space-y-1">
+            <p className="text-base font-semibold text-emerald-100">
               {t("successTitle")}
             </p>
-            <p className="mt-1 text-sm text-emerald-100/80">
+            <p className="text-sm leading-relaxed text-emerald-100/75">
               {t("successBody", { ref: result.ref })}
+            </p>
+            <p className="mt-1 font-mono text-xs text-emerald-300/60">
+              ref: {result.ref}
             </p>
             <button
               type="button"
               onClick={reset}
-              className="mt-3 text-xs font-medium text-emerald-300 underline-offset-2 hover:underline"
+              className="mt-2 inline-flex items-center gap-1 rounded-md border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 transition hover:bg-emerald-500/20"
             >
               {t("submit")} ↺
             </button>
@@ -168,7 +173,7 @@ export function ReportForm({
 
       <Label
         htmlFor="report-declared"
-        className="flex cursor-pointer items-start gap-3 rounded-md border border-border-soft bg-bg-surface/60 p-3"
+        className="flex cursor-pointer items-start gap-3 rounded-lg border border-border-soft bg-bg-surface/60 p-3.5 transition has-[[data-checked=true]]:border-brand/40 has-[[data-checked=true]]:bg-brand/5"
       >
         <input
           id="report-declared"
@@ -176,9 +181,9 @@ export function ReportForm({
           checked={declared}
           onChange={(e) => setDeclared(e.target.checked)}
           required
-          className="mt-1 size-4 cursor-pointer accent-brand"
+          className="mt-0.5 size-4 cursor-pointer rounded accent-brand focus:ring-2 focus:ring-brand focus:ring-offset-1 focus:ring-offset-bg"
         />
-        <span className="text-xs text-fg-muted">{t("declarationLabel")}</span>
+        <span className="text-xs leading-relaxed text-fg-muted">{t("declarationLabel")}</span>
       </Label>
 
       {(validationError || error) && (

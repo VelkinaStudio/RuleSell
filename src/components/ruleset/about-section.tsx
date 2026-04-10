@@ -21,7 +21,7 @@ export function AboutSection({ ruleset }: AboutSectionProps) {
       <h2 className="text-xl font-semibold uppercase tracking-wider text-fg">
         {t("title")}
       </h2>
-      <div className="space-y-3 text-sm leading-relaxed text-fg-muted">
+      <div className="max-w-[65ch] space-y-3 text-sm leading-relaxed text-fg-muted">
         {blocks.map((block, i) => {
           const lines = block.split("\n");
           const isList = lines.every((l) => l.trim().startsWith("- "));

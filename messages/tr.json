@@ -791,7 +791,9 @@
       "qualityScore": "Kalite {score}",
       "freshness": "{days} gün önce güncellendi",
       "freshnessRecent": "Bugün güncellendi",
-      "license": "Lisans: {license}"
+      "license": "Lisans: {license}",
+      "trending": "Trend",
+      "downloadsUnit": "indirme"
     },
     "actions": {
       "save": "Kaydet",
@@ -851,6 +853,7 @@
       "helpfulCount": "{count} kişi faydalı buldu",
       "ratingOf5": "Puan: {rating} / 5",
       "reportReview": "Bu incelemeyi bildir",
+      "distributionLabel": "Puan dağılımı",
       "form": {
         "title": "Doğrulanmış inceleme yaz",
         "rating": "Puan",
@@ -905,7 +908,8 @@
     "stats": {
       "rulesets": "Kural setleri",
       "downloads": "İndirme",
-      "earnings": "Kazanç"
+      "earnings": "Kazanç",
+      "avgQuality": "Ort. kalite"
     },
     "actions": {
       "follow": "Takımı takip et",

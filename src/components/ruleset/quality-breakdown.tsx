@@ -6,6 +6,15 @@ import { useTranslations } from "next-intl";
 import type { QualityBreakdown as QualityBreakdownType } from "@/types";
 import { QualityBar } from "@/components/ui/quality-bar";
 
+/* Per-metric accent colors as specified */
+const METRIC_COLORS: Record<string, string> = {
+  tokenEfficiency: "#3b82f6",  // blue
+  installSuccess:  "#10b981",  // green
+  schemaClean:     "#8b5cf6",  // purple
+  freshness:       "#f59e0b",  // amber
+  reviewScore:     "#10b981",  // emerald (falls back to green — same value)
+};
+
 interface QualityBreakdownProps {
   breakdown: QualityBreakdownType;
   total: number;
@@ -49,33 +58,33 @@ export function QualityBreakdown({ breakdown, total }: QualityBreakdownProps) {
               key={row.key}
               score={row.value}
               label={row.label}
+              accentColor={METRIC_COLORS[row.key]}
             />
           ),
         )}
-        {/* Security pass row */}
-        <div className="space-y-1">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-fg-muted">{t("securityPass")}</span>
-            <span
-              className={
-                breakdown.securityPass
-                  ? "inline-flex items-center gap-1 font-semibold text-success"
-                  : "inline-flex items-center gap-1 font-semibold text-danger"
-              }
-            >
-              {breakdown.securityPass ? (
-                <>
-                  <Check className="h-3.5 w-3.5" />
-                  {t("securityPassed")}
-                </>
-              ) : (
-                <>
-                  <X className="h-3.5 w-3.5" />
-                  {t("securityFailed")}
-                </>
-              )}
-            </span>
-          </div>
+
+        {/* Security scan — CI-style pass/fail badge */}
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-fg-muted">{t("securityPass")}</span>
+          <span
+            className={
+              breakdown.securityPass
+                ? "inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-400"
+                : "inline-flex items-center gap-1 rounded-md border border-rose-500/30 bg-rose-500/15 px-2 py-0.5 font-semibold text-rose-400"
+            }
+          >
+            {breakdown.securityPass ? (
+              <>
+                <Check className="h-3 w-3" />
+                {t("securityPassed")}
+              </>
+            ) : (
+              <>
+                <X className="h-3 w-3" />
+                {t("securityFailed")}
+              </>
+            )}
+          </span>
         </div>
       </div>
     </section>
