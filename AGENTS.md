@@ -65,3 +65,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - `ruleset-marketplace-ops-trust`: Use for buyer dashboard, seller surfaces, admin moderation, support, notifications, and trust or policy UX. File: `skills/ruleset-marketplace-ops-trust/SKILL.md`
 - `ruleset-marketplace-i18n-qa`: Use for locale copy changes, parity checks, and release-grade frontend validation. File: `skills/ruleset-marketplace-i18n-qa/SKILL.md`
 - `ruleset-marketplace-launch-architecture`: Use for moving the frontend prototype toward a launch-ready product and backend shape. File: `skills/ruleset-marketplace-launch-architecture/SKILL.md`
+- `humane-design-engine`: Use for any digital design work — websites, landing pages, dashboards, components, mobile interfaces, SVG, animations, icons, data visualizations. Triggers on design creation, styling, UI/UX, visual work. File: `skills/humane-design-engine/SKILL.md`
