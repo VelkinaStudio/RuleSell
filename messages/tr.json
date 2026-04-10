@@ -1178,5 +1178,160 @@
         "browse": "/browse'u aç"
       }
     }
+  },
+  "about": {
+    "hero": {
+      "title": "Yapay zeka geliştiricilerinin hak ettiği pazaryeri.",
+      "subtitle": "Kalite ölçülür. Üreticilere ödenir. Güven doğrulanır."
+    },
+    "problem": {
+      "title": "Sorun",
+      "point1": "Yapay zeka araç dizinleri, kalite sinyali olmadan binlerce varlık listeler.",
+      "point2": "Üreticiler büyük platformlarda hiçbir şey kazanmaz.",
+      "point3": "Yıldız puanları manipüle edilir. İndirme sayıları anlamsızdır.",
+      "point4": "Kurulum talimatları farklı araçlar arasında kopyala-yapıştır kabusu."
+    },
+    "solution": {
+      "title": "Yaklaşımımız",
+      "point1": "Her varlık beş otomatik kalite sinyali ile ölçülür.",
+      "point2": "Üreticiler her ücretli satışın %85'ini alır.",
+      "point3": "Yorumlar yalnızca doğrulanmış kurulum yapan kullanıcılara açıktır.",
+      "point4": "Cursor, Windsurf, Claude ve daha fazlası için tek komutla CLI kurulumu."
+    },
+    "features": {
+      "qualityTitle": "Ölçülen kalite",
+      "qualityDesc": "Token verimliliği, kurulum başarısı, şema temizliği, güncellik ve güvenlik taraması tek bir puanda birleşir.",
+      "creatorsTitle": "Üretici öncelikli ekonomi",
+      "creatorsDesc": "Aylık Stripe ödemeleriyle %85/%15 gelir paylaşımı. Listeleme ücreti yok. Öne çıkarma vergisi yok.",
+      "reviewsTitle": "Doğrulanmış yorumlar",
+      "reviewsDesc": "Yalnızca CLI ile kurulum yapanlar puan verebilir. Yazılı yorumlar Sertifikalı Geliştirici statüsü gerektirir.",
+      "crossEnvTitle": "Çoklu ortam desteği",
+      "crossEnvDesc": "Tek listeleme Claude Code, Cursor, Windsurf, Cline, Zed ve daha fazlasında çalışır."
+    },
+    "business": {
+      "title": "İş modeli",
+      "freeTitle": "Ücretsiz",
+      "freePrice": "$0",
+      "freeDesc": "Sonsuza kadar ücretsiz. Ücretsiz varlıkları koşulsuz yayınla ve kur.",
+      "commissionTitle": "Komisyon",
+      "commissionPrice": "%15",
+      "commissionDesc": "Ücretli satışlardan %15 alırız. Geri kalanı üreticinin. Gizli ücret yok.",
+      "proTitle": "Pro",
+      "proPrice": "$8/ay",
+      "proDesc": "Özel koleksiyonlar, tam kurulum geçmişi ve gelişmiş filtreler. Alım satım için gerekmez."
+    },
+    "team": {
+      "title": "Ekip",
+      "body": "Velkina Studio tarafından geliştirildi. Platformumuzu her gün kendimiz kullanıyoruz.",
+      "github": "GitHub'da katkılara açığız."
+    }
+  },
+  "trust": {
+    "hero": {
+      "title": "Güven mühendislikle inşa edilir, varsayılmaz.",
+      "subtitle": "Pazaryerindeki her sinyal, otomatik ölçümle kazanılır — beyana veya oylamaya değil."
+    },
+    "qualityScore": {
+      "title": "Kalite Puanı",
+      "desc": "Beş otomatik sinyali özetleyen tek bir sayı (0-100). Pazaryerinin varsayılan sıralaması budur — yıldızlar veya indirme sayıları değil.",
+      "disclaimer": "Kalite puanları şu anda otomatik sinyallerden tahmin edilmektedir. Doğruluğu iyileştirmek için çalışıyoruz."
+    },
+    "pipeline": {
+      "title": "Güvenlik hattı",
+      "step1": "Yükleme",
+      "step2": "VirusTotal taraması",
+      "step3": "Semgrep analizi",
+      "step4": "Korumalı alan testi",
+      "step5": "Yayınlandı",
+      "paidNote": "Ücretli ögeler onaylanmadan önce ek bir manuel incelemeden geçer."
+    },
+    "badges": {
+      "title": "Rozetler ve işaretler",
+      "itemBadges": "Öge rozetleri",
+      "itemBadgesDesc": "Rozetler kartlarda ve detay sayfalarında görünür. Birden fazla rozet aynı anda taşınabilir.",
+      "creatorMarks": "Üretici işaretleri",
+      "creatorMarksDesc": "İşaretler üretici avatarlarında ve profil sayfalarında görünür. Kimin ne olduğunu ve statüsünü nasıl kazandığını gösterir."
+    },
+    "reputation": {
+      "title": "İtibar seviyeleri",
+      "desc": "İtibar, pazaryerine katkıda bulunarak kazanılır. Her doğrulanmış kurulum, yorum ve topluluk eylemi puan ekler.",
+      "newcomer": "Yeni Üye",
+      "member": "Üye",
+      "contributor": "Katılımcı",
+      "trusted": "Güvenilir",
+      "expert": "Uzman",
+      "authority": "Otorite"
+    },
+    "reviews": {
+      "title": "Yorum bütünlüğü",
+      "step1": "CLI ile kur",
+      "step2": "Varlığı kullan",
+      "step3": "Yorum yaz",
+      "desc": "Kullanmadığınız bir şeyi inceleyemezsiniz. Yazılı incelemeler Sertifikalı Geliştirici statüsü gerektirir."
+    }
+  },
+  "affiliates": {
+    "hero": {
+      "title": "Gerçekten kullandığınız şeyleri önererek kazanın.",
+      "subtitle": "Referans linkinizi paylaşın. Birisi 30 gün içinde satın alırsa komisyon kazanırsınız."
+    },
+    "howItWorks": {
+      "title": "Nasıl çalışır",
+      "step1": "Ortaklık programına kaydolun",
+      "step2": "Benzersiz referans linkinizi alın",
+      "step3": "Kitlenizle paylaşın",
+      "step4": "Her satışta komisyon kazanın"
+    },
+    "example": {
+      "title": "Kazanç örneği",
+      "itemPrice": "$19 öge",
+      "creatorLabel": "Üretici",
+      "creatorAmount": "$14,54",
+      "creatorPercent": "%76,5",
+      "platformLabel": "Platform",
+      "platformAmount": "$2,85",
+      "platformPercent": "%15",
+      "affiliateLabel": "Siz (ortak)",
+      "affiliateAmount": "$1,62",
+      "affiliatePercent": "%8,5"
+    },
+    "personas": {
+      "title": "Kimler için",
+      "contentTitle": "İçerik üreticileri",
+      "contentDesc": "Geliştirici araçlarını öneren YouTube incelemecileri, bloggerlar ve eğitim yazarları.",
+      "newsletterTitle": "Bülten yazarları",
+      "newsletterDesc": "Araç önerilerine güvenilen kitlelere sahip teknoloji bülteni yazarları.",
+      "communityTitle": "Topluluk liderleri",
+      "communityDesc": "Üyeler için kaynakları derleyen Discord ve Slack topluluk yöneticileri."
+    },
+    "cta": "Referans linkinizi alın",
+    "selfReferral": "Kendi kendinize referans verebilirsiniz — kendi ögelerinizi tanıtıyorsanız hem üretici gelirini hem de ortaklık bonusunu kazanırsınız."
+  },
+  "cli": {
+    "hero": {
+      "title": "Yapay zeka varlıklarını terminalinizden kurun.",
+      "subtitle": "CLI ortamınızı algılar ve yapılandırmayı doğru dosyaya yazar. Kopyala-yapıştır yok, manuel kurulum yok.",
+      "installCommand": "npm install -g @rulesell/cli"
+    },
+    "gettingStarted": {
+      "title": "Başlarken",
+      "step1Title": "CLI'yi kurun",
+      "step1Desc": "Node.js 18+ gerektirir. github.com/rulesell/cli adresinde açık kaynak.",
+      "step2Title": "Kimlik doğrulayın",
+      "step2Desc": "Hesabınızı bağlamak için rulesell auth komutunu çalıştırın. Ücretsiz varlıklar kimlik doğrulama gerektirmez.",
+      "step3Title": "İlk varlığınızı kurun",
+      "step3Desc": "Pazaryerinden herhangi bir varlık seçin ve kurulum komutunu çalıştırın."
+    },
+    "features": {
+      "freeTitle": "Ücretsiz varlıklar",
+      "freeDesc": "Herhangi bir ücretsiz varlığı kimlik doğrulama olmadan kurun. Tek komut, bitti.",
+      "paidTitle": "Ücretli varlıklar",
+      "paidDesc": "CLI, OAuth ve ödeme için tarayıcınızı açar. Token otomatik olarak indirilir.",
+      "envTitle": "Otomatik algılama",
+      "envDesc": "Cursor, Windsurf, Claude Code, VS Code ve daha fazlasını algılar. --env ile geçersiz kılın.",
+      "commandsTitle": "Tam komut seti",
+      "commandsDesc": "Arama, listeleme, güncelleme ve kaldırma. Her şey terminalinizden."
+    },
+    "note": "CLI paketi monorepo'da packages/rulesell-cli/ altında bulunur. Tüm komutlar geliştirme ortamında sahte verilerle çalışır. Üretim sürümü v2 için planlanmıştır."
   }
 }

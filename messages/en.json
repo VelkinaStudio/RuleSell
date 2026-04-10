@@ -1431,5 +1431,160 @@
         "browse": "Open /browse"
       }
     }
+  },
+  "about": {
+    "hero": {
+      "title": "The marketplace AI developers deserve.",
+      "subtitle": "Quality measured. Creators paid. Trust verified."
+    },
+    "problem": {
+      "title": "The problem",
+      "point1": "AI tool directories list thousands of assets with no quality signals.",
+      "point2": "Creators earn nothing on every major platform.",
+      "point3": "Star ratings are gamed. Download counts are meaningless.",
+      "point4": "Install instructions are copy-paste nightmares across different tools."
+    },
+    "solution": {
+      "title": "Our approach",
+      "point1": "Every asset measured on five automated quality signals.",
+      "point2": "Creators keep 85% of every paid sale.",
+      "point3": "Reviews restricted to verified installers only.",
+      "point4": "One-command CLI install across Cursor, Windsurf, Claude, and more."
+    },
+    "features": {
+      "qualityTitle": "Measured quality",
+      "qualityDesc": "Token efficiency, install success, schema cleanliness, freshness, and security scan combined into a single score.",
+      "creatorsTitle": "Creator-first economics",
+      "creatorsDesc": "85/15 revenue split with monthly Stripe payouts. No listing fees. No featured-placement taxes.",
+      "reviewsTitle": "Verified reviews",
+      "reviewsDesc": "Only users who installed via CLI can rate. Written reviews require Certified Dev status.",
+      "crossEnvTitle": "Cross-environment",
+      "crossEnvDesc": "One listing works across Claude Code, Cursor, Windsurf, Cline, Zed, and more."
+    },
+    "business": {
+      "title": "Business model",
+      "freeTitle": "Free",
+      "freePrice": "$0",
+      "freeDesc": "Free forever. Publish and install free assets with no strings attached.",
+      "commissionTitle": "Commission",
+      "commissionPrice": "15%",
+      "commissionDesc": "We take 15% on paid sales. Creators keep the rest. No hidden fees.",
+      "proTitle": "Pro",
+      "proPrice": "$8/mo",
+      "proDesc": "Private collections, full install history, and advanced filters. Not required to buy or sell."
+    },
+    "team": {
+      "title": "The team",
+      "body": "Built by Velkina Studio. We use our own platform daily.",
+      "github": "Contributions welcome on GitHub."
+    }
+  },
+  "trust": {
+    "hero": {
+      "title": "Trust is engineered, not assumed.",
+      "subtitle": "Every signal on the marketplace is earned through automated measurement, not self-reported or crowd-voted."
+    },
+    "qualityScore": {
+      "title": "Quality Score",
+      "desc": "A single number (0-100) summarizing five automated signals. It is the default sort on the marketplace — not stars, not downloads.",
+      "disclaimer": "Quality scores are currently estimated from automated signals. We are working to improve accuracy."
+    },
+    "pipeline": {
+      "title": "Security pipeline",
+      "step1": "Upload",
+      "step2": "VirusTotal scan",
+      "step3": "Semgrep analysis",
+      "step4": "Sandbox test",
+      "step5": "Published",
+      "paidNote": "Paid items go through an additional manual review before approval."
+    },
+    "badges": {
+      "title": "Badges and marks",
+      "itemBadges": "Item badges",
+      "itemBadgesDesc": "Badges appear on cards and detail pages. They stack — an item can carry several at once.",
+      "creatorMarks": "Creator marks",
+      "creatorMarksDesc": "Marks appear on creator avatars and profile pages. They signal who someone is and how they earned their status."
+    },
+    "reputation": {
+      "title": "Reputation levels",
+      "desc": "Reputation is earned by contributing to the marketplace. Every verified install, review, and community action adds points.",
+      "newcomer": "Newcomer",
+      "member": "Member",
+      "contributor": "Contributor",
+      "trusted": "Trusted",
+      "expert": "Expert",
+      "authority": "Authority"
+    },
+    "reviews": {
+      "title": "Review integrity",
+      "step1": "Install via CLI",
+      "step2": "Use the asset",
+      "step3": "Write a review",
+      "desc": "You cannot review something you have not used. Written reviews are further restricted to Certified Devs."
+    }
+  },
+  "affiliates": {
+    "hero": {
+      "title": "Earn by recommending what you actually use.",
+      "subtitle": "Share your referral link. If someone buys through it within 30 days, you earn a commission."
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "step1": "Sign up for the affiliate program",
+      "step2": "Get your unique referral link",
+      "step3": "Share with your audience",
+      "step4": "Earn commission on every sale"
+    },
+    "example": {
+      "title": "Earnings example",
+      "itemPrice": "$19 item",
+      "creatorLabel": "Creator",
+      "creatorAmount": "$14.54",
+      "creatorPercent": "76.5%",
+      "platformLabel": "Platform",
+      "platformAmount": "$2.85",
+      "platformPercent": "15%",
+      "affiliateLabel": "You (affiliate)",
+      "affiliateAmount": "$1.62",
+      "affiliatePercent": "8.5%"
+    },
+    "personas": {
+      "title": "Who it's for",
+      "contentTitle": "Content creators",
+      "contentDesc": "YouTube reviewers, bloggers, and tutorial authors who recommend dev tools.",
+      "newsletterTitle": "Newsletter authors",
+      "newsletterDesc": "Tech newsletter writers with audiences who trust their tool recommendations.",
+      "communityTitle": "Community leaders",
+      "communityDesc": "Discord and Slack community managers who curate resources for members."
+    },
+    "cta": "Get your referral link",
+    "selfReferral": "Self-referral is allowed — if you promote your own items, you earn both creator revenue and the affiliate bonus."
+  },
+  "cli": {
+    "hero": {
+      "title": "Install AI assets from your terminal.",
+      "subtitle": "The CLI detects your environment and writes config to the right file. No copy-paste, no manual setup.",
+      "installCommand": "npm install -g @rulesell/cli"
+    },
+    "gettingStarted": {
+      "title": "Getting started",
+      "step1Title": "Install the CLI",
+      "step1Desc": "Requires Node.js 18+. Open source at github.com/rulesell/cli.",
+      "step2Title": "Authenticate",
+      "step2Desc": "Run rulesell auth to connect your account. Free assets work without auth.",
+      "step3Title": "Install your first asset",
+      "step3Desc": "Pick any asset from the marketplace and run the install command."
+    },
+    "features": {
+      "freeTitle": "Free assets",
+      "freeDesc": "Install any free asset without authentication. One command, done.",
+      "paidTitle": "Paid assets",
+      "paidDesc": "CLI opens your browser for OAuth and payment. Token downloads automatically.",
+      "envTitle": "Auto-detection",
+      "envDesc": "Detects Cursor, Windsurf, Claude Code, VS Code, and more. Override with --env.",
+      "commandsTitle": "Full command set",
+      "commandsDesc": "Search, list, update, and remove. Everything from your terminal."
+    },
+    "note": "The CLI package lives at packages/rulesell-cli/ in the monorepo. All commands work against mock data in development. Production release planned for v2."
   }
 }
