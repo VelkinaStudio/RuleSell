@@ -161,7 +161,8 @@
       "personaSeller": "Verified Seller",
       "personaBuilder": "Builder",
       "personaUser": "Member",
-      "ariaLabel": "Dashboard navigation"
+      "ariaLabel": "Dashboard navigation",
+      "mobileMenuLabel": "Open navigation menu"
     },
     "crumbs": {
       "dashboard": "Dashboard",

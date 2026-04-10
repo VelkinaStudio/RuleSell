@@ -39,7 +39,11 @@ export function DashboardBreadcrumb() {
   // Strip a leading "/" then split into non-empty segments.
   const segments = pathname.replace(/^\/+/, "").split("/").filter(Boolean);
 
-  if (segments.length === 0) return null;
+  // Only show on nested routes: 2+ path segments after the "dashboard" root.
+  // e.g. /dashboard/settings/billing → yes; /dashboard/overview → no.
+  const dashIdx = segments.indexOf("dashboard");
+  const afterDashboard = dashIdx >= 0 ? segments.slice(dashIdx + 1) : segments;
+  if (afterDashboard.length < 2) return null;
 
   // Build cumulative href for each segment so we can render real links.
   const crumbs = segments.map((seg, i) => {

@@ -161,7 +161,8 @@
       "personaSeller": "Doğrulanmış Satıcı",
       "personaBuilder": "Geliştirici",
       "personaUser": "Üye",
-      "ariaLabel": "Panel gezintisi"
+      "ariaLabel": "Panel gezintisi",
+      "mobileMenuLabel": "Gezinti menüsünü aç"
     },
     "crumbs": {
       "dashboard": "Panel",
