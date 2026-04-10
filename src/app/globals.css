@@ -154,3 +154,90 @@
     animation: none;
   }
 }
+
+/* ─── Print stylesheet for legal pages ───────────────────────────────────── */
+@media print {
+  /* Hide chrome */
+  header,
+  footer,
+  nav[aria-label],
+  aside,
+  .legal-scroll-progress {
+    display: none !important;
+  }
+
+  /* White background, black text */
+  body,
+  .bg-bg,
+  [class*="bg-bg"],
+  [class*="bg-brand"] {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Remove decorative borders and shadows */
+  [class*="border"],
+  [class*="shadow"],
+  [class*="rounded"] {
+    border-color: #e5e7eb !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure full-width content */
+  .mx-auto,
+  main,
+  article {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Legible font sizes */
+  body {
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 20pt;
+    margin-bottom: 8pt;
+  }
+
+  h2 {
+    font-size: 14pt;
+    margin-top: 16pt;
+    margin-bottom: 6pt;
+  }
+
+  h3 {
+    font-size: 12pt;
+    margin-top: 12pt;
+    margin-bottom: 4pt;
+  }
+
+  p,
+  li {
+    color: black !important;
+    max-width: 100% !important;
+  }
+
+  /* Avoid breaking sections across pages */
+  section {
+    break-inside: avoid-page;
+  }
+
+  /* Ensure links are readable */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Hide amber disclaimer card */
+  [role="note"] {
+    display: none !important;
+  }
+}

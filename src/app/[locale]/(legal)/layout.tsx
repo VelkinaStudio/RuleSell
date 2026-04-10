@@ -1,6 +1,7 @@
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { LegalNav } from "@/components/legal/legal-nav";
+import { LegalScrollProgress } from "@/components/legal/legal-scroll-progress";
 
 export default function LegalLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
         Skip to content
       </a>
       <Header />
+      <LegalScrollProgress />
       <div className="flex-1 bg-bg">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:px-8">
           <aside className="lg:sticky lg:top-24 lg:self-start">
