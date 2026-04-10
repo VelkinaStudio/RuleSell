@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, Check, CheckCircle2, CloudUpload } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -123,6 +123,7 @@ const STEP_HINTS: Record<number, string> = {
 
 export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) {
   const t = useTranslations("publishWizard");
+  const reduce = useReducedMotion();
   const router = useRouter();
   const { data: session } = useSession();
   const { draft, update, replace, clear, savedAt } = usePublishDraft(id);
@@ -245,10 +246,10 @@ export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) 
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
-            initial={{ opacity: 0, x: 12 }}
+            initial={reduce ? false : { opacity: 0, x: 12 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -12 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            exit={reduce ? undefined : { opacity: 0, x: -12 }}
+            transition={{ duration: reduce ? 0 : 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             {step === 1 && <WizardStepType draft={draft} onChange={update} />}
             {step === 2 && <WizardStepContent draft={draft} onChange={update} />}

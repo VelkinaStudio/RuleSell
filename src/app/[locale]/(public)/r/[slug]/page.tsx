@@ -128,7 +128,7 @@ function TabBtn({
       onClick={onClick}
       className={cn(
         "relative -mb-px px-4 py-2.5 text-sm font-medium transition",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg/20",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
         active ? "text-fg" : "text-fg-subtle hover:text-fg-muted",
       )}
     >

@@ -89,24 +89,31 @@
  * RuleSell is dark-mode first. The shadcn/ui primitives consume the
  * --background / --foreground / --card / etc. variables, so we set them
  * directly on :root to the dark palette. Light mode is deferred to v2.
+ *
+ * Token unification: --background and --foreground reference the design
+ * tokens from tokens.css (--bg / --fg) so the two systems stay in sync.
+ * Card, popover, and other elevated surfaces keep independent OKLCh values
+ * because the oklch scale doesn't map 1:1 to the hex surface stack
+ * (--bg-surface, --bg-raised, --bg-elevated). This is a pragmatic choice —
+ * revisit when the design system adds a light mode.
  */
 :root,
 .dark {
   --radius: 0.375rem;
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: var(--bg);
+  --foreground: var(--fg);
   --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --card-foreground: var(--fg);
   --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover-foreground: var(--fg);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: var(--fg);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent-foreground: var(--fg);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
@@ -117,11 +124,11 @@
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-foreground: var(--fg);
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary-foreground: var(--fg);
   --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-accent-foreground: var(--fg);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }

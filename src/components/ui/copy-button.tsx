@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import { useCallback, useState } from "react";
 
@@ -13,6 +13,7 @@ interface CopyButtonProps {
 }
 
 export function CopyButton({ text, label = "Copy", className }: CopyButtonProps) {
+  const reduce = useReducedMotion();
   const [copied, setCopied] = useState(false);
 
   const onClick = useCallback(async () => {
@@ -45,10 +46,10 @@ export function CopyButton({ text, label = "Copy", className }: CopyButtonProps)
           {copied ? (
             <motion.span
               key="check"
-              initial={{ scale: 0.6, opacity: 0 }}
+              initial={reduce ? false : { scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.6, opacity: 0 }}
-              transition={{ duration: 0.18 }}
+              exit={reduce ? undefined : { scale: 0.6, opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.18 }}
               className="absolute inset-0 flex items-center justify-center text-success"
             >
               <Check className="h-3.5 w-3.5" />
@@ -56,10 +57,10 @@ export function CopyButton({ text, label = "Copy", className }: CopyButtonProps)
           ) : (
             <motion.span
               key="copy"
-              initial={{ scale: 0.6, opacity: 0 }}
+              initial={reduce ? false : { scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.6, opacity: 0 }}
-              transition={{ duration: 0.18 }}
+              exit={reduce ? undefined : { scale: 0.6, opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.18 }}
               className="absolute inset-0 flex items-center justify-center"
             >
               <Copy className="h-3.5 w-3.5" />

@@ -54,7 +54,7 @@ export function HeroSearch({
       />
       <button
         type="submit"
-        className="shrink-0 rounded border border-border-soft px-3 py-1 text-xs font-medium text-fg-muted transition hover:border-border-strong hover:text-fg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg/20"
+        className="shrink-0 rounded border border-border-soft px-3 py-1 text-xs font-medium text-fg-muted transition hover:border-border-strong hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         {t("searchSubmit")}
       </button>
