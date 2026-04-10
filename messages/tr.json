@@ -741,20 +741,26 @@
     "title": "Arama sonuçları",
     "placeholder": "Doğrulanmış varlık ara…",
     "empty": {
-      "title": "\"{query}\" için eşleşme yok",
-      "description": "Daha geniş bir terim dene veya kategoriye göre keşfet.",
-      "browse": "Tümünü keşfet"
+      "title": "\"{query}\" için sonuç bulunamadı",
+      "description": "Farklı anahtar kelimeler dene veya kategoriye göre keşfet.",
+      "browse": "Tümünü keşfet",
+      "collections": "Koleksiyonlara göz at"
     },
     "results": "\"{query}\" için {count, plural, one {# sonuç} other {# sonuç}}"
   },
   "collections": {
     "title": "Seçili koleksiyonlar",
+    "heroTitle": "Seçili Koleksiyonlar",
+    "heroSubtitle": "RuleSell ekibi ve güvenilir yaratıcılar tarafından özenle bir araya getirilmiş temalı paketler — iş akışın için en iyi başlangıç noktaları.",
     "subtitle": "RuleSell ekibi ve güvenilir yaratıcılar tarafından özenle seçilmiş temalı paketler.",
+    "featuredLabel": "Öne çıkan koleksiyon",
     "by": "Hazırlayan",
     "items": "{count, plural, one {# öğe} other {# öğe}}",
     "followers": "{count, plural, one {# takipçi} other {# takipçi}}",
     "follow": "Koleksiyonu takip et",
     "unfollow": "Takip ediliyor",
+    "curatorBio": "@{name} tarafından küratörlendi — RuleSell'de doğrulanmış bir içerik üreticisi.",
+    "itemNumber": "{number}. öğe",
     "empty": {
       "title": "Henüz koleksiyon yok.",
       "description": "Küratörler hâlâ derliyor. Yakında tekrar uğra."

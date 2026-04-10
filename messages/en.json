@@ -1083,20 +1083,26 @@
     "title": "Search results",
     "placeholder": "Search verified assets…",
     "empty": {
-      "title": "No matches for \"{query}\"",
-      "description": "Try a broader term, or browse by category.",
-      "browse": "Browse all"
+      "title": "No results for \"{query}\"",
+      "description": "Try different keywords, or browse by category.",
+      "browse": "Browse all",
+      "collections": "Browse collections"
     },
     "results": "{count, plural, one {# result} other {# results}} for \"{query}\""
   },
   "collections": {
     "title": "Curated collections",
+    "heroTitle": "Curated Collections",
+    "heroSubtitle": "Themed bundles handpicked by the RuleSell team and trusted creators — the best starting points for your workflow.",
     "subtitle": "Themed bundles handpicked by the RuleSell team and trusted creators.",
+    "featuredLabel": "Featured collection",
     "by": "Curated by",
     "items": "{count, plural, one {# item} other {# items}}",
     "followers": "{count, plural, one {# follower} other {# followers}}",
     "follow": "Follow collection",
     "unfollow": "Following",
+    "curatorBio": "Curated by @{name} — a verified creator on RuleSell.",
+    "itemNumber": "Item {number}",
     "empty": {
       "title": "No collections yet.",
       "description": "Curators are still assembling. Check back soon."
