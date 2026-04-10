@@ -1,7 +1,9 @@
 "use client";
 
-import { X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronDown, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 import type {
   Category,
@@ -59,6 +61,12 @@ export function FilterSidebar({
   className,
 }: FilterSidebarProps) {
   const t = useTranslations("browse.filters");
+  const reduce = useReducedMotion();
+
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+
+  const toggleSection = (key: string) =>
+    setCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));
 
   const togglePlatform = (p: Platform) =>
     onChange({ ...value, platform: value.platform === p ? undefined : p });
@@ -74,11 +82,20 @@ export function FilterSidebar({
   const hasFilters =
     value.platform || value.type || value.category || value.environment || value.price;
 
+  // Active counts per group
+  const counts: Record<string, number> = {
+    category: value.category ? 1 : 0,
+    type: value.type ? 1 : 0,
+    platform: value.platform ? 1 : 0,
+    environment: value.environment ? 1 : 0,
+    price: value.price ? 1 : 0,
+  };
+
   return (
     <aside
       aria-label={t("title")}
       className={cn(
-        "h-full space-y-6 border-r border-border-soft bg-bg-surface/30 px-5 py-6",
+        "h-full space-y-4 border-r border-border-soft bg-bg-surface/30 px-5 py-6",
         className,
       )}
     >
@@ -101,7 +118,14 @@ export function FilterSidebar({
       </div>
 
       {/* Category */}
-      <FilterGroup label={t("category")}>
+      <CollapsibleFilterGroup
+        label={t("category")}
+        groupKey="category"
+        activeCount={counts.category}
+        collapsed={!!collapsed.category}
+        onToggle={() => toggleSection("category")}
+        reduce={reduce ?? false}
+      >
         <div className="space-y-1.5">
           {CATEGORY_ORDER.map((c) => {
             const meta = CATEGORY_META[c];
@@ -115,9 +139,17 @@ export function FilterSidebar({
                 className={cn(
                   "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition",
                   active
-                    ? "bg-bg-elevated text-fg"
+                    ? "text-[var(--cat-color)] ring-1 ring-[var(--cat-color)]/30"
                     : "text-fg-muted hover:bg-bg-elevated/60 hover:text-fg",
                 )}
+                style={
+                  active
+                    ? ({
+                        "--cat-color": meta.color,
+                        backgroundColor: `${meta.color}1a`,
+                      } as React.CSSProperties)
+                    : ({ "--cat-color": meta.color } as React.CSSProperties)
+                }
               >
                 <span
                   className="flex h-6 w-6 shrink-0 items-center justify-center rounded"
@@ -140,10 +172,17 @@ export function FilterSidebar({
             );
           })}
         </div>
-      </FilterGroup>
+      </CollapsibleFilterGroup>
 
       {/* Type */}
-      <FilterGroup label={t("type")}>
+      <CollapsibleFilterGroup
+        label={t("type")}
+        groupKey="type"
+        activeCount={counts.type}
+        collapsed={!!collapsed.type}
+        onToggle={() => toggleSection("type")}
+        reduce={reduce ?? false}
+      >
         <div className="space-y-1.5">
           {TYPES.map((ty) => (
             <CheckboxRow
@@ -154,10 +193,17 @@ export function FilterSidebar({
             />
           ))}
         </div>
-      </FilterGroup>
+      </CollapsibleFilterGroup>
 
       {/* Platform */}
-      <FilterGroup label={t("platform")}>
+      <CollapsibleFilterGroup
+        label={t("platform")}
+        groupKey="platform"
+        activeCount={counts.platform}
+        collapsed={!!collapsed.platform}
+        onToggle={() => toggleSection("platform")}
+        reduce={reduce ?? false}
+      >
         <div className="space-y-1.5">
           {PLATFORMS.map((p) => (
             <CheckboxRow
@@ -168,10 +214,17 @@ export function FilterSidebar({
             />
           ))}
         </div>
-      </FilterGroup>
+      </CollapsibleFilterGroup>
 
       {/* Environment (grouped) */}
-      <FilterGroup label={t("environment")}>
+      <CollapsibleFilterGroup
+        label={t("environment")}
+        groupKey="environment"
+        activeCount={counts.environment}
+        collapsed={!!collapsed.environment}
+        onToggle={() => toggleSection("environment")}
+        reduce={reduce ?? false}
+      >
         <div className="space-y-3">
           {(["claude", "editor", "agent", "workflow", "other"] as const).map(
             (family) => (
@@ -191,10 +244,17 @@ export function FilterSidebar({
             ),
           )}
         </div>
-      </FilterGroup>
+      </CollapsibleFilterGroup>
 
       {/* Price */}
-      <FilterGroup label={t("price")}>
+      <CollapsibleFilterGroup
+        label={t("price")}
+        groupKey="price"
+        activeCount={counts.price}
+        collapsed={!!collapsed.price}
+        onToggle={() => toggleSection("price")}
+        reduce={reduce ?? false}
+      >
         <RadioGroup
           value={value.price ?? "any"}
           onValueChange={(v) => setPrice(v as "free" | "paid" | "any")}
@@ -214,24 +274,85 @@ export function FilterSidebar({
             );
           })}
         </RadioGroup>
-      </FilterGroup>
+      </CollapsibleFilterGroup>
     </aside>
   );
 }
 
-function FilterGroup({
+const contentVariants = {
+  open: { height: "auto", opacity: 1 },
+  closed: { height: 0, opacity: 0 },
+};
+
+function CollapsibleFilterGroup({
   label,
+  groupKey,
+  activeCount,
+  collapsed,
+  onToggle,
+  reduce,
   children,
 }: {
   label: string;
+  groupKey: string;
+  activeCount: number;
+  collapsed: boolean;
+  onToggle: () => void;
+  reduce: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div className="space-y-2">
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
-        {label}
-      </h3>
-      {children}
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-1 text-left"
+        aria-expanded={!collapsed}
+        aria-controls={`filter-group-${groupKey}`}
+      >
+        <span className="flex items-center gap-1.5">
+          <span className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+            {label}
+          </span>
+          {activeCount > 0 && (
+            <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand/15 px-1 text-[10px] font-semibold tabular-nums text-brand">
+              {activeCount}
+            </span>
+          )}
+        </span>
+        <ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 shrink-0 text-fg-subtle transition-transform duration-200",
+            collapsed && "rotate-180",
+          )}
+          aria-hidden
+        />
+      </button>
+
+      {reduce ? (
+        !collapsed && (
+          <div id={`filter-group-${groupKey}`}>
+            {children}
+          </div>
+        )
+      ) : (
+        <AnimatePresence initial={false}>
+          {!collapsed && (
+            <motion.div
+              id={`filter-group-${groupKey}`}
+              key={groupKey}
+              variants={contentVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              {children}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </div>
   );
 }

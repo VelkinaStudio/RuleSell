@@ -1,12 +1,12 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Filter, SearchX } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useMemo } from "react";
 
 import type { Category, Environment, Platform, Type } from "@/types";
-import { categoryFromSlug } from "@/constants/categories";
+import { CATEGORY_META, CATEGORY_ORDER, categoryFromSlug } from "@/constants/categories";
 import { environmentFromSlug } from "@/constants/environments";
 import {
   FilterSidebar,
@@ -15,6 +15,7 @@ import {
 import { RulesetCard } from "@/components/marketplace/ruleset-card";
 import { SortSelect } from "@/components/marketplace/sort-select";
 import { TabBar } from "@/components/marketplace/tab-bar";
+import { Stagger } from "@/components/motion/stagger";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
@@ -24,7 +25,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import type { RulesetSort, RulesetTab } from "@/lib/api/types";
 import { useRulesets } from "@/hooks/use-rulesets";
 
@@ -248,11 +249,11 @@ function BrowseInner() {
 
         {!isLoading && !error && data && data.data.length > 0 && (
           <>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <Stagger className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {data.data.map((r) => (
                 <RulesetCard key={r.id} ruleset={r} />
               ))}
-            </div>
+            </Stagger>
 
             {/* Pagination */}
             {(data.pagination.hasNext || data.pagination.hasPrev) && (
@@ -296,12 +297,30 @@ function BrowseInner() {
 
         {!isLoading && !error && data && data.data.length === 0 && (
           <EmptyState
+            icon={<SearchX className="h-6 w-6" />}
             title={t("empty.title")}
             description={t("empty.description")}
             action={
-              <Button variant="outline" size="sm" onClick={onClearFilters}>
-                {t("empty.clear")}
-              </Button>
+              <div className="flex flex-col items-center gap-4">
+                <Button variant="outline" size="sm" onClick={onClearFilters}>
+                  {t("empty.clear")}
+                </Button>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {CATEGORY_ORDER.slice(0, 5).map((cat) => {
+                    const meta = CATEGORY_META[cat];
+                    return (
+                      <Link
+                        key={cat}
+                        href={`/browse?category=${cat}`}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-border-soft px-3 py-1 text-xs text-fg-muted transition hover:border-border hover:text-fg"
+                        style={{ color: meta.color }}
+                      >
+                        {meta.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
             }
           />
         )}
