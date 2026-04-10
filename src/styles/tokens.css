@@ -79,6 +79,9 @@
   --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
+
+  /* Display font */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
