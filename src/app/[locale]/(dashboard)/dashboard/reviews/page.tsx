@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, MessageSquare, Pencil, Star, Trash2 } from "lucide-react";
+import { ArrowRight, ExternalLink, MessageSquare, Pencil, Star, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import type { Review } from "@/types";
@@ -82,7 +82,9 @@ function ReviewCard({ review, t }: ReviewCardProps) {
                 key={n}
                 className={cn(
                   "h-3.5 w-3.5",
-                  n <= review.rating ? "fill-amber-300 text-amber-300" : "text-fg-subtle",
+                  n <= review.rating
+                    ? "fill-amber-300 text-amber-300"
+                    : "fill-bg-raised text-fg-subtle",
                 )}
                 aria-hidden="true"
               />
@@ -97,6 +99,19 @@ function ReviewCard({ review, t }: ReviewCardProps) {
           </p>
         </div>
         <div className="flex items-center gap-1">
+          {review.ruleset && (
+            <Button
+              asChild
+              size="icon-xs"
+              variant="ghost"
+              aria-label={t("viewItem")}
+              title={review.ruleset.title}
+            >
+              <Link href={`/r/${review.ruleset.slug}`}>
+                <ExternalLink className="h-3 w-3" />
+              </Link>
+            </Button>
+          )}
           <Button size="icon-xs" variant="ghost" aria-label={t("edit")}>
             <Pencil className="h-3 w-3" />
           </Button>
@@ -111,6 +126,17 @@ function ReviewCard({ review, t }: ReviewCardProps) {
         </div>
       </header>
       <p className="mt-3 text-sm text-fg-muted">{review.body}</p>
+      {review.ruleset && (
+        <div className="mt-3 border-t border-border-soft pt-3">
+          <Link
+            href={`/r/${review.ruleset.slug}`}
+            className="inline-flex items-center gap-1.5 text-xs text-fg-muted hover:text-brand"
+          >
+            <ExternalLink className="h-3 w-3" aria-hidden />
+            {review.ruleset.title}
+          </Link>
+        </div>
+      )}
     </li>
   );
 }

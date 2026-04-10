@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { apiClient } from "@/lib/api-client";
 import { useSession } from "@/hooks/use-session";
 
-export type PayoutStatus = "pending" | "paid" | "failed";
+export type PayoutStatus = "pending" | "paid" | "failed" | "processing";
 
 export interface PayoutRecord {
   id: string;

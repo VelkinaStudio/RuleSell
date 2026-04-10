@@ -97,12 +97,21 @@ export function ActivityFeed({ items, className }: ActivityFeedProps) {
           const meta = KIND_META[item.kind];
           const Icon = meta.icon;
           const text = renderActivityText(t, item);
+          const initials = getInitials(item);
           return (
             <li key={item.id}>
               <Link
                 href={item.href}
                 className="group flex items-start gap-3 px-5 py-3 transition hover:bg-bg-raised/40"
               >
+                {/* Avatar / initials circle */}
+                <span
+                  className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border-soft bg-bg-raised text-[10px] font-semibold uppercase text-fg-muted"
+                  aria-hidden="true"
+                >
+                  {initials}
+                </span>
+                {/* Action type icon */}
                 <span
                   className={cn(
                     "mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full",
@@ -125,6 +134,14 @@ export function ActivityFeed({ items, className }: ActivityFeedProps) {
       </ul>
     </section>
   );
+}
+
+function getInitials(item: ActivityItem): string {
+  const raw = item.kind === "follow" ? (item.actor ?? "") : (item.target ?? "");
+  const words = raw.trim().split(/\s+/);
+  if (words.length === 0 || !words[0]) return "?";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
 }
 
 function renderActivityText(

@@ -11,6 +11,23 @@ import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { ReputationBadge } from "@/components/ui/reputation-badge";
 import { Link } from "@/i18n/navigation";
 import { useFollowing } from "@/hooks/use-following";
+import { formatRelative } from "@/components/dashboard/format";
+
+const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+function getActivityLabel(
+  latest: { createdAt: string } | null,
+  t: ReturnType<typeof useTranslations>,
+): string | null {
+  if (!latest) return null;
+  const publishedAt = new Date(latest.createdAt).getTime();
+  const now = Date.now();
+  if (now - publishedAt <= ONE_WEEK_MS) {
+    // Could be multiple rulesets but we only know about the latest one
+    return t("publishedThisWeek", { count: 1 });
+  }
+  return t("lastActive", { ago: formatRelative(latest.createdAt, now) });
+}
 
 export default function FollowingPage() {
   const t = useTranslations("dashboard.following");
@@ -57,6 +74,7 @@ export default function FollowingPage() {
               .map((s) => s[0]?.toUpperCase() ?? "")
               .slice(0, 2)
               .join("");
+            const activityLabel = getActivityLabel(latest, t);
             return (
               <li
                 key={user.username}
@@ -81,7 +99,12 @@ export default function FollowingPage() {
                     />
                   </div>
                   <p className="mt-0.5 text-xs text-fg-muted">@{user.username}</p>
-                  <p className="mt-2 text-xs text-fg-subtle">
+                  {activityLabel && (
+                    <p className="mt-1 text-[11px] font-medium text-brand/80">
+                      {activityLabel}
+                    </p>
+                  )}
+                  <p className="mt-1.5 text-xs text-fg-subtle">
                     <span className="font-medium text-fg-muted">
                       {t("latest")}{" "}
                     </span>

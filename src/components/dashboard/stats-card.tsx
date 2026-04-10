@@ -46,7 +46,7 @@ export function StatsCard({
           <p className="text-xs font-medium uppercase tracking-wider text-fg-subtle">
             {label}
           </p>
-          <p className="text-2xl font-semibold tabular-nums text-fg">{value}</p>
+          <p className="font-display text-2xl font-semibold tabular-nums text-fg">{value}</p>
         </div>
         <div
           className={cn(

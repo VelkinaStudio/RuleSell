@@ -283,6 +283,12 @@ export interface Review {
   currentUserMarkedHelpful: boolean;
   createdAt: string;
   updatedAt: string;
+  /** Present when fetched from /api/reviews/mine */
+  ruleset?: {
+    id: string;
+    slug: string;
+    title: string;
+  };
 }
 
 // -----------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowRight, CheckCircle2, Circle, ShoppingBag } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,18 @@ import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { Link } from "@/i18n/navigation";
 import { RulesetCard } from "@/components/marketplace/ruleset-card";
 import { usePurchases } from "@/hooks/use-purchases";
+import { cn } from "@/lib/utils";
+import { formatDate } from "@/components/dashboard/format";
+
+// The API returns purchasedAt alongside the Ruleset fields
+interface PurchasedRuleset {
+  id: string;
+  slug: string;
+  title: string;
+  purchasedAt?: string;
+  currentUserAccess: string;
+  [key: string]: unknown;
+}
 
 export default function PurchasesPage() {
   const t = useTranslations("dashboard.purchases");
@@ -41,7 +53,7 @@ export default function PurchasesPage() {
           description={t("empty.description")}
           action={
             <Button asChild className="bg-brand text-brand-fg hover:bg-brand/90">
-              <Link href="/browse/paid">
+              <Link href="/browse">
                 {t("empty.cta")}
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
@@ -50,19 +62,53 @@ export default function PurchasesPage() {
         />
       ) : (
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {purchases.map((r) => (
-            <li key={r.id} className="space-y-2">
-              <RulesetCard ruleset={r} />
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="w-full"
-              >
-                <Link href={`/r/${r.slug}#install`}>{t("openInstall")}</Link>
-              </Button>
-            </li>
-          ))}
+          {(purchases as unknown as PurchasedRuleset[]).map((r) => {
+            // Treat PURCHASED access + any further access level as "installed"
+            const isInstalled =
+              r.currentUserAccess === "PURCHASED" ||
+              r.currentUserAccess === "SUBSCRIPTION_ACTIVE" ||
+              r.currentUserAccess === "AUTHOR";
+            const purchasedAt = r.purchasedAt as string | undefined;
+
+            return (
+              <li key={r.id} className="space-y-2">
+                <div className="relative">
+                  <RulesetCard ruleset={r as unknown as Parameters<typeof RulesetCard>[0]["ruleset"]} />
+                  {/* Install status badge */}
+                  <div
+                    className={cn(
+                      "absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium",
+                      isInstalled
+                        ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-300"
+                        : "border-border-soft bg-bg-raised text-fg-subtle",
+                    )}
+                  >
+                    {isInstalled ? (
+                      <CheckCircle2 className="h-3 w-3" aria-hidden />
+                    ) : (
+                      <Circle className="h-3 w-3" aria-hidden />
+                    )}
+                    {isInstalled ? t("installed") : t("notInstalled")}
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-2">
+                  {purchasedAt && (
+                    <p className="text-[11px] text-fg-subtle">
+                      {t("purchasedOn", { date: formatDate(purchasedAt) })}
+                    </p>
+                  )}
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className={cn("shrink-0", !purchasedAt && "w-full")}
+                  >
+                    <Link href={`/r/${r.slug}#install`}>{t("openInstall")}</Link>
+                  </Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

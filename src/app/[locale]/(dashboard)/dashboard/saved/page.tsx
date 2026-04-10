@@ -10,6 +10,16 @@ import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 import { Link } from "@/i18n/navigation";
 import { RulesetCard } from "@/components/marketplace/ruleset-card";
 import { useSaved } from "@/hooks/use-saved";
+import { formatDate } from "@/components/dashboard/format";
+
+// The API returns items ordered by createdAt desc; savedAt may be appended
+interface SavedRuleset {
+  id: string;
+  slug: string;
+  savedAt?: string;
+  createdAt?: string;
+  [key: string]: unknown;
+}
 
 export default function SavedPage() {
   const t = useTranslations("dashboard.saved");
@@ -50,20 +60,32 @@ export default function SavedPage() {
         />
       ) : (
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {saved.map((r) => (
-            <li key={r.id} className="space-y-2">
-              <RulesetCard ruleset={r} />
-              <Button
-                size="sm"
-                variant="outline"
-                className="w-full"
-                onClick={() => remove(r.id)}
-              >
-                <X className="mr-1 h-3 w-3" />
-                {t("remove")}
-              </Button>
-            </li>
-          ))}
+          {(saved as unknown as SavedRuleset[]).map((r) => {
+            // savedAt may be added by the API; fall back to undefined
+            const savedDate = r.savedAt ?? undefined;
+
+            return (
+              <li key={r.id} className="space-y-2">
+                <RulesetCard ruleset={r as unknown as Parameters<typeof RulesetCard>[0]["ruleset"]} />
+                <div className="flex items-center justify-between gap-2">
+                  {savedDate && (
+                    <p className="text-[11px] text-fg-subtle">
+                      {t("savedOn", { date: formatDate(savedDate) })}
+                    </p>
+                  )}
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="shrink-0 gap-1"
+                    onClick={() => remove(r.id)}
+                  >
+                    <X className="h-3 w-3" aria-hidden />
+                    {t("remove")}
+                  </Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

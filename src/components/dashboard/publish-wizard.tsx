@@ -2,19 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, CloudUpload } from "lucide-react";
+import { ArrowRight, Check, CheckCircle2, CloudUpload } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import type { Ruleset } from "@/types";
 
 import { Button } from "@/components/ui/button";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useSession } from "@/hooks/use-session";
 import {
   type WizardDraft,
   usePublishDraft,
 } from "@/hooks/use-publish-draft";
+import { RulesetCard } from "@/components/marketplace/ruleset-card";
 import { isNonCommercial } from "./licenses";
 import { WizardSteps } from "./wizard-steps";
 import { WizardStepType } from "./wizard-step-type";
@@ -62,6 +63,64 @@ function isStepValid(step: number, draft: WizardDraft): boolean {
   }
 }
 
+/** Build a minimal Ruleset-shaped object from a WizardDraft for the preview card. */
+function draftToRuleset(draft: WizardDraft, username: string): Ruleset {
+  return {
+    id: "preview",
+    slug: "preview",
+    title: draft.title ?? "Untitled",
+    description: draft.description ?? "",
+    previewContent: draft.previewContent ?? "",
+    platform: draft.platform ?? "OTHER",
+    type: draft.type ?? "RULESET",
+    category: draft.category ?? "RULES",
+    tags: draft.tags ?? [],
+    price: draft.price ?? 0,
+    currency: draft.currency ?? "USD",
+    downloadCount: 0,
+    purchaseCount: 0,
+    viewCount: 0,
+    avgRating: 0,
+    ratingCount: 0,
+    status: "DRAFT",
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    author: {
+      username,
+      avatar: null,
+      reputation: 0,
+      creatorMarks: [],
+      level: "NEWCOMER",
+    },
+    currentUserVoted: false,
+    currentUserSaved: false,
+    currentUserAccess: "AUTHOR",
+    secondaryCategories: draft.secondaryCategories ?? [],
+    variants: draft.variants ?? [],
+    defaultVariantId: "",
+    version: "1.0.0",
+    license: draft.license ?? "MIT",
+    qualityScore: 0,
+    qualityBreakdown: {
+      tokenEfficiency: null,
+      installSuccess: null,
+      schemaClean: null,
+      freshness: 0,
+      reviewScore: 0,
+      securityPass: false,
+    },
+    badges: [],
+  };
+}
+
+const STEP_HINTS: Record<number, string> = {
+  1: "stepHint1",
+  2: "stepHint2",
+  3: "stepHint3",
+  4: "stepHint4",
+  5: "stepHint5",
+};
+
 export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) {
   const t = useTranslations("publishWizard");
   const router = useRouter();
@@ -69,6 +128,7 @@ export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) 
   const { draft, update, replace, clear, savedAt } = usePublishDraft(id);
   const [step, setStep] = useState<number>(1);
   const [submitting, setSubmitting] = useState(false);
+  const [submittedSlug, setSubmittedSlug] = useState<string | null>(null);
 
   // Seed from initialDraft (edit flow). Runs once on mount.
   useEffect(() => {
@@ -104,13 +164,62 @@ export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) 
     setSubmitting(true);
     // Mock submit — pretend POST /api/rulesets and clear the draft.
     await new Promise((r) => setTimeout(r, 600));
+    const slug = draft.slug ?? `${(draft.title ?? "asset").toLowerCase().replace(/\s+/g, "-")}-${Date.now().toString(36)}`;
     clear();
     setSubmitting(false);
-    toast.success("Submitted for review.");
-    router.push("/dashboard/rulesets?submitted=1");
+    setSubmittedSlug(slug);
   };
 
   const username = session?.user?.username ?? "user";
+
+  // Success screen
+  if (submittedSlug !== null) {
+    return (
+      <div className="mx-auto max-w-lg py-12 text-center">
+        <div className="mb-6 flex justify-center">
+          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-success/15 text-success">
+            <CheckCircle2 className="h-8 w-8" />
+          </span>
+        </div>
+        <h2 className="font-display text-2xl font-semibold text-fg">
+          {t("successTitle")}
+        </h2>
+        <p className="mt-2 text-sm text-fg-muted">{t("successSubtitle")}</p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <Button asChild className="bg-brand text-brand-fg hover:bg-brand/90">
+            <Link href={`/r/${submittedSlug}`}>
+              {t("successViewListing")}
+              <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/dashboard/rulesets">{t("successManageRulesets")}</Link>
+          </Button>
+        </div>
+        <div className="mt-8 rounded-xl border border-border-soft bg-bg-surface p-5 text-left">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+            {t("successNextSteps")}
+          </p>
+          <ul className="space-y-2 text-sm text-fg-muted">
+            <li className="flex items-start gap-2">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+              {t("successNext1")}
+            </li>
+            <li className="flex items-start gap-2">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+              {t("successNext2")}
+            </li>
+            <li className="flex items-start gap-2">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+              {t("successNext3")}
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
+  const previewRuleset = draftToRuleset(draft, username);
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
@@ -125,6 +234,12 @@ export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) 
       </header>
 
       <WizardSteps currentStep={step} onJump={(s) => setStep(s)} />
+
+      {/* Contextual step hint */}
+      <p className="text-xs text-fg-subtle">
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        {(t as any)(STEP_HINTS[step])}
+      </p>
 
       <div className="rounded-2xl border border-border-soft bg-bg-surface p-6 sm:p-8">
         <AnimatePresence mode="wait">
@@ -145,6 +260,18 @@ export function PublishWizard({ id = "new", initialDraft }: PublishWizardProps) 
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Preview pane — visible at step 5 */}
+      {step === TOTAL_STEPS && (
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+            {t("previewLabel")}
+          </p>
+          <div className="max-w-xs">
+            <RulesetCard ruleset={previewRuleset} />
+          </div>
+        </div>
+      )}
 
       <footer className="flex items-center justify-between">
         <Button

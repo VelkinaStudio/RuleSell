@@ -1,13 +1,12 @@
 "use client";
 
-import { MoreHorizontal } from "lucide-react";
+import { BarChart2, EyeOff, MoreHorizontal, Pencil } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import type { Ruleset, Status } from "@/types";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { QualityBar } from "@/components/ui/quality-bar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,6 +19,13 @@ import { CATEGORY_META } from "@/constants/categories";
 import { cn } from "@/lib/utils";
 import { formatNumber, formatPrice, formatRelative } from "./format";
 
+function qualityGrade(score: number): { letter: string; classes: string } {
+  if (score >= 85) return { letter: "A", classes: "text-qs-a bg-qs-a/15 border-qs-a/30" };
+  if (score >= 70) return { letter: "B", classes: "text-qs-b bg-qs-b/15 border-qs-b/30" };
+  if (score >= 50) return { letter: "C", classes: "text-qs-c bg-qs-c/15 border-qs-c/30" };
+  return { letter: "—", classes: "text-fg-muted bg-bg-raised border-border-soft" };
+}
+
 interface RulesetRowProps {
   ruleset: Ruleset;
   selected: boolean;
@@ -27,10 +33,10 @@ interface RulesetRowProps {
 }
 
 const STATUS_STYLES: Record<Status, string> = {
-  DRAFT: "bg-zinc-700/60 text-zinc-200 border-zinc-600/60",
-  PUBLISHED: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  DRAFT: "bg-warning/15 text-warning border-warning/30",
+  PUBLISHED: "bg-success/15 text-success border-success/30",
   ARCHIVED: "bg-zinc-500/15 text-zinc-400 border-zinc-500/30",
-  FLAGGED: "bg-rose-500/15 text-rose-300 border-rose-500/30",
+  FLAGGED: "bg-danger/15 text-danger border-danger/30",
 };
 
 export function RulesetRow({ ruleset, selected, onToggle }: RulesetRowProps) {
@@ -86,12 +92,19 @@ export function RulesetRow({ ruleset, selected, onToggle }: RulesetRowProps) {
         </span>
       </td>
       <td className="px-4 py-3">
-        <div className="flex w-24 items-center gap-2">
-          <QualityBar score={ruleset.qualityScore} compact />
-          <span className="text-xs font-mono tabular-nums text-fg-muted">
+        {ruleset.qualityScore > 0 ? (
+          <span
+            className={cn(
+              "inline-flex items-center gap-1 rounded-md border px-2 py-0.5 font-mono text-xs font-semibold tabular-nums",
+              qualityGrade(ruleset.qualityScore).classes,
+            )}
+          >
+            {qualityGrade(ruleset.qualityScore).letter}{" "}
             {ruleset.qualityScore}
           </span>
-        </div>
+        ) : (
+          <span className="text-xs text-fg-subtle">—</span>
+        )}
       </td>
       <td className="px-4 py-3 text-right tabular-nums text-sm text-fg">
         {formatNumber(ruleset.downloadCount + ruleset.purchaseCount)}
@@ -108,38 +121,53 @@ export function RulesetRow({ ruleset, selected, onToggle }: RulesetRowProps) {
       <td className="px-4 py-3 text-xs text-fg-muted">
         {formatRelative(ruleset.updatedAt)}
       </td>
-      <td className="w-10 px-4 py-3 text-right">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              aria-label={t("actionsLabel")}
-            >
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-44">
-            <DropdownMenuItem asChild>
-              <Link href={`/r/${ruleset.slug}`}>{t("actionView")}</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href={`/dashboard/rulesets/${ruleset.id}/edit`}>
-                {t("actionEdit")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href={`/dashboard/rulesets/${ruleset.id}/analytics`}>
-                {t("actionAnalytics")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>{t("actionUnpublish")}</DropdownMenuItem>
-            <DropdownMenuItem variant="destructive">
-              {t("actionDelete")}
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <td className="px-4 py-3 text-right">
+        <div className="flex items-center justify-end gap-1">
+          <Button
+            asChild
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t("actionEdit")}
+          >
+            <Link href={`/dashboard/rulesets/${ruleset.id}/edit`}>
+              <Pencil className="h-3.5 w-3.5" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t("actionAnalytics")}
+          >
+            <Link href={`/dashboard/rulesets/${ruleset.id}/analytics`}>
+              <BarChart2 className="h-3.5 w-3.5" />
+            </Link>
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                aria-label={t("actionsLabel")}
+              >
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              <DropdownMenuItem asChild>
+                <Link href={`/r/${ruleset.slug}`}>{t("actionView")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <EyeOff className="mr-2 h-3.5 w-3.5" />
+                {t("actionUnpublish")}
+              </DropdownMenuItem>
+              <DropdownMenuItem variant="destructive">
+                {t("actionDelete")}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </td>
     </tr>
   );

@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import {
   ArrowRight,
+  Bookmark,
   Compass,
   DollarSign,
   Download,
@@ -21,6 +22,70 @@ import { useSession } from "@/hooks/use-session";
 import { ActivityFeed } from "@/components/dashboard/activity-feed";
 import { StatsCard } from "@/components/dashboard/stats-card";
 import { formatNumber, formatPrice } from "@/components/dashboard/format";
+
+interface OnboardingCardProps {
+  t: ReturnType<typeof useTranslations<"dashboard.overview">>;
+  username: string;
+}
+
+function OnboardingCard({ t, username }: OnboardingCardProps) {
+  const steps = [
+    {
+      icon: Compass,
+      label: t("onboardBrowse"),
+      href: "/browse",
+      variant: "ghost" as const,
+    },
+    {
+      icon: Bookmark,
+      label: t("onboardSave"),
+      href: "/browse",
+      variant: "ghost" as const,
+    },
+    {
+      icon: UserPen,
+      label: t("onboardProfile"),
+      href: username ? `/u/${username}` : "/dashboard/settings",
+      variant: "ghost" as const,
+    },
+    {
+      icon: Upload,
+      label: t("onboardPublish"),
+      href: "/dashboard/rulesets/new",
+      variant: "default" as const,
+    },
+  ] as const;
+
+  return (
+    <section className="rounded-2xl border border-border-soft bg-bg-surface p-6 sm:p-8">
+      <div className="mb-6 space-y-1">
+        <h2 className="font-display text-xl font-semibold text-fg">
+          {t("onboardTitle")}
+        </h2>
+        <p className="text-sm text-fg-muted">{t("onboardSubtitle")}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {steps.map(({ icon: Icon, label, href, variant }) => (
+          <Button
+            key={label}
+            asChild
+            variant={variant === "default" ? undefined : "outline"}
+            className={
+              variant === "default"
+                ? "justify-start bg-brand text-brand-fg hover:bg-brand/90"
+                : "justify-start"
+            }
+          >
+            <Link href={href}>
+              <Icon className="mr-2 h-4 w-4" />
+              {label}
+            </Link>
+          </Button>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function OverviewPage() {
   const t = useTranslations("dashboard.overview");
@@ -41,6 +106,7 @@ export default function OverviewPage() {
   }
 
   const username = session?.user?.username ?? "";
+  const isNewUser = overview.publishedCount === 0;
 
   return (
     <div className="space-y-8">
@@ -51,41 +117,45 @@ export default function OverviewPage() {
         <p className="text-sm text-fg-muted">{t("subtitle")}</p>
       </header>
 
-      <section
-        aria-label={t("title")}
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        <StatsCard
-          label={t("installs30d")}
-          value={formatNumber(overview.installs30d)}
-          delta={overview.installsDelta}
-          icon={Download}
-          accent="text-emerald-300"
-          iconBg="bg-emerald-500/10"
-        />
-        <StatsCard
-          label={t("revenue30d")}
-          value={formatPrice(overview.revenue30d, "USD")}
-          delta={overview.revenueDelta}
-          icon={DollarSign}
-          accent="text-amber-300"
-          iconBg="bg-amber-500/10"
-        />
-        <StatsCard
-          label={t("avgRating")}
-          value={overview.avgRating > 0 ? overview.avgRating.toFixed(1) : "—"}
-          icon={Star}
-          accent="text-amber-300"
-          iconBg="bg-amber-500/10"
-        />
-        <StatsCard
-          label={t("publishedCount")}
-          value={String(overview.publishedCount)}
-          icon={Package}
-          accent="text-sky-300"
-          iconBg="bg-sky-500/10"
-        />
-      </section>
+      {isNewUser ? (
+        <OnboardingCard t={t} username={username} />
+      ) : (
+        <section
+          aria-label={t("title")}
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          <StatsCard
+            label={t("installs30d")}
+            value={formatNumber(overview.installs30d)}
+            delta={overview.installsDelta}
+            icon={Download}
+            accent="text-emerald-300"
+            iconBg="bg-emerald-500/10"
+          />
+          <StatsCard
+            label={t("revenue30d")}
+            value={formatPrice(overview.revenue30d, "USD")}
+            delta={overview.revenueDelta}
+            icon={DollarSign}
+            accent="text-amber-300"
+            iconBg="bg-amber-500/10"
+          />
+          <StatsCard
+            label={t("avgRating")}
+            value={overview.avgRating > 0 ? overview.avgRating.toFixed(1) : "—"}
+            icon={Star}
+            accent="text-amber-300"
+            iconBg="bg-amber-500/10"
+          />
+          <StatsCard
+            label={t("publishedCount")}
+            value={String(overview.publishedCount)}
+            icon={Package}
+            accent="text-sky-300"
+            iconBg="bg-sky-500/10"
+          />
+        </section>
+      )}
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
