@@ -5,6 +5,7 @@
   },
   "nav": {
     "browse": "Browse",
+    "explore": "Explore",
     "collections": "Collections",
     "leaderboard": "Leaderboard",
     "sell": "Sell",
@@ -162,7 +163,9 @@
       "personaBuilder": "Builder",
       "personaUser": "Member",
       "ariaLabel": "Dashboard navigation",
-      "mobileMenuLabel": "Open navigation menu"
+      "mobileMenuLabel": "Open navigation menu",
+      "adminSection": "Administration",
+      "admin": "Admin Panel"
     },
     "crumbs": {
       "dashboard": "Dashboard",
@@ -182,6 +185,7 @@
       "new": "New",
       "edit": "Edit",
       "analytics": "Analytics",
+      "admin": "Admin",
       "ariaLabel": "Breadcrumb"
     },
     "gate": {
@@ -300,6 +304,77 @@
       "verificationStep1": "50 verified installs",
       "verificationStep2": "Complete Trader KYC",
       "verificationStep3": "Connect Stripe payout"
+    },
+    "affiliates": {
+      "title": "Affiliates",
+      "subtitle": "Share referral links. Earn commission on purchases made through them.",
+      "tabsAriaLabel": "Affiliate dashboard tabs",
+      "tab_overview": "Overview",
+      "tab_links": "Links",
+      "tab_analytics": "Analytics",
+      "tab_payouts": "Payouts",
+      "tab_materials": "Materials",
+      "totalEarnings": "Total earnings",
+      "pendingEarnings": "Pending",
+      "paidEarnings": "Paid out",
+      "thisMonth": "This month",
+      "vsLastMonth": "vs last month",
+      "tierTitle": "Commission tier",
+      "commission": "commission",
+      "toNextTier": "to next tier",
+      "generateLink": "Generate referral link",
+      "selectRuleset": "Select a ruleset (or general link)",
+      "generalLink": "General referral link",
+      "generate": "Generate",
+      "copied": "Copied!",
+      "copy": "Copy",
+      "copyUrl": "Copy URL",
+      "deleteLink": "Delete link",
+      "noLinks": "No affiliate links yet. Generate one above.",
+      "linkTarget": "Target",
+      "clicks": "Clicks",
+      "conversions": "Conversions",
+      "earnings": "Earnings",
+      "created": "Created",
+      "actions": "Actions",
+      "clickChartTitle": "Daily clicks",
+      "noClickData": "No click data yet.",
+      "filterAll": "All",
+      "filterPending": "Pending",
+      "filterConfirmed": "Confirmed",
+      "filterPaid": "Paid",
+      "total": "total",
+      "ruleset": "Ruleset",
+      "buyer": "Buyer",
+      "saleAmount": "Sale",
+      "commissionAmount": "Commission",
+      "status": "Status",
+      "date": "Date",
+      "status_pending": "Pending",
+      "status_confirmed": "Confirmed",
+      "status_paid": "Paid",
+      "pageOf": "Page {page} of {total}",
+      "payoutHistoryTitle": "Payout history",
+      "payoutHistoryDesc": "Monthly payouts via Stripe Connect. $50 minimum.",
+      "period": "Period",
+      "amount": "Amount",
+      "paidDate": "Paid",
+      "noPayouts": "No payouts yet.",
+      "payoutStatus_pending": "Pending",
+      "payoutStatus_processing": "Processing",
+      "payoutStatus_paid": "Paid",
+      "topAssetsTitle": "Top performing assets",
+      "topAssetsDesc": "Your most successful referred items by earnings.",
+      "cvr": "CVR",
+      "materialsTitle": "Promotional materials",
+      "materialsDesc": "Copy-paste HTML snippets to promote your referral links.",
+      "material_badge": "Badge",
+      "material_banner": "Banner",
+      "material_embed": "Embed",
+      "materialsTip": "Replace YOUR_CODE with your referral code. Snippets work on any website or email.",
+      "embedPreviewTitle": "Embed widget preview",
+      "embedPreviewDesc": "This is how the embeddable card looks on external sites.",
+      "embedAffBadge": "Referred via RuleSell Affiliate Program"
     },
     "purchases": {
       "title": "Purchases",
@@ -1631,7 +1706,34 @@
       "communityDesc": "Discord and Slack community managers who curate resources for members."
     },
     "cta": "Get your referral link",
-    "selfReferral": "Self-referral is allowed — if you promote your own items, you earn both creator revenue and the affiliate bonus."
+    "selfReferral": "Self-referral is allowed — if you promote your own items, you earn both creator revenue and the affiliate bonus.",
+    "tiers": {
+      "title": "Commission tiers",
+      "subtitle": "Earn more as you refer more. Tiers are based on total affiliate earnings.",
+      "commission": "commission per sale",
+      "threshold": "Minimum earnings",
+      "starterName": "Starter",
+      "growthName": "Growth",
+      "partnerName": "Partner"
+    },
+    "embedDemo": {
+      "title": "Embed anywhere",
+      "subtitle": "Drop a widget card on your blog, newsletter, or docs. Clicks are tracked automatically.",
+      "badge": "Referred via RuleSell Affiliate Program"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "q1": "How long does the referral cookie last?",
+      "a1": "30 days. If someone clicks your link and buys within 30 days, you earn commission — even if they don't buy immediately.",
+      "q2": "When do I get paid?",
+      "a2": "Payouts happen monthly via Stripe Connect once your confirmed balance reaches $50. Commissions are held for 30 days before confirming.",
+      "q3": "Can I refer my own products?",
+      "a3": "Yes. Self-referral is allowed. If you promote your own items via affiliate links, you earn both creator revenue and the affiliate bonus.",
+      "q4": "What counts as a conversion?",
+      "a4": "A conversion is any completed purchase made through your referral link. Free downloads do not count. Only paid transactions generate commission.",
+      "q5": "How do commission tiers work?",
+      "a5": "You start at 10% (Starter). Once your total affiliate earnings reach $500, you move to 15% (Growth). At $2,000 total earnings, you reach 20% (Partner). Tiers apply to all future commissions."
+    }
   },
   "cli": {
     "hero": {
@@ -1659,5 +1761,337 @@
       "commandsDesc": "Search, list, update, and remove. Everything from your terminal."
     },
     "note": "The CLI package lives at packages/rulesell-cli/ in the monorepo. All commands work against mock data in development. Production release planned for v2."
+  },
+  "github": {
+    "repoPicker": {
+      "searchPlaceholder": "Search your repositories...",
+      "noResults": "No repositories found. Try a different search.",
+      "claimed": "Already claimed",
+      "showing": "Showing {count} of {total}",
+      "prevPage": "Previous page",
+      "nextPage": "Next page"
+    },
+    "treeBrowser": {
+      "filesSelected": "{selected} of {total} files selected",
+      "selectAll": "Select all",
+      "deselectAll": "Deselect all"
+    },
+    "importPreview": {
+      "title": "Import preview",
+      "subtitle": "The following data will be auto-imported from your repository.",
+      "readmeLabel": "README",
+      "readmeDetected": "Detected",
+      "readmeNone": "Not found",
+      "licenseLabel": "License",
+      "licenseNone": "None detected",
+      "branchLabel": "Branch",
+      "languageLabel": "Language",
+      "languageNone": "Unknown",
+      "selectionSummary": "{selected} of {total} files selected ({size} KB total)"
+    },
+    "claimFlow": {
+      "triggerButton": "Claim as maintainer",
+      "dialogTitle": "Maintainer claim",
+      "step1Title": "Connect your GitHub account",
+      "step1Desc": "We'll verify you have push access to the repository you want to claim.",
+      "connectGitHub": "Connect GitHub",
+      "step2Desc": "Select the repository that contains the source for this listing.",
+      "continue": "Continue",
+      "step3Desc": "Confirm you want to link this repository to this RuleSell listing.",
+      "linkPreview": "Link preview",
+      "back": "Back",
+      "claiming": "Claiming...",
+      "confirmClaim": "Confirm claim",
+      "step4Title": "Maintainer verified!",
+      "step4Desc": "Your listing is now linked to the GitHub repository. Updates will sync automatically.",
+      "maintainerVerified": "Maintainer Verified",
+      "done": "Done"
+    },
+    "sync": {
+      "synced": "Synced {time}",
+      "outdated": "{count, plural, one {# change} other {# changes}} pending",
+      "error": "Sync error",
+      "refreshLabel": "Refresh sync"
+    },
+    "wizardImport": {
+      "toggleLabel": "Import from GitHub",
+      "toggleHint": "Auto-fill from an existing GitHub repository instead of writing manually.",
+      "pickTitle": "Select a repository to import from",
+      "treeTitle": "Select files from {repo}",
+      "changeRepo": "Change repo",
+      "importSelected": "Import selected files",
+      "editSelection": "Edit file selection"
+    }
+  },
+  "community": {
+    "title": "Explore",
+    "subtitle": "Community activity, discussions, polls, Q&A, and showcases.",
+    "searchPlaceholder": "Search community...",
+    "replyPlaceholder": "Write a reply...",
+    "markdownHint": "Markdown supported",
+    "submit": "Submit",
+    "noResults": "No results found.",
+    "tabs": {
+      "feed": "Feed",
+      "discussions": "Discussions",
+      "polls": "Polls",
+      "qa": "Q&A",
+      "showcases": "Showcases",
+      "requests": "Requests"
+    },
+    "sorting": {
+      "hot": "Hot",
+      "new": "New",
+      "top": "Top",
+      "recent": "Recent",
+      "reactions": "Most active",
+      "unanswered": "Unanswered"
+    },
+    "filters": {
+      "all": "All",
+      "qa": "Q&A",
+      "tips": "Tips",
+      "bugs": "Bug",
+      "feature_request": "Feature",
+      "showcase": "Showcase",
+      "answered": "Answered",
+      "unanswered": "Unanswered",
+      "status_open": "Open",
+      "status_claimed": "Claimed",
+      "status_completed": "Completed",
+      "status_declined": "Declined"
+    },
+    "feedTypes": {
+      "discussion": "discussion",
+      "showcase": "showcase",
+      "poll": "poll",
+      "question": "question"
+    },
+    "feed": {
+      "trending": "Trending this week",
+      "empty": "No activity yet. Be the first to contribute!"
+    },
+    "discussions": {
+      "votes": "votes",
+      "replies": "replies",
+      "pinned": "Pinned",
+      "empty": "No discussions yet.",
+      "filterByCategory": "Category"
+    },
+    "polls": {
+      "votes": "votes",
+      "ended": "Ended",
+      "active": "Active",
+      "expired": "Expired",
+      "createTitle": "Create a Poll",
+      "titleLabel": "Question",
+      "titlePlaceholder": "What do you want to ask?",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Add context for your question...",
+      "optionsLabel": "Options",
+      "optionPlaceholder": "Option",
+      "addOption": "Add option",
+      "endDateLabel": "End date",
+      "cancel": "Cancel",
+      "create": "Create poll",
+      "createNew": "Create a poll",
+      "empty": "No polls yet."
+    },
+    "qa": {
+      "answered": "Answered",
+      "answers": "answers",
+      "acceptedAnswer": "Accepted answer",
+      "backToQuestions": "Back to questions",
+      "answerPlaceholder": "Write your answer...",
+      "filterBy": "Filter",
+      "all": "All questions",
+      "answeredOnly": "Answered",
+      "unansweredOnly": "Unanswered",
+      "empty": "No questions yet. Ask the first one!",
+      "askQuestion": "Ask a question"
+    },
+    "showcases": {
+      "title": "Showcases",
+      "reactions": "reactions",
+      "submitTitle": "Built something with a RuleSell asset?",
+      "submitButton": "Submit a Showcase",
+      "empty": "No showcases yet."
+    },
+    "requests": {
+      "status_open": "Open",
+      "status_claimed": "Claimed",
+      "status_completed": "Completed",
+      "status_declined": "Declined",
+      "claimedBy": "claimed by",
+      "linked": "Linked",
+      "filterByStatus": "Status",
+      "claimToBuild": "Claim to build",
+      "submitTitle": "Have an idea for the marketplace?",
+      "submitButton": "Submit a request",
+      "empty": "No requests match your filters.",
+      "votes": "votes",
+      "comments": "comments"
+    },
+    "vote": {
+      "up": "Upvote",
+      "down": "Downvote",
+      "voted": "Voted"
+    },
+    "empty": {
+      "feed": "No activity yet.",
+      "discussions": "No discussions yet.",
+      "polls": "No polls yet.",
+      "qa": "No questions yet.",
+      "showcases": "No showcases yet.",
+      "requests": "No requests yet."
+    }
+  },
+  "admin": {
+    "nav": {
+      "sectionLabel": "Administration",
+      "overview": "Overview",
+      "users": "Users",
+      "moderation": "Moderation",
+      "reports": "Reports",
+      "revenue": "Revenue",
+      "scanning": "Scanning",
+      "flags": "Feature Flags"
+    },
+    "gate": {
+      "forbiddenTitle": "Access denied",
+      "forbiddenDescription": "You need administrator privileges to access this area. Switch to an admin persona in the dev tools.",
+      "backToDashboard": "Back to dashboard",
+      "switchPersona": "Switch persona"
+    },
+    "overview": {
+      "title": "Admin Overview",
+      "subtitle": "Platform health and key metrics at a glance.",
+      "totalUsers": "Total Users",
+      "totalRulesets": "Total Rulesets",
+      "totalRevenue": "Total Revenue",
+      "activeCreators": "Active Creators",
+      "pendingReviews": "Pending Reviews",
+      "openReports": "Open Reports",
+      "vsLastMonth": "vs last month",
+      "recentActivity": "Recent activity",
+      "activity": {
+        "userSignup": "New user signed up: @{name}",
+        "rulesetSubmitted": "Ruleset submitted for review: {title}",
+        "reportFiled": "Report filed against: {target}",
+        "rulesetApproved": "Ruleset approved: {title}",
+        "flagToggled": "Feature flag toggled: {flag}"
+      }
+    },
+    "users": {
+      "title": "User Management",
+      "subtitle": "{count} users total",
+      "searchPlaceholder": "Search by name, username, or email...",
+      "user": "User",
+      "email": "Email",
+      "role": "Role",
+      "sellerStatus": "Seller Status",
+      "joined": "Joined",
+      "actions": "Actions",
+      "country": "Country",
+      "reputation": "Reputation",
+      "level": "Level",
+      "totalEarnings": "Total Earnings",
+      "published": "Published",
+      "installs": "Installs",
+      "active": "Active",
+      "suspended": "Suspended",
+      "viewDetails": "View details",
+      "promoteToPro": "Promote to PRO",
+      "promoteToProAction": "Promote to PRO",
+      "demoteToUser": "Demote to USER",
+      "suspendSeller": "Suspend seller",
+      "previous": "Previous",
+      "next": "Next",
+      "pageInfo": "Page {page} of {totalPages} ({total} users)",
+      "roleFilter": {
+        "all": "All",
+        "user": "User",
+        "pro": "Pro",
+        "admin": "Admin"
+      }
+    },
+    "moderation": {
+      "title": "Moderation Queue",
+      "subtitle": "Review and approve or reject pending ruleset submissions.",
+      "approve": "Approve",
+      "reject": "Reject",
+      "confirmReject": "Confirm reject",
+      "cancelAction": "Cancel",
+      "rejectReason": "Rejection reason",
+      "rejectReasonPlaceholder": "Explain why this submission is being rejected...",
+      "queueCount": "{count} items pending review",
+      "emptyTitle": "Queue is clear",
+      "emptyDescription": "No rulesets are currently pending review. Check back later."
+    },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Review user-submitted reports for violations and take action.",
+      "typeColumn": "Type",
+      "target": "Target",
+      "reporter": "Reporter",
+      "reason": "Reason",
+      "statusColumn": "Status",
+      "actions": "Actions",
+      "submitted": "Submitted",
+      "targetType": "Target type",
+      "moderatorNote": "Moderator note",
+      "addNote": "Add moderator note",
+      "notePlaceholder": "Add a note about this report...",
+      "viewDetail": "View detail",
+      "resolve": "Resolve",
+      "dismiss": "Dismiss",
+      "reportDetail": "Report Detail",
+      "tab": {
+        "all": "All",
+        "pending": "Pending",
+        "resolved": "Resolved",
+        "dismissed": "Dismissed"
+      },
+      "type": {
+        "spam": "Spam",
+        "copyright": "Copyright",
+        "malicious": "Malicious",
+        "inappropriate": "Inappropriate",
+        "other": "Other"
+      },
+      "status": {
+        "pending": "Pending",
+        "resolved": "Resolved",
+        "dismissed": "Dismissed"
+      }
+    },
+    "revenue": {
+      "title": "Revenue",
+      "subtitle": "Monthly revenue breakdown across the platform.",
+      "platformRevenue": "Platform Revenue",
+      "sellerPayouts": "Seller Payouts",
+      "refunds": "Refunds",
+      "chartAriaLabel": "Monthly revenue bar chart showing platform revenue, seller payouts, and refunds"
+    },
+    "scanning": {
+      "title": "Security Scanning",
+      "subtitle": "Automated scan results for submitted rulesets.",
+      "ruleset": "Ruleset",
+      "scannedAt": "Scanned",
+      "status": {
+        "pass": "Pass",
+        "fail": "Fail",
+        "warning": "Warning",
+        "pending": "Pending"
+      }
+    },
+    "flags": {
+      "title": "Feature Flags",
+      "subtitle": "Toggle platform features on and off.",
+      "toggle": "Toggle",
+      "lastUpdated": "Last updated",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    }
   }
 }

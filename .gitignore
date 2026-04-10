@@ -47,8 +47,12 @@ prisma/*.db
 # vercel
 .vercel
 
-# remember (local dev tool)
+# stale tool artifacts
 .remember
+.windsurf
+.codex-temp
+/tmp/
+/output/
 
 # typescript
 *.tsbuildinfo

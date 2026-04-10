@@ -1,5 +1,6 @@
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
+import { MobileBottomNav } from "@/components/shared/mobile-bottom-nav";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,10 +12,11 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         Skip to content
       </a>
       <Header />
-      <main id="main" className="flex-1">
+      <main id="main" className="flex-1 pb-16 md:pb-0">
         {children}
       </main>
-      <Footer />
+      <Footer className="hidden md:block" />
+      <MobileBottomNav />
     </div>
   );
 }

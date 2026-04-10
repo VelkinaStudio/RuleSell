@@ -5,6 +5,7 @@
   },
   "nav": {
     "browse": "Keşfet",
+    "explore": "Topluluk",
     "collections": "Koleksiyonlar",
     "leaderboard": "Lider Tablosu",
     "sell": "Sat",
@@ -162,7 +163,9 @@
       "personaBuilder": "Geliştirici",
       "personaUser": "Üye",
       "ariaLabel": "Panel gezintisi",
-      "mobileMenuLabel": "Gezinti menüsünü aç"
+      "mobileMenuLabel": "Gezinti menüsünü aç",
+      "adminSection": "Yönetim",
+      "admin": "Yönetici Paneli"
     },
     "crumbs": {
       "dashboard": "Panel",
@@ -182,6 +185,7 @@
       "new": "Yeni",
       "edit": "Düzenle",
       "analytics": "Analitik",
+      "admin": "Yönetici",
       "ariaLabel": "İçerik haritası"
     },
     "gate": {
@@ -300,6 +304,77 @@
       "verificationStep1": "50 doğrulanmış kurulum",
       "verificationStep2": "Tüccar KYC'yi tamamla",
       "verificationStep3": "Stripe ödemesini bağla"
+    },
+    "affiliates": {
+      "title": "Ortaklık",
+      "subtitle": "Referans linklerinizi paylaşın. Yapılan satın alımlardan komisyon kazanın.",
+      "tabsAriaLabel": "Ortaklık paneli sekmeleri",
+      "tab_overview": "Genel Bakış",
+      "tab_links": "Linkler",
+      "tab_analytics": "Analitik",
+      "tab_payouts": "Ödemeler",
+      "tab_materials": "Materyaller",
+      "totalEarnings": "Toplam kazanç",
+      "pendingEarnings": "Bekleyen",
+      "paidEarnings": "Ödenen",
+      "thisMonth": "Bu ay",
+      "vsLastMonth": "geçen aya göre",
+      "tierTitle": "Komisyon seviyesi",
+      "commission": "komisyon",
+      "toNextTier": "sonraki seviyeye",
+      "generateLink": "Referans linki oluştur",
+      "selectRuleset": "Bir kural seti seçin (veya genel link)",
+      "generalLink": "Genel referans linki",
+      "generate": "Oluştur",
+      "copied": "Kopyalandı!",
+      "copy": "Kopyala",
+      "copyUrl": "URL kopyala",
+      "deleteLink": "Linki sil",
+      "noLinks": "Henüz ortaklık linki yok. Yukarıdan bir tane oluşturun.",
+      "linkTarget": "Hedef",
+      "clicks": "Tıklamalar",
+      "conversions": "Dönüşümler",
+      "earnings": "Kazançlar",
+      "created": "Oluşturulma",
+      "actions": "İşlemler",
+      "clickChartTitle": "Günlük tıklamalar",
+      "noClickData": "Henüz tıklama verisi yok.",
+      "filterAll": "Tümü",
+      "filterPending": "Bekleyen",
+      "filterConfirmed": "Onaylanan",
+      "filterPaid": "Ödenen",
+      "total": "toplam",
+      "ruleset": "Kural seti",
+      "buyer": "Alıcı",
+      "saleAmount": "Satış",
+      "commissionAmount": "Komisyon",
+      "status": "Durum",
+      "date": "Tarih",
+      "status_pending": "Bekliyor",
+      "status_confirmed": "Onaylandı",
+      "status_paid": "Ödendi",
+      "pageOf": "Sayfa {page} / {total}",
+      "payoutHistoryTitle": "Ödeme geçmişi",
+      "payoutHistoryDesc": "Aylık ödemeler Stripe Connect ile. Minimum $50.",
+      "period": "Dönem",
+      "amount": "Tutar",
+      "paidDate": "Ödeme tarihi",
+      "noPayouts": "Henüz ödeme yok.",
+      "payoutStatus_pending": "Bekliyor",
+      "payoutStatus_processing": "İşleniyor",
+      "payoutStatus_paid": "Ödendi",
+      "topAssetsTitle": "En iyi performans gösteren varlıklar",
+      "topAssetsDesc": "Kazanca göre en başarılı yönlendirilen ögeler.",
+      "cvr": "CVR",
+      "materialsTitle": "Tanıtım materyalleri",
+      "materialsDesc": "Referans linklerinizi tanıtmak için kopyala-yapıştır HTML parçacıkları.",
+      "material_badge": "Rozet",
+      "material_banner": "Banner",
+      "material_embed": "Widget",
+      "materialsTip": "YOUR_CODE yerine referans kodunuzu yazın. Parçacıklar herhangi bir sitede veya e-postada çalışır.",
+      "embedPreviewTitle": "Widget önizlemesi",
+      "embedPreviewDesc": "Gömülebilir kartın harici sitelerde nasıl göründüğü.",
+      "embedAffBadge": "RuleSell Ortaklık Programı aracılığıyla yönlendirildi"
     },
     "purchases": {
       "title": "Satın alımlar",
@@ -1378,7 +1453,34 @@
       "communityDesc": "Üyeler için kaynakları derleyen Discord ve Slack topluluk yöneticileri."
     },
     "cta": "Referans linkinizi alın",
-    "selfReferral": "Kendi kendinize referans verebilirsiniz — kendi ögelerinizi tanıtıyorsanız hem üretici gelirini hem de ortaklık bonusunu kazanırsınız."
+    "selfReferral": "Kendi kendinize referans verebilirsiniz — kendi ögelerinizi tanıtıyorsanız hem üretici gelirini hem de ortaklık bonusunu kazanırsınız.",
+    "tiers": {
+      "title": "Komisyon seviyeleri",
+      "subtitle": "Daha fazla yönlendirdikçe daha fazla kazanın. Seviyeler toplam ortaklık kazançlarına göre belirlenir.",
+      "commission": "satış başına komisyon",
+      "threshold": "Minimum kazanç",
+      "starterName": "Başlangıç",
+      "growthName": "Büyüme",
+      "partnerName": "Partner"
+    },
+    "embedDemo": {
+      "title": "Her yere gömün",
+      "subtitle": "Blog, bülten veya dokümanlarınıza bir widget kartı bırakın. Tıklamalar otomatik izlenir.",
+      "badge": "RuleSell Ortaklık Programı aracılığıyla yönlendirildi"
+    },
+    "faq": {
+      "title": "Sıkça sorulan sorular",
+      "q1": "Referans çerezi ne kadar süre geçerli?",
+      "a1": "30 gün. Birisi linkinize tıklar ve 30 gün içinde satın alırsa komisyon kazanırsınız — hemen satın almasa bile.",
+      "q2": "Ne zaman ödeme alırım?",
+      "a2": "Ödemeler, onaylanan bakiyeniz $50'ye ulaştığında Stripe Connect ile aylık olarak yapılır. Komisyonlar onaylanmadan önce 30 gün bekletilir.",
+      "q3": "Kendi ürünlerimi yönlendirebilir miyim?",
+      "a3": "Evet. Kendi kendinize referans verebilirsiniz. Kendi ögelerinizi ortaklık linkleriyle tanıtırsanız hem üretici gelirini hem ortaklık bonusunu kazanırsınız.",
+      "q4": "Dönüşüm olarak ne sayılır?",
+      "a4": "Dönüşüm, referans linkiniz üzerinden yapılan tamamlanmış bir satın alımdır. Ücretsiz indirmeler sayılmaz. Yalnızca ücretli işlemler komisyon oluşturur.",
+      "q5": "Komisyon seviyeleri nasıl çalışır?",
+      "a5": "Başlangıç seviyesinde %10 ile başlarsınız. Toplam ortaklık kazançlarınız $500'a ulaştığında %15'e (Büyüme) geçersiniz. $2.000 toplam kazançta %20'ye (Partner) ulaşırsınız. Seviyeler tüm gelecek komisyonlara uygulanır."
+    }
   },
   "cli": {
     "hero": {
@@ -1406,5 +1508,337 @@
       "commandsDesc": "Arama, listeleme, güncelleme ve kaldırma. Her şey terminalinizden."
     },
     "note": "CLI paketi monorepo'da packages/rulesell-cli/ altında bulunur. Tüm komutlar geliştirme ortamında sahte verilerle çalışır. Üretim sürümü v2 için planlanmıştır."
+  },
+  "github": {
+    "repoPicker": {
+      "searchPlaceholder": "Depolarınızda arayın...",
+      "noResults": "Depo bulunamadı. Farklı bir arama deneyin.",
+      "claimed": "Zaten talep edildi",
+      "showing": "{total} deposundan {count} tanesi gösteriliyor",
+      "prevPage": "Önceki sayfa",
+      "nextPage": "Sonraki sayfa"
+    },
+    "treeBrowser": {
+      "filesSelected": "{total} dosyadan {selected} tanesi seçili",
+      "selectAll": "Tümünü seç",
+      "deselectAll": "Seçimi kaldır"
+    },
+    "importPreview": {
+      "title": "İçe aktarma önizlemesi",
+      "subtitle": "Aşağıdaki veriler deponuzdan otomatik olarak içe aktarılacak.",
+      "readmeLabel": "README",
+      "readmeDetected": "Algılandı",
+      "readmeNone": "Bulunamadı",
+      "licenseLabel": "Lisans",
+      "licenseNone": "Algılanamadı",
+      "branchLabel": "Dal",
+      "languageLabel": "Dil",
+      "languageNone": "Bilinmiyor",
+      "selectionSummary": "{total} dosyadan {selected} tanesi seçili (toplam {size} KB)"
+    },
+    "claimFlow": {
+      "triggerButton": "Bakımcı olarak talep et",
+      "dialogTitle": "Bakımcı talebi",
+      "step1Title": "GitHub hesabınızı bağlayın",
+      "step1Desc": "Talep etmek istediğiniz depoya push erişiminiz olduğunu doğrulayacağız.",
+      "connectGitHub": "GitHub Bağla",
+      "step2Desc": "Bu listelemenin kaynağını içeren depoyu seçin.",
+      "continue": "Devam et",
+      "step3Desc": "Bu depoyu bu RuleSell listesine bağlamak istediğinizi onaylayın.",
+      "linkPreview": "Bağlantı önizlemesi",
+      "back": "Geri",
+      "claiming": "Talep ediliyor...",
+      "confirmClaim": "Talebi onayla",
+      "step4Title": "Bakımcı doğrulandı!",
+      "step4Desc": "Listelemeniz artık GitHub deposuna bağlı. Güncellemeler otomatik olarak senkronize edilecek.",
+      "maintainerVerified": "Bakımcı Doğrulandı",
+      "done": "Tamam"
+    },
+    "sync": {
+      "synced": "{time} senkronize edildi",
+      "outdated": "{count, plural, one {# değişiklik} other {# değişiklik}} bekliyor",
+      "error": "Senkronizasyon hatası",
+      "refreshLabel": "Senkronizasyonu yenile"
+    },
+    "wizardImport": {
+      "toggleLabel": "GitHub'dan içe aktar",
+      "toggleHint": "Manuel yazmak yerine mevcut bir GitHub deposundan otomatik doldurun.",
+      "pickTitle": "İçe aktarılacak bir depo seçin",
+      "treeTitle": "{repo} deposundan dosyaları seçin",
+      "changeRepo": "Depoyu değiştir",
+      "importSelected": "Seçili dosyaları içe aktar",
+      "editSelection": "Dosya seçimini düzenle"
+    }
+  },
+  "community": {
+    "title": "Keşfet",
+    "subtitle": "Topluluk etkinliği, tartışmalar, anketler, S&C ve vitrindekiler.",
+    "searchPlaceholder": "Toplulukta ara...",
+    "replyPlaceholder": "Bir yanıt yaz...",
+    "markdownHint": "Markdown desteklenir",
+    "submit": "Gönder",
+    "noResults": "Sonuç bulunamadı.",
+    "tabs": {
+      "feed": "Akış",
+      "discussions": "Tartışmalar",
+      "polls": "Anketler",
+      "qa": "S&C",
+      "showcases": "Vitrin",
+      "requests": "İstekler"
+    },
+    "sorting": {
+      "hot": "Popüler",
+      "new": "Yeni",
+      "top": "En İyi",
+      "recent": "Son",
+      "reactions": "En aktif",
+      "unanswered": "Cevaplanmamış"
+    },
+    "filters": {
+      "all": "Tümü",
+      "qa": "S&C",
+      "tips": "İpuçları",
+      "bugs": "Hata",
+      "feature_request": "Özellik",
+      "showcase": "Vitrin",
+      "answered": "Cevaplanmış",
+      "unanswered": "Cevaplanmamış",
+      "status_open": "Açık",
+      "status_claimed": "Talep Edildi",
+      "status_completed": "Tamamlandı",
+      "status_declined": "Reddedildi"
+    },
+    "feedTypes": {
+      "discussion": "tartışma",
+      "showcase": "vitrin",
+      "poll": "anket",
+      "question": "soru"
+    },
+    "feed": {
+      "trending": "Bu hafta trend",
+      "empty": "Henüz etkinlik yok. İlk katkıyı siz yapın!"
+    },
+    "discussions": {
+      "votes": "oy",
+      "replies": "yanıt",
+      "pinned": "Sabitlenmiş",
+      "empty": "Henüz tartışma yok.",
+      "filterByCategory": "Kategori"
+    },
+    "polls": {
+      "votes": "oy",
+      "ended": "Sona erdi",
+      "active": "Aktif",
+      "expired": "Süresi doldu",
+      "createTitle": "Anket Oluştur",
+      "titleLabel": "Soru",
+      "titlePlaceholder": "Ne sormak istiyorsunuz?",
+      "descriptionLabel": "Açıklama",
+      "descriptionPlaceholder": "Sorunuz için bağlam ekleyin...",
+      "optionsLabel": "Seçenekler",
+      "optionPlaceholder": "Seçenek",
+      "addOption": "Seçenek ekle",
+      "endDateLabel": "Bitiş tarihi",
+      "cancel": "İptal",
+      "create": "Anket oluştur",
+      "createNew": "Anket oluştur",
+      "empty": "Henüz anket yok."
+    },
+    "qa": {
+      "answered": "Cevaplanmış",
+      "answers": "cevap",
+      "acceptedAnswer": "Kabul edilen cevap",
+      "backToQuestions": "Sorulara dön",
+      "answerPlaceholder": "Cevabınızı yazın...",
+      "filterBy": "Filtre",
+      "all": "Tüm sorular",
+      "answeredOnly": "Cevaplanmış",
+      "unansweredOnly": "Cevaplanmamış",
+      "empty": "Henüz soru yok. İlkini siz sorun!",
+      "askQuestion": "Soru sor"
+    },
+    "showcases": {
+      "title": "Vitrin",
+      "reactions": "tepki",
+      "submitTitle": "RuleSell varlığıyla bir şey mi oluşturdunuz?",
+      "submitButton": "Vitrin Gönderin",
+      "empty": "Henüz vitrin yok."
+    },
+    "requests": {
+      "status_open": "Açık",
+      "status_claimed": "Talep Edildi",
+      "status_completed": "Tamamlandı",
+      "status_declined": "Reddedildi",
+      "claimedBy": "talep eden",
+      "linked": "Bağlantılı",
+      "filterByStatus": "Durum",
+      "claimToBuild": "Geliştirmek için talep et",
+      "submitTitle": "Pazaryeri için bir fikriniz mi var?",
+      "submitButton": "İstek gönderin",
+      "empty": "Filtrelerinize uygun istek bulunamadı.",
+      "votes": "oy",
+      "comments": "yorum"
+    },
+    "vote": {
+      "up": "Yukarı oy",
+      "down": "Aşağı oy",
+      "voted": "Oy verildi"
+    },
+    "empty": {
+      "feed": "Henüz etkinlik yok.",
+      "discussions": "Henüz tartışma yok.",
+      "polls": "Henüz anket yok.",
+      "qa": "Henüz soru yok.",
+      "showcases": "Henüz vitrin yok.",
+      "requests": "Henüz istek yok."
+    }
+  },
+  "admin": {
+    "nav": {
+      "sectionLabel": "Yönetim",
+      "overview": "Genel Bakış",
+      "users": "Kullanıcılar",
+      "moderation": "Moderasyon",
+      "reports": "Raporlar",
+      "revenue": "Gelir",
+      "scanning": "Tarama",
+      "flags": "Özellik Bayrakları"
+    },
+    "gate": {
+      "forbiddenTitle": "Erişim engellendi",
+      "forbiddenDescription": "Bu alana erişmek için yönetici yetkileri gereklidir. Geliştirici araçlarından yönetici personasına geçin.",
+      "backToDashboard": "Panele dön",
+      "switchPersona": "Persona değiştir"
+    },
+    "overview": {
+      "title": "Yönetici Genel Bakışı",
+      "subtitle": "Platform sağlığı ve temel metrikler bir bakışta.",
+      "totalUsers": "Toplam Kullanıcı",
+      "totalRulesets": "Toplam Kural Seti",
+      "totalRevenue": "Toplam Gelir",
+      "activeCreators": "Aktif Üreticiler",
+      "pendingReviews": "Bekleyen İncelemeler",
+      "openReports": "Açık Raporlar",
+      "vsLastMonth": "geçen aya göre",
+      "recentActivity": "Son etkinlik",
+      "activity": {
+        "userSignup": "Yeni kullanıcı kaydoldu: @{name}",
+        "rulesetSubmitted": "İnceleme için kural seti gönderildi: {title}",
+        "reportFiled": "Rapor dosyalandı: {target}",
+        "rulesetApproved": "Kural seti onaylandı: {title}",
+        "flagToggled": "Özellik bayrağı değiştirildi: {flag}"
+      }
+    },
+    "users": {
+      "title": "Kullanıcı Yönetimi",
+      "subtitle": "Toplam {count} kullanıcı",
+      "searchPlaceholder": "Ad, kullanıcı adı veya e-posta ile ara...",
+      "user": "Kullanıcı",
+      "email": "E-posta",
+      "role": "Rol",
+      "sellerStatus": "Satıcı Durumu",
+      "joined": "Katılım",
+      "actions": "İşlemler",
+      "country": "Ülke",
+      "reputation": "İtibar",
+      "level": "Seviye",
+      "totalEarnings": "Toplam Kazanç",
+      "published": "Yayınlanan",
+      "installs": "Kurulumlar",
+      "active": "Aktif",
+      "suspended": "Askıya Alındı",
+      "viewDetails": "Detayları gör",
+      "promoteToPro": "PRO'ya yükselt",
+      "promoteToProAction": "PRO'ya yükselt",
+      "demoteToUser": "USER'a düşür",
+      "suspendSeller": "Satıcıyı askıya al",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "pageInfo": "Sayfa {page} / {totalPages} ({total} kullanıcı)",
+      "roleFilter": {
+        "all": "Tümü",
+        "user": "Kullanıcı",
+        "pro": "Pro",
+        "admin": "Yönetici"
+      }
+    },
+    "moderation": {
+      "title": "Moderasyon Kuyruğu",
+      "subtitle": "Bekleyen kural seti gönderimlerini inceleyin ve onaylayın veya reddedin.",
+      "approve": "Onayla",
+      "reject": "Reddet",
+      "confirmReject": "Reddi onayla",
+      "cancelAction": "İptal",
+      "rejectReason": "Red nedeni",
+      "rejectReasonPlaceholder": "Bu gönderimin neden reddedildiğini açıklayın...",
+      "queueCount": "{count} öge inceleme bekliyor",
+      "emptyTitle": "Kuyruk temiz",
+      "emptyDescription": "Şu anda inceleme bekleyen kural seti yok. Daha sonra tekrar kontrol edin."
+    },
+    "reports": {
+      "title": "Raporlar",
+      "subtitle": "Kullanıcı tarafından gönderilen ihlal raporlarını inceleyin ve işlem yapın.",
+      "typeColumn": "Tür",
+      "target": "Hedef",
+      "reporter": "Raporlayan",
+      "reason": "Neden",
+      "statusColumn": "Durum",
+      "actions": "İşlemler",
+      "submitted": "Gönderildi",
+      "targetType": "Hedef türü",
+      "moderatorNote": "Moderatör notu",
+      "addNote": "Moderatör notu ekle",
+      "notePlaceholder": "Bu rapor hakkında bir not ekleyin...",
+      "viewDetail": "Detay gör",
+      "resolve": "Çözümle",
+      "dismiss": "Reddet",
+      "reportDetail": "Rapor Detayı",
+      "tab": {
+        "all": "Tümü",
+        "pending": "Bekleyen",
+        "resolved": "Çözülmüş",
+        "dismissed": "Reddedilmiş"
+      },
+      "type": {
+        "spam": "Spam",
+        "copyright": "Telif Hakkı",
+        "malicious": "Zararlı",
+        "inappropriate": "Uygunsuz",
+        "other": "Diğer"
+      },
+      "status": {
+        "pending": "Bekleyen",
+        "resolved": "Çözülmüş",
+        "dismissed": "Reddedilmiş"
+      }
+    },
+    "revenue": {
+      "title": "Gelir",
+      "subtitle": "Platform genelinde aylık gelir dökümü.",
+      "platformRevenue": "Platform Geliri",
+      "sellerPayouts": "Satıcı Ödemeleri",
+      "refunds": "İadeler",
+      "chartAriaLabel": "Platform geliri, satıcı ödemeleri ve iadeleri gösteren aylık gelir çubuk grafiği"
+    },
+    "scanning": {
+      "title": "Güvenlik Taraması",
+      "subtitle": "Gönderilen kural setleri için otomatik tarama sonuçları.",
+      "ruleset": "Kural Seti",
+      "scannedAt": "Tarandı",
+      "status": {
+        "pass": "Geçti",
+        "fail": "Başarısız",
+        "warning": "Uyarı",
+        "pending": "Bekliyor"
+      }
+    },
+    "flags": {
+      "title": "Özellik Bayrakları",
+      "subtitle": "Platform özelliklerini açın ve kapatın.",
+      "toggle": "Değiştir",
+      "lastUpdated": "Son güncelleme",
+      "enabled": "Aktif",
+      "disabled": "Devre dışı"
+    }
   }
 }

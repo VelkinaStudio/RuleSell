@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { ImagePlus, X } from "lucide-react";
+import { Github, ImagePlus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import type { GitHubRepo } from "@/types";
+import { useGitHubRepos } from "@/hooks/use-github-repos";
+import { RepoPicker } from "@/components/github/repo-picker";
+import { RepoTreeBrowser } from "@/components/github/repo-tree-browser";
+import { ImportPreview } from "@/components/github/import-preview";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import type { WizardDraft } from "@/hooks/use-publish-draft";
@@ -22,9 +28,37 @@ const TAG_MAX = 8;
 
 export function WizardStepContent({ draft, onChange }: Props) {
   const t = useTranslations("publishWizard.content");
+  const tGh = useTranslations("github.wizardImport");
   const [tagDraft, setTagDraft] = useState("");
+  const [githubMode, setGithubMode] = useState(false);
+  const [selectedRepo, setSelectedRepo] = useState<GitHubRepo | null>(null);
+  const [selectedPaths, setSelectedPaths] = useState<string[]>([]);
+  const [importStep, setImportStep] = useState<"pick" | "tree" | "preview">(
+    "pick",
+  );
+  const { getTree } = useGitHubRepos();
 
   const tags = draft.tags ?? [];
+
+  const handleRepoSelect = (repo: GitHubRepo) => {
+    setSelectedRepo(repo);
+    const tree = getTree(repo.fullName);
+    // Auto-select all files
+    setSelectedPaths(tree.filter((e) => e.type === "file").map((e) => e.path));
+    setImportStep("tree");
+  };
+
+  const handleImportConfirm = () => {
+    if (!selectedRepo) return;
+    // Populate draft fields from the repo data
+    onChange({
+      title: selectedRepo.name.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      description: selectedRepo.description,
+      previewContent: `Imported from ${selectedRepo.fullName}. ${selectedPaths.length} files selected.`,
+      license: selectedRepo.license ?? undefined,
+    });
+    setImportStep("preview");
+  };
 
   const addTag = () => {
     const trimmed = tagDraft.trim();
@@ -49,6 +83,102 @@ export function WizardStepContent({ draft, onChange }: Props) {
         <p className="mt-1 text-sm text-fg-muted">{t("description")}</p>
       </header>
 
+      {/* GitHub import toggle */}
+      <div className="flex items-center justify-between rounded-lg border border-border-soft bg-bg-raised/40 px-4 py-3">
+        <div className="flex items-center gap-2.5">
+          <Github className="h-4 w-4 text-fg-muted" />
+          <div>
+            <p className="text-sm font-medium text-fg">
+              {tGh("toggleLabel")}
+            </p>
+            <p className="text-[11px] text-fg-subtle">
+              {tGh("toggleHint")}
+            </p>
+          </div>
+        </div>
+        <Switch
+          checked={githubMode}
+          onCheckedChange={(checked) => {
+            setGithubMode(checked === true);
+            if (!checked) {
+              setSelectedRepo(null);
+              setSelectedPaths([]);
+              setImportStep("pick");
+            }
+          }}
+        />
+      </div>
+
+      {/* GitHub import flow — replaces manual editor when active */}
+      {githubMode && (
+        <div className="space-y-4 rounded-lg border border-brand/20 bg-brand/5 p-4">
+          {importStep === "pick" && (
+            <div className="space-y-2">
+              <p className="text-sm font-medium text-fg">{tGh("pickTitle")}</p>
+              <RepoPicker
+                selectedRepo={selectedRepo}
+                onSelect={handleRepoSelect}
+              />
+            </div>
+          )}
+
+          {importStep === "tree" && selectedRepo && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-fg">
+                  {tGh("treeTitle", { repo: selectedRepo.fullName })}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedRepo(null);
+                    setSelectedPaths([]);
+                    setImportStep("pick");
+                  }}
+                  className="text-[11px] text-fg-subtle hover:text-fg"
+                >
+                  {tGh("changeRepo")}
+                </button>
+              </div>
+              <RepoTreeBrowser
+                entries={getTree(selectedRepo.fullName)}
+                selectedPaths={selectedPaths}
+                onSelectionChange={setSelectedPaths}
+              />
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handleImportConfirm}
+                  disabled={selectedPaths.length === 0}
+                  className="rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-fg transition hover:bg-brand/90 disabled:opacity-50"
+                >
+                  {tGh("importSelected")}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {importStep === "preview" && selectedRepo && (
+            <div className="space-y-3">
+              <ImportPreview
+                repo={selectedRepo}
+                tree={getTree(selectedRepo.fullName)}
+                selectedPaths={selectedPaths}
+              />
+              <button
+                type="button"
+                onClick={() => setImportStep("tree")}
+                className="text-[11px] text-fg-subtle hover:text-fg"
+              >
+                {tGh("editSelection")}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Manual content editor — hidden when GitHub import is active and past pick step */}
+      {(!githubMode || importStep === "pick") && (<>
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
           <Label htmlFor="wiz-title">{t("titleLabel")}</Label>
@@ -181,6 +311,7 @@ export function WizardStepContent({ draft, onChange }: Props) {
           {t("screenshotsHint")}
         </p>
       </div>
+      </>)}
     </div>
   );
 }

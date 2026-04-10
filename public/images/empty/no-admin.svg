@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <!-- Empty admin queue: shield with checkmark -->
+  <path d="M100 25 L140 45 L140 85 C140 110 120 130 100 140 C80 130 60 110 60 85 L60 45 Z" stroke="#3F3F46" stroke-width="2.5" fill="#18181B"/>
+  <path d="M82 82 L95 95 L118 72" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  <!-- Text suggesting "all clear" -->
+  <text x="100" y="118" font-family="system-ui" font-size="10" fill="#52525B" text-anchor="middle">Queue empty</text>
+</svg>

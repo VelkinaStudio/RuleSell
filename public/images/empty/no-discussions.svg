@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <!-- Empty community: speech bubbles -->
+  <rect x="40" y="30" width="80" height="50" rx="8" stroke="#3F3F46" stroke-width="2" fill="#18181B"/>
+  <polygon points="60,80 70,95 80,80" fill="#18181B" stroke="#3F3F46" stroke-width="2"/>
+  <rect x="80" y="70" width="70" height="40" rx="8" stroke="#3F3F46" stroke-width="2" fill="#1C1C1F" stroke-dasharray="4 3"/>
+  <!-- Dots suggesting typing -->
+  <circle cx="65" cy="55" r="3" fill="#52525B"/>
+  <circle cx="78" cy="55" r="3" fill="#3F3F46"/>
+  <circle cx="91" cy="55" r="3" fill="#27272A"/>
+</svg>

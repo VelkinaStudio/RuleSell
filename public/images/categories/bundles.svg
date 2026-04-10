@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" fill="none">
+  <!-- Bundles: package/box -->
+  <path d="M60 15L25 32v28l35 17 35-17V32L60 15z" stroke="#f43f5e" stroke-width="2" fill="#f43f5e" fill-opacity="0.06" stroke-linejoin="round"/>
+  <path d="M25 32l35 17 35-17" stroke="#f43f5e" stroke-width="1.5" opacity="0.4"/>
+  <path d="M60 49v28" stroke="#f43f5e" stroke-width="1.5" opacity="0.4"/>
+  <path d="M60 15l-17.5 8.5L60 32l17.5-8.5L60 15z" stroke="#f43f5e" stroke-width="1" fill="#f43f5e" fill-opacity="0.1"/>
+</svg>

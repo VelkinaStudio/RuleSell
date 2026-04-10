@@ -1,12 +1,12 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-export function Footer() {
+export function Footer({ className }: { className?: string }) {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border-soft">
+    <footer className={`border-t border-border-soft ${className ?? ""}`}>
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-fg-subtle sm:px-6 lg:px-8">
         <div className="flex items-center gap-1">
           <span className="font-semibold text-fg">RuleSell</span>

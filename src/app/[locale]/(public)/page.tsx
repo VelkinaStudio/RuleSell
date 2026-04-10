@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Gauge, Shield, Terminal } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { CollectionCard } from "@/components/marketplace/collection-card";
@@ -12,12 +13,14 @@ import { CommunityPreview } from "@/components/marketing/community-preview";
 import { CreatorEconomics } from "@/components/marketing/creator-economics";
 import { FeaturedRulesetCard } from "@/components/marketing/featured-ruleset-card";
 import { FinalCTA } from "@/components/marketing/final-cta";
+import { HeroTerminal } from "@/components/marketing/hero-terminal";
 import { HowItWorks } from "@/components/marketing/how-it-works";
 import { QualityShowcase } from "@/components/marketing/quality-showcase";
-import { SocialProofBar } from "@/components/marketing/social-proof-bar";
+import { ToolLogoBar } from "@/components/marketing/tool-logo-bar";
 import { TrustStrip } from "@/components/marketing/trust-strip";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { Stagger } from "@/components/motion/stagger";
+import { QualityGrid } from "@/components/ui/quality-grid";
 import { ErrorState } from "@/components/ui/error-state";
 import { ENVIRONMENT_META } from "@/constants/environments";
 import { useCollections } from "@/hooks/use-collections";
@@ -34,11 +37,7 @@ export default function LandingPage() {
   const primaryEnv = envs[0] ?? "claude-code";
   const envLabel = ENVIRONMENT_META[primaryEnv]?.label ?? "Claude Code";
 
-  const top = useRulesets({
-    tab: "top",
-    pageSize: 8,
-    environment: primaryEnv,
-  });
+  const top = useRulesets({ tab: "top", pageSize: 8, environment: primaryEnv });
   const editors = useRulesets({ tab: "editors", pageSize: 8 });
   const fresh = useRulesets({ tab: "new", pageSize: 8 });
   const collections = useCollections();
@@ -50,65 +49,81 @@ export default function LandingPage() {
 
   return (
     <div>
-      {/* ── Section 1: Hero ── */}
-      <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 pb-12 pt-16 sm:px-6 lg:px-8">
-        {/* Animated gradient background */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 animate-hero-gradient"
-          aria-hidden
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 209, 102, 0.08) 0%, rgba(148, 163, 184, 0.04) 40%, transparent 70%)",
-          }}
-        />
+      {/* ── HERO: Product demo, not marketing fluff ── */}
+      <section className="relative overflow-hidden">
+        <QualityGrid glow opacity={0.2} />
 
-        <motion.div
-          className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center"
-          variants={heroEntrance}
-          initial={reduce ? "visible" : "hidden"}
-          animate="visible"
-        >
-          <motion.span
-            variants={heroChild}
-            className="text-xs font-medium uppercase tracking-widest text-fg-subtle"
+        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-16 sm:px-6 sm:pt-20 lg:px-8">
+          <motion.div
+            className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            variants={heroEntrance}
+            initial={reduce ? "visible" : "hidden"}
+            animate="visible"
           >
-            {t("hero.eyebrow")}
-          </motion.span>
+            {/* Left: copy + search */}
+            <div className="flex flex-col gap-5">
+              <motion.span
+                variants={heroChild}
+                className="text-xs font-medium uppercase tracking-widest text-fg-subtle"
+              >
+                {t("hero.eyebrow")}
+              </motion.span>
 
-          <motion.h1
-            variants={heroChild}
-            className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl lg:text-5xl"
-          >
-            {t("hero.title")}
-          </motion.h1>
+              <motion.h1
+                variants={heroChild}
+                className="max-w-lg text-balance font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl lg:text-5xl"
+              >
+                AI configs that actually work.
+              </motion.h1>
 
-          <motion.p
-            variants={heroChild}
-            className="max-w-xl text-balance text-sm text-fg-muted sm:text-base"
-          >
-            {t("hero.subtitle")}
-          </motion.p>
+              <motion.p
+                variants={heroChild}
+                className="max-w-md text-balance text-sm leading-relaxed text-fg-muted sm:text-base"
+              >
+                Every rule, MCP server, and skill is quality-scored, security-scanned,
+                and verified across environments. Install in one command.
+              </motion.p>
 
-          <motion.div variants={heroChild} className="mt-2 w-full max-w-xl">
-            <HeroSearch />
+              <motion.div variants={heroChild} className="mt-1 w-full max-w-md">
+                <HeroSearch />
+              </motion.div>
+
+              <motion.div variants={heroChild}>
+                <ToolPicker withLabel={false} />
+              </motion.div>
+            </div>
+
+            {/* Right: terminal demo */}
+            <motion.div
+              variants={heroChild}
+              className="hidden lg:block"
+            >
+              <HeroTerminal />
+            </motion.div>
           </motion.div>
 
-          <motion.div variants={heroChild} className="mt-1">
-            <ToolPicker withLabel={false} />
+          {/* Terminal visible on mobile below the fold */}
+          <motion.div
+            variants={heroChild}
+            initial={reduce ? "visible" : "hidden"}
+            animate="visible"
+            className="mt-8 lg:hidden"
+          >
+            <HeroTerminal />
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* ── Section 2: Social Proof Bar ── */}
-      <SocialProofBar />
+      {/* ── TOOL LOGO BAR: real SVG icons, not plain text ── */}
+      <ToolLogoBar />
 
-      {/* ── Section 3: How It Works ── */}
+      {/* ── HOW IT WORKS ── */}
       <HowItWorks />
 
-      {/* ── Section 4: Quality Showcase ── */}
+      {/* ── QUALITY SHOWCASE ── */}
       <QualityShowcase />
 
-      {/* ── Section 5: Curated Shelves ── */}
+      {/* ── MARKETPLACE SHELVES ── */}
       <div className="mx-auto max-w-7xl space-y-14 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         {hasError && (
           <ErrorState
@@ -132,7 +147,6 @@ export default function LandingPage() {
 
         {!isLoading && !hasError && (
           <>
-            {/* Editor's Picks with featured first card */}
             {editors.data && editors.data.data.length > 0 && (
               <ScrollReveal>
                 <section className="space-y-4">
@@ -205,16 +219,16 @@ export default function LandingPage() {
         )}
       </div>
 
-      {/* ── Section 6: Creator Economics ── */}
+      {/* ── CREATOR ECONOMICS ── */}
       <CreatorEconomics />
 
-      {/* ── Section 7: Trust Strip ── */}
+      {/* ── TRUST ── */}
       <TrustStrip />
 
-      {/* ── Section 8: Community Preview ── */}
+      {/* ── COMMUNITY PREVIEW ── */}
       <CommunityPreview />
 
-      {/* ── Section 9: Final CTA ── */}
+      {/* ── FINAL CTA ── */}
       <FinalCTA />
     </div>
   );

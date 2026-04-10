@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" fill="none">
+  <!-- Skills: lightning bolt / capability -->
+  <path d="M55 12L40 42h15L45 68l25-32H55l10-24z" stroke="#f59e0b" stroke-width="2" fill="#f59e0b" fill-opacity="0.08" stroke-linejoin="round"/>
+  <path d="M55 12L40 42h15L45 68" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+</svg>

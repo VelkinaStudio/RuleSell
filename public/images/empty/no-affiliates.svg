@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <!-- Empty affiliates: link chain with gap -->
+  <path d="M55 70 A15 15 0 0 1 55 100" stroke="#3F3F46" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M55 70 L75 70 A15 15 0 0 1 75 100 L55 100" stroke="#3F3F46" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M105 70 A15 15 0 0 0 105 100" stroke="#52525B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="5 4"/>
+  <path d="M105 70 L125 70 A15 15 0 0 0 125 100 L105 100" stroke="#52525B" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="5 4"/>
+  <!-- Arrow suggesting connection -->
+  <path d="M82 85 L98 85" stroke="#FFD166" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M94 81 L98 85 L94 89" stroke="#FFD166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+</svg>

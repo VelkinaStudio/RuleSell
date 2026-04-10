@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- Obsidian: gem/crystal shape -->
+  <path d="M12 2L5 9l3 11 4 2 4-2 3-11L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M5 9l7 4 7-4" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+  <path d="M12 13v9" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+</svg>

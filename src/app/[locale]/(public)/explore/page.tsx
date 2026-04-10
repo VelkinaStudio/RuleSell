@@ -1,19 +1,37 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { MessageSquare, Radio, Sparkles } from "lucide-react";
+import { BarChart3, Plus, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
-import { DiscussionList } from "@/components/community/discussion-list";
-import { MOCK_DISCUSSIONS } from "@/constants/mock-discussions";
-import { MOCK_SHOWCASES } from "@/constants/mock-showcases";
+import { CommunitySearch } from "@/components/community/community-search";
+import {
+  CommunityTabs,
+  type CommunityTab,
+} from "@/components/community/community-tabs";
+import { DiscussionCardEnhanced } from "@/components/community/discussion-card-enhanced";
+import { FeedItem } from "@/components/community/feed-item";
+import { PollCard } from "@/components/community/poll-card";
+import { PollCreateDialog } from "@/components/community/poll-create-dialog";
+import { QACard } from "@/components/community/qa-card";
+import { QADetail } from "@/components/community/qa-detail";
+import { RequestBoard } from "@/components/community/request-board";
+import { ShowcaseCardExpanded } from "@/components/community/showcase-card-expanded";
+import { SortFilterBar } from "@/components/community/sort-filter-bar";
 import { MOCK_RULESETS } from "@/constants/mock-data";
+import { MOCK_SHOWCASES } from "@/constants/mock-showcases";
+import { useCommunityFeed } from "@/hooks/use-community-feed";
+import {
+  useDiscussionsEnhanced,
+  type DiscussionSort,
+} from "@/hooks/use-discussions-enhanced";
+import { usePolls } from "@/hooks/use-polls";
+import { useQA, type QAFilter } from "@/hooks/use-qa";
+import type { DiscussionCategory, QAQuestion } from "@/types";
 import { heroEntrance, heroChild } from "@/lib/motion/variants";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { formatRelative } from "@/lib/utils";
-
-type Tab = "feed" | "discussions" | "showcases";
 
 /** Map mock rulesetIds to real production slugs so explore links resolve. */
 const MOCK_TO_REAL_SLUG: Record<string, string> = {
@@ -42,7 +60,9 @@ function gradeFor(score: number): { letter: string; colorClass: string } {
 }
 
 export default function ExplorePage() {
-  const [tab, setTab] = useState<Tab>("feed");
+  const t = useTranslations("community");
+  const [tab, setTab] = useState<CommunityTab>("feed");
+  const [search, setSearch] = useState("");
   const reduce = useReducedMotion();
 
   return (
@@ -57,148 +77,63 @@ export default function ExplorePage() {
           variants={heroChild}
           className="font-display text-2xl font-bold text-fg sm:text-3xl"
         >
-          Explore
+          {t("title")}
         </motion.h1>
         <motion.p variants={heroChild} className="text-sm text-fg-muted">
-          Community activity, discussions, and showcases.
+          {t("subtitle")}
         </motion.p>
       </motion.header>
 
-      {/* Tab bar */}
-      <div className="mt-6 flex gap-1 border-b border-border-soft">
-        <TabButton
-          active={tab === "feed"}
-          onClick={() => setTab("feed")}
-          icon={Radio}
-        >
-          Feed
-        </TabButton>
-        <TabButton
-          active={tab === "discussions"}
-          onClick={() => setTab("discussions")}
-          icon={MessageSquare}
-        >
-          Discussions
-        </TabButton>
-        <TabButton
-          active={tab === "showcases"}
-          onClick={() => setTab("showcases")}
-          icon={Sparkles}
-        >
-          Showcases
-        </TabButton>
+      <CommunityTabs active={tab} onChange={setTab} />
+
+      {/* Search bar */}
+      <div className="mt-4">
+        <CommunitySearch value={search} onChange={setSearch} />
       </div>
 
       {/* Tab content with crossfade */}
       <div className="mt-6">
         <AnimatePresence mode="wait">
-          {tab === "feed" && (
-            <motion.div
-              key="feed"
-              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <FeedTab />
-            </motion.div>
-          )}
-          {tab === "discussions" && (
-            <motion.div
-              key="discussions"
-              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <DiscussionsTab />
-            </motion.div>
-          )}
-          {tab === "showcases" && (
-            <motion.div
-              key="showcases"
-              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <ShowcasesTab />
-            </motion.div>
-          )}
+          <motion.div
+            key={tab}
+            initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {tab === "feed" && <FeedTab searchQuery={search} />}
+            {tab === "discussions" && (
+              <DiscussionsTab searchQuery={search} />
+            )}
+            {tab === "polls" && <PollsTab searchQuery={search} />}
+            {tab === "qa" && <QATab searchQuery={search} />}
+            {tab === "showcases" && (
+              <ShowcasesTab searchQuery={search} />
+            )}
+            {tab === "requests" && (
+              <RequestBoard searchQuery={search} />
+            )}
+          </motion.div>
         </AnimatePresence>
       </div>
     </div>
   );
 }
 
-function TabButton({
-  active,
-  onClick,
-  icon: Icon,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  icon: typeof Radio;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        "relative -mb-px inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium transition",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg/20",
-        active ? "text-fg" : "text-fg-subtle hover:text-fg-muted",
-      )}
-    >
-      <Icon className="h-3.5 w-3.5" />
-      {children}
-      {active && (
-        <span
-          aria-hidden
-          className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-brand"
-        />
-      )}
-    </button>
-  );
-}
+/* ─── Feed Tab ─── */
 
-function FeedTab() {
-  const items = useMemo(() => {
-    const feed = [
-      ...MOCK_DISCUSSIONS.slice(0, 8).map((d) => {
-        const realSlug = MOCK_TO_REAL_SLUG[d.rulesetId];
-        const ruleset = MOCK_RULESETS.find((r) => r.id === d.rulesetId);
-        return {
-          id: `feed-disc-${d.id}`,
-          kind: "discussion" as const,
-          title: d.title,
-          body: `New discussion on ${ruleset?.title ?? "an item"}`,
-          href: realSlug ? `/r/${realSlug}` : null,
-          createdAt: d.createdAt,
-        };
-      }),
-      ...MOCK_SHOWCASES.map((s) => {
-        const firstId = s.rulesetIds[0];
-        const realSlug = firstId ? MOCK_TO_REAL_SLUG[firstId] : null;
-        return {
-          id: `feed-show-${s.id}`,
-          kind: "showcase" as const,
-          title: s.title,
-          body: `New showcase by @${s.author.username}`,
-          href: realSlug ? `/r/${realSlug}` : null,
-          createdAt: s.createdAt,
-        };
-      }),
-    ];
-    return feed.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    );
-  }, []);
+function FeedTab({ searchQuery }: { searchQuery: string }) {
+  const t = useTranslations("community.feed");
+  const { items } = useCommunityFeed();
 
-  // Trending sidebar items — use real production slugs
+  const filtered = searchQuery
+    ? items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.body.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : items;
+
   const trending = useMemo(
     () =>
       [...MOCK_RULESETS]
@@ -212,60 +147,19 @@ function FeedTab() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
       <div className="space-y-1 divide-y divide-border-soft">
-        {items.map((item) => {
-          const inner = (
-            <>
-              <div className="flex items-center gap-2">
-                {item.kind === "discussion" ? (
-                  <MessageSquare className="h-4 w-4 shrink-0 text-fg-dim" />
-                ) : (
-                  <Sparkles className="h-4 w-4 shrink-0 text-fg-dim" />
-                )}
-                <span
-                  className={cn(
-                    "rounded-full border px-1.5 py-0.5 text-[10px] font-medium",
-                    item.kind === "discussion"
-                      ? "border-info/30 text-info"
-                      : "border-brand/30 text-brand",
-                  )}
-                >
-                  {item.kind === "discussion" ? "discussion" : "showcase"}
-                </span>
-              </div>
-              <div className="mt-1.5 min-w-0 flex-1">
-                <p className="line-clamp-1 text-sm text-fg group-hover:text-fg">
-                  {item.title}
-                </p>
-                <p className="mt-0.5 text-xs text-fg-dim">{item.body}</p>
-              </div>
-              <span className="mt-1.5 shrink-0 text-[10px] text-fg-dim">
-                {formatRelative(item.createdAt)}
-              </span>
-            </>
-          );
-          return item.href ? (
-            <Link
-              key={item.id}
-              href={item.href}
-              className="group flex flex-col py-3 transition hover:bg-bg-surface/50 sm:flex-row sm:items-start sm:gap-3"
-            >
-              {inner}
-            </Link>
-          ) : (
-            <div
-              key={item.id}
-              className="flex flex-col py-3 sm:flex-row sm:items-start sm:gap-3"
-            >
-              {inner}
-            </div>
-          );
-        })}
+        {filtered.length === 0 ? (
+          <p className="py-8 text-center text-sm text-fg-muted">
+            {t("empty")}
+          </p>
+        ) : (
+          filtered.map((item) => <FeedItem key={item.id} item={item} />)
+        )}
       </div>
 
       {/* Trending sidebar */}
       <aside className="hidden lg:block">
         <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
-          Trending this week
+          {t("trending")}
         </h3>
         <ul className="mt-3 space-y-2.5">
           {trending.map((r, i) => {
@@ -303,56 +197,280 @@ function FeedTab() {
   );
 }
 
-function DiscussionsTab() {
-  return <DiscussionList discussions={MOCK_DISCUSSIONS} />;
-}
+/* ─── Discussions Tab ─── */
 
-function ShowcasesTab() {
+const DISCUSSION_CATEGORY_FILTERS: { key: string; labelKey: string }[] = [
+  { key: "qa", labelKey: "qa" },
+  { key: "tips", labelKey: "tips" },
+  { key: "bugs", labelKey: "bugs" },
+  { key: "feature_request", labelKey: "feature_request" },
+  { key: "showcase", labelKey: "showcase" },
+];
+
+function DiscussionsTab({ searchQuery }: { searchQuery: string }) {
+  const t = useTranslations("community.discussions");
+  const {
+    discussions,
+    sort,
+    setSort,
+    categoryFilter,
+    setCategoryFilter,
+  } = useDiscussionsEnhanced();
+
+  const filtered = searchQuery
+    ? discussions.filter(
+        (d) =>
+          d.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          d.body.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : discussions;
+
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {MOCK_SHOWCASES.map((s) => (
-          <div
-            key={s.id}
-            className="rounded-lg border border-border-soft bg-bg-surface p-5 transition hover:border-border-strong"
-          >
-            <h3 className="text-sm font-semibold text-fg">{s.title}</h3>
-            <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-fg-muted">
-              {s.description}
-            </p>
-            <div className="mt-3 flex items-center gap-3 text-[11px] text-fg-dim">
-              <span className="font-medium">@{s.author.username}</span>
-              <span>{s.reactionCount} reactions</span>
-              <span>{formatRelative(s.createdAt)}</span>
-            </div>
-            {s.rulesetIds.length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-1">
-                {s.rulesetIds.map((id) => {
-                  const ruleset = MOCK_RULESETS.find((r) => r.id === id);
-                  return ruleset ? (
-                    <span
-                      key={id}
-                      className="rounded border border-border-soft bg-bg-raised px-1.5 py-0.5 text-[10px] text-fg-subtle"
-                    >
-                      {ruleset.title}
-                    </span>
-                  ) : null;
-                })}
-              </div>
+      <SortFilterBar
+        sort={sort}
+        onSortChange={(s) => setSort(s as DiscussionSort)}
+        filterValue={categoryFilter}
+        onFilterChange={(v) =>
+          setCategoryFilter(v as DiscussionCategory | "all")
+        }
+        filterOptions={DISCUSSION_CATEGORY_FILTERS}
+        filterLabel={t("filterByCategory")}
+      />
+
+      {filtered.length === 0 ? (
+        <p className="py-8 text-center text-sm text-fg-muted">
+          {t("empty")}
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {filtered.map((d) => (
+            <DiscussionCardEnhanced key={d.id} discussion={d} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── Polls Tab ─── */
+
+function PollsTab({ searchQuery }: { searchQuery: string }) {
+  const t = useTranslations("community.polls");
+  const { activePolls, expiredPolls, vote, votedOptions } = usePolls();
+  const [showCreate, setShowCreate] = useState(false);
+
+  const filterPolls = (polls: typeof activePolls) =>
+    searchQuery
+      ? polls.filter(
+          (p) =>
+            p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.description.toLowerCase().includes(searchQuery.toLowerCase()),
+        )
+      : polls;
+
+  const filteredActive = filterPolls(activePolls);
+  const filteredExpired = filterPolls(expiredPolls);
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <BarChart3 className="h-4 w-4 text-fg-dim" />
+          <span className="text-sm font-medium text-fg-muted">
+            {filteredActive.length} {t("active")} / {filteredExpired.length}{" "}
+            {t("expired")}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setShowCreate(true)}
+          className="inline-flex items-center gap-1 rounded-lg border border-brand/30 bg-brand/10 px-3 py-1.5 text-xs font-medium text-brand transition hover:bg-brand/20"
+        >
+          <Plus className="h-3 w-3" />
+          {t("createNew")}
+        </button>
+      </div>
+
+      {/* Active polls */}
+      {filteredActive.length > 0 && (
+        <div className="space-y-3">
+          {filteredActive.map((poll) => (
+            <PollCard
+              key={poll.id}
+              poll={poll}
+              votedOptionId={votedOptions[poll.id]}
+              onVote={(optionId) => vote(poll.id, optionId)}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Expired polls */}
+      {filteredExpired.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+            {t("expired")}
+          </h3>
+          {filteredExpired.map((poll) => (
+            <PollCard
+              key={poll.id}
+              poll={poll}
+              votedOptionId={votedOptions[poll.id]}
+              onVote={(optionId) => vote(poll.id, optionId)}
+            />
+          ))}
+        </div>
+      )}
+
+      {filteredActive.length === 0 && filteredExpired.length === 0 && (
+        <p className="py-8 text-center text-sm text-fg-muted">
+          {t("empty")}
+        </p>
+      )}
+
+      <PollCreateDialog
+        open={showCreate}
+        onClose={() => setShowCreate(false)}
+      />
+    </div>
+  );
+}
+
+/* ─── Q&A Tab ─── */
+
+const QA_FILTER_OPTIONS = [
+  { key: "answered", labelKey: "answered" },
+  { key: "unanswered", labelKey: "unanswered" },
+];
+
+function QATab({ searchQuery }: { searchQuery: string }) {
+  const t = useTranslations("community.qa");
+  const {
+    questions,
+    filter,
+    setFilter,
+    answersForQuestion,
+    voteOnItem,
+    getUserVote,
+  } = useQA();
+  const [selectedQuestion, setSelectedQuestion] =
+    useState<QAQuestion | null>(null);
+
+  const filtered = searchQuery
+    ? questions.filter(
+        (q) =>
+          q.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          q.body.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : questions;
+
+  if (selectedQuestion) {
+    const answers = answersForQuestion(selectedQuestion.id);
+    return (
+      <QADetail
+        question={selectedQuestion}
+        answers={answers}
+        questionVote={getUserVote(selectedQuestion.id)}
+        getAnswerVote={(id) => getUserVote(id)}
+        onVoteQuestion={(dir) => voteOnItem(selectedQuestion.id, dir)}
+        onVoteAnswer={(id, dir) => voteOnItem(id, dir)}
+        onBack={() => setSelectedQuestion(null)}
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <SortFilterBar
+        sort={filter}
+        onSortChange={(s) => setFilter(s as QAFilter)}
+        sortOptions={[
+          { key: "all", labelKey: "hot" },
+          { key: "answered", labelKey: "top" },
+          { key: "unanswered", labelKey: "new" },
+        ]}
+      />
+
+      {/* Filter pills */}
+      <div className="flex gap-2">
+        {(["all", "answered", "unanswered"] as const).map((f) => (
+          <button
+            key={f}
+            type="button"
+            onClick={() => setFilter(f)}
+            className={cn(
+              "rounded-md border px-2.5 py-1 text-xs transition",
+              filter === f
+                ? "border-fg/20 bg-fg/5 text-fg"
+                : "border-border-soft text-fg-subtle hover:text-fg-muted",
             )}
-          </div>
+          >
+            {f === "all"
+              ? t("all")
+              : f === "answered"
+                ? t("answeredOnly")
+                : t("unansweredOnly")}
+          </button>
         ))}
       </div>
+
+      {filtered.length === 0 ? (
+        <p className="py-8 text-center text-sm text-fg-muted">
+          {t("empty")}
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {filtered.map((q) => (
+            <QACard
+              key={q.id}
+              question={q}
+              userVote={getUserVote(q.id)}
+              onVoteUp={() => voteOnItem(q.id, "up")}
+              onVoteDown={() => voteOnItem(q.id, "down")}
+              onClick={() => setSelectedQuestion(q)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── Showcases Tab ─── */
+
+function ShowcasesTab({ searchQuery }: { searchQuery: string }) {
+  const t = useTranslations("community.showcases");
+
+  const filtered = searchQuery
+    ? MOCK_SHOWCASES.filter(
+        (s) =>
+          s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          s.description.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : MOCK_SHOWCASES;
+
+  return (
+    <div className="space-y-4">
+      {filtered.length === 0 ? (
+        <p className="py-8 text-center text-sm text-fg-muted">
+          {t("empty")}
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {filtered.map((s) => (
+            <ShowcaseCardExpanded key={s.id} showcase={s} />
+          ))}
+        </div>
+      )}
       <div className="rounded-lg border border-dashed border-border-soft bg-bg-surface/50 p-6 text-center">
         <Sparkles className="mx-auto h-5 w-5 text-brand" />
-        <p className="mt-2 text-sm text-fg-muted">
-          Built something with a RuleSell asset?
-        </p>
+        <p className="mt-2 text-sm text-fg-muted">{t("submitTitle")}</p>
         <button
           type="button"
           className="mt-3 rounded-lg border border-brand/30 bg-brand/10 px-4 py-2 text-xs font-medium text-brand transition hover:bg-brand/20"
         >
-          Submit a Showcase
+          {t("submitButton")}
         </button>
       </div>
     </div>

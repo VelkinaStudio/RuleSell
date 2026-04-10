@@ -443,3 +443,222 @@ export interface ApiSuccessResponse<T> {
 export type ApiErrorResponse = ApiError;
 export type ApiErrorDetail = ApiError["error"];
 export type RulesetCardData = Ruleset;
+
+// ─── Community: Polls ───
+export interface Poll {
+  id: string;
+  title: string;
+  description: string;
+  options: PollOption[];
+  totalVotes: number;
+  author: { username: string; avatarUrl: string | null };
+  createdAt: string;
+  endsAt: string | null;
+  isActive: boolean;
+  category?: string;
+}
+
+export interface PollOption {
+  id: string;
+  text: string;
+  voteCount: number;
+}
+
+// ─── Community: Q&A ───
+export interface QAQuestion {
+  id: string;
+  title: string;
+  body: string;
+  author: { username: string; avatarUrl: string | null; reputation: number };
+  tags: string[];
+  voteCount: number;
+  answerCount: number;
+  viewCount: number;
+  acceptedAnswerId: string | null;
+  createdAt: string;
+}
+
+export interface QAAnswer {
+  id: string;
+  questionId: string;
+  body: string;
+  author: { username: string; avatarUrl: string | null; reputation: number };
+  voteCount: number;
+  isAccepted: boolean;
+  createdAt: string;
+}
+
+// ─── Community: Feature Requests ───
+export type FeatureRequestStatus = "open" | "claimed" | "completed" | "declined";
+
+export interface FeatureRequest {
+  id: string;
+  title: string;
+  description: string;
+  author: { username: string; avatarUrl: string | null };
+  voteCount: number;
+  status: FeatureRequestStatus;
+  claimedBy: string | null;
+  linkedRulesetSlug: string | null;
+  tags: string[];
+  commentCount: number;
+  createdAt: string;
+}
+
+// ─── Affiliate System ───
+export interface AffiliateLink {
+  id: string;
+  userId: string;
+  rulesetId: string | null; // null = general referral link
+  rulesetTitle?: string;
+  rulesetSlug?: string;
+  code: string; // unique referral code
+  url: string; // full URL with ?ref= param
+  clicks: number;
+  conversions: number;
+  earnings: number;
+  createdAt: string;
+}
+
+export interface AffiliateClick {
+  id: string;
+  linkId: string;
+  referrer: string | null;
+  country: string;
+  createdAt: string;
+  converted: boolean;
+}
+
+export interface AffiliateConversion {
+  id: string;
+  linkId: string;
+  purchaseId: string;
+  rulesetTitle: string;
+  rulesetSlug: string;
+  buyerUsername: string;
+  saleAmount: number;
+  commission: number;
+  status: "pending" | "confirmed" | "paid";
+  createdAt: string;
+  confirmedAt: string | null;
+  paidAt: string | null;
+}
+
+export interface AffiliatePayout {
+  id: string;
+  amount: number;
+  conversions: number;
+  period: string; // "2026-03" format
+  status: "pending" | "processing" | "paid";
+  paidAt: string | null;
+}
+
+export interface AffiliateTier {
+  name: string;
+  rate: number;
+  threshold: number; // total earnings to reach this tier
+}
+
+export interface AffiliateStats {
+  totalEarnings: number;
+  pendingEarnings: number;
+  paidEarnings: number;
+  thisMonthEarnings: number;
+  totalClicks: number;
+  totalConversions: number;
+  conversionRate: number;
+  currentTier: AffiliateTier;
+  nextTier: AffiliateTier | null;
+  earningsToNextTier: number;
+}
+
+// ─── GitHub Integration ───────────────────────────────────────────────────────
+
+export interface GitHubRepo {
+  id: string;
+  owner: string;
+  name: string;
+  fullName: string;
+  description: string;
+  starCount: number;
+  language: string | null;
+  license: string | null;
+  lastCommitAt: string;
+  defaultBranch: string;
+  isPrivate: boolean;
+  org?: { name: string; verified: boolean; avatarUrl: string };
+}
+
+export interface GitHubTreeEntry {
+  path: string;
+  type: "file" | "dir";
+  size: number;
+}
+
+export interface GitHubSyncStatus {
+  rulesetId: string;
+  repoFullName: string;
+  lastSyncAt: string;
+  status: "synced" | "outdated" | "error";
+  pendingChanges: number;
+}
+
+// ─── Admin Dashboard ───
+export interface AdminStats {
+  totalUsers: number;
+  totalRulesets: number;
+  totalRevenue: number;
+  activeCreators: number;
+  pendingReviews: number;
+  openReports: number;
+  monthlyGrowth: { users: number; rulesets: number; revenue: number };
+}
+
+export interface AdminReport {
+  id: string;
+  type: "spam" | "copyright" | "malicious" | "inappropriate" | "other";
+  targetType: "ruleset" | "user" | "review" | "discussion";
+  targetId: string;
+  targetTitle: string;
+  reporterUsername: string;
+  reason: string;
+  status: "pending" | "resolved" | "dismissed";
+  moderatorNote: string | null;
+  createdAt: string;
+  resolvedAt: string | null;
+}
+
+export interface AdminScanResult {
+  rulesetId: string;
+  rulesetTitle: string;
+  rulesetSlug: string;
+  virusTotal: "pass" | "fail" | "pending";
+  semgrep: "pass" | "fail" | "warning" | "pending";
+  sandbox: "pass" | "fail" | "pending";
+  scannedAt: string;
+}
+
+export interface FeatureFlag {
+  id: string;
+  name: string;
+  description: string;
+  enabled: boolean;
+  updatedAt: string;
+}
+
+export interface RevenueDataPoint {
+  month: string;
+  platformRevenue: number;
+  sellerPayouts: number;
+  refunds: number;
+}
+
+export interface ModerationAction {
+  id: string;
+  action: "approve" | "reject" | "flag" | "remove";
+  targetType: "ruleset" | "user" | "review";
+  targetId: string;
+  reason: string;
+  moderatorUsername: string;
+  createdAt: string;
+}

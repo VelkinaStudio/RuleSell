@@ -5,6 +5,7 @@ import { use, useCallback, useState } from "react";
 
 import { DiscussionList } from "@/components/community/discussion-list";
 import { DiscussionThread } from "@/components/community/discussion-thread";
+import { SyncIndicator } from "@/components/github/sync-indicator";
 import { AboutSection } from "@/components/ruleset/about-section";
 import { DetailHero } from "@/components/ruleset/detail-hero";
 import { DetailSidebar } from "@/components/ruleset/detail-sidebar";
@@ -15,6 +16,7 @@ import { RelatedGrid } from "@/components/ruleset/related-grid";
 import { ReviewList } from "@/components/ruleset/review-list";
 import { ErrorState } from "@/components/ui/error-state";
 import { MOCK_DISCUSSIONS_BY_RULESET } from "@/constants/mock-discussions";
+import { useGitHubSync } from "@/hooks/use-github-sync";
 import { useRuleset } from "@/hooks/use-ruleset";
 import { cn } from "@/lib/utils";
 
@@ -57,6 +59,9 @@ export default function RulesetDetailPage({ params }: PageProps) {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="min-w-0 space-y-6">
           <DetailHero ruleset={ruleset} />
+          {ruleset.maintainerClaim?.verified && (
+            <RulesetSyncIndicator rulesetId={ruleset.id} />
+          )}
           <InstallBlock ruleset={ruleset} />
         </div>
         <div className="space-y-3 lg:sticky lg:top-20 lg:self-start">
@@ -112,6 +117,18 @@ export default function RulesetDetailPage({ params }: PageProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+function RulesetSyncIndicator({ rulesetId }: { rulesetId: string }) {
+  const { syncStatus, isRefreshing, refresh } = useGitHubSync(rulesetId);
+  if (!syncStatus) return null;
+  return (
+    <SyncIndicator
+      syncStatus={syncStatus}
+      isRefreshing={isRefreshing}
+      onRefresh={refresh}
+    />
   );
 }
 

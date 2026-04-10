@@ -10,6 +10,7 @@ import {
   Package,
   Settings,
   Share2,
+  Shield,
   ShoppingBag,
   Star,
   Users,
@@ -154,7 +155,38 @@ export function DashboardSidebar() {
     { href: "/dashboard/settings", labelKey: "settings", icon: Settings },
   ];
 
+  const isAdmin = user?.role === "ADMIN";
   const navProps = { items, isSeller, t, pathname };
+
+  const adminLink = (
+    <div className="mt-4">
+      <div className="px-2 pb-2 pt-1">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-fg-subtle">
+          {t("adminSection")}
+        </p>
+      </div>
+      <Link
+        href="/dashboard/admin"
+        aria-current={pathname.startsWith("/dashboard/admin") ? "page" : undefined}
+        className={cn(
+          "group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition",
+          pathname.startsWith("/dashboard/admin")
+            ? "bg-brand/15 text-brand"
+            : "text-fg-muted hover:bg-bg-raised hover:text-fg",
+        )}
+      >
+        <Shield
+          className={cn(
+            "h-4 w-4 shrink-0 transition",
+            pathname.startsWith("/dashboard/admin")
+              ? "text-brand"
+              : "text-fg-muted group-hover:text-fg",
+          )}
+        />
+        <span className="truncate">{t("admin")}</span>
+      </Link>
+    </div>
+  );
 
   return (
     <>
@@ -171,6 +203,8 @@ export function DashboardSidebar() {
           </div>
 
           <SidebarNav {...navProps} />
+
+          {isAdmin && adminLink}
 
           {status === "authenticated" && (
             <SidebarFooter user={user} isSeller={isSeller} t={t} />
@@ -203,6 +237,8 @@ export function DashboardSidebar() {
               </div>
 
               <SidebarNav {...navProps} />
+
+              {isAdmin && adminLink}
 
               {status === "authenticated" && (
                 <SidebarFooter user={user} isSeller={isSeller} t={t} />
