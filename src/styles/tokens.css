@@ -6,8 +6,8 @@
 :root {
   /* Surfaces */
   --bg: #09090b;
-  --bg-surface: #18181b;
-  --bg-raised: #27272a;
+  --bg-surface: #141416;
+  --bg-raised: #1e1e22;
   --bg-elevated: #3f3f46;
   --bg-inset: #050506;
 
@@ -26,6 +26,16 @@
   --brand: #ffd166;
   --brand-soft: rgba(255, 209, 102, 0.15);
   --brand-fg: #18181b;
+
+  /* Secondary accent — steel blue */
+  --secondary-steel: #94a3b8;
+  --secondary-steel-muted: #64748b;
+  --secondary-steel-bright: #cbd5e1;
+
+  /* Quality score color coding */
+  --qs-a: #10b981;
+  --qs-b: #f59e0b;
+  --qs-c: #f43f5e;
 
   /* Category accents — restricted to small pills/dots, never card backgrounds */
   --cat-rules: #3b82f6;

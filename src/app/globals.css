@@ -64,6 +64,12 @@
   --color-brand: var(--brand);
   --color-brand-soft: var(--brand-soft);
   --color-brand-fg: var(--brand-fg);
+  --color-secondary-steel: var(--secondary-steel);
+  --color-secondary-steel-muted: var(--secondary-steel-muted);
+  --color-secondary-steel-bright: var(--secondary-steel-bright);
+  --color-qs-a: var(--qs-a);
+  --color-qs-b: var(--qs-b);
+  --color-qs-c: var(--qs-c);
   --color-cat-rules: var(--cat-rules);
   --color-cat-mcp: var(--cat-mcp);
   --color-cat-skill: var(--cat-skill);
