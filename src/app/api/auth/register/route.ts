@@ -2,14 +2,14 @@ import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimitAuth } from "@/lib/rate-limit";
 import { sendVerificationEmail } from "@/lib/email";
 import { registerSchema } from "@/lib/validations/auth";
 
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "unknown";
-    const rl = rateLimit(`register:${ip}`, 5, 15 * 60 * 1000); // 5 per 15min
+    const rl = await rateLimitAuth(`register:${ip}`);
     if (!rl.ok) return errors.rateLimited("Too many registration attempts");
 
     const body = await req.json();

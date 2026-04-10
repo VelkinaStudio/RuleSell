@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { createLemonSqueezyCheckout } from "@/lib/lemonsqueezy";
+import { rateLimitWrite } from "@/lib/rate-limit";
 
 const checkoutSchema = z.object({
   rulesetId: z.string().min(1),
@@ -14,6 +15,9 @@ export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = await rateLimitWrite(`checkout:${session.user.id}`);
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
     const parsed = checkoutSchema.safeParse(body);

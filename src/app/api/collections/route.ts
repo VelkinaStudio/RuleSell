@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
+import { rateLimitWrite } from "@/lib/rate-limit";
 import { slugify } from "@/lib/slugify";
 import { createCollectionSchema } from "@/lib/validations/collections";
 
@@ -27,6 +28,9 @@ export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = await rateLimitWrite(`collections:${session.user.id}`);
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
 

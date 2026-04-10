@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, list, errors, paginationFromCursor } from "@/lib/api/response";
+import { rateLimitWrite } from "@/lib/rate-limit";
 import { saveSchema } from "@/lib/validations/engagement";
 
 export async function GET(req: NextRequest) {
@@ -65,6 +66,9 @@ export async function POST(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = await rateLimitWrite(`saved:${session.user.id}`);
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
 

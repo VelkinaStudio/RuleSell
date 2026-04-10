@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
+import { rateLimitWrite } from "@/lib/rate-limit";
 import { updateProfileSchema } from "@/lib/validations/settings";
 
 export async function GET() {
@@ -23,6 +24,9 @@ export async function PATCH(req: Request) {
   try {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
+
+    const rl = await rateLimitWrite(`settings:${session.user.id}`);
+    if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();
     const parsed = updateProfileSchema.safeParse(body);

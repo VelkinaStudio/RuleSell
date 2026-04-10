@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
 import { sendPasswordResetEmail } from "@/lib/email";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimitReset } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
   try {
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     // Step 1: Request password reset (email only)
     if (email && !token) {
       // Rate limit: 3 reset requests per hour per email
-      const rl = rateLimit(`reset:${(email as string).toLowerCase()}`, 3, 60 * 60 * 1000);
+      const rl = await rateLimitReset(`reset:${(email as string).toLowerCase()}`);
       if (!rl.ok) return errors.rateLimited();
       const user = await db.user.findUnique({ where: { email } });
 

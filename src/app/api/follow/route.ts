@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { success, errors } from "@/lib/api/response";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimitWrite } from "@/lib/rate-limit";
 import { createNotification } from "@/lib/notifications";
 import { followSchema } from "@/lib/validations/engagement";
 
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const session = await auth();
     if (!session?.user) return errors.unauthorized();
 
-    const rl = rateLimit(`follow:${session.user.id}`, 20, 60 * 1000); // 20 per minute
+    const rl = await rateLimitWrite(`follow:${session.user.id}`);
     if (!rl.ok) return errors.rateLimited();
 
     const body = await req.json();

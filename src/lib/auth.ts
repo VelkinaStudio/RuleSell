@@ -5,7 +5,7 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimitAuth } from "@/lib/rate-limit";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -32,7 +32,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const password = credentials.password as string;
 
         // Rate limit: 5 attempts per 15 minutes per email
-        const rl = rateLimit(`auth:login:${email.toLowerCase()}`, 5, 15 * 60 * 1000);
+        const rl = await rateLimitAuth(`login:${email.toLowerCase()}`);
         if (!rl.ok) {
           throw new Error("Too many login attempts. Try again in 15 minutes.");
         }

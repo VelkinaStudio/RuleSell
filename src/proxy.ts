@@ -1,5 +1,6 @@
 import createIntlMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
+import { decode } from "next-auth/jwt";
 
 import { isSanctioned } from "@/lib/compliance/sanctions";
 import { routing } from "@/i18n/routing";
@@ -18,7 +19,7 @@ const authPages = ["/login", "/signup", "/signin"];
  * 4. OFAC geo-block hint cookie
  * 5. Resolved locale header
  */
-export default function proxy(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Strip locale prefix for route matching (e.g. /en/dashboard → /dashboard)
@@ -46,24 +47,22 @@ export default function proxy(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Admin routes → redirect to login, and check role claim in JWT
+  // Admin routes → redirect to login, check role in JWT
   const isAdminRoute = adminPrefixes.some((p) => pathWithoutLocale.startsWith(p));
   if (isAdminRoute) {
     if (!isAuthenticated) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
-    // Decode JWT payload to check role (avoids DB call in Edge middleware)
-    const token = sessionToken;
     try {
-      const [, payloadB64] = (token ?? "").split(".");
-      if (payloadB64) {
-        const payload = JSON.parse(Buffer.from(payloadB64, "base64url").toString());
-        if (payload.role !== "ADMIN") {
+      const secret = process.env.NEXTAUTH_SECRET;
+      if (secret && sessionToken) {
+        const token = await decode({ token: sessionToken, secret, salt: "" });
+        if (!token || token.role !== "ADMIN") {
           return NextResponse.redirect(new URL("/", req.url));
         }
       }
     } catch {
-      // JWT decode failed — let the page-level check handle it
+      // Decode failed — let the page-level check handle it
     }
   }
 
