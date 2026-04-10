@@ -72,6 +72,22 @@ export function KycForm({ onSubmitted }: KycFormProps) {
     setErrors(validate(fields));
   };
 
+  // Region-specific compliance detection
+  const countryUpper = fields.country.toUpperCase();
+  const EU_CODES = ["DE","FR","IT","ES","NL","BE","AT","PT","GR","FI","IE","LU","MT","CY","EE","LV","LT","SK","SI","HR","BG","RO","CZ","PL","SE","DK","HU"];
+  const isEU = EU_CODES.includes(countryUpper);
+  const isUK = countryUpper === "GB";
+  const isUS = countryUpper === "US";
+  const regionNotice = isEU
+    ? "EU seller: DSA Art 30 trader identification required. VAT number needed if registered."
+    : isUK
+      ? "UK seller: Companies House registration or sole trader details required."
+      : isUS
+        ? "US seller: SSN or EIN required for 1099-K tax reporting."
+        : fields.country.length === 2
+          ? "Stripe Connect handles compliance for your region. Additional documents may be requested."
+          : null;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const allTouched: KycTouched = Object.fromEntries(
@@ -86,6 +102,8 @@ export function KycForm({ onSubmitted }: KycFormProps) {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("rulesell:kyc-status", "pending");
     }
+    // In production: redirect to Stripe Connect Express onboarding
+    // window.location.href = `/api/stripe/connect/onboard?country=${fields.country}`
     setTimeout(() => {
       setSubmitting(false);
       toast.success(t("kycSubmitted"));
@@ -95,6 +113,13 @@ export function KycForm({ onSubmitted }: KycFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {/* Region-specific compliance notice */}
+      {regionNotice && (
+        <div className="flex items-start gap-2 rounded-lg border border-amber-500/20 bg-amber-500/5 p-3">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+          <p className="text-xs text-amber-300">{regionNotice}</p>
+        </div>
+      )}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Field
           label={t("kycLegalName")}
@@ -161,13 +186,18 @@ export function KycForm({ onSubmitted }: KycFormProps) {
         <Input value={fields.reg} onChange={update("reg")} onBlur={handleBlur("reg")} />
       </Field>
 
-      <Button
-        type="submit"
-        disabled={submitting}
-        className="bg-brand text-brand-fg hover:bg-brand/90"
-      >
-        {t("kycSubmit")}
-      </Button>
+      <div className="flex flex-col gap-2 pt-2">
+        <Button
+          type="submit"
+          disabled={submitting}
+          className="bg-brand text-brand-fg hover:bg-brand/90"
+        >
+          {submitting ? t("kycSubmitting") : t("kycSubmit")}
+        </Button>
+        <p className="text-[11px] text-fg-subtle">
+          {t("kycStripeNote")}
+        </p>
+      </div>
     </form>
   );
 }

@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/hooks/use-session";
+import { ConnectedAccounts } from "@/components/dashboard/connected-accounts";
 import { SettingsTabs } from "@/components/dashboard/settings-tabs";
 
 const BIO_MAX = 240;
@@ -153,6 +154,8 @@ export default function SettingsProfilePage() {
             </div>
           </div>
         </section>
+
+        <ConnectedAccounts />
 
         <section className="space-y-4 rounded-xl border border-border-soft bg-bg-surface p-6">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-fg-subtle">

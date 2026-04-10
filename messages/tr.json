@@ -470,6 +470,20 @@
         "saved": "Profil kaydedildi.",
         "avatarPreviewHint": "Ön izleme — kaydetmek için uygulayın"
       },
+      "connections": {
+        "title": "Bağlı hesaplar",
+        "description": "Kimlik doğrulama ve bakımcı talepleri gibi özellikler için harici hesapları bağlayın.",
+        "email": "E-posta",
+        "connect": "Bağla",
+        "disconnect": "Bağlantıyı kes",
+        "connected": "{provider} başarıyla bağlandı.",
+        "disconnected": "{provider} bağlantısı kesildi.",
+        "unverified": "Doğrulanmadı",
+        "resendVerification": "Doğrulama e-postası gönder",
+        "sending": "Gönderiliyor…",
+        "verificationSent": "Doğrulama e-postası gönderildi. Gelen kutunuzu kontrol edin.",
+        "githubNote": "Açık kaynak listelemeleri talep etmek ve depo sahipliğini doğrulamak için GitHub'ı bağlayın."
+      },
       "seller": {
         "title": "Satıcı durumu",
         "stage1Title": "Kilitli — ücretsiz öğeler yayınlamaya devam edin",
@@ -494,8 +508,10 @@
         "kycPostal": "Posta kodu",
         "kycBank": "Banka hesabı (IBAN veya routing+account)",
         "kycReg": "İşletme kayıt numarası",
-        "kycSubmit": "Doğrulama için gönder",
-        "kycSubmitted": "Gönderildi. Sizinle iletişime geçeceğiz.",
+        "kycSubmit": "Gönder ve Stripe'a bağlan",
+        "kycSubmitting": "Gönderiliyor…",
+        "kycSubmitted": "Gönderildi. Doğrulamayı tamamlamak için Stripe Connect'e yönlendirileceksiniz.",
+        "kycStripeNote": "Gönderdikten sonra kimliğinizi doğrulamak ve ödemeleri ayarlamak için Stripe Connect Express'e yönlendirileceksiniz.",
         "stage1StepLabel": "Yayınla",
         "stage2StepLabel": "KYC",
         "stage3StepLabel": "İnceleme",

@@ -470,6 +470,20 @@
         "saved": "Profile saved.",
         "avatarPreviewHint": "Preview — save to apply"
       },
+      "connections": {
+        "title": "Connected accounts",
+        "description": "Link external accounts for authentication and features like maintainer claims.",
+        "email": "Email",
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "connected": "{provider} connected successfully.",
+        "disconnected": "{provider} disconnected.",
+        "unverified": "Not verified",
+        "resendVerification": "Resend verification",
+        "sending": "Sending…",
+        "verificationSent": "Verification email sent. Check your inbox.",
+        "githubNote": "Connect GitHub to claim open-source listings and verify repository ownership."
+      },
       "seller": {
         "title": "Seller status",
         "stage1Title": "Locked — keep publishing free items",
@@ -494,8 +508,10 @@
         "kycPostal": "Postal code",
         "kycBank": "Bank account (IBAN or routing+account)",
         "kycReg": "Business registration number",
-        "kycSubmit": "Submit for verification",
-        "kycSubmitted": "Submitted. We'll be in touch.",
+        "kycSubmit": "Submit and connect Stripe",
+        "kycSubmitting": "Submitting…",
+        "kycSubmitted": "Submitted. You'll be redirected to Stripe Connect to complete verification.",
+        "kycStripeNote": "After submitting, you'll be redirected to Stripe Connect Express to verify your identity and set up payouts. Stripe handles compliance for your region.",
         "stage1StepLabel": "Publish",
         "stage2StepLabel": "KYC",
         "stage3StepLabel": "Review",
