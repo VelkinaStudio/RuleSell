@@ -134,3 +134,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes hero-gradient-move {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4%) scale(1.04);
+  }
+}
+
+.animate-hero-gradient {
+  animation: hero-gradient-move 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-gradient {
+    animation: none;
+  }
+}
