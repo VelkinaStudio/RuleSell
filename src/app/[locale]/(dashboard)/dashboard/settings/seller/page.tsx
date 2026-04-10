@@ -170,31 +170,64 @@ function Card({
 }
 
 function StageIndicator({ stage }: { stage: Stage }) {
-  const stages = [1, 2, 3, 4];
+  const tSeller = useTranslations("dashboard.settings.seller");
+  const stageLabels = [
+    tSeller("stage1StepLabel"),
+    tSeller("stage2StepLabel"),
+    tSeller("stage3StepLabel"),
+    tSeller("stage4StepLabel"),
+  ] as const;
+
   return (
     <ol
-      className="flex items-center gap-2"
+      className="flex w-full items-center"
       aria-label={`Stage ${stage} of 4`}
     >
-      {stages.map((s) => {
-        const reached = s <= stage;
+      {([1, 2, 3, 4] as const).map((s) => {
+        const completed = s < stage;
+        const current = s === stage;
+
         return (
-          <li key={s} className="flex flex-1 items-center gap-2">
-            <span
-              className={cn(
-                "flex h-6 w-6 items-center justify-center rounded-full border text-[11px] font-semibold",
-                reached
-                  ? "border-brand bg-brand text-brand-fg"
-                  : "border-border-strong bg-bg-surface text-fg-subtle",
-              )}
-            >
-              {s}
-            </span>
+          <li key={s} className="flex flex-1 items-center">
+            {/* Circle + label */}
+            <div className="flex flex-col items-center gap-1.5">
+              <span
+                className={cn(
+                  "flex h-8 w-8 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors",
+                  completed &&
+                    "border-emerald-500 bg-emerald-500 text-white",
+                  current &&
+                    "border-brand bg-brand text-brand-fg shadow-[0_0_0_3px_hsl(var(--brand)/0.2)]",
+                  !completed &&
+                    !current &&
+                    "border-border-strong bg-bg-surface text-fg-subtle",
+                )}
+                aria-current={current ? "step" : undefined}
+              >
+                {completed ? (
+                  <CheckCircle2 className="h-4 w-4 stroke-[2.5]" />
+                ) : (
+                  s
+                )}
+              </span>
+              <span
+                className={cn(
+                  "hidden text-[10px] font-medium sm:block",
+                  completed && "text-emerald-400",
+                  current && "text-brand",
+                  !completed && !current && "text-fg-subtle",
+                )}
+              >
+                {stageLabels[s - 1]}
+              </span>
+            </div>
+
+            {/* Connector line (between circles) */}
             {s < 4 && (
               <span
                 className={cn(
-                  "h-px flex-1",
-                  reached ? "bg-brand" : "bg-border-soft",
+                  "mb-5 h-0.5 flex-1",
+                  s < stage ? "bg-emerald-500" : "bg-border-soft",
                 )}
               />
             )}

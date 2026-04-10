@@ -286,27 +286,35 @@
       "statusPending": "Beklemede",
       "statusPaid": "Ödendi",
       "statusFailed": "Başarısız",
+      "statusProcessing": "İşleniyor",
       "lockedTitle": "Kazançların kilidini açmak için Satıcı olun",
       "lockedDescription": "Kazançlar 50 doğrulanmış kurulum ve Tüccar KYC doğrulamasından sonra açılır. Ücretsiz Geliştiriciler KYC'yi tamamen atlar.",
-      "lockedCta": "KYC'yi başlat"
+      "lockedCta": "KYC'yi başlat",
+      "verificationStepsTitle": "Satıcı doğrulama adımları",
+      "verificationStep1": "50 doğrulanmış kurulum",
+      "verificationStep2": "Tüccar KYC'yi tamamla",
+      "verificationStep3": "Stripe ödemesini bağla"
     },
     "purchases": {
       "title": "Satın alımlar",
       "subtitle": "Satın aldığınız her şey, kuruluma hazır.",
       "openInstall": "Kurulumu aç",
       "purchasedOn": "{date} tarihinde satın alındı",
+      "installed": "Kuruldu",
+      "notInstalled": "Kurulmadı",
       "empty": {
         "title": "Henüz bir şey yok",
         "description": "Ödemeye değer araçlar bulmak için ücretli öğelere göz atın.",
-        "cta": "Ücretlileri keşfet"
+        "cta": "Pazara göz at"
       }
     },
     "saved": {
       "title": "Kaydedilenler",
       "subtitle": "Pazardaki yer imleriniz.",
       "remove": "Kaldır",
+      "savedOn": "{date} tarihinde kaydedildi",
       "empty": {
-        "title": "Gezinirken öğeleri yer imlerine ekleyin",
+        "title": "Gezinirken öğeleri kaydedin",
         "description": "Pazarda yer imine eklediğiniz her şey burada birikecek.",
         "cta": "Pazara göz at"
       }
@@ -317,10 +325,13 @@
       "unfollow": "Takipten çıkar",
       "latest": "En son:",
       "noLatest": "Henüz herkese açık öğe yok",
+      "publishedThisWeek": "Bu hafta {count} öğe yayınladı",
+      "publishedThisWeekPlural": "Bu hafta {count} öğe yayınladı",
+      "lastActive": "{ago} önce aktifti",
       "empty": {
         "title": "Yeni yayınlar için üreticileri takip edin",
         "description": "Üreticiler yeni kural seti, MCP veya beceri yayınladıklarında burada ilk siz görürsünüz.",
-        "cta": "Üreticileri keşfet"
+        "cta": "Üreticileri takip et"
       }
     },
     "reviews": {
@@ -329,9 +340,10 @@
       "edit": "Düzenle",
       "delete": "Sil",
       "verifiedOn": "{env} üzerinde doğrulanmış kurulum",
+      "viewItem": "Öğeyi görüntüle",
       "empty": {
         "title": "Henüz yorum yok",
-        "description": "Yalnızca Sertifikalı Geliştiriciler doğrulanmış kurulum yorumları yazabilir. 200 itibara ulaşın, üç sertifikalı geliştirici tarafından önerilin veya personel onayı alın.",
+        "description": "Varlıkları kurun ve kullanın, ardından deneyiminizi paylaşmak için geri dönün.",
         "cta": "Kural setlerine göz at"
       }
     },
@@ -374,7 +386,8 @@
         "emailMentions": "Bahsetmeler ve yanıtlar",
         "emailUpdates": "RuleSell'den ürün güncellemeleri",
         "save": "Değişiklikleri kaydet",
-        "saved": "Profil kaydedildi."
+        "saved": "Profil kaydedildi.",
+        "avatarPreviewHint": "Ön izleme — kaydetmek için uygulayın"
       },
       "seller": {
         "title": "Satıcı durumu",
@@ -401,7 +414,13 @@
         "kycBank": "Banka hesabı (IBAN veya routing+account)",
         "kycReg": "İşletme kayıt numarası",
         "kycSubmit": "Doğrulama için gönder",
-        "kycSubmitted": "Gönderildi. Sizinle iletişime geçeceğiz."
+        "kycSubmitted": "Gönderildi. Sizinle iletişime geçeceğiz.",
+        "stage1StepLabel": "Yayınla",
+        "stage2StepLabel": "KYC",
+        "stage3StepLabel": "İnceleme",
+        "stage4StepLabel": "Doğrulandı",
+        "kycErrorRequired": "Bu alan zorunludur",
+        "kycErrorCountryFormat": "2 harfli ISO ülke kodu girin (örn. DE, US, TR)"
       },
       "privacy": {
         "title": "Gizlilik",
@@ -419,7 +438,16 @@
         "gpcTitle": "Global Privacy Control",
         "gpcHonored": "Algılandı ve uygulandı",
         "gpcNotDetected": "Algılanmadı — otomatik devre dışı bırakmak için tarayıcınızda etkinleştirin",
-        "savedToast": "Gizlilik tercihleri kaydedildi."
+        "savedToast": "Gizlilik tercihleri kaydedildi.",
+        "exportTitle": "Verilerinizi dışa aktarın",
+        "exportDescription": "Profiliniz, aktiviteleriniz, satın alımlarınız ve daha fazlası dahil olmak üzere hakkınızda tuttuğumuz her şeyin bir kopyasını indirin. GDPR Madde 20 kapsamında veri taşınabilirliği hakkına sahipsiniz.",
+        "correctTitle": "Verilerinizi düzeltin",
+        "correctDescription": "Herhangi bir bilgi yanlışsa adınızı, e-postanızı veya ülkenizi güncelleyin. GDPR Madde 16 kapsamında düzeltme hakkına sahipsiniz.",
+        "deleteTitle": "Hesabınızı silin",
+        "deleteDescription": "Hesabınızı ve ilgili tüm verileri kalıcı olarak silin. Bu işlem geri alınamaz. GDPR Madde 17 kapsamında silinme hakkına sahipsiniz.",
+        "consentTitle": "Çerez izni",
+        "consentDescription": "İzin verdiğiniz isteğe bağlı takip kategorilerini seçin. Temel çerezler her zaman açıktır ve devre dışı bırakılamaz.",
+        "consentNotSet": "Henüz bir tercih belirlemediniz. Sonraki ziyaretinizde çerez banner görünecektir."
       },
       "billing": {
         "title": "Faturalandırma",
@@ -434,7 +462,21 @@
         },
         "proCta": "Lansmanda haber ver",
         "proSubscribed": "Pro açıldığında size e-posta göndereceğiz.",
-        "comingSoon": "Yakında — lansmanda ana pazara odaklanıyoruz."
+        "comingSoon": "Yakında — lansmanda ana pazara odaklanıyoruz.",
+        "planFree": "Ücretsiz",
+        "planFreePrice": "$0",
+        "planPro": "Pro",
+        "currentPlan": "Mevcut planınız",
+        "notified": "Bildirim alındı",
+        "featureBrowse": "Pazarı keşfet",
+        "featureInstallFree": "Ücretsiz varlıkları yükle",
+        "featureSave": "Koleksiyonlara kaydet",
+        "featureFollow": "Yaratıcıları takip et",
+        "featureOneListing": "1 listeleme",
+        "featureUnlimitedListing": "Sınırsız listeleme",
+        "featurePrioritySupport": "Öncelikli destek",
+        "featureAnalytics": "Satıcı analitiği",
+        "featureEarlyAccess": "Erken erişim"
       }
     }
   },

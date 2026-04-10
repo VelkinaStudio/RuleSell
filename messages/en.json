@@ -212,7 +212,13 @@
       "quickActions": "Quick actions",
       "quickActionPublish": "Publish a ruleset",
       "quickActionEditProfile": "Edit profile",
-      "quickActionViewMarket": "View marketplace"
+      "quickActionViewMarket": "View marketplace",
+      "onboardTitle": "Welcome to your dashboard",
+      "onboardSubtitle": "You haven't published anything yet. Here's how to get started.",
+      "onboardBrowse": "Browse marketplace",
+      "onboardSave": "Save items",
+      "onboardProfile": "Set up profile",
+      "onboardPublish": "Publish first asset"
     },
     "rulesets": {
       "title": "Your rulesets",
@@ -286,27 +292,35 @@
       "statusPending": "Pending",
       "statusPaid": "Paid",
       "statusFailed": "Failed",
+      "statusProcessing": "Processing",
       "lockedTitle": "Become a Seller to unlock earnings",
       "lockedDescription": "Earnings open up after 50 verified installs and Trader KYC verification. Free Builders skip KYC entirely and can keep publishing free items.",
-      "lockedCta": "Start KYC"
+      "lockedCta": "Start KYC",
+      "verificationStepsTitle": "Seller verification steps",
+      "verificationStep1": "50 verified installs",
+      "verificationStep2": "Complete Trader KYC",
+      "verificationStep3": "Connect Stripe payout"
     },
     "purchases": {
       "title": "Purchases",
       "subtitle": "Everything you have bought, ready to install.",
       "openInstall": "Open install",
       "purchasedOn": "Purchased {date}",
+      "installed": "Installed",
+      "notInstalled": "Not installed",
       "empty": {
         "title": "Nothing here yet",
         "description": "Browse paid items to find tools worth paying for.",
-        "cta": "Browse paid"
+        "cta": "Browse the marketplace"
       }
     },
     "saved": {
       "title": "Saved",
       "subtitle": "Bookmarks across the marketplace.",
       "remove": "Remove",
+      "savedOn": "Saved {date}",
       "empty": {
-        "title": "Bookmark items as you browse",
+        "title": "Save items while browsing",
         "description": "Anything you bookmark on the marketplace will land here so you can come back to it later.",
         "cta": "Browse marketplace"
       }
@@ -317,10 +331,13 @@
       "unfollow": "Unfollow",
       "latest": "Latest:",
       "noLatest": "No public items yet",
+      "publishedThisWeek": "Published {count} item this week",
+      "publishedThisWeekPlural": "Published {count} items this week",
+      "lastActive": "Last active {ago}",
       "empty": {
         "title": "Follow creators to see their releases",
         "description": "When creators ship new rulesets, MCPs, or skills, you'll see them here first.",
-        "cta": "Find creators"
+        "cta": "Follow creators"
       }
     },
     "reviews": {
@@ -329,9 +346,10 @@
       "edit": "Edit",
       "delete": "Delete",
       "verifiedOn": "Verified install on {env}",
+      "viewItem": "View item",
       "empty": {
         "title": "No reviews yet",
-        "description": "Only Certified Devs can write verified-install reviews. Become certified by reaching 200 reputation, getting peer-vouched, or applying for staff approval.",
+        "description": "Install and use assets, then come back to share your experience.",
         "cta": "Browse rulesets"
       }
     },
@@ -374,7 +392,8 @@
         "emailMentions": "Mentions and replies",
         "emailUpdates": "Product updates from RuleSell",
         "save": "Save changes",
-        "saved": "Profile saved."
+        "saved": "Profile saved.",
+        "avatarPreviewHint": "Preview — save to apply"
       },
       "seller": {
         "title": "Seller status",
@@ -401,7 +420,13 @@
         "kycBank": "Bank account (IBAN or routing+account)",
         "kycReg": "Business registration number",
         "kycSubmit": "Submit for verification",
-        "kycSubmitted": "Submitted. We'll be in touch."
+        "kycSubmitted": "Submitted. We'll be in touch.",
+        "stage1StepLabel": "Publish",
+        "stage2StepLabel": "KYC",
+        "stage3StepLabel": "Review",
+        "stage4StepLabel": "Verified",
+        "kycErrorRequired": "This field is required",
+        "kycErrorCountryFormat": "Enter a 2-letter ISO country code (e.g. DE, US, TR)"
       },
       "privacy": {
         "title": "Privacy",
@@ -419,7 +444,16 @@
         "gpcTitle": "Global Privacy Control",
         "gpcHonored": "Detected and honored",
         "gpcNotDetected": "Not detected — enable in your browser to opt out automatically",
-        "savedToast": "Privacy preferences saved."
+        "savedToast": "Privacy preferences saved.",
+        "exportTitle": "Export your data",
+        "exportDescription": "Download a copy of everything we hold about you — profile, activity, purchases, and more. Under GDPR Art. 20 you have the right to data portability.",
+        "correctTitle": "Correct your data",
+        "correctDescription": "Update your name, email, or country if any details are inaccurate. Under GDPR Art. 16 you have the right to rectification.",
+        "deleteTitle": "Delete your account",
+        "deleteDescription": "Permanently delete your account and all associated data. This action cannot be undone. Under GDPR Art. 17 you have the right to erasure.",
+        "consentTitle": "Cookie consent",
+        "consentDescription": "Choose which optional tracking categories you allow. Essential cookies are always on and cannot be disabled.",
+        "consentNotSet": "You haven't set a preference yet. The cookie banner will appear on your next visit."
       },
       "billing": {
         "title": "Billing",
@@ -434,7 +468,21 @@
         },
         "proCta": "Notify me at launch",
         "proSubscribed": "We'll email you when Pro opens up.",
-        "comingSoon": "Coming soon — we're focused on the core marketplace at launch."
+        "comingSoon": "Coming soon — we're focused on the core marketplace at launch.",
+        "planFree": "Free",
+        "planFreePrice": "$0",
+        "planPro": "Pro",
+        "currentPlan": "Your plan",
+        "notified": "Notified",
+        "featureBrowse": "Browse marketplace",
+        "featureInstallFree": "Install free assets",
+        "featureSave": "Save to collections",
+        "featureFollow": "Follow creators",
+        "featureOneListing": "1 listing",
+        "featureUnlimitedListing": "Unlimited listings",
+        "featurePrioritySupport": "Priority support",
+        "featureAnalytics": "Seller analytics",
+        "featureEarlyAccess": "Early access drops"
       }
     }
   },
@@ -446,6 +494,20 @@
     "next": "Next",
     "submitForReview": "Submit for review",
     "stepLabel": "Step {current} of {total}",
+    "stepHint1": "Choose the type, category, and platform for your asset.",
+    "stepHint2": "Write a clear title and description — this is what buyers see first.",
+    "stepHint3": "Add at least one variant with install content and mark one as primary.",
+    "stepHint4": "Pick a license and confirm the compatibility matrix for your asset.",
+    "stepHint5": "Set pricing and review your asset before submitting. Free items go live faster.",
+    "previewLabel": "Listing preview",
+    "successTitle": "Asset submitted!",
+    "successSubtitle": "Your asset has been submitted for review. Our team will check it within 72 hours.",
+    "successViewListing": "View listing",
+    "successManageRulesets": "Manage rulesets",
+    "successNextSteps": "What happens next",
+    "successNext1": "Our team reviews your asset for quality and policy compliance.",
+    "successNext2": "You'll get an email when it's approved or if changes are needed.",
+    "successNext3": "Once live, share the link to start getting installs.",
     "steps": {
       "type": "Type & Category",
       "content": "Content",

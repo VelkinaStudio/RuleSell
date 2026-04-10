@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/hooks/use-session";
 import { SettingsTabs } from "@/components/dashboard/settings-tabs";
+
+const BIO_MAX = 240;
 
 export default function SettingsProfilePage() {
   const t = useTranslations("dashboard.settings");
@@ -22,9 +24,18 @@ export default function SettingsProfilePage() {
 
   const [name, setName] = useState(user?.name ?? "");
   const [bio, setBio] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [emailDigest, setEmailDigest] = useState(true);
   const [emailMentions, setEmailMentions] = useState(true);
   const [emailUpdates, setEmailUpdates] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setAvatarPreview(url);
+  };
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +58,9 @@ export default function SettingsProfilePage() {
     .slice(0, 2)
     .join("");
 
+  const bioLength = bio.length;
+  const bioNearLimit = bioLength >= BIO_MAX * 0.9;
+
   return (
     <div className="space-y-6">
       <header>
@@ -62,13 +76,36 @@ export default function SettingsProfilePage() {
         <section className="space-y-4 rounded-xl border border-border-soft bg-bg-surface p-6">
           <div className="flex flex-wrap items-center gap-4">
             <Avatar className="h-16 w-16 border border-border-soft">
+              {avatarPreview && (
+                <AvatarImage src={avatarPreview} alt={tProfile("avatar")} />
+              )}
               <AvatarFallback className="bg-bg-raised text-base font-semibold text-fg">
                 {initials}
               </AvatarFallback>
             </Avatar>
-            <Button type="button" size="sm" variant="outline">
-              {tProfile("avatarUpload")}
-            </Button>
+            <div className="flex flex-col gap-1">
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                {tProfile("avatarUpload")}
+              </Button>
+              {avatarPreview && (
+                <p className="text-[11px] text-brand">
+                  {tProfile("avatarPreviewHint")}
+                </p>
+              )}
+            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="sr-only"
+              aria-label={tProfile("avatarUpload")}
+              onChange={handleAvatarChange}
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -101,11 +138,19 @@ export default function SettingsProfilePage() {
               id="bio"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              maxLength={240}
+              maxLength={BIO_MAX}
               rows={3}
               placeholder=""
             />
-            <p className="text-[11px] text-fg-subtle">{tProfile("bioHint")}</p>
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] text-fg-subtle">{tProfile("bioHint")}</p>
+              <p
+                className={`text-[11px] tabular-nums ${bioNearLimit ? "text-amber-400" : "text-fg-subtle"}`}
+                aria-live="polite"
+              >
+                {bioLength}/{BIO_MAX}
+              </p>
+            </div>
           </div>
         </section>
 
