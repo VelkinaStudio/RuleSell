@@ -6,38 +6,26 @@
 
 ---
 
-## Current State: Comprehensive Overhaul In Progress
+## Current State: Comprehensive Frontend Complete
 
-### What's Done (2026-04-11)
+### What shipped (2026-04-11 overhaul)
 
-**Phase 0: Cleanup** — COMPLETE
-- Deleted: `.windsurf/`, `.remember/`, `tmp/`, stale 2026-03-28 docs, `BREADCRUMB.md`, `AGENTS.md`
-- Created proper `CLAUDE.md` with project rules
-- Updated `.gitignore` for stale tool artifacts
+**142 files changed, +11,900 lines. Zero build errors. 286 static pages.**
 
-**Phase 1: Branding** — COMPLETE
-- Logo: `public/logos/rulesell-mark.svg` (quality gauge mark), `rulesell-full.svg` (wordmark), `favicon.svg`
-- 15 tool SVG icons in `public/icons/tools/` (claude-code, cursor, windsurf, vscode, cline, zed, codex, chatgpt, gemini-cli, n8n, make, obsidian, aider, copilot, continue)
-- New components: `src/components/ui/tool-icon.tsx`, `src/components/ui/quality-grid.tsx`
-- Header updated with logo mark
-- Favicon linked in layout
+| Feature | Status | Files |
+|---------|--------|-------|
+| **Branding** | Complete | Logo (gauge mark), 15 tool SVGs, favicon, ToolIcon + QualityGrid components |
+| **Landing page** | Redesigned | Hero terminal demo, tool logo bar, honest copy, quality grid background |
+| **Affiliate program** | Complete (mock) | 10 components, 5-tab dashboard, tiered commissions, link generator |
+| **Community hub** | Complete (mock) | 6-tab explore (Feed/Discussions/Polls/Q&A/Showcases/Requests), 14 components |
+| **GitHub integration** | Complete (mock) | Repo picker, maintainer claims, sync indicator, publish wizard integration |
+| **Admin dashboard** | Complete (mock) | 8 pages (overview/users/moderation/reports/revenue/scanning/flags), role-gated |
+| **Mobile** | Bottom nav, responsive layouts | MobileBottomNav, 44px touch targets, 375px tested |
+| **KYC/Seller onboarding** | Enhanced | Region-aware compliance (EU/UK/US), Stripe Connect redirect |
+| **Connected accounts** | New | GitHub/Google/email with verification status in Settings |
+| **Assets** | Complete | 9 category illustrations, 4 empty state SVGs, generated avatar component |
 
-### What's Next
-
-**Phase 2: Landing Page Redesign** — NOT STARTED
-- Hero terminal animation, tool logo bar, honest copy, mobile-first
-- See plan at `~/.claude/plans/abstract-churning-crayon.md`
-
-**Phases 3-6: PARALLEL BUILD** — NOT STARTED
-- Phase 3: Affiliate Program (full dashboard, link generator, tiers, mock data)
-- Phase 4: Community Hub (polls, Q&A, request board, enhanced discussions)
-- Phase 5: GitHub Integration UI (repo picker, maintainer claims, sync)
-- Phase 6: Admin Dashboard (8 pages, moderation, reports, revenue, flags)
-
-**Phase 7: Visual Polish & Mobile** — NOT STARTED
-**Phase 8: Assets & Backend Handoff** — NOT STARTED
-
-### How to Run
+### How to run
 
 ```bash
 cd D:/RulesetMarketplace-master
@@ -46,12 +34,54 @@ npx prisma generate
 npm run dev   # localhost:3000
 ```
 
-Note: Browse/dashboard pages need a real PostgreSQL database connected. Landing page, about, trust, affiliates, explore, legal pages work without DB.
+Note: Pages that fetch from the real API (browse, dashboard) need PostgreSQL connected. Landing, about, trust, affiliates (public), explore, legal pages work without DB.
 
-### Backend — DO NOT TOUCH
-Real backend exists at `src/app/api/`, `prisma/schema.prisma`, `src/lib/auth.ts`. All new frontend features use mock data via `src/constants/mock-*.ts`. Backend handoff docs will be at `docs/backend-handoff/` when Phases 3-6 complete.
+### Backend handoff
 
-### Plan Reference
-Full implementation plan: `~/.claude/plans/abstract-churning-crayon.md`
-Design spec: `docs/superpowers/specs/2026-04-08-rulesell-rebuild-design.md`
-Research: `docs/research/2026-04-08-SYNTHESIS.md`
+**All docs at `docs/backend-handoff/`:**
+
+| Doc | What Baha needs to do |
+|-----|----------------------|
+| `stripe-migration.md` | Replace LemonSqueezy with Stripe + Stripe Connect Express for UK company |
+| `affiliates.md` | New API endpoints + Prisma models for affiliate tracking |
+| `community.md` | Extend discussions, add polls/Q&A/feature requests |
+| `github.md` | GitHub OAuth + repo API + maintainer claims |
+| `admin.md` | Extend admin API for revenue, scanning, feature flags |
+| `data-contracts.md` | Complete TypeScript interface → API endpoint mapping |
+| `README.md` | Index of all handoff docs |
+
+### What's left
+
+**Frontend (quick):**
+- Visual polish pass on new pages (take screenshots, critique, fix)
+- Sitemap.xml generation
+- llms.txt at domain root
+- Dead i18n key cleanup (old socialProof numbers)
+
+**Backend (Baha):**
+- Stripe migration (biggest item — payments, payouts, Connect)
+- Real search engine integration
+- Email templates (Resend configured, templates needed)
+- Wire mock features to real APIs (affiliates, community, GitHub, admin)
+
+**Business (Nalba):**
+- UK company registration
+- Stripe account setup
+- Domain purchase + DNS
+- Content seeding (first marketplace products)
+- Hosting setup (Vercel or Railway)
+
+### Architecture
+
+- **Stack:** Next.js 16.2.2, React 19, TypeScript 5, Tailwind v4, shadcn/ui, Framer Motion 12
+- **Backend:** Prisma 7 + PostgreSQL, NextAuth v5, LemonSqueezy → Stripe (migration pending)
+- **i18n:** next-intl (EN + TR, DE/ES/JA scaffold)
+- **Design:** Dark-mode first, brand amber #FFD166, quality gauge mark logo
+- **Data layer:** Mock data in `src/constants/mock-*.ts` → SWR hooks → components
+
+### Key files
+
+- `CLAUDE.md` — project rules for AI agents
+- `src/types/index.ts` — 664 lines, all data types
+- `src/styles/tokens.css` — design tokens
+- `docs/backend-handoff/` — everything Baha needs
