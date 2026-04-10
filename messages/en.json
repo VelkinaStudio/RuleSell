@@ -933,8 +933,8 @@
   "landing": {
     "hero": {
       "eyebrow": "The verified marketplace",
-      "title": "Stop writing rulesets from scratch.",
-      "subtitle": "MCP servers, skills, and rulesets. Measured for quality, scanned for safety.",
+      "title": "Ship better AI, faster.",
+      "subtitle": "Quality-scored rules, MCPs, and tools — verified, installable in one command.",
       "searchPlaceholder": "Search verified assets…",
       "searchSubmit": "Search"
     },
@@ -947,6 +947,72 @@
       "newThisWeekDesc": "Fresh drops in the last 14 days",
       "collections": "Curated collections",
       "collectionsDesc": "Themed bundles for the way you build"
+    },
+    "socialProof": {
+      "assets": "2,400+ assets",
+      "assetsLabel": "verified assets",
+      "installs": "180K+ installs",
+      "installsLabel": "total installs",
+      "creators": "850+ creators",
+      "creatorsLabel": "verified creators",
+      "quality": "82 avg score",
+      "qualityLabel": "average quality score"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "step1Title": "Browse and search",
+      "step1Desc": "Find rules, MCPs, skills, and more for your environment.",
+      "step2Title": "Check quality scores",
+      "step2Desc": "Every asset is measured on token efficiency, security, and reliability.",
+      "step3Title": "Install with one command",
+      "step3Desc": "Copy the install command. Works with Cursor, Windsurf, Claude, and more."
+    },
+    "qualityShowcase": {
+      "title": "Quality is measured, not voted.",
+      "subtitle": "Five automated signals replace star ratings and download counts.",
+      "tokenEfficiency": "Token efficiency",
+      "tokenEfficiencyDesc": "Measures actual token consumption, not self-reported estimates.",
+      "installSuccess": "Install success rate",
+      "installSuccessDesc": "Tracked across real CLI installations.",
+      "schemaCleanliness": "Schema cleanliness",
+      "schemaCleanlinessDesc": "JSON and YAML validation against published standards.",
+      "freshness": "Freshness",
+      "freshnessDesc": "Penalizes stale assets. Rewards active maintenance.",
+      "securityScan": "Security scan",
+      "securityScanDesc": "VirusTotal, Semgrep, and sandboxed execution.",
+      "exampleTitle": "Example: Senior Cursor Rules",
+      "exampleScore": "87",
+      "exampleGrade": "A"
+    },
+    "creatorEconomics": {
+      "title": "Creators keep 85%.",
+      "body": "No other AI asset marketplace pays creators. We take 15% — that's it. No listing fees, no featured-placement taxes. Payouts via Stripe Connect, monthly.",
+      "cta": "Start selling",
+      "saleLabel": "On a $19 sale",
+      "creatorShare": "$16.15",
+      "creatorLabel": "to creator",
+      "platformShare": "$2.85",
+      "platformLabel": "to platform"
+    },
+    "trustStrip": {
+      "title": "Built on verified trust",
+      "virusTotalTitle": "VirusTotal scanning",
+      "virusTotalDesc": "Every upload scanned against 70+ antivirus engines.",
+      "semgrepTitle": "Semgrep analysis",
+      "semgrepDesc": "Static analysis catches security anti-patterns before publishing.",
+      "verifiedReviewsTitle": "Verified-install reviews",
+      "verifiedReviewsDesc": "Only users who installed an asset via CLI can leave reviews.",
+      "learnMore": "Learn more about our trust model"
+    },
+    "communityPreview": {
+      "title": "Community activity",
+      "cta": "Join the community",
+      "emptyState": "No recent activity yet."
+    },
+    "finalCta": {
+      "title": "Ready to upgrade your workflow?",
+      "subtitle": "Browse quality-scored assets built by developers, for developers.",
+      "cta": "Browse marketplace"
     },
     "errors": {
       "title": "We hit a snag loading the marketplace.",

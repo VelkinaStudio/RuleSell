@@ -591,8 +591,8 @@
   "landing": {
     "hero": {
       "eyebrow": "Doğrulanmış pazaryeri",
-      "title": "Kuralları sıfırdan yazmayı bırak.",
-      "subtitle": "MCP sunucuları, beceriler ve kurallar. Kalite ölçülür, güvenlik için taranır.",
+      "title": "Daha iyi yapay zeka, daha hızlı.",
+      "subtitle": "Kalite puanlı kurallar, MCP'ler ve araçlar — doğrulanmış, tek komutla kurulur.",
       "searchPlaceholder": "Doğrulanmış varlıkları ara…",
       "searchSubmit": "Ara"
     },
@@ -605,6 +605,72 @@
       "newThisWeekDesc": "Son 14 gündeki yeni eklemeler",
       "collections": "Seçili koleksiyonlar",
       "collectionsDesc": "Çalışma şekline uygun temalı paketler"
+    },
+    "socialProof": {
+      "assets": "2.400+ varlık",
+      "assetsLabel": "doğrulanmış varlık",
+      "installs": "180B+ kurulum",
+      "installsLabel": "toplam kurulum",
+      "creators": "850+ üretici",
+      "creatorsLabel": "doğrulanmış üretici",
+      "quality": "82 ort. puan",
+      "qualityLabel": "ortalama kalite puanı"
+    },
+    "howItWorks": {
+      "title": "Nasıl çalışır",
+      "step1Title": "Keşfet ve ara",
+      "step1Desc": "Ortamına uygun kurallar, MCP'ler, beceriler ve daha fazlasını bul.",
+      "step2Title": "Kalite puanlarını kontrol et",
+      "step2Desc": "Her varlık token verimliliği, güvenlik ve güvenilirlik üzerinden ölçülür.",
+      "step3Title": "Tek komutla kur",
+      "step3Desc": "Kurulum komutunu kopyala. Cursor, Windsurf, Claude ve daha fazlasıyla çalışır."
+    },
+    "qualityShowcase": {
+      "title": "Kalite ölçülür, oylanmaz.",
+      "subtitle": "Beş otomatik sinyal, yıldız puanları ve indirme sayılarının yerini alır.",
+      "tokenEfficiency": "Token verimliliği",
+      "tokenEfficiencyDesc": "Gerçek token tüketimini ölçer, beyan edilen tahminleri değil.",
+      "installSuccess": "Kurulum başarı oranı",
+      "installSuccessDesc": "Gerçek CLI kurulumları üzerinden takip edilir.",
+      "schemaCleanliness": "Şema temizliği",
+      "schemaCleanlinessDesc": "Yayınlanmış standartlara göre JSON ve YAML doğrulaması.",
+      "freshness": "Güncellik",
+      "freshnessDesc": "Eski varlıkları cezalandırır. Aktif bakımı ödüllendirir.",
+      "securityScan": "Güvenlik taraması",
+      "securityScanDesc": "VirusTotal, Semgrep ve korumalı alan çalıştırması.",
+      "exampleTitle": "Örnek: Senior Cursor Rules",
+      "exampleScore": "87",
+      "exampleGrade": "A"
+    },
+    "creatorEconomics": {
+      "title": "Üreticiler %85'ini alır.",
+      "body": "Başka hiçbir yapay zeka varlık pazaryeri üreticilere ödeme yapmaz. Biz %15 alıyoruz — hepsi bu. Listeleme ücreti yok, öne çıkarma vergisi yok. Ödemeler Stripe Connect ile aylık.",
+      "cta": "Satışa başla",
+      "saleLabel": "$19'luk bir satışta",
+      "creatorShare": "$16,15",
+      "creatorLabel": "üreticiye",
+      "platformShare": "$2,85",
+      "platformLabel": "platforma"
+    },
+    "trustStrip": {
+      "title": "Doğrulanmış güven üzerine inşa edildi",
+      "virusTotalTitle": "VirusTotal taraması",
+      "virusTotalDesc": "Her yükleme 70'ten fazla antivirüs motoruyla taranır.",
+      "semgrepTitle": "Semgrep analizi",
+      "semgrepDesc": "Statik analiz, yayınlanmadan önce güvenlik sorunlarını yakalar.",
+      "verifiedReviewsTitle": "Doğrulanmış kurulum yorumları",
+      "verifiedReviewsDesc": "Yalnızca CLI ile kurulum yapan kullanıcılar yorum bırakabilir.",
+      "learnMore": "Güven modelimiz hakkında daha fazla bilgi"
+    },
+    "communityPreview": {
+      "title": "Topluluk etkinliği",
+      "cta": "Topluluğa katıl",
+      "emptyState": "Henüz yeni bir etkinlik yok."
+    },
+    "finalCta": {
+      "title": "İş akışını yükseltmeye hazır mısın?",
+      "subtitle": "Geliştiriciler tarafından geliştiriciler için üretilmiş kalite puanlı varlıkları keşfet.",
+      "cta": "Pazaryerini keşfet"
     },
     "errors": {
       "title": "Pazaryerini yüklerken bir sorun yaşadık.",
