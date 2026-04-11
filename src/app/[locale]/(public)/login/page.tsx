@@ -5,14 +5,43 @@ import { Github } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { heroEntrance, heroChild } from "@/lib/motion/variants";
 import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginSkeleton />}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+function LoginSkeleton() {
+  return (
+    <div className="relative flex min-h-[70vh] items-center justify-center px-4 py-16">
+      <div className="w-full max-w-sm space-y-6">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-1 text-xl font-bold tracking-tight">
+            <span className="font-display text-brand">R</span>
+            <span className="font-display text-fg">uleSell</span>
+          </div>
+          <h1 className="mt-3 text-lg font-semibold text-fg">
+            Sign in to RuleSell
+          </h1>
+        </div>
+        <div className="space-y-2">
+          <div className="h-10 w-full animate-pulse rounded-lg bg-bg-surface" />
+          <div className="h-10 w-full animate-pulse rounded-lg bg-bg-surface" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LoginContent() {
   const t = useTranslations("auth");
   const reduce = useReducedMotion();
   const searchParams = useSearchParams();
