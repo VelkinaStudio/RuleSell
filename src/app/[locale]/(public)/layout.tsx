@@ -1,10 +1,23 @@
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { MobileBottomNav } from "@/components/shared/mobile-bottom-nav";
+import {
+  jsonLdScript,
+  makeOrganizationSchema,
+  makeWebsiteSchema,
+} from "@/lib/seo/json-ld";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(makeOrganizationSchema())}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(makeWebsiteSchema())}
+      />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand focus:px-3 focus:py-2 focus:text-brand-fg"

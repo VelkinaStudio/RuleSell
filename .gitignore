@@ -59,3 +59,7 @@ prisma/*.db
 next-env.d.ts
 
 /src/generated/prisma
+
+# Lighthouse reports (future — past reports at docs/notes/audit-*)
+docs/notes/audit-*/report.html
+docs/notes/audit-*/report.json
