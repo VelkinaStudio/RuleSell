@@ -28,16 +28,26 @@ export function UserMenu() {
 
   if (!data.user) {
     return (
-      <Button
-        asChild
-        size="sm"
-        className="bg-brand text-brand-fg hover:bg-brand/90 focus-visible:ring-brand"
-      >
-        <Link href="/login">
-          <LogIn className="mr-1.5 h-3.5 w-3.5" />
-          {t("signIn")}
-        </Link>
-      </Button>
+      <div className="flex items-center gap-1.5">
+        <Button
+          asChild
+          size="sm"
+          variant="ghost"
+          className="hidden text-fg-muted hover:text-fg sm:inline-flex"
+        >
+          <Link href="/login">
+            <LogIn className="mr-1.5 h-3.5 w-3.5" />
+            {t("signIn")}
+          </Link>
+        </Button>
+        <Button
+          asChild
+          size="sm"
+          className="bg-brand text-brand-fg hover:bg-brand/90 focus-visible:ring-brand"
+        >
+          <Link href="/signup">Sign up</Link>
+        </Button>
+      </div>
     );
   }
 

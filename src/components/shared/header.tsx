@@ -1,7 +1,6 @@
-import Image from "next/image";
-
 import { Link } from "@/i18n/navigation";
 
+import { Brand } from "./brand";
 import { NotificationBell } from "./notification-bell";
 import { SearchBar } from "./search-bar";
 import { UserMenu } from "./user-menu";
@@ -12,20 +11,10 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm font-semibold tracking-tight text-fg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg/20"
+          className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg/20"
+          aria-label="RuleSell home"
         >
-          <Image
-            src="/logos/rulesell-mark.svg"
-            alt=""
-            width={22}
-            height={22}
-            className="shrink-0"
-            aria-hidden
-          />
-          <span>
-            <span className="text-fg">Rule</span>
-            <span className="text-brand">Sell</span>
-          </span>
+          <Brand size="md" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

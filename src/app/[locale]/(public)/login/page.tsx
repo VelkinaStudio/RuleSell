@@ -3,10 +3,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Github } from "lucide-react";
 import { signIn } from "next-auth/react";
-import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
+import { Brand } from "@/components/shared/brand";
 import { Button } from "@/components/ui/button";
 import { heroEntrance, heroChild } from "@/lib/motion/variants";
 import { Link } from "@/i18n/navigation";
@@ -24,10 +24,7 @@ function LoginSkeleton() {
     <div className="relative flex min-h-[70vh] items-center justify-center px-4 py-16">
       <div className="w-full max-w-sm space-y-6">
         <div className="text-center">
-          <div className="inline-flex items-center gap-1 text-xl font-bold tracking-tight">
-            <span className="font-display text-brand">R</span>
-            <span className="font-display text-fg">uleSell</span>
-          </div>
+          <Brand size="lg" className="justify-center" />
           <h1 className="mt-3 text-lg font-semibold text-fg">
             Sign in to RuleSell
           </h1>
@@ -42,10 +39,12 @@ function LoginSkeleton() {
 }
 
 function LoginContent() {
-  const t = useTranslations("auth");
   const reduce = useReducedMotion();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/";
+  const registeredFlag = searchParams.get("registered");
+  const justRegistered = registeredFlag === "1" || registeredFlag === "noverify";
+  const registeredNoVerify = registeredFlag === "noverify";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -89,13 +88,17 @@ function LoginContent() {
       >
         {/* Logo */}
         <motion.div variants={heroChild} className="text-center">
-          <div className="inline-flex items-center gap-1 text-xl font-bold tracking-tight">
-            <span className="font-display text-brand">R</span>
-            <span className="font-display text-fg">uleSell</span>
-          </div>
+          <Brand size="lg" className="justify-center" />
           <h1 className="mt-3 text-lg font-semibold text-fg">
             Sign in to RuleSell
           </h1>
+          {justRegistered && (
+            <p className="mt-3 rounded-md border border-brand/40 bg-brand/5 px-3 py-2 text-xs text-fg">
+              {registeredNoVerify
+                ? "Account created. Sign in below to continue."
+                : "Account created. Check your email for the verification link, then sign in."}
+            </p>
+          )}
         </motion.div>
 
         {/* OAuth buttons */}

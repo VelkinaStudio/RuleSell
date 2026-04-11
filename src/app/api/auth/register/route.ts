@@ -35,13 +35,20 @@ export async function POST(req: Request) {
     const passwordHash = await bcrypt.hash(password, 12);
     const verifyToken = crypto.randomBytes(32).toString("hex");
 
+    // If email sending isn't configured we can't require verification —
+    // auto-verify so users can sign in. When Resend is configured,
+    // verification remains required.
+    const emailSendingConfigured = !!process.env.RESEND_API_KEY;
+    const emailVerified = emailSendingConfigured ? null : new Date();
+
     const user = await db.user.create({
       data: {
         email,
         passwordHash,
         name,
         username: username.toLowerCase(),
-        emailVerifyToken: verifyToken,
+        emailVerifyToken: emailSendingConfigured ? verifyToken : null,
+        emailVerified,
       },
       select: {
         id: true,
@@ -53,9 +60,11 @@ export async function POST(req: Request) {
       },
     });
 
-    await sendVerificationEmail(email, verifyToken);
+    if (emailSendingConfigured) {
+      await sendVerificationEmail(email, verifyToken);
+    }
 
-    return success(user, 201);
+    return success({ ...user, emailSent: emailSendingConfigured }, 201);
   } catch {
     return errors.internal();
   }
