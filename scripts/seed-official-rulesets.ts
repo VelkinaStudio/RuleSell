@@ -115,7 +115,7 @@ async function seedOne(listing: ListingFile, ownerId: string) {
         versions: {
           create: {
             version: "1.0.0",
-            content: listing.body,
+            fullContent: listing.body,
             changelog: "Initial Official release",
           },
         },
