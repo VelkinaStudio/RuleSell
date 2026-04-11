@@ -3,8 +3,10 @@
 **Last updated:** 2026-04-11 (late night, after autonomous run)
 **Repo:** https://github.com/VelkinaStudio/RuleSell
 **Local:** `D:/RulesetMarketplace-master/`
-**Live (Vercel — primary):** https://rulesell.vercel.app
-**Live (Railway — fallback):** https://rulesell-production.up.railway.app
+**Live (Vercel — primary, healthy):** https://rulesell.vercel.app
+**Railway service (gone — Postgres still healthy, app service missing):** https://rulesell-production.up.railway.app returns 404
+
+> ⚠ **Railway `RuleSell` service was deleted at some point during the session.** I did not delete it (all my Railway ops were read-only). Vercel is unaffected — it connects directly to Railway Postgres via the public proxy. See MORNING_BRIEF.md for details.
 
 ---
 

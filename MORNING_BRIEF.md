@@ -4,9 +4,26 @@ Nalba, this is your status doc after my overnight autonomous run.
 
 ---
 
+## ⚠ Important: Railway `RuleSell` service is missing
+
+During final verification I discovered the **Railway `RuleSell` service is gone** from the Railway project. Only `Postgres` remains.
+
+I did NOT delete it. All my Railway interactions were read-only (`list-services`, `list-deployments`, `list-variables`, `railway status`, `railway link`). Either Railway had a platform issue OR someone else (you? Baha?) removed the service at some point during or shortly before my session.
+
+**The good news**: this does NOT affect production. Vercel is serving the app via the Railway Postgres public proxy, which is still alive and healthy. Users visiting https://rulesell.vercel.app get the full working site. API, signup, everything works.
+
+**The bad news**: the Railway-hosted version of the app at `rulesell-production.up.railway.app` now returns 404 ("Application not found"). The fallback path I planned around is gone.
+
+**What you should do**: either (a) confirm this was intentional (e.g., Baha cleaned it up) and I update this brief, or (b) re-deploy to Railway if you want the fallback back. The `railway.toml` in the repo still defines the build config, so a `railway up` from the repo root should recreate the service if needed.
+
+See the Railway Postgres connection details below under "What's live right now."
+
+---
+
 ## TL;DR
 
 - **Vercel is live** at https://rulesell.vercel.app — pointing at Railway Postgres. Everything works end-to-end.
+- **Railway app service is missing** (see the warning above). Postgres is fine. Vercel-only is acceptable for now since Vercel has been stable.
 - **Signup flow fixed.** I tested it myself as `test001@rulesell-test.internal` — register → auto-verify → sign in → authenticated dashboard, all green.
 - **Logo is unified** across header / signup / login / footer via a new `<Brand />` component.
 - **SEO shipped**: sitemap.xml, robots.txt, llms.txt, dynamic OG image at /api/og, full metadata (OG, Twitter, canonical, hreflang), JSON-LD on the home and every ruleset detail page.
